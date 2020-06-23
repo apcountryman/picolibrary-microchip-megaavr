@@ -12,10 +12,16 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: .gitmodules
-# Description: Git submodules of the picolibrary-microchip-avr-megaavr repository.
+# File: configuration/CMakeLists.txt.release-atmega2560
+# Description: picolibrary-microchip-avr-megaavr ATmega2560 release configuration.
 
-# AVR GCC CMake toolchain
-[submodule "toolchain-avr-gcc"]
-	path = toolchain-avr-gcc
-	url = ../toolchain-avr-gcc
+# install prefix is not applicable
+mark_as_advanced( CMAKE_INSTALL_PREFIX )
+
+# build configuration
+set( CMAKE_BUILD_TYPE              "Release" CACHE STRING "" FORCE )
+set( CMAKE_EXPORT_COMPILE_COMMANDS ON        CACHE BOOL   "" FORCE )
+mark_as_advanced(
+    CMAKE_BUILD_TYPE
+    CMAKE_EXPORT_COMPILE_COMMANDS
+)
