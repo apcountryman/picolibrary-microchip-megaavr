@@ -1,4 +1,6 @@
 # picolibrary-microchip-avr-megaavr
+[![Build Status](https://travis-ci.com/apcountryman/picolibrary-microchip-avr-megaavr.svg?branch=master)](https://travis-ci.com/apcountryman/picolibrary-microchip-avr-megaavr)
+
 [`picolibrary`](https://github.com/apcountryman/picolibrary) Hardware Interface Layer
 (HIL) for Microchip AVR megaAVR microcontrollers.
 
