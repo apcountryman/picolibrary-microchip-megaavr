@@ -12,10 +12,11 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: .gitmodules
-# Description: Git submodules of the picolibrary-microchip-avr-megaavr repository.
+# File: CMakeLists.txt
+# Description: picolibrary-microchip-avr-megaavr core CMake rules.
 
-# AVR GCC CMake toolchain
-[submodule "toolchain-avr-gcc"]
-	path = toolchain-avr-gcc
-	url = ../toolchain-avr-gcc
+cmake_minimum_required( VERSION 3.12.4 )
+project(
+    picolibrary-microchip-avr-megaavr
+    LANGUAGES CXX
+)
