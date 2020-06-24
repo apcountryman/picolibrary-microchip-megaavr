@@ -12,6 +12,31 @@ SSH:
 git clone --recurse-submodules git@github.com:apcountryman/picolibrary-microchip-avr-megaavr.git
 ```
 
+## Usage (Dependency)
+To use this library as a dependency, simply add the subdirectory containing this
+repository to a CMake build, and link with the `picolibrary-microchip-avr-megaavr` static
+library.
+```cmake
+add_subdirectory( picolibrary-microchip-avr-megaavr )
+```
+```cmake
+target_link_libraries(
+    foo
+    picolibrary-microchip-avr-megaavr
+)
+```
+
+## Usage (Development)
+This repository's Git `pre-commit` hook script is the simplest way to configure, and build
+this project during development.
+See the `pre-commit` script's help text for usage details.
+```shell
+./git/hooks/pre-commit --help
+```
+
+Additional checks, such as static analysis, are performed by this project's Travis CI
+jobs.
+
 ## Versioning
 `picolibrary-microchip-avr-megaavr` follows the [Abseil Live at Head
 philosophy](https://abseil.io/about/philosophy).
