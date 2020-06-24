@@ -118,6 +118,7 @@ if( ${DOXYGEN_FOUND} )
         */avr-libcpp/* \
         */build/* \
         */cmake/modules/* \
+        */lizard/* \
         */picolibrary/README.md \
         */picolibrary/cmake/modules/* \
         */picolibrary/documentation/mainpage.md \

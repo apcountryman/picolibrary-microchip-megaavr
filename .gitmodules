@@ -34,3 +34,8 @@
 [submodule "picolibrary"]
 	path = picolibrary
 	url = ../picolibrary
+
+# lizard
+[submodule "lizard"]
+	path = lizard
+	url = ../terryyin-lizard
