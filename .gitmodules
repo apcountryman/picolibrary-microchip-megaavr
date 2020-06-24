@@ -19,3 +19,8 @@
 [submodule "toolchain-avr-gcc"]
 	path = toolchain-avr-gcc
 	url = ../toolchain-avr-gcc
+
+# CMake modules
+[submodule "cmake/modules/apcountryman-cmake-utilities"]
+	path = cmake/modules/apcountryman-cmake-utilities
+	url = ../cmake-utilities
