@@ -23,7 +23,7 @@ project(
 
 # project configuration
 option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING     "picolibrary-microchip-avr-megaavr: enable interactive testing"       OFF )
-option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_AVR_LIBCPP  "picolibrary-microchip-avr-megaavr: use parent project's avr-libcpp"  ON  )
+option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP   "picolibrary-microchip-avr-megaavr: use parent project's avr-libcpp"  ON  )
 option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS "picolibrary-microchip-avr-megaavr: use parent project's build flags" ON  )
 option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY "picolibrary-microchip-avr-megaavr: use parent project's picolibrary" ON  )
 
@@ -71,13 +71,13 @@ if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
 endif( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
 
 # configure avr-libcpp
-if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_AVR_LIBCPP} )
-    set( AVR_LIBCPP_USE_PARENT_PROJECT_BUILD_FLAGS ON CACHE BOOL "" FORCE )
+if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP} )
+    set( AVRLIBCPP_USE_PARENT_PROJECT_BUILD_FLAGS ON CACHE BOOL "" FORCE )
 
     add_subdirectory( avr-libcpp )
 
     link_libraries( avr-libcpp )
-endif( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_AVR_LIBCPP} )
+endif( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP} )
 
 # configure picolibrary
 if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY} )
