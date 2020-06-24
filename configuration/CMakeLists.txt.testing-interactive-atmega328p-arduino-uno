@@ -14,7 +14,7 @@
 
 # File: configuration/CMakeLists.txt.testing-interactive-atmega328p-arduino-uno
 # Description: picolibrary-microchip-avr-megaavr ATmega328/P Arduino Uno interactive
-# testing configuration.
+#       testing configuration.
 
 # install prefix is not applicable
 mark_as_advanced( CMAKE_INSTALL_PREFIX )

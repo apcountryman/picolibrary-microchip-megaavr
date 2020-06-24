@@ -14,7 +14,7 @@
 
 # File: configuration/CMakeLists.txt.testing-interactive-atmega328p-adafruit-metro-mini
 # Description: picolibrary-microchip-avr-megaavr ATmega328/P Adafruit Metro Mini
-# interactive testing configuration.
+#       interactive testing configuration.
 
 # install prefix is not applicable
 mark_as_advanced( CMAKE_INSTALL_PREFIX )
