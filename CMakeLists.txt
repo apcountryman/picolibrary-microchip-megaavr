@@ -39,24 +39,35 @@ if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
         CMAKE_CXX_FLAGS
         "${CMAKE_CXX_FLAGS} \
         -std=c++17 \
-        -mmcu=${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_MCU} \
         -Werror -Wall -Wextra \
-        -Wcast-align=strict \
         -Wcast-qual \
-        -Wduplicated-cond \
         -Wextra-semi \
         -Wfloat-equal \
-        -Wimplicit-fallthrough=5 \
-        -Wlogical-op \
         -Wmissing-field-initializers \
         -Wmissing-include-dirs \
         -Wold-style-cast \
-        -Wplacement-new=2 \
         -Wpointer-arith \
         -Wshadow \
-        -Wunsafe-loop-optimizations \
         "
     )
+
+    option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS "picolibrary-microchip-avr-megaavr: use static analysis build flags" OFF )
+    if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS} )
+        set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_MCU "" CACHE STRING "picolibrary-microchip-avr-megaavr: MCU type" )
+
+        set(
+            CMAKE_CXX_FLAGS
+            "${CMAKE_CXX_FLAGS} \
+            -mmcu=${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_MCU} \
+            -Wcast-align=strict \
+            -Wduplicated-cond \
+            -Wimplicit-fallthrough=5 \
+            -Wlogical-op \
+            -Wplacement-new=2 \
+            -Wunsafe-loop-optimizations \
+            "
+        )
+    endif( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS} )
 endif( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
 
 # configure avr-libcpp
