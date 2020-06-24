@@ -21,6 +21,9 @@ project(
     LANGUAGES CXX
 )
 
+# project configuration
+option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING "picolibrary-microchip-avr-megaavr: enable interactive testing" OFF )
+
 # load additional CMake modules
 list(
     APPEND CMAKE_MODULE_PATH
@@ -61,3 +64,6 @@ if( ${DOXYGEN_FOUND} )
         WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/documentation"
     )
 endif( ${DOXYGEN_FOUND} )
+
+# build the library's tests
+add_subdirectory( test )

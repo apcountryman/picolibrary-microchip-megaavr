@@ -12,8 +12,9 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/CMakeLists.txt.release-atmega328p
-# Description: picolibrary-microchip-avr-megaavr ATmega328/P release configuration.
+# File: configuration/CMakeLists.txt.testing-interactive-atmega2560-arduino-mega-2560
+# Description: picolibrary-microchip-avr-megaavr ATmega2560 Arduino Mega 2560 interactive
+#       testing configuration.
 
 # install prefix is not applicable
 mark_as_advanced( CMAKE_INSTALL_PREFIX )
@@ -27,5 +28,5 @@ mark_as_advanced(
 )
 
 # interactive testing configuration
-set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING OFF CACHE BOOL "" FORCE )
+set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING ON CACHE BOOL "" FORCE )
 mark_as_advanced( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING )
