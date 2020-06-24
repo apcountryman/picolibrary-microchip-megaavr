@@ -33,3 +33,31 @@ execute_git_command(
     PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_VERSION
     COMMAND describe --match=none --always --dirty --broken
 )
+
+# configure Doxygen
+find_package( Doxygen )
+if( ${DOXYGEN_FOUND} )
+    set(
+        PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_DOCUMENTATION_EXCLUDE_PATTERNS
+        " \
+        */.git/* \
+        */README.md \
+        */build/* \
+        */cmake/modules/* \
+        */toolchain-avr-gcc/* \
+        "
+    )
+
+    set( DOXYFILE "${CMAKE_CURRENT_BINARY_DIR}/documentation/Doxyfile" )
+    configure_file(
+        "${CMAKE_CURRENT_SOURCE_DIR}/documentation/Doxyfile.in"
+        "${DOXYFILE}"
+        @ONLY
+    )
+    add_custom_target(
+        picolibrary-microchip-avr-megaavr-documentation
+        ALL
+        COMMAND           "${DOXYGEN_EXECUTABLE}" "${DOXYFILE}"
+        WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/documentation"
+    )
+endif( ${DOXYGEN_FOUND} )
