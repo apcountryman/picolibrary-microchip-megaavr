@@ -24,3 +24,13 @@
 [submodule "cmake/modules/apcountryman-cmake-utilities"]
 	path = cmake/modules/apcountryman-cmake-utilities
 	url = ../cmake-utilities
+
+# avr-libcpp
+[submodule "avr-libcpp"]
+	path = avr-libcpp
+	url = ../avr-libcpp
+
+# picolibrary
+[submodule "picolibrary"]
+	path = picolibrary
+	url = ../picolibrary

@@ -22,13 +22,72 @@ project(
 )
 
 # project configuration
-option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING "picolibrary-microchip-avr-megaavr: enable interactive testing" OFF )
+option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING     "picolibrary-microchip-avr-megaavr: enable interactive testing"       OFF )
+option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_AVR_LIBCPP  "picolibrary-microchip-avr-megaavr: use parent project's avr-libcpp"  ON  )
+option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS "picolibrary-microchip-avr-megaavr: use parent project's build flags" ON  )
+option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY "picolibrary-microchip-avr-megaavr: use parent project's picolibrary" ON  )
 
 # load additional CMake modules
 list(
     APPEND CMAKE_MODULE_PATH
     "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/apcountryman-cmake-utilities"
 )
+
+# configure compilation and linking
+if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
+    set(
+        CMAKE_CXX_FLAGS
+        "${CMAKE_CXX_FLAGS} \
+        -std=c++17 \
+        -mmcu=${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_MCU} \
+        -Werror -Wall -Wextra \
+        -Wcast-align=strict \
+        -Wcast-qual \
+        -Wduplicated-cond \
+        -Wextra-semi \
+        -Wfloat-equal \
+        -Wimplicit-fallthrough=5 \
+        -Wlogical-op \
+        -Wmissing-field-initializers \
+        -Wmissing-include-dirs \
+        -Wold-style-cast \
+        -Wplacement-new=2 \
+        -Wpointer-arith \
+        -Wshadow \
+        -Wunsafe-loop-optimizations \
+        "
+    )
+endif( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
+
+# configure avr-libcpp
+if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_AVR_LIBCPP} )
+    set( AVR_LIBCPP_USE_PARENT_PROJECT_BUILD_FLAGS ON CACHE BOOL "" FORCE )
+
+    add_subdirectory( avr-libcpp )
+
+    link_libraries( avr-libcpp )
+endif( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_AVR_LIBCPP} )
+
+# configure picolibrary
+if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY} )
+    set( PICOLIBRARY_USE_PARENT_PROJECT_BUILD_FLAGS ON CACHE BOOL "" FORCE )
+    mark_as_advanced( PICOLIBRARY_USE_PARENT_PROJECT_BUILD_FLAGS )
+
+    set( PICOLIBRARY_SUPPRESS_HUMAN_READABLE_ERROR_INFORMATION OFF CACHE BOOL "" FORCE )
+    mark_as_advanced( PICOLIBRARY_SUPPRESS_HUMAN_READABLE_ERROR_INFORMATION )
+
+    set( PICOLIBRARY_ENABLE_UNIT_TESTING            OFF CACHE BOOL "" FORCE )
+    set( PICOLIBRARY_USE_PARENT_PROJECT_GOOGLE_TEST OFF CACHE BOOL "" FORCE )
+    mark_as_advanced(
+        PICOLIBRARY_ENABLE_UNIT_TESTING
+        PICOLIBRARY_USE_PARENT_PROJECT_GOOGLE_TEST
+    )
+
+    set( PICOLIBRARY_ENABLE_INTERACTIVE_TESTING "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING}" CACHE BOOL "" FORCE )
+    mark_as_advanced( PICOLIBRARY_ENABLE_UNIT_TESTING )
+
+    add_subdirectory( picolibrary )
+endif( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY} )
 
 # capture project version information
 include( git-utilities )
@@ -45,8 +104,14 @@ if( ${DOXYGEN_FOUND} )
         " \
         */.git/* \
         */README.md \
+        */avr-libcpp/* \
         */build/* \
         */cmake/modules/* \
+        */picolibrary/README.md \
+        */picolibrary/cmake/modules/* \
+        */picolibrary/documentation/mainpage.md \
+        */picolibrary/googletest/* \
+        */picolibrary/lizard/* \
         */toolchain-avr-gcc/* \
         "
     )
@@ -64,6 +129,9 @@ if( ${DOXYGEN_FOUND} )
         WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/documentation"
     )
 endif( ${DOXYGEN_FOUND} )
+
+# build the library
+add_subdirectory( source )
 
 # build the library's tests
 add_subdirectory( test )
