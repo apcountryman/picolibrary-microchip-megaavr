@@ -50,6 +50,7 @@ function display_help_text()
     echo "        The following analyzers are supported:"
     echo "            clang-tidy"
     echo "            cppcheck"
+    echo "            lizard"
     echo "            shellcheck"
     echo "    --help"
     echo "        Display this help text."
@@ -60,6 +61,7 @@ function display_help_text()
     echo "    $mnemonic --version"
     echo "    $mnemonic --analyzer clang-tidy"
     echo "    $mnemonic --analyzer cppcheck"
+    echo "    $mnemonic --analyzer lizard"
     echo "    $mnemonic --analyzer shellcheck"
 }
 
@@ -87,15 +89,6 @@ function generate_compilation_database()
     fi
 }
 
-function run_clang-tidy()
-{
-    generate_compilation_database
-
-    if ! run-clang-tidy -p "$build_directory"; then
-        abort
-    fi
-}
-
 function run_cppcheck()
 {
     generate_compilation_database
@@ -110,9 +103,37 @@ function run_cppcheck()
     fi
 }
 
+function run_clang-tidy()
+{
+    generate_compilation_database
+
+    if ! run-clang-tidy -p "$build_directory"; then
+        abort
+    fi
+}
+
+function run_lizard()
+{
+    local source_files; mapfile -t source_files < <( git -C "$repository" ls-files '*.h' '*.cc' '*.cc.in' | xargs -r -d '\n' -I '{}' echo "$repository/{}" ); readonly source_files
+
+    local -r lizard_options=(
+        "--languages" "cpp"
+
+        "--modified"
+
+        "--arguments" "5"
+        "--length"    "25"
+        "--CCN"       "10"
+    )
+
+    if ! "$repository/lizard/lizard.py" "${lizard_options[@]}" "${source_files[@]}"; then
+        abort
+    fi
+}
+
 function run_shellcheck()
 {
-    local scripts; mapfile -t scripts < <( git -C "$repository" ls-files ':!:avr-libcpp/' ':!:cmake/modules/' ':!:picolibrary/' ':!:toolchain-avr-gcc/' | xargs -r -d '\n' -I '{}' find "$repository/{}" -executable ); readonly scripts
+    local scripts; mapfile -t scripts < <( git -C "$repository" ls-files ':!:avr-libcpp/' ':!:cmake/modules/' ':!:lizard/' ':!:picolibrary/' ':!:toolchain-avr-gcc/' | xargs -r -d '\n' -I '{}' find "$repository/{}" -executable ); readonly scripts
 
     if ! shellcheck "${scripts[@]}"; then
         abort
@@ -147,7 +168,7 @@ function main()
 
                 local -r analyzer="$1"; shift
 
-                if [[ "$analyzer" != "clang-tidy" && "$analyzer" != "cppcheck" && "$analyzer" != "shellcheck" ]]; then
+                if [[ "$analyzer" != "clang-tidy" && "$analyzer" != "cppcheck" && "$analyzer" != "lizard" && "$analyzer" != "shellcheck" ]]; then
                     abort "'$analyzer' is not a supported analyzer"
                 fi
                 ;;
