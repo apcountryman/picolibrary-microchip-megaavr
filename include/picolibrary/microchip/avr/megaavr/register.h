@@ -27,7 +27,7 @@ namespace picolibrary::Microchip::AVR::megaAVR {
 /**
  * \brief A Microchip AVR megaAVR register.
  *
- * \tparam The register's underlying integral type.
+ * \tparam T The register's underlying integral type.
  */
 template<typename T>
 class Register {
@@ -141,7 +141,7 @@ class Register {
 /**
  * \brief A Microchip AVR megaAVR reserved register.
  *
- * \tparam The register's underlying integral type.
+ * \tparam T The reserved register's underlying integral type.
  */
 template<typename T>
 class Reserved_Register {
