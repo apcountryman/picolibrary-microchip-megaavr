@@ -27,6 +27,7 @@ set(
     "picolibrary/microchip.cc"
     "picolibrary/microchip/avr.cc"
     "picolibrary/microchip/avr/megaavr.cc"
+    "picolibrary/microchip/avr/megaavr/version.cc"
 )
 list(
     APPEND PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_LINK_LIBRARIES
