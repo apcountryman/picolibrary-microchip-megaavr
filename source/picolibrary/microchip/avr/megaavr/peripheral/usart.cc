@@ -24,5 +24,9 @@
 namespace picolibrary::Microchip::AVR::megaAVR::Peripheral {
 
 static_assert( sizeof( USART ) == 7 );
+static_assert( USART::UCSRA::Bit::RXC == 7 );
+static_assert( USART::UCSRB::Bit::RXCIE == 7 );
+static_assert( USART::UCSRC::Bit::UMSEL == 6 );
+static_assert( USART::UCSRC::Bit::UDORD == 2 );
 
 } // namespace picolibrary::Microchip::AVR::megaAVR::Peripheral

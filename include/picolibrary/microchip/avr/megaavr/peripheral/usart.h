@@ -63,6 +63,20 @@ class USART {
             static constexpr auto RXC  = std::uint_fast8_t{ 1 }; ///< RXC.
         };
 
+        /**
+         * \brief Field bit positions.
+         */
+        struct Bit {
+            static constexpr auto MPCM = std::uint_fast8_t{}; ///< MPCM.
+            static constexpr auto U2X  = std::uint_fast8_t{ MPCM + Size::MPCM }; ///< U2X.
+            static constexpr auto UPE  = std::uint_fast8_t{ U2X + Size::U2X };   ///< UPE.
+            static constexpr auto DOR  = std::uint_fast8_t{ UPE + Size::UPE };   ///< DOR.
+            static constexpr auto FE   = std::uint_fast8_t{ DOR + Size::DOR };   ///< FE.
+            static constexpr auto UDRE = std::uint_fast8_t{ FE + Size::FE }; ///< UDRE.
+            static constexpr auto TXC  = std::uint_fast8_t{ UDRE + Size::UDRE }; ///< TXC.
+            static constexpr auto RXC  = std::uint_fast8_t{ TXC + Size::TXC };   ///< TXC.
+        };
+
         UCSRA() = delete;
 
         /**
@@ -121,6 +135,20 @@ class USART {
             static constexpr auto RXCIE = std::uint_fast8_t{ 1 }; ///< RXCIE.
         };
 
+        /**
+         * \brief Field bit positions.
+         */
+        struct Bit {
+            static constexpr auto TXB8 = std::uint_fast8_t{}; ///< TXB8.
+            static constexpr auto RXB8 = std::uint_fast8_t{ TXB8 + Size::TXB8 }; ///< RXB8.
+            static constexpr auto UCSZ = std::uint_fast8_t{ RXB8 + Size::RXB8 }; ///< UCSZ.
+            static constexpr auto TXEN = std::uint_fast8_t{ UCSZ + Size::UCSZ }; ///< TXEN.
+            static constexpr auto RXEN = std::uint_fast8_t{ TXEN + Size::TXEN }; ///< TXEN.
+            static constexpr auto UDRIE = std::uint_fast8_t{ RXEN + Size::RXEN }; ///< UDRIE.
+            static constexpr auto TXCIE = std::uint_fast8_t{ UDRIE + Size::UDRIE }; ///< TXCIE.
+            static constexpr auto RXCIE = std::uint_fast8_t{ TXCIE + Size::TXCIE }; ///< TXCIE.
+        };
+
         UCSRB() = delete;
 
         /**
@@ -176,6 +204,20 @@ class USART {
 
             static constexpr auto UCPHA = std::uint_fast8_t{ 1 }; ///< UCPHA.
             static constexpr auto UDORD = std::uint_fast8_t{ 1 }; ///< UDORD.
+        };
+
+        /**
+         * \brief Field bit positions.
+         */
+        struct Bit {
+            static constexpr auto UCPOL = std::uint_fast8_t{}; ///< UCPOL.
+            static constexpr auto UCSZ = std::uint_fast8_t{ UCPOL + Size::UCPOL }; ///< UCSZ.
+            static constexpr auto USBS = std::uint_fast8_t{ UCSZ + Size::UCSZ }; ///< USBS.
+            static constexpr auto UPM  = std::uint_fast8_t{ USBS + Size::USBS }; ///< UPM.
+            static constexpr auto UMSEL = std::uint_fast8_t{ UPM + Size::UPM }; ///< UMSEL.
+
+            static constexpr auto UCPHA = std::uint_fast8_t{ UCPOL + Size::UCPOL }; ///< UCPHA.
+            static constexpr auto UDORD = std::uint_fast8_t{ UCPHA + Size::UCPHA }; ///< UDORD.
         };
 
         UCSRC() = delete;
