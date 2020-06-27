@@ -49,6 +49,20 @@ class USART {
      */
     class UCSRA : public Register<std::uint8_t> {
       public:
+        /**
+         * \brief Field sizes.
+         */
+        struct Size {
+            static constexpr auto MPCM = std::uint_fast8_t{ 1 }; ///< MPCM.
+            static constexpr auto U2X  = std::uint_fast8_t{ 1 }; ///< U2X.
+            static constexpr auto UPE  = std::uint_fast8_t{ 1 }; ///< UPE.
+            static constexpr auto DOR  = std::uint_fast8_t{ 1 }; ///< DOR.
+            static constexpr auto FE   = std::uint_fast8_t{ 1 }; ///< FE.
+            static constexpr auto UDRE = std::uint_fast8_t{ 1 }; ///< UDRE.
+            static constexpr auto TXC  = std::uint_fast8_t{ 1 }; ///< TXC.
+            static constexpr auto RXC  = std::uint_fast8_t{ 1 }; ///< RXC.
+        };
+
         UCSRA() = delete;
 
         /**
@@ -93,6 +107,20 @@ class USART {
      */
     class UCSRB : public Register<std::uint8_t> {
       public:
+        /**
+         * \brief Field sizes.
+         */
+        struct Size {
+            static constexpr auto TXB8  = std::uint_fast8_t{ 1 }; ///< TXB8.
+            static constexpr auto RXB8  = std::uint_fast8_t{ 1 }; ///< RXB8.
+            static constexpr auto UCSZ  = std::uint_fast8_t{ 1 }; ///< UCSZ.
+            static constexpr auto TXEN  = std::uint_fast8_t{ 1 }; ///< TXEN.
+            static constexpr auto RXEN  = std::uint_fast8_t{ 1 }; ///< RXEN.
+            static constexpr auto UDRIE = std::uint_fast8_t{ 1 }; ///< UDRIE.
+            static constexpr auto TXCIE = std::uint_fast8_t{ 1 }; ///< TXCIE.
+            static constexpr auto RXCIE = std::uint_fast8_t{ 1 }; ///< RXCIE.
+        };
+
         UCSRB() = delete;
 
         /**
@@ -136,6 +164,20 @@ class USART {
      */
     class UCSRC : public Register<std::uint8_t> {
       public:
+        /**
+         * \brief Field sizes.
+         */
+        struct Size {
+            static constexpr auto UCPOL = std::uint_fast8_t{ 1 }; ///< UCPOL.
+            static constexpr auto UCSZ  = std::uint_fast8_t{ 2 }; ///< UCSZ.
+            static constexpr auto USBS  = std::uint_fast8_t{ 1 }; ///< USBS.
+            static constexpr auto UPM   = std::uint_fast8_t{ 2 }; ///< UPM.
+            static constexpr auto UMSEL = std::uint_fast8_t{ 2 }; ///< UMSEL.
+
+            static constexpr auto UCPHA = std::uint_fast8_t{ 1 }; ///< UCPHA.
+            static constexpr auto UDORD = std::uint_fast8_t{ 1 }; ///< UDORD.
+        };
+
         UCSRC() = delete;
 
         /**
