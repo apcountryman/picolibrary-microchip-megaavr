@@ -27,6 +27,7 @@ set(
     "picolibrary/microchip.cc"
     "picolibrary/microchip/avr.cc"
     "picolibrary/microchip/avr/megaavr.cc"
+    "picolibrary/microchip/avr/megaavr/peripheral.cc"
     "picolibrary/microchip/avr/megaavr/register.cc"
 )
 list(
