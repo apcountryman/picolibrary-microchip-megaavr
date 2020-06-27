@@ -202,6 +202,19 @@ class USART {
             static constexpr auto UCSZ = std::uint_fast8_t{ 1 }; ///< UCSZ.
         };
 
+        /**
+         * \brief Interrupt masks.
+         */
+        struct Interrupt {
+            static constexpr auto RECEIVE_COMPLETE  = Mask::RXCIE; ///< Receive complete.
+            static constexpr auto TRANSMIT_COMPLETE = Mask::TXCIE; ///< Transmit complete.
+            static constexpr auto DATA_REGISTER_EMPTY = Mask::UDRIE; ///< Data register
+                                                                     ///< empty.
+
+            static constexpr auto ALL = std::uint8_t{ RECEIVE_COMPLETE | TRANSMIT_COMPLETE
+                                                      | DATA_REGISTER_EMPTY }; ///< All.
+        };
+
         UCSRB() = delete;
 
         /**
@@ -314,6 +327,17 @@ class USART {
          * \return
          */
         auto operator=( UCSRC const & ) = delete;
+    };
+
+    /**
+     * \brief Interrupt masks.
+     */
+    struct Interrupt {
+        static constexpr auto RECEIVE_COMPLETE = UCSRB::Interrupt::RECEIVE_COMPLETE; ///< Receive complete.
+        static constexpr auto TRANSMIT_COMPLETE = UCSRB::Interrupt::TRANSMIT_COMPLETE; ///< Transmit complete.
+        static constexpr auto DATA_REGISTER_EMPTY = UCSRB::Interrupt::DATA_REGISTER_EMPTY; ///< Data register empty.
+
+        static constexpr auto ALL = UCSRB::Interrupt::ALL; ///< All.
     };
 
     /**
