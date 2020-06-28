@@ -16,19 +16,16 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::AVR::megaAVR::Register implementation.
+ * \brief picolibrary::Microchip::AVR::megaAVR::Peripheral interface.
  */
 
-#include "picolibrary/microchip/avr/megaavr/register.h"
+#ifndef PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_PERIPHERAL_H
+#define PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_PERIPHERAL_H
 
-#include <cstdint>
+/**
+ * \brief Microchip AVR megaAVR peripheral facilities.
+ */
+namespace picolibrary::Microchip::AVR::megaAVR::Peripheral {
+} // namespace picolibrary::Microchip::AVR::megaAVR::Peripheral
 
-namespace picolibrary::Microchip::AVR::megaAVR {
-
-static_assert( sizeof( Register<std::uint8_t> ) == 1 );
-static_assert( sizeof( Register<std::uint16_t> ) == 2 );
-
-static_assert( sizeof( Reserved_Register<std::uint8_t> ) == 1 );
-static_assert( sizeof( Reserved_Register<std::uint16_t> ) == 2 );
-
-} // namespace picolibrary::Microchip::AVR::megaAVR
+#endif // PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_PERIPHERAL_H

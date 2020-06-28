@@ -16,19 +16,17 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::AVR::megaAVR::Register implementation.
+ * \brief picolibrary::Microchip::AVR::megaAVR::Peripheral::USART implementation.
  */
 
-#include "picolibrary/microchip/avr/megaavr/register.h"
+#include "picolibrary/microchip/avr/megaavr/peripheral/usart.h"
 
-#include <cstdint>
+namespace picolibrary::Microchip::AVR::megaAVR::Peripheral {
 
-namespace picolibrary::Microchip::AVR::megaAVR {
+static_assert( sizeof( USART ) == 7 );
+static_assert( USART::UCSRA::Bit::RXC == 7 );
+static_assert( USART::UCSRB::Bit::RXCIE == 7 );
+static_assert( USART::UCSRC::Bit::UMSEL == 6 );
+static_assert( USART::UCSRC::Bit::UDORD == 2 );
 
-static_assert( sizeof( Register<std::uint8_t> ) == 1 );
-static_assert( sizeof( Register<std::uint16_t> ) == 2 );
-
-static_assert( sizeof( Reserved_Register<std::uint8_t> ) == 1 );
-static_assert( sizeof( Reserved_Register<std::uint16_t> ) == 2 );
-
-} // namespace picolibrary::Microchip::AVR::megaAVR
+} // namespace picolibrary::Microchip::AVR::megaAVR::Peripheral
