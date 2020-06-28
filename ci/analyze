@@ -121,7 +121,7 @@ function run_lizard()
 
         "--modified"
 
-        "--arguments" "5"
+        "--arguments" "10"
         "--length"    "25"
         "--CCN"       "10"
     )
