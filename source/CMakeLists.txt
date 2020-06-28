@@ -27,6 +27,7 @@ set(
     "picolibrary/microchip.cc"
     "picolibrary/microchip/avr.cc"
     "picolibrary/microchip/avr/megaavr.cc"
+    "picolibrary/microchip/avr/megaavr/asynchronous_serial.cc"
     "picolibrary/microchip/avr/megaavr/peripheral.cc"
     "picolibrary/microchip/avr/megaavr/peripheral/atmega2560.cc"
     "picolibrary/microchip/avr/megaavr/peripheral/atmega328p.cc"
