@@ -972,7 +972,7 @@ class USART {
      */
     auto transmit_buffer_empty() const noexcept
     {
-        ucsra.transmit_buffer_empty();
+        return ucsra.transmit_buffer_empty();
     }
 
     /**
