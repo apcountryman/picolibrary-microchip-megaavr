@@ -22,14 +22,73 @@
 #ifndef PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_PERIPHERAL_ATMEGA2560_H
 #define PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_PERIPHERAL_ATMEGA2560_H
 
+#include "picolibrary/microchip/avr/megaavr/peripheral/usart.h"
+
 /**
  * \brief Microchip AVR megaAVR ATmega2560 peripherals.
  *
  * \attention The contents of this namespace should never be used directly. Instead, set
- *            the `-mmcu` to `atmega2560` and use them through the
+ *            the `-mmcu` compiler flag to `atmega2560` and use them through the
  *            picolibrary::Microchip::AVR::megaAVR::Peripheral namespace.
  */
 namespace picolibrary::Microchip::AVR::megaAVR::Peripheral::ATmega2560 {
+
+/**
+ * \brief USART0.
+ *
+ * \attention This function should never be called directly. Instead, set the `-mmcu`
+ *            compiler flag to `atmega2560` and call
+ *            picolibrary::Microchip::AVR::megaAVR::Peripheral::usart0().
+ *
+ * \return USART0.
+ */
+inline USART & usart0() noexcept
+{
+    return *reinterpret_cast<USART *>( 0x00C0 );
+}
+
+/**
+ * \brief USART1.
+ *
+ * \attention This function should never be called directly. Instead, set the `-mmcu`
+ *            compiler flag to `atmega2560` and call
+ *            picolibrary::Microchip::AVR::megaAVR::Peripheral::usart1().
+ *
+ * \return USART1.
+ */
+inline USART & usart1() noexcept
+{
+    return *reinterpret_cast<USART *>( 0x00C8 );
+}
+
+/**
+ * \brief USART2.
+ *
+ * \attention This function should never be called directly. Instead, set the `-mmcu`
+ *            compiler flag to `atmega2560` and call
+ *            picolibrary::Microchip::AVR::megaAVR::Peripheral::usart2().
+ *
+ * \return USART2.
+ */
+inline USART & usart2() noexcept
+{
+    return *reinterpret_cast<USART *>( 0x00D0 );
+}
+
+/**
+ * \brief USART3.
+ *
+ * \attention This function should never be called directly. Instead, set the `-mmcu`
+ *            compiler flag to `atmega2560` and call
+ *            picolibrary::Microchip::AVR::megaAVR::Peripheral::usart3().
+ *
+ * \return USART3.
+ */
+inline USART & usart3() noexcept
+{
+    return *reinterpret_cast<USART *>( 0x0130 );
+}
+
 } // namespace picolibrary::Microchip::AVR::megaAVR::Peripheral::ATmega2560
 
 namespace picolibrary::Microchip::AVR::megaAVR::Peripheral {
