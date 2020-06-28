@@ -136,6 +136,120 @@ class USART {
          * \return
          */
         auto operator=( UCSRA const & ) = delete;
+
+        using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Configure the USART.
+         *
+         * \param[in] operating_speed The desired clock generator operating speed.
+         */
+        void configure( Operating_Speed operating_speed ) noexcept;
+
+        /**
+         * \brief Set the multi-processor communication mode frame type of the next
+         *        incoming frame.
+         *
+         * \param[in] frame_type The frame type of the next incoming frame.
+         */
+        void set_incoming_frame_type( Frame_Type frame_type ) noexcept;
+
+        /**
+         * \brief Check if data is available in the receive buffer.
+         *
+         * \return true if data is available in the receive buffer.
+         * \return false if no data is available in the receive buffer.
+         */
+        auto data_available() const noexcept -> bool
+        {
+            return *this & Mask::RXC;
+        }
+
+        /**
+         * \brief Check if a framing error or parity error occurred during reception of
+         *        the next data in the receive buffer, or the receive buffer has
+         *        experienced a data overrun.
+         *
+         * \return true if a framing error or parity error occurred during reception of
+         *         the next data in the receive buffer, or the receive buffer has
+         *         experienced a data overrun.
+         * \return false if neither a framing error nor a parity error occurred during
+         *         reception of the next data in the receive buffer, and the receive
+         *         buffer has not experienced a data overrun.
+         */
+        auto error() const noexcept -> bool
+        {
+            return *this & ( Mask::FE | Mask::UPE | Mask::DOR );
+        }
+
+        /**
+         * \brief Check if a framing error occurred during reception of the next data in
+         *        the receive buffer.
+         *
+         * \return true if a framing error occurred during reception of the next data in
+         *         the receive buffer.
+         * \return false if a framing error did not occur during reception of the next
+         *         data in the receive buffer.
+         */
+        auto framing_error() const noexcept -> bool
+        {
+            return *this & Mask::FE;
+        }
+
+        /**
+         * \brief Check if a parity error occurred during reception of the next data in
+         *        the receive buffer.
+         *
+         * \return true if a parity error occurred during reception of the next data in
+         *         the receive buffer.
+         * \return false if a parity error did not occur during reception of the next data
+         *         in the receive buffer.
+         */
+        auto parity_error() const noexcept -> bool
+        {
+            return *this & Mask::UPE;
+        }
+
+        /**
+         * \brief Check if the receive buffer has experienced a data overrun.
+         *
+         * \return true if the receive buffer has experienced a data overrun.
+         * \return false if the receive buffer has not experienced a data overrun.
+         */
+        auto overrun_error() const noexcept -> bool
+        {
+            return *this & Mask::UPE;
+        }
+
+        /**
+         * \brief Check if the transmit buffer is empty.
+         *
+         * \return true if the transmit buffer is empty.
+         * \return false if the transmit buffer is not empty.
+         */
+        auto transmit_buffer_empty() const noexcept -> bool
+        {
+            return *this & Mask::UDRE;
+        }
+
+        /**
+         * \brief Check if transmission is complete
+         *
+         * \return true if transmission is complete.
+         * \return false if transmission is not complete.
+         */
+        auto transmission_complete() const noexcept -> bool
+        {
+            return *this & Mask::TXC;
+        }
+
+        /**
+         * \brief Clear the transmission complete flag.
+         */
+        void clear_transmission_complete() noexcept
+        {
+            *this |= Mask::TXC;
+        }
     };
 
     /**
@@ -242,10 +356,109 @@ class USART {
          * \return
          */
         auto operator=( UCSRB const & ) = delete;
+
+        using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Configure the USART for use as an Asynchronous USART or synchronous
+         *        USART.
+         *
+         * \param[in] data_bits The desired number of data bits.
+         */
+        void configure( Data_Bits data_bits ) noexcept;
+
+        /**
+         * \brief Enable the receiver.
+         */
+        void enable_receiver() noexcept
+        {
+            *this |= Mask::RXEN;
+        }
+
+        /**
+         * \brief Enable the transmitter.
+         */
+        void enable_transmitter() noexcept
+        {
+            *this |= Mask::TXEN;
+        }
+
+        /**
+         * \brief Enable the receiver and transmitter.
+         */
+        void enable() noexcept
+        {
+            *this |= Mask::RXEN | Mask::TXEN;
+        }
+
+        /**
+         * \brief Disable the receiver.
+         */
+        void disable_receiver() noexcept
+        {
+            *this &= ~Mask::RXEN;
+        }
+
+        /**
+         * \brief Disable the transmitter.
+         */
+        void disable_transmitter() noexcept
+        {
+            *this &= ~Mask::TXEN;
+        }
+
+        /**
+         * \brief Disable the receiver and transmitter.
+         */
+        void disable() noexcept
+        {
+            *this &= ~( Mask::RXEN | Mask::TXEN );
+        }
+
+        /**
+         * \brief Enable interrupts.
+         *
+         * \param[in] interrupts The mask identifying the interrupts to enable.
+         */
+        void enable_interrupts( std::uint8_t interrupts ) noexcept
+        {
+            *this |= interrupts;
+        }
+
+        /**
+         * \brief Disable interrupts.
+         *
+         * \param[in] interrupts The mask identifying the interrupts to disable.
+         */
+        void disable_interrupts( std::uint8_t interrupts = Interrupt::ALL )
+        {
+            *this &= ~interrupts;
+        }
+
+        /**
+         * \brief Extract bit 8 of 9-bit received data.
+         *
+         * \return 0x0100 if bit 8 of the 9-bit received data is set.
+         * \return 0x0000 if bit 8 of the 9-bit received data is not set.
+         */
+        auto receive() const noexcept -> std::uint16_t
+        {
+            return *this & Mask::RXB8 ? 0x0100 : 0x0000;
+        }
+
+        /**
+         * \brief Load bit 8 of 9-bit data for transmission.
+         *
+         * \param[in] data The data being transmitted.
+         */
+        void transmit( std::uint16_t data ) noexcept
+        {
+            *this = ( *this & ~Mask::TXB8 ) | ( data & 0x0100 ? Mask::TXB8 : 0 );
+        }
     };
 
     /**
-     * \brief USART Control and Status Register A (UCSRC).
+     * \brief USART Control and Status Register C (UCSRC).
      *
      * This register has the following fields:
      * - USART Clock Polarity (UCPOL)
@@ -327,6 +540,17 @@ class USART {
          * \return
          */
         auto operator=( UCSRC const & ) = delete;
+
+        using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Configure the USART for use as an asynchronous USART.
+         *
+         * \param[in] data_bits The desired number of data bits.
+         * \param[in] parity The desired parity mode.
+         * \param[in] stop_bits The desired number of stop bits.
+         */
+        void configure( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits ) noexcept;
     };
 
     /**
@@ -478,7 +702,279 @@ class USART {
      * \return
      */
     auto operator=( USART const & ) = delete;
+
+    /**
+     * \brief Configure the USART for use as an asynchronous USART.
+     *
+     * \param[in] data_bits The desired number of data bits.
+     * \param[in] parity The desired parity mode.
+     * \param[in] stop_bits The desired number of stop bits.
+     * \param[in] operating_speed The desired clock generator operating speed.
+     * \param[in] scaling_factor The desired clock generator scaling factor.
+     */
+    void configure( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits, Operating_Speed operating_speed, std::uint16_t scaling_factor ) noexcept
+    {
+        ucsrb.configure( data_bits );
+        ucsra.configure( operating_speed );
+        ucsrc.configure( data_bits, parity, stop_bits );
+
+        ubrr = scaling_factor;
+    }
+
+    /**
+     * \brief Enable the receiver.
+     */
+    void enable_receiver() noexcept
+    {
+        ucsrb.enable_receiver();
+    }
+
+    /**
+     * \brief Enable the transmitter.
+     */
+    void enable_transmitter() noexcept
+    {
+        ucsrb.enable_transmitter();
+    }
+
+    /**
+     * \brief Enable the receiver and transmitter.
+     */
+    void enable() noexcept
+    {
+        ucsrb.enable();
+    }
+
+    /**
+     * \brief Disable the receiver.
+     */
+    void disable_receiver() noexcept
+    {
+        ucsrb.disable_receiver();
+    }
+
+    /**
+     * \brief Disable the transmitter.
+     */
+    void disable_transmitter() noexcept
+    {
+        ucsrb.disable_transmitter();
+    }
+
+    /**
+     * \brief Disable the receiver and transmitter.
+     */
+    void disable() noexcept
+    {
+        ucsrb.disable();
+    }
+
+    /**
+     * \brief Enable interrupts.
+     *
+     * \param[in] interrupts The mask identifying the interrupts to enable.
+     */
+    void enable_interrupts( std::uint8_t interrupts ) noexcept
+    {
+        ucsrb.enable_interrupts( interrupts );
+    }
+
+    /**
+     * \brief Disable interrupts.
+     *
+     * \param[in] interrupts The mask identifying the interrupts to disable.
+     */
+    void disable_interrupts( std::uint8_t interrupts = Interrupt::ALL )
+    {
+        ucsrb.disable_interrupts( interrupts );
+    }
+
+    /**
+     * \brief Set the multi-processor communication mode frame type of the next incoming
+     *        frame.
+     *
+     * \param[in] frame_type The frame type of the next incoming frame.
+     */
+    void set_incoming_frame_type( Frame_Type frame_type ) noexcept
+    {
+        ucsra.set_incoming_frame_type( frame_type );
+    }
+
+    /**
+     * \brief Check if data is available in the receive buffer.
+     *
+     * \return true if data is available in the receive buffer.
+     * \return false if no data is available in the receive buffer.
+     */
+    auto data_available() const noexcept
+    {
+        return ucsra.data_available();
+    }
+
+    /**
+     * \brief Check if a framing error or parity error occurred during reception of the
+     *        next data in the receive buffer, or the receive buffer has experienced a
+     *        data overrun.
+     *
+     * \return true if a framing error or parity error occurred during reception of the
+     *         next data in the receive buffer, or the receive buffer has experienced a
+     *         data overrun.
+     * \return false if neither a framing error nor a parity error occurred during
+     *         reception of the next data in the receive buffer, and the receive buffer
+     *         has not experienced a data overrun.
+     */
+    auto error() const noexcept
+    {
+        return ucsra.error();
+    }
+
+    /**
+     * \brief Check if a framing error occurred during reception of the next data in the
+     *        receive buffer.
+     *
+     * \return true if a framing error occurred during reception of the next data in the
+     *         receive buffer.
+     * \return false if a framing error did not occur during reception of the next data in
+     *         the receive buffer.
+     */
+    auto framing_error() const noexcept
+    {
+        return ucsra.framing_error();
+    }
+
+    /**
+     * \brief Check if a parity error occurred during reception of the next data in the
+     *        receive buffer.
+     *
+     * \return true if a parity error occurred during reception of the next data in the
+     *         receive buffer.
+     * \return false if a parity error did not occur during reception of the next data in
+     *         the receive buffer.
+     */
+    auto parity_error() const noexcept
+    {
+        return ucsra.parity_error();
+    }
+
+    /**
+     * \brief Check if the receive buffer has experienced a data overrun.
+     *
+     * \return true if the receive buffer has experienced a data overrun.
+     * \return false if the receive buffer has not experienced a data overrun.
+     */
+    auto overrun_error() const noexcept
+    {
+        return ucsra.overrun_error();
+    }
+
+    /**
+     * \brief Read data from the receive buffer.
+     *
+     * \tparam T The type of data to read from the receive buffer.
+     *
+     * \return The data read from the receive buffer.
+     */
+    template<typename T>
+    auto receive() noexcept
+    {
+        return receive( T{} );
+    }
+
+    /**
+     * \brief Check if the transmit buffer is empty.
+     *
+     * \return true if the transmit buffer is empty.
+     * \return false if the transmit buffer is not empty.
+     */
+    auto transmit_buffer_empty() const noexcept
+    {
+        ucsra.transmit_buffer_empty();
+    }
+
+    /**
+     * \brief Check if transmission is complete
+     *
+     * \return true if transmission is complete.
+     * \return false if transmission is not complete.
+     */
+    auto transmission_complete() const noexcept
+    {
+        return ucsra.transmission_complete();
+    }
+
+    /**
+     * \brief Clear the transmission complete flag.
+     */
+    void clear_transmission_complete() noexcept
+    {
+        ucsra.clear_transmission_complete();
+    }
+
+    /**
+     * \brief Write data to the transmit buffer.
+     *
+     * \param[in] data The data to write to the transmit buffer.
+     */
+    void transmit( std::uint8_t data ) noexcept
+    {
+        udr = data;
+    }
+
+    /**
+     * \brief Write data to the transmit buffer.
+     *
+     * \param[in] data The data to write to the transmit buffer.
+     */
+    void transmit( std::uint16_t data ) noexcept
+    {
+        ucsrb.transmit( data );
+        udr = data;
+    }
+
+  private:
+    /**
+     * \brief Read data from the receive buffer.
+     *
+     * \return The data read from the receive buffer.
+     */
+    auto receive( std::uint8_t ) noexcept -> std::uint8_t
+    {
+        return udr;
+    }
+
+    /**
+     * \brief Read data from the receive buffer.
+     *
+     * \return The data read from the receive buffer.
+     */
+    auto receive( std::uint16_t ) noexcept -> std::uint16_t
+    {
+        return ucsrb.receive() | udr;
+    }
 };
+
+inline void USART::UCSRA::configure( Operating_Speed operating_speed ) noexcept
+{
+    *this = static_cast<std::uint8_t>( operating_speed );
+}
+
+inline void USART::UCSRA::set_incoming_frame_type( Frame_Type frame_type ) noexcept
+{
+    *this = ( *this & ~( Mask::FE | Mask::DOR | Mask::UPE | Mask::MPCM ) )
+            | static_cast<std::uint8_t>( frame_type );
+}
+
+inline void USART::UCSRB::configure( Data_Bits data_bits ) noexcept
+{
+    *this = ( static_cast<std::uint8_t>( data_bits ) >> Offset::UCSZ ) & Mask::UCSZ;
+}
+
+inline void USART::UCSRC::configure( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits ) noexcept
+{
+    *this = static_cast<std::uint8_t>( Mode::ASYNCHRONOUS_USART )
+            | static_cast<std::uint8_t>( data_bits ) | static_cast<std::uint8_t>( parity )
+            | static_cast<std::uint8_t>( stop_bits );
+}
 
 } // namespace picolibrary::Microchip::AVR::megaAVR::Peripheral
 
