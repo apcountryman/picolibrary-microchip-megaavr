@@ -22,6 +22,8 @@
 #ifndef PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_PERIPHERAL_ATMEGA328P_H
 #define PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_PERIPHERAL_ATMEGA328P_H
 
+#include "picolibrary/microchip/avr/megaavr/peripheral/usart.h"
+
 /**
  * \brief Microchip AVR megaAVR ATmega328/P peripherals.
  *
@@ -30,6 +32,21 @@
  *            picolibrary::Microchip::AVR::megaAVR::Peripheral namespace.
  */
 namespace picolibrary::Microchip::AVR::megaAVR::Peripheral::ATmega328P {
+
+/**
+ * \brief USART0.
+ *
+ * \attention This function should never be called directly. Instead, set the `-mmcu`
+ *            compiler flag to `atmega328p` and call
+ *            picolibrary::Microchip::AVR::megaAVR::Peripheral::usart0().
+ *
+ * \return USART0.
+ */
+inline USART & usart0() noexcept
+{
+    return *reinterpret_cast<USART *>( 0x00C0 );
+}
+
 } // namespace picolibrary::Microchip::AVR::megaAVR::Peripheral::ATmega328P
 
 namespace picolibrary::Microchip::AVR::megaAVR::Peripheral {
