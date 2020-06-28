@@ -753,9 +753,9 @@ class USART {
      */
     void configure( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits, Operating_Speed operating_speed, std::uint16_t scaling_factor ) noexcept
     {
+        ucsrc.configure( data_bits, parity, stop_bits );
         ucsrb.configure( data_bits );
         ucsra.configure( operating_speed );
-        ucsrc.configure( data_bits, parity, stop_bits );
 
         ubrr = scaling_factor;
     }
@@ -778,9 +778,9 @@ class USART {
         Operating_Speed operating_speed,
         std::uint16_t   scaling_factor ) noexcept
     {
+        ucsrc.configure( data_bits, parity, stop_bits, clock_polarity );
         ucsrb.configure( data_bits );
         ucsra.configure( operating_speed );
-        ucsrc.configure( data_bits, parity, stop_bits, clock_polarity );
 
         ubrr = scaling_factor;
     }
