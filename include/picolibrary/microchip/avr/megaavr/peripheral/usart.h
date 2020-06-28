@@ -140,14 +140,14 @@ class USART {
         using Register<std::uint8_t>::operator=;
 
         /**
-         * \brief Configure the USART for use as an asynchronous or synchronous USART.
+         * \brief Configure the USART for use as an asynchronous USART.
          *
          * \param[in] operating_speed The desired clock generator operating speed.
          */
         void configure( Operating_Speed operating_speed ) noexcept;
 
         /**
-         * \brief Configure the USART for use as an SPI master.
+         * \brief Configure the USART for use as a synchronous USART or an SPI master.
          */
         void configure() noexcept
         {
@@ -767,20 +767,13 @@ class USART {
      * \param[in] parity The desired parity mode.
      * \param[in] stop_bits The desired number of stop bits.
      * \param[in] clock_polarity The desired clock polarity.
-     * \param[in] operating_speed The desired clock generator operating speed.
      * \param[in] scaling_factor The desired clock generator scaling factor.
      */
-    void configure(
-        Data_Bits       data_bits,
-        Parity          parity,
-        Stop_Bits       stop_bits,
-        Clock_Polarity  clock_polarity,
-        Operating_Speed operating_speed,
-        std::uint16_t   scaling_factor ) noexcept
+    void configure( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits, Clock_Polarity clock_polarity, std::uint16_t scaling_factor ) noexcept
     {
         ucsrc.configure( data_bits, parity, stop_bits, clock_polarity );
         ucsrb.configure( data_bits );
-        ucsra.configure( operating_speed );
+        ucsra.configure();
 
         ubrr = scaling_factor;
     }
