@@ -25,6 +25,8 @@
 #include <cstdint>
 
 #include "picolibrary/microchip/avr/megaavr/peripheral/usart.h"
+#include "picolibrary/result.h"
+#include "picolibrary/utility.h"
 
 /**
  * \brief Microchip AVR megaAVR asynchronous serial facilities.
@@ -44,6 +46,158 @@ struct Clock_Configuration {
      * \brief The clock generator scaling factor.
      */
     std::uint16_t scaling_factor;
+};
+
+/**
+ * \brief Microchip AVR megaAVR asynchronous serial transmitter.
+ *
+ * \tparam Data_Type The integral type used to hold the data to be transmitted.
+ */
+template<typename Data_Type>
+class Transmitter {
+  public:
+    /**
+     * \brief The integral type used to hold the data to be transmitted.
+     */
+    using Data = Data_Type;
+
+    /**
+     * \brief Constructor.
+     */
+    constexpr Transmitter() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] usart The USART to be used by the transmitter.
+     * \param[in] data_bits The desired number of data bits.
+     * \param[in] parity The desired parity mode.
+     * \param[in] stop_bits The desired number of stop bits.
+     * \param[in] clock_configuration The desired clock generator configuration.
+     */
+    Transmitter(
+        Peripheral::USART &          usart,
+        Peripheral::USART::Data_Bits data_bits,
+        Peripheral::USART::Parity    parity,
+        Peripheral::USART::Stop_Bits stop_bits,
+        Clock_Configuration const &  clock_configuration ) noexcept :
+        m_usart{ &usart }
+    {
+        m_usart->disable();
+
+        m_usart->configure(
+            data_bits,
+            parity,
+            stop_bits,
+            clock_configuration.operating_speed,
+            clock_configuration.scaling_factor );
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Transmitter( Transmitter && source ) noexcept : m_usart{ source.m_usart }
+    {
+        source.m_usart = nullptr;
+    }
+
+    /**
+     * \todo #27
+     */
+    Transmitter( Transmitter const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Transmitter() noexcept
+    {
+        disable();
+    }
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    auto & operator=( Transmitter && expression ) noexcept
+    {
+        disable();
+
+        m_usart = expression.m_usart;
+
+        return *this;
+    }
+
+    /**
+     * \todo #27
+     *
+     * \return
+     */
+    auto operator=( Transmitter const & ) = delete;
+
+    /**
+     * \brief Initialize the transmitter's hardware.
+     *
+     * \return Success.
+     */
+    auto initialize() noexcept -> Result<Void, Void>
+    {
+        m_usart->enable_transmitter();
+
+        return {};
+    }
+
+    /**
+     * \brief Transmit data.
+     *
+     * \param[in] data The data to transmit.
+     *
+     * \return Success.
+     */
+    auto transmit( Data data ) noexcept -> Result<Void, Void>
+    {
+        while ( not m_usart->transmit_buffer_empty() ) {}
+
+        m_usart->transmit( data );
+
+        return {};
+    }
+
+    /**
+     * \brief Transmit a block of data.
+     *
+     * \param[in] begin The beginning of the block of data to transmit.
+     * \param[in] end The end of the block of data to transmit.
+     *
+     * \return Success.
+     */
+    auto transmit( Data const * begin, Data const * end ) noexcept -> Result<Void, Void>
+    {
+        for ( ; begin != end; ++begin ) {
+            auto result = transmit( *begin );
+            if ( result.is_error() ) { return result.error(); } // if
+        }                                                       // for
+
+        return {};
+    }
+
+  private:
+    /**
+     * \brief The USART used by the transmitter.
+     */
+    Peripheral::USART * m_usart{};
+
+    /**
+     * \brief Disable the transmitter.
+     */
+    void disable() noexcept
+    {
+        if ( m_usart ) { m_usart->disable_transmitter(); }
+    }
 };
 
 } // namespace picolibrary::Microchip::AVR::megaAVR::Asynchronous_Serial
