@@ -551,6 +551,16 @@ class USART {
          * \param[in] stop_bits The desired number of stop bits.
          */
         void configure( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits ) noexcept;
+
+        /**
+         * \brief Configure the USART for use as a synchronous USART.
+         *
+         * \param[in] data_bits The desired number of data bits.
+         * \param[in] parity The desired parity mode.
+         * \param[in] stop_bits The desired number of stop bits.
+         * \param[in] clock_polarity The desired clock polarity.
+         */
+        void configure( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits, Clock_Polarity clock_polarity ) noexcept;
     };
 
     /**
@@ -717,6 +727,31 @@ class USART {
         ucsrb.configure( data_bits );
         ucsra.configure( operating_speed );
         ucsrc.configure( data_bits, parity, stop_bits );
+
+        ubrr = scaling_factor;
+    }
+
+    /**
+     * \brief Configure the USART for use as a synchronous USART.
+     *
+     * \param[in] data_bits The desired number of data bits.
+     * \param[in] parity The desired parity mode.
+     * \param[in] stop_bits The desired number of stop bits.
+     * \param[in] clock_polarity The desired clock polarity.
+     * \param[in] operating_speed The desired clock generator operating speed.
+     * \param[in] scaling_factor The desired clock generator scaling factor.
+     */
+    void configure(
+        Data_Bits       data_bits,
+        Parity          parity,
+        Stop_Bits       stop_bits,
+        Clock_Polarity  clock_polarity,
+        Operating_Speed operating_speed,
+        std::uint16_t   scaling_factor ) noexcept
+    {
+        ucsrb.configure( data_bits );
+        ucsra.configure( operating_speed );
+        ucsrc.configure( data_bits, parity, stop_bits, clock_polarity );
 
         ubrr = scaling_factor;
     }
@@ -974,6 +1009,13 @@ inline void USART::UCSRC::configure( Data_Bits data_bits, Parity parity, Stop_Bi
     *this = static_cast<std::uint8_t>( Mode::ASYNCHRONOUS_USART )
             | static_cast<std::uint8_t>( data_bits ) | static_cast<std::uint8_t>( parity )
             | static_cast<std::uint8_t>( stop_bits );
+}
+
+inline void USART::UCSRC::configure( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits, Clock_Polarity clock_polarity ) noexcept
+{
+    *this = static_cast<std::uint8_t>( Mode::SYNCHRONOUS_USART )
+            | static_cast<std::uint8_t>( data_bits ) | static_cast<std::uint8_t>( parity )
+            | static_cast<std::uint8_t>( stop_bits ) | static_cast<std::uint8_t>( clock_polarity );
 }
 
 } // namespace picolibrary::Microchip::AVR::megaAVR::Peripheral
