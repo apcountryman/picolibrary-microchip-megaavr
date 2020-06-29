@@ -36,58 +36,38 @@ namespace picolibrary::Microchip::AVR::megaAVR::Peripheral::ATmega2560 {
 /**
  * \brief USART0.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega2560` and call
- *            picolibrary::Microchip::AVR::megaAVR::Peripheral::usart0().
- *
- * \return USART0.
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::AVR::megaAVR::Peripheral::USART0.
  */
-inline USART & usart0() noexcept
-{
-    return *reinterpret_cast<USART *>( 0x00C0 );
-}
+using USART0 = USART_Instance<0x00C0>;
 
 /**
  * \brief USART1.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega2560` and call
- *            picolibrary::Microchip::AVR::megaAVR::Peripheral::usart1().
- *
- * \return USART1.
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::AVR::megaAVR::Peripheral::USART1.
  */
-inline USART & usart1() noexcept
-{
-    return *reinterpret_cast<USART *>( 0x00C8 );
-}
+using USART1 = USART_Instance<0x00C8>;
 
 /**
  * \brief USART2.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega2560` and call
- *            picolibrary::Microchip::AVR::megaAVR::Peripheral::usart2().
- *
- * \return USART2.
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::AVR::megaAVR::Peripheral::USART2.
  */
-inline USART & usart2() noexcept
-{
-    return *reinterpret_cast<USART *>( 0x00D0 );
-}
+using USART2 = USART_Instance<0x00D0>;
 
 /**
  * \brief USART3.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega2560` and call
- *            picolibrary::Microchip::AVR::megaAVR::Peripheral::usart3().
- *
- * \return USART3.
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::AVR::megaAVR::Peripheral::USART3.
  */
-inline USART & usart3() noexcept
-{
-    return *reinterpret_cast<USART *>( 0x0130 );
-}
+using USART3 = USART_Instance<0x0130>;
 
 } // namespace picolibrary::Microchip::AVR::megaAVR::Peripheral::ATmega2560
 

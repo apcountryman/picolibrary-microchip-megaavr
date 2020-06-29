@@ -24,6 +24,7 @@
 
 #include <cstdint>
 
+#include "picolibrary/microchip/avr/megaavr/peripheral/instance.h"
 #include "picolibrary/microchip/avr/megaavr/register.h"
 
 namespace picolibrary::Microchip::AVR::megaAVR::Peripheral {
@@ -1077,6 +1078,15 @@ inline void USART::UCSRC::configure( Clock_Polarity clock_polarity, Clock_Phase 
     *this = static_cast<std::uint8_t>( Mode::SPI_MASTER ) | static_cast<std::uint8_t>( clock_polarity )
             | static_cast<std::uint8_t>( clock_phase ) | static_cast<std::uint8_t>( bit_order );
 }
+
+/**
+ * \brief Microchip AVR megaAVR Universal Synchronous Asynchronous Receiver Transceiver
+ *        (USART) peripheral instance.
+ *
+ * \tparam INSTANCE_ADDRESS The address of the USART instance.
+ */
+template<std::uintptr_t INSTANCE_ADDRESS>
+using USART_Instance = Instance<USART, INSTANCE_ADDRESS>;
 
 } // namespace picolibrary::Microchip::AVR::megaAVR::Peripheral
 
