@@ -24,6 +24,7 @@
 
 #include <cstdint>
 
+#include "picolibrary/microchip/avr/megaavr/peripheral/instance.h"
 #include "picolibrary/microchip/avr/megaavr/register.h"
 
 namespace picolibrary::Microchip::AVR::megaAVR::Peripheral {
@@ -1082,54 +1083,10 @@ inline void USART::UCSRC::configure( Clock_Polarity clock_polarity, Clock_Phase 
  * \brief Microchip AVR megaAVR Universal Synchronous Asynchronous Receiver Transceiver
  *        (USART) peripheral instance.
  *
- * \tparam INSTANCE_ADDRESS The address of the instance.
+ * \tparam INSTANCE_ADDRESS The address of the USART instance.
  */
 template<std::uintptr_t INSTANCE_ADDRESS>
-class USART_Instance {
-  public:
-    /**
-     * \brief The address of the instance.
-     */
-    static constexpr auto ADDRESS = INSTANCE_ADDRESS;
-
-    /**
-     * \brief Access the instance.
-     *
-     * \return The instance.
-     */
-    static auto & instance() noexcept
-    {
-        return *reinterpret_cast<USART *>( ADDRESS );
-    }
-
-    USART_Instance() = delete;
-
-    /**
-     * \todo #27
-     */
-    USART_Instance( USART_Instance && ) = delete;
-
-    /**
-     * \todo #27
-     */
-    USART_Instance( USART_Instance const & ) = delete;
-
-    ~USART_Instance() = delete;
-
-    /**
-     * \todo #27
-     *
-     * \return
-     */
-    auto operator=( USART_Instance && ) = delete;
-
-    /**
-     * \todo #27
-     *
-     * \return
-     */
-    auto operator=( USART_Instance const & ) = delete;
-};
+using USART_Instance = Instance<USART, INSTANCE_ADDRESS>;
 
 } // namespace picolibrary::Microchip::AVR::megaAVR::Peripheral
 
