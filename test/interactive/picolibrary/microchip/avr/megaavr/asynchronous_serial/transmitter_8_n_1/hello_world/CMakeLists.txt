@@ -1,0 +1,63 @@
+# picolibrary-microchip-avr-megaavr
+#
+# Copyright 2020 Andrew Countryman <apcountryman@gmail.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+# file except in compliance with the License. You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software distributed under
+# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied. See the License for the specific language governing
+# permissions and limitations under the License.
+
+# File: test/interactive/picolibrary/microchip/avr/megaavr/asynchronous_serial/transmitter_8_n_1/hello_world/CMakeLists.txt
+# Description: picolibrary::Microchip::AVR::megaAVR::Asynchronous_Serial::Transmitter_8_N_1
+#       hello world interactive test CMake rules.
+
+# build the picolibrary::Microchip::AVR::megaAVR::Asynchronous_Serial::Transmitter_8_N_1
+# hello world interactive test
+if( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
+    option(
+        PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ASYNCHRONOUS_SERIAL_TRANSMITTER_8_N_1_ENABLE_HELLO_WORLD_INTERACTIVE_TEST
+        "picolibrary-microchip-avr-megaavr: enable the picolibrary::Microchip::AVR::megaAVR::Asynchronous_Serial::Transmitter_8_N_1 hello world interactive test"
+        OFF
+    )
+
+    if( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ASYNCHRONOUS_SERIAL_TRANSMITTER_8_N_1_ENABLE_HELLO_WORLD_INTERACTIVE_TEST} )
+        add_executable(
+            test-interactive-picolibrary-microchip-avr-megaavr-asynchronous_serial-transmitter_8_n_1-hello_world
+            main.cc
+        )
+        target_compile_definitions(
+            test-interactive-picolibrary-microchip-avr-megaavr-asynchronous_serial-transmitter_8_n_1-hello_world
+            PRIVATE TRANSMITTER_USART=${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ASYNCHRONOUS_SERIAL_TRANSMITTER_8_N_1_HELLO_WORLD_INTERACTIVE_TEST_TRANSMITTER_USART}
+            PRIVATE TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED=${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ASYNCHRONOUS_SERIAL_TRANSMITTER_8_N_1_HELLO_WORLD_INTERACTIVE_TEST_TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED}
+            PRIVATE TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR=${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ASYNCHRONOUS_SERIAL_TRANSMITTER_8_N_1_HELLO_WORLD_INTERACTIVE_TEST_TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR}
+        )
+        target_link_libraries(
+            test-interactive-picolibrary-microchip-avr-megaavr-asynchronous_serial-transmitter_8_n_1-hello_world
+            picolibrary-microchip-avr-megaavr
+        )
+        add_avrdude_programming_targets(
+            test-interactive-picolibrary-microchip-avr-megaavr-asynchronous_serial-transmitter_8_n_1-hello_world
+            "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_ALWAYS_RECOVER_FUSES}"
+            "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_FLASH_ERASE}"
+            "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_VERIFY}"
+            "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_FUSE_CHECKS}"
+            "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_WRITES}"
+            "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_OVERRIDE_SIGNATURE_CHECK}"
+            BAUD_RATE           "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_BAUD_RATE}"
+            BIT_CLOCK           "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_BIT_CLOCK}"
+            CONFIGURATION_FILE  "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_CONFIGURATION_FILE}"
+            DELAY               "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DELAY}"
+            EXIT_SPECIFICATION  "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_EXIT_SPECIFICATION}"
+            EXTENDED_PARAMETERS "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_EXTENDED_PARAMETERS}"
+            PART                "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_PART}"
+            PORT                "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_PORT}"
+            PROGRAMMER          "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_PROGRAMMER}"
+            VERBOSITY           "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_VERBOSITY}"
+        )
+    endif( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ASYNCHRONOUS_SERIAL_TRANSMITTER_8_N_1_ENABLE_HELLO_WORLD_INTERACTIVE_TEST} )
+endif( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
