@@ -1078,6 +1078,59 @@ inline void USART::UCSRC::configure( Clock_Polarity clock_polarity, Clock_Phase 
             | static_cast<std::uint8_t>( clock_phase ) | static_cast<std::uint8_t>( bit_order );
 }
 
+/**
+ * \brief Microchip AVR megaAVR Universal Synchronous Asynchronous Receiver Transceiver
+ *        (USART) peripheral instance.
+ *
+ * \tparam INSTANCE_ADDRESS The address of the instance.
+ */
+template<std::uintptr_t INSTANCE_ADDRESS>
+class USART_Instance {
+  public:
+    /**
+     * \brief The address of the instance.
+     */
+    static constexpr auto ADDRESS = INSTANCE_ADDRESS;
+
+    /**
+     * \brief Access the instance.
+     *
+     * \return The instance.
+     */
+    static auto & instance() noexcept
+    {
+        return *reinterpret_cast<USART *>( ADDRESS );
+    }
+
+    USART_Instance() = delete;
+
+    /**
+     * \todo #27
+     */
+    USART_Instance( USART_Instance && ) = delete;
+
+    /**
+     * \todo #27
+     */
+    USART_Instance( USART_Instance const & ) = delete;
+
+    ~USART_Instance() = delete;
+
+    /**
+     * \todo #27
+     *
+     * \return
+     */
+    auto operator=( USART_Instance && ) = delete;
+
+    /**
+     * \todo #27
+     *
+     * \return
+     */
+    auto operator=( USART_Instance const & ) = delete;
+};
+
 } // namespace picolibrary::Microchip::AVR::megaAVR::Peripheral
 
 #endif // PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_PERIPHERAL_USART_H

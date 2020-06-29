@@ -36,16 +36,11 @@ namespace picolibrary::Microchip::AVR::megaAVR::Peripheral::ATmega328P {
 /**
  * \brief USART0.
  *
- * \attention This function should never be called directly. Instead, set the `-mmcu`
- *            compiler flag to `atmega328p` and call
- *            picolibrary::Microchip::AVR::megaAVR::Peripheral::usart0().
- *
- * \return USART0.
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::AVR::megaAVR::Peripheral::USART0.
  */
-inline USART & usart0() noexcept
-{
-    return *reinterpret_cast<USART *>( 0x00C0 );
-}
+using USART0 = USART_Instance<0x00C0>;
 
 } // namespace picolibrary::Microchip::AVR::megaAVR::Peripheral::ATmega328P
 

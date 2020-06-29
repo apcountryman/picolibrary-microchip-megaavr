@@ -36,7 +36,7 @@ int main()
 {
     ::picolibrary::Testing::Interactive::Asynchronous_Serial::hello_world(
         ::picolibrary::Microchip::AVR::megaAVR::Asynchronous_Serial::Transmitter_8_N_1{
-            ::picolibrary::Microchip::AVR::megaAVR::Peripheral::TRANSMITTER_USART(),
+            ::picolibrary::Microchip::AVR::megaAVR::Peripheral::TRANSMITTER_USART::instance(),
             { .operating_speed = ::picolibrary::Microchip::AVR::megaAVR::Peripheral::USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
               .scaling_factor  = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } } );
 }
