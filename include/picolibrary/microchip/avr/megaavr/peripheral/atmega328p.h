@@ -37,7 +37,7 @@ namespace picolibrary::Microchip::AVR::megaAVR::Peripheral::ATmega328P {
  * \brief USART0.
  *
  * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
- *            flag to `atmega2560` and use
+ *            flag to `atmega328p` and use
  *            picolibrary::Microchip::AVR::megaAVR::Peripheral::USART0.
  */
 using USART0 = USART_Instance<0x00C0>;
