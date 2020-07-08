@@ -24,6 +24,7 @@
 
 #include <cstdint>
 
+#include "picolibrary/algorithm.h"
 #include "picolibrary/microchip/avr/megaavr/peripheral/usart.h"
 #include "picolibrary/result.h"
 #include "picolibrary/utility.h"
@@ -175,14 +176,10 @@ class Transmitter {
      *
      * \return Success.
      */
-    auto transmit( Data const * begin, Data const * end ) noexcept -> Result<Void, Void>
+    auto transmit( Data const * begin, Data const * end ) noexcept
     {
-        for ( ; begin != end; ++begin ) {
-            auto result = transmit( *begin );
-            if ( result.is_error() ) { return result.error(); } // if
-        }                                                       // for
-
-        return {};
+        return for_each<Discard_Functor>(
+            begin, end, [this]( auto data ) noexcept { return transmit( data ); } );
     }
 
   private:
