@@ -148,7 +148,7 @@ class USART {
         void configure( Operating_Speed operating_speed ) noexcept;
 
         /**
-         * \brief Configure the USART for use as a synchronous USART or an SPI master.
+         * \brief Configure the USART for use as a synchronous USART or an SPI controller.
          */
         void configure() noexcept
         {
@@ -376,7 +376,7 @@ class USART {
         void configure( Data_Bits data_bits ) noexcept;
 
         /**
-         * \brief Configure the USART for use as an SPI master.
+         * \brief Configure the USART for use as an SPI controller.
          */
         void configure() noexcept
         {
@@ -579,7 +579,7 @@ class USART {
         void configure( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits, Clock_Polarity clock_polarity ) noexcept;
 
         /**
-         * \brief Configure the USART for use as an SPI master.
+         * \brief Configure the USART for use as an SPI controller.
          */
         void configure() noexcept;
 
@@ -610,7 +610,7 @@ class USART {
     enum class Mode : std::uint8_t {
         ASYNCHRONOUS_USART = 0b00 << UCSRC::Bit::UMSEL, ///< Asynchronous USART.
         SYNCHRONOUS_USART  = 0b01 << UCSRC::Bit::UMSEL, ///< Synchronous USART.
-        SPI_MASTER         = 0b11 << UCSRC::Bit::UMSEL, ///< SPI master.
+        SPI_CONTROLLER     = 0b11 << UCSRC::Bit::UMSEL, ///< SPI controller.
     };
 
     /**
@@ -780,7 +780,7 @@ class USART {
     }
 
     /**
-     * \brief Configure the USART for use as an SPI master.
+     * \brief Configure the USART for use as an SPI controller.
      */
     void configure() noexcept
     {
@@ -1070,12 +1070,13 @@ inline void USART::UCSRC::configure( Data_Bits data_bits, Parity parity, Stop_Bi
 
 inline void USART::UCSRC::configure() noexcept
 {
-    *this = static_cast<std::uint8_t>( Mode::SPI_MASTER );
+    *this = static_cast<std::uint8_t>( Mode::SPI_CONTROLLER );
 }
 
 inline void USART::UCSRC::configure( Clock_Polarity clock_polarity, Clock_Phase clock_phase, Bit_Order bit_order ) noexcept
 {
-    *this = static_cast<std::uint8_t>( Mode::SPI_MASTER ) | static_cast<std::uint8_t>( clock_polarity )
+    *this = static_cast<std::uint8_t>( Mode::SPI_CONTROLLER )
+            | static_cast<std::uint8_t>( clock_polarity )
             | static_cast<std::uint8_t>( clock_phase ) | static_cast<std::uint8_t>( bit_order );
 }
 
