@@ -48,6 +48,7 @@ if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
         -Wold-style-cast \
         -Wpointer-arith \
         -Wshadow \
+        -flto \
         "
     )
 
