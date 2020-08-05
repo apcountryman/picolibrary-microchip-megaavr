@@ -25,6 +25,16 @@
 #include "picolibrary/microchip/avr/megaavr/peripheral/usart.h"
 #include "picolibrary/testing/interactive/asynchronous_serial.h"
 
+namespace {
+
+using namespace ::picolibrary::Microchip::AVR::megaAVR::Peripheral;
+
+using ::picolibrary::Microchip::AVR::megaAVR::Asynchronous_Serial::Transmitter_8_N_1;
+using ::picolibrary::Microchip::AVR::megaAVR::Peripheral::USART;
+using ::picolibrary::Testing::Interactive::Asynchronous_Serial::hello_world;
+
+} // namespace
+
 /**
  * \brief Execute the
  *        picolibrary::Microchip::AVR::megaAVR::Asynchronous_Serial::Transmitter_8_N_1
@@ -34,9 +44,8 @@
  */
 int main()
 {
-    ::picolibrary::Testing::Interactive::Asynchronous_Serial::hello_world(
-        ::picolibrary::Microchip::AVR::megaAVR::Asynchronous_Serial::Transmitter_8_N_1{
-            ::picolibrary::Microchip::AVR::megaAVR::Peripheral::TRANSMITTER_USART::instance(),
-            { .operating_speed = ::picolibrary::Microchip::AVR::megaAVR::Peripheral::USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
-              .scaling_factor  = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } } );
+    hello_world( Transmitter_8_N_1{
+        TRANSMITTER_USART::instance(),
+        { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
+          .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } } );
 }
