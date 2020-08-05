@@ -26,6 +26,22 @@ if( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
     )
 
     if( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ASYNCHRONOUS_SERIAL_TRANSMITTER_8_N_1_ENABLE_HELLO_WORLD_INTERACTIVE_TEST} )
+        set(
+            PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ASYNCHRONOUS_SERIAL_TRANSMITTER_8_N_1_HELLO_WORLD_INTERACTIVE_TEST_TRANSMITTER_USART
+            "" CACHE STRING
+            "picolibrary-microchip-avr-megaavr: picolibrary::Microchip::AVR::megaAVR::Asynchronous_Serial::Transmitter_8_N_1 hello world interactive test transmitter USART"
+        )
+        set(
+            PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ASYNCHRONOUS_SERIAL_TRANSMITTER_8_N_1_HELLO_WORLD_INTERACTIVE_TEST_TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED
+            "" CACHE STRING
+            "picolibrary-microchip-avr-megaavr: picolibrary::Microchip::AVR::megaAVR::Asynchronous_Serial::Transmitter_8_N_1 hello world interactive test transmitter clock generator operating speed"
+        )
+        set(
+            PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ASYNCHRONOUS_SERIAL_TRANSMITTER_8_N_1_HELLO_WORLD_INTERACTIVE_TEST_TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR
+            "" CACHE STRING
+            "picolibrary-microchip-avr-megaavr: picolibrary::Microchip::AVR::megaAVR::Asynchronous_Serial::Transmitter_8_N_1 hello world interactive test transmitter clock generator scaling factor"
+        )
+
         add_executable(
             test-interactive-picolibrary-microchip-avr-megaavr-asynchronous_serial-transmitter_8_n_1-hello_world
             main.cc

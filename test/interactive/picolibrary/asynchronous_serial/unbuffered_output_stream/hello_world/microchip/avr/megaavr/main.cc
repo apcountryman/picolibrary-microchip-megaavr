@@ -16,35 +16,36 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::AVR::megaAVR::Asynchronous_Serial::Transmitter_8_N_1
- *        hello world interactive test program.
+ * \brief picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream hello world Microchip
+ *        AVR megaAVR interactive test program.
  */
 
+#include "picolibrary/asynchronous_serial/stream.h"
 #include "picolibrary/microchip/avr/megaavr/asynchronous_serial.h"
 #include "picolibrary/microchip/avr/megaavr/peripheral.h"
 #include "picolibrary/microchip/avr/megaavr/peripheral/usart.h"
-#include "picolibrary/testing/interactive/asynchronous_serial.h"
+#include "picolibrary/testing/interactive/asynchronous_serial/stream.h"
 
 namespace {
 
 using namespace ::picolibrary::Microchip::AVR::megaAVR::Peripheral;
 
+using ::picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream;
 using ::picolibrary::Microchip::AVR::megaAVR::Asynchronous_Serial::Transmitter_8_N_1;
 using ::picolibrary::Microchip::AVR::megaAVR::Peripheral::USART;
-using ::picolibrary::Testing::Interactive::Asynchronous_Serial::hello_world;
+using ::picolibrary::Testing::Interactive::Asynchronous_Serial::Stream::hello_world;
 
 } // namespace
 
 /**
- * \brief Execute the
- *        picolibrary::Microchip::AVR::megaAVR::Asynchronous_Serial::Transmitter_8_N_1
- *        interactive test.
+ * \brief Execute the picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream hello
+ *        world Microchip AVR megaAVR interactive test.
  *
  * \return 0.
  */
 int main()
 {
-    hello_world( Transmitter_8_N_1{
+    hello_world<Unbuffered_Output_Stream>( Transmitter_8_N_1{
         TRANSMITTER_USART::instance(),
         { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
           .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } } );

@@ -12,11 +12,8 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/CMakeLists.txt
-# Description: picolibrary interactive tests CMake rules.
+# File: test/interactive/picolibrary/asynchronous_serial/CMakeLists.txt
+# Description: picolibrary::Asynchronous_Serial interactive tests CMake rules.
 
-# build the picolibrary::Asynchronous_Serial interactive tests
-add_subdirectory( asynchronous_serial )
-
-# build the picolibrary::Microchip interactive tests
-add_subdirectory( microchip )
+# build the picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream interactive tests
+add_subdirectory( unbuffered_output_stream )
