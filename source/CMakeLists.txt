@@ -32,6 +32,7 @@ set(
     "picolibrary/microchip/avr/megaavr/peripheral/atmega2560.cc"
     "picolibrary/microchip/avr/megaavr/peripheral/atmega328p.cc"
     "picolibrary/microchip/avr/megaavr/peripheral/instance.cc"
+    "picolibrary/microchip/avr/megaavr/peripheral/port.cc"
     "picolibrary/microchip/avr/megaavr/peripheral/usart.cc"
     "picolibrary/microchip/avr/megaavr/register.cc"
 )
