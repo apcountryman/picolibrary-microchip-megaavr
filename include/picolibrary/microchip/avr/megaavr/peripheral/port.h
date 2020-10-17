@@ -200,7 +200,7 @@ class PORT {
     }
 
     /**
-     * \brief Toggle the state of an push-pull output pin.
+     * \brief Toggle the state of a push-pull output pin.
      *
      * \param[in] mask The mask identifying the push-pull output pin to toggle the state
      *            of.
