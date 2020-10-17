@@ -75,6 +75,51 @@ class PORT {
      * \return
      */
     auto operator=( PORT const & ) = delete;
+
+    /**
+     * \brief Configure a pin to act as an internally pulled-up input pin.
+     *
+     * \param[in] mask The mask identifying the pin to be configured as an internally
+     *            pulled-up input pin.
+     */
+    void configure_pin_as_internally_pulled_up_input( std::uint8_t mask ) noexcept
+    {
+        ddr &= ~mask;
+    }
+
+    /**
+     * \brief Enable an internally pulled-up input pin's internal pull-up resistor.
+     *
+     * \param[in] mask The mask identifying the internally pulled-up input pin whose
+     *            internal pull-up resistor is to be enabled.
+     */
+    void enable_pull_up( std::uint8_t mask ) noexcept
+    {
+        port |= mask;
+    }
+
+    /**
+     * \brief Disable an internally pulled-up input pin's internal pull-up resistor.
+     *
+     * \param[in] mask The mask identifying the internally pulled-up input pin whose
+     *            internal pull-up resistor is to be disabled.
+     */
+    void disable_pull_up( std::uint8_t mask ) noexcept
+    {
+        port &= ~mask;
+    }
+
+    /**
+     * \brief Get the state of a pin.
+     *
+     * \param[in] mask The mask identifying the pin whose state is to be gotten.
+     *
+     * \return The state of the pin.
+     */
+    auto state( std::uint8_t mask ) const noexcept
+    {
+        return pin & mask;
+    }
 };
 
 } // namespace picolibrary::Microchip::AVR::megaAVR::Peripheral
