@@ -185,7 +185,7 @@ class PORT {
      */
     void transition_push_pull_output_to_low( std::uint8_t mask ) noexcept
     {
-        ddr &= ~mask;
+        port &= ~mask;
     }
 
     /**
