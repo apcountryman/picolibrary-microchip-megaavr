@@ -26,6 +26,52 @@
  * \brief Microchip AVR megaAVR General Purpose Input/Output (GPIO) facilities.
  */
 namespace picolibrary::Microchip::AVR::megaAVR::GPIO {
+
+/**
+ * \brief Internally pulled-up input pin.
+ */
+class Internally_Pulled_Up_Input_Pin {
+  public:
+    /**
+     * \brief Constructor.
+     */
+    constexpr Internally_Pulled_Up_Input_Pin() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Internally_Pulled_Up_Input_Pin( Internally_Pulled_Up_Input_Pin && source ) noexcept = default;
+
+    /**
+     * \todo #27
+     */
+    Internally_Pulled_Up_Input_Pin( Internally_Pulled_Up_Input_Pin const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Internally_Pulled_Up_Input_Pin() noexcept = default;
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    auto operator=( Internally_Pulled_Up_Input_Pin && expression ) noexcept
+        -> Internally_Pulled_Up_Input_Pin & = default;
+
+    /**
+     * \todo #27
+     *
+     * \return
+     */
+    auto operator=( Internally_Pulled_Up_Input_Pin const & ) = delete;
+};
+
 } // namespace picolibrary::Microchip::AVR::megaAVR::GPIO
 
 #endif // PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_GPIO_H
