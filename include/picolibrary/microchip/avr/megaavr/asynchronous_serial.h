@@ -130,6 +130,8 @@ class Transmitter {
 
         m_usart = expression.m_usart;
 
+        expression.m_usart = nullptr;
+
         return *this;
     }
 
