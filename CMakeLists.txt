@@ -55,12 +55,14 @@ if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
 
     option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS "picolibrary-microchip-avr-megaavr: use static analysis build flags" OFF )
     if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS} )
-        set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_MCU "" CACHE STRING "picolibrary-microchip-avr-megaavr: MCU type" )
+        set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_MCU   "" CACHE STRING "picolibrary-microchip-avr-megaavr: MCU type"             )
+        set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_F_CPU "" CACHE STRING "picolibrary-microchip-avr-megaavr: CPU frequency, in Hz" )
 
         set(
             CMAKE_CXX_FLAGS
             "${CMAKE_CXX_FLAGS} \
             -mmcu=${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_MCU} \
+            -DF_CPU=${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_F_CPU} \
             -Wcast-align=strict \
             -Wduplicated-cond \
             -Wimplicit-fallthrough=5 \
