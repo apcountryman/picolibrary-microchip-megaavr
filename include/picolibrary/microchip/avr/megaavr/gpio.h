@@ -193,6 +193,50 @@ class Internally_Pulled_Up_Input_Pin {
     }
 };
 
+/**
+ * \brief Open-drain Input/Output (I/O) pin.
+ */
+class Open_Drain_IO_Pin {
+  public:
+    /**
+     * \brief Constructor.
+     */
+    Open_Drain_IO_Pin() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Open_Drain_IO_Pin( Open_Drain_IO_Pin && source ) noexcept = default;
+
+    /**
+     * \todo #27
+     */
+    Open_Drain_IO_Pin( Open_Drain_IO_Pin const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Open_Drain_IO_Pin() noexcept = default;
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    auto operator=( Open_Drain_IO_Pin && expression ) noexcept -> Open_Drain_IO_Pin & = default;
+
+    /**
+     * \todo #27
+     *
+     * \return
+     */
+    auto operator=( Open_Drain_IO_Pin const & ) = delete;
+};
+
 } // namespace picolibrary::Microchip::AVR::megaAVR::GPIO
 
 #endif // PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_GPIO_H
