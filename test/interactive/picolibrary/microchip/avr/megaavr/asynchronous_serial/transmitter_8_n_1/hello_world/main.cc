@@ -38,7 +38,7 @@ using ::picolibrary::Testing::Interactive::Asynchronous_Serial::hello_world;
 /**
  * \brief Execute the
  *        picolibrary::Microchip::AVR::megaAVR::Asynchronous_Serial::Transmitter_8_N_1
- *        interactive test.
+ *        hello world interactive test.
  *
  * \return 0.
  */
