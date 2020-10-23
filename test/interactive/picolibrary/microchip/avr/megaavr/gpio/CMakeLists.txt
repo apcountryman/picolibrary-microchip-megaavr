@@ -12,11 +12,9 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/microchip/avr/megaavr/CMakeLists.txt
-# Description: picolibrary::Microchip::AVR::megaAVR interactive tests CMake rules.
+# File: test/interactive/picolibrary/microchip/avr/megaavr/gpio/CMakeLists.txt
+# Description: picolibrary::Microchip::AVR::megaAVR::GPIO interactive tests CMake rules.
 
-# build the picolibrary::Microchip::AVR::megaAVR::Asynchronous_Serial interactive tests
-add_subdirectory( asynchronous_serial )
-
-# build the picolibrary::Microchip::AVR::megaAVR::GPIO interactive tests
-add_subdirectory( gpio )
+# build the picolibrary::Microchip::AVR::megaAVR::GPIO::Open_Drain_IO_Pin interactive
+# tests
+add_subdirectory( open_drain_io_pin )
