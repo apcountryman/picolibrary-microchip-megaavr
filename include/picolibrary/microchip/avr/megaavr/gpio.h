@@ -375,6 +375,11 @@ class Open_Drain_IO_Pin {
 class Push_Pull_IO_Pin {
   public:
     /**
+     * \brief Initial pin state.
+     */
+    using Initial_Pin_State = ::picolibrary::GPIO::Initial_Pin_State;
+
+    /**
      * \brief Constructor.
      */
     Push_Pull_IO_Pin() noexcept = default;
@@ -382,9 +387,30 @@ class Push_Pull_IO_Pin {
     /**
      * \brief Constructor.
      *
+     * \param[in] port The GPIO port the pin is a member of.
+     * \param[in] mask The mask identifying the pin.
+     */
+    Push_Pull_IO_Pin( Peripheral::PORT & port, std::uint8_t mask ) noexcept :
+        m_port{ &port },
+        m_mask{ mask }
+    {
+        m_port->disable_pull_up( m_mask );
+
+        m_port->configure_pin_as_internally_pulled_up_input( m_mask );
+    }
+
+    /**
+     * \brief Constructor.
+     *
      * \param[in] source The source of the move.
      */
-    constexpr Push_Pull_IO_Pin( Push_Pull_IO_Pin && source ) noexcept = default;
+    constexpr Push_Pull_IO_Pin( Push_Pull_IO_Pin && source ) noexcept :
+        m_port{ source.m_port },
+        m_mask{ source.m_mask }
+    {
+        source.m_port = nullptr;
+        source.m_mask = 0;
+    }
 
     /**
      * \todo #27
@@ -394,7 +420,10 @@ class Push_Pull_IO_Pin {
     /**
      * \brief Destructor.
      */
-    ~Push_Pull_IO_Pin() noexcept = default;
+    ~Push_Pull_IO_Pin() noexcept
+    {
+        disable();
+    }
 
     /**
      * \brief Assignment operator.
@@ -403,7 +432,18 @@ class Push_Pull_IO_Pin {
      *
      * \return The assigned to object.
      */
-    auto operator=( Push_Pull_IO_Pin && expression ) noexcept -> Push_Pull_IO_Pin & = default;
+    auto & operator=( Push_Pull_IO_Pin && expression ) noexcept
+    {
+        disable();
+
+        m_port = expression.m_port;
+        m_mask = expression.m_mask;
+
+        expression.m_port = nullptr;
+        expression.m_mask = 0;
+
+        return *this;
+    }
 
     /**
      * \todo #27
@@ -411,6 +451,99 @@ class Push_Pull_IO_Pin {
      * \return
      */
     auto operator=( Push_Pull_IO_Pin const & ) = delete;
+
+    /**
+     * \brief Initialize the pin's hardware.
+     *
+     * \param[in] initial_pin_state The initial state of the pin.
+     *
+     * \return Success.
+     */
+    auto initialize( Initial_Pin_State initial_pin_state = Initial_Pin_State::LOW ) noexcept
+        -> Result<Void, Void>
+    {
+        switch ( initial_pin_state ) {
+            case Initial_Pin_State::HIGH:
+                m_port->transition_push_pull_output_to_high( m_mask );
+                break;
+            case Initial_Pin_State::LOW:
+                m_port->transition_push_pull_output_to_low( m_mask );
+                break;
+        } // switch
+
+        m_port->configure_pin_as_push_pull_output( m_mask );
+
+        return {};
+    }
+
+    /**
+     * \brief Get the state of the pin.
+     *
+     * \return High if the pin is high.
+     * \return Low if the pin is low.
+     */
+    auto state() const noexcept -> Result<::picolibrary::GPIO::Pin_State, Void>
+    {
+        return m_port->state( m_mask );
+    }
+
+    /**
+     * \brief Transition the pin to the high state.
+     *
+     * \return Success.
+     */
+    auto transition_to_high() noexcept -> Result<Void, Void>
+    {
+        m_port->transition_push_pull_output_to_high( m_mask );
+
+        return {};
+    }
+
+    /**
+     * \brief Transition the pin to the low state.
+     *
+     * \return Success.
+     */
+    auto transition_to_low() noexcept -> Result<Void, Void>
+    {
+        m_port->transition_push_pull_output_to_low( m_mask );
+
+        return {};
+    }
+
+    /**
+     * \brief Toggle the pin state.
+     *
+     * \return Success.
+     */
+    auto toggle() noexcept -> Result<Void, Void>
+    {
+        m_port->toggle_push_pull_output( m_mask );
+
+        return {};
+    }
+
+  private:
+    /**
+     * \brief The GPIO port the pin is a member of.
+     */
+    Peripheral::PORT * m_port{};
+
+    /**
+     * \brief The mask identifying the pin.
+     */
+    std::uint8_t m_mask{};
+
+    /**
+     * \brief Disable the pin.
+     */
+    void disable() noexcept
+    {
+        if ( m_port ) {
+            m_port->configure_pin_as_internally_pulled_up_input( m_mask );
+            m_port->disable_pull_up( m_mask );
+        } // if
+    }
 };
 
 } // namespace picolibrary::Microchip::AVR::megaAVR::GPIO
