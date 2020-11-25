@@ -34,8 +34,8 @@ See the `pre-commit` script's help text for usage details.
 ./git/hooks/pre-commit --help
 ```
 
-Additional checks, such as static analysis, are performed by this project's Travis CI
-jobs.
+Additional checks, such as static analysis, are performed by this project's GitHub Actions
+CI workflow.
 
 ## Versioning
 `picolibrary-microchip-avr-megaavr` follows the [Abseil Live at Head

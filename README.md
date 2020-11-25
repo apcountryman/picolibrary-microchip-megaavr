@@ -1,5 +1,5 @@
 # picolibrary-microchip-avr-megaavr
-[![Build Status](https://travis-ci.com/apcountryman/picolibrary-microchip-avr-megaavr.svg?branch=master)](https://travis-ci.com/apcountryman/picolibrary-microchip-avr-megaavr)
+![CI](https://github.com/apcountryman/picolibrary-microchip-avr-megaavr/workflows/CI/badge.svg)
 
 [`picolibrary`](https://github.com/apcountryman/picolibrary) Hardware Interface Layer
 (HIL) for Microchip AVR megaAVR microcontrollers.
@@ -36,8 +36,8 @@ See the `pre-commit` script's help text for usage details.
 ./git/hooks/pre-commit --help
 ```
 
-Additional checks, such as static analysis, are performed by this project's Travis CI
-jobs.
+Additional checks, such as static analysis, are performed by this project's GitHub Actions
+CI workflow.
 
 ## Versioning
 `picolibrary-microchip-avr-megaavr` follows the [Abseil Live at Head
