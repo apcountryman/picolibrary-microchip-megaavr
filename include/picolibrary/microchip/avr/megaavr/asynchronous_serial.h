@@ -127,11 +127,13 @@ class Basic_Transmitter {
      */
     auto & operator=( Basic_Transmitter && expression ) noexcept
     {
-        disable();
+        if ( &expression != this ) {
+            disable();
 
-        m_usart = expression.m_usart;
+            m_usart = expression.m_usart;
 
-        expression.m_usart = nullptr;
+            expression.m_usart = nullptr;
+        } // if
 
         return *this;
     }
