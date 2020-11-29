@@ -99,13 +99,15 @@ class Internally_Pulled_Up_Input_Pin {
      */
     auto & operator=( Internally_Pulled_Up_Input_Pin && expression ) noexcept
     {
-        disable();
+        if ( &expression != this ) {
+            disable();
 
-        m_port = expression.m_port;
-        m_mask = expression.m_mask;
+            m_port = expression.m_port;
+            m_mask = expression.m_mask;
 
-        expression.m_port = nullptr;
-        expression.m_mask = 0;
+            expression.m_port = nullptr;
+            expression.m_mask = 0;
+        } // if
 
         return *this;
     }
