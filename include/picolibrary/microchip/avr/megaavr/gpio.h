@@ -438,15 +438,17 @@ class Push_Pull_IO_Pin {
      */
     auto & operator=( Push_Pull_IO_Pin && expression ) noexcept
     {
-        disable();
+        if ( &expression != this ) {
+            disable();
 
-        m_port = expression.m_port;
-        m_mask = expression.m_mask;
+            m_port = expression.m_port;
+            m_mask = expression.m_mask;
 
-        expression.m_port = nullptr;
-        expression.m_mask = 0;
+            expression.m_port = nullptr;
+            expression.m_mask = 0;
 
-        return *this;
+            return *this;
+        } // if
     }
 
     /**
