@@ -24,7 +24,6 @@ configure_file(
 set(
     PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_SOURCE_FILES
     "${CMAKE_CURRENT_BINARY_DIR}/picolibrary/microchip/avr/megaavr/version.cc"
-    "picolibrary/microchip.cc"
     "picolibrary/microchip/avr.cc"
     "picolibrary/microchip/avr/megaavr.cc"
     "picolibrary/microchip/avr/megaavr/asynchronous_serial.cc"
