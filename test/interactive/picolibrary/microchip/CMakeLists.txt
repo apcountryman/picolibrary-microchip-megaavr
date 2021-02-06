@@ -1,6 +1,6 @@
-# picolibrary-microchip-avr-megaavr
+# picolibrary-microchip-megaavr
 #
-# Copyright 2020 Andrew Countryman <apcountryman@gmail.com>
+# Copyright 2020, 2021 Andrew Countryman <apcountryman@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
 # file except in compliance with the License. You may obtain a copy of the License at
@@ -15,5 +15,5 @@
 # File: test/interactive/picolibrary/microchip/CMakeLists.txt
 # Description: picolibrary::Microchip interactive tests CMake rules.
 
-# build the picolibrary::Microchip::AVR interactive tests
-add_subdirectory( avr )
+# build the picolibrary::Microchip::megaAVR interactive tests
+add_subdirectory( megaavr )

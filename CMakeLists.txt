@@ -1,6 +1,6 @@
-# picolibrary-microchip-avr-megaavr
+# picolibrary-microchip-megaavr
 #
-# Copyright 2020 Andrew Countryman <apcountryman@gmail.com>
+# Copyright 2020, 2021 Andrew Countryman <apcountryman@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
 # file except in compliance with the License. You may obtain a copy of the License at
@@ -13,19 +13,19 @@
 # permissions and limitations under the License.
 
 # File: CMakeLists.txt
-# Description: picolibrary-microchip-avr-megaavr core CMake rules.
+# Description: picolibrary-microchip-megaavr core CMake rules.
 
 cmake_minimum_required( VERSION 3.12.4 )
 project(
-    picolibrary-microchip-avr-megaavr
+    picolibrary-microchip-megaavr
     LANGUAGES CXX
 )
 
 # project configuration
-option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING     "picolibrary-microchip-avr-megaavr: enable interactive testing"       OFF )
-option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP   "picolibrary-microchip-avr-megaavr: use parent project's avr-libcpp"  ON  )
-option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS "picolibrary-microchip-avr-megaavr: use parent project's build flags" ON  )
-option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY "picolibrary-microchip-avr-megaavr: use parent project's picolibrary" ON  )
+option( PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING     "picolibrary-microchip-megaavr: enable interactive testing"       OFF )
+option( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP   "picolibrary-microchip-megaavr: use parent project's avr-libcpp"  ON  )
+option( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS "picolibrary-microchip-megaavr: use parent project's build flags" ON  )
+option( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY "picolibrary-microchip-megaavr: use parent project's picolibrary" ON  )
 
 # load additional CMake modules
 list(
@@ -34,7 +34,7 @@ list(
 )
 
 # configure compilation and linking
-if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
+if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
     set( CMAKE_CXX_STANDARD 17 )
     set( CMAKE_CXX_EXTENSIONS OFF )
     set(
@@ -53,16 +53,16 @@ if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
         "
     )
 
-    option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS "picolibrary-microchip-avr-megaavr: use static analysis build flags" OFF )
-    if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS} )
-        set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_MCU   "" CACHE STRING "picolibrary-microchip-avr-megaavr: MCU type"             )
-        set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_F_CPU "" CACHE STRING "picolibrary-microchip-avr-megaavr: CPU frequency, in Hz" )
+    option( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS "picolibrary-microchip-megaavr: use static analysis build flags" OFF )
+    if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS} )
+        set( PICOLIBRARY_MICROCHIP_MEGAAVR_MCU   "" CACHE STRING "picolibrary-microchip-megaavr: MCU type"             )
+        set( PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU "" CACHE STRING "picolibrary-microchip-megaavr: CPU frequency, in Hz" )
 
         set(
             CMAKE_CXX_FLAGS
             "${CMAKE_CXX_FLAGS} \
-            -mmcu=${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_MCU} \
-            -DF_CPU=${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_F_CPU} \
+            -mmcu=${PICOLIBRARY_MICROCHIP_MEGAAVR_MCU} \
+            -DF_CPU=${PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU} \
             -Wcast-align=strict \
             -Wduplicated-cond \
             -Wimplicit-fallthrough=5 \
@@ -71,21 +71,21 @@ if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
             -Wunsafe-loop-optimizations \
             "
         )
-    endif( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS} )
-endif( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
+    endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS} )
+endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
 
 # configure avr-libcpp
-if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP} )
+if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP} )
     set( AVRLIBCPP_USE_PARENT_PROJECT_BUILD_FLAGS ON CACHE BOOL "" FORCE )
     mark_as_advanced( AVRLIBCPP_USE_PARENT_PROJECT_BUILD_FLAGS )
 
     add_subdirectory( avr-libcpp )
 
     link_libraries( avr-libcpp )
-endif( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP} )
+endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP} )
 
 # configure picolibrary
-if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY} )
+if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY} )
     set( PICOLIBRARY_USE_PARENT_PROJECT_BUILD_FLAGS ON CACHE BOOL "" FORCE )
     mark_as_advanced( PICOLIBRARY_USE_PARENT_PROJECT_BUILD_FLAGS )
 
@@ -99,16 +99,16 @@ if( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY} )
         PICOLIBRARY_USE_PARENT_PROJECT_GOOGLE_TEST
     )
 
-    set( PICOLIBRARY_ENABLE_INTERACTIVE_TESTING "${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING}" CACHE BOOL "" FORCE )
+    set( PICOLIBRARY_ENABLE_INTERACTIVE_TESTING "${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING}" CACHE BOOL "" FORCE )
     mark_as_advanced( PICOLIBRARY_ENABLE_INTERACTIVE_TESTING )
 
     add_subdirectory( picolibrary )
-endif( NOT ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY} )
+endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY} )
 
 # capture project version information
 include( git-utilities )
 execute_git_command(
-    PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_VERSION
+    PICOLIBRARY_MICROCHIP_MEGAAVR_VERSION
     COMMAND describe --match=none --always --dirty --broken
 )
 
@@ -116,7 +116,7 @@ execute_git_command(
 find_package( Doxygen )
 if( ${DOXYGEN_FOUND} )
     set(
-        PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_DOCUMENTATION_EXCLUDE_PATTERNS
+        PICOLIBRARY_MICROCHIP_MEGAAVR_DOCUMENTATION_EXCLUDE_PATTERNS
         " \
         */.git/* \
         */README.md \
@@ -140,7 +140,7 @@ if( ${DOXYGEN_FOUND} )
         @ONLY
     )
     add_custom_target(
-        picolibrary-microchip-avr-megaavr-documentation
+        picolibrary-microchip-megaavr-documentation
         ALL
         COMMAND           "${DOXYGEN_EXECUTABLE}" "${DOXYFILE}"
         WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/documentation"
@@ -148,61 +148,61 @@ if( ${DOXYGEN_FOUND} )
 endif( ${DOXYGEN_FOUND} )
 
 # configure avrdude
-if( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
+if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
     if( "${CMAKE_AVRDUDE}" STREQUAL "CMAKE_AVRDUDE-NOTFOUND" )
         message( FATAL_ERROR "avrdude not found" )
     endif( "${CMAKE_AVRDUDE}" STREQUAL "CMAKE_AVRDUDE-NOTFOUND" )
 
-    option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_ALWAYS_RECOVER_FUSES_ENABLED          "picolibrary-microchip-avr-megaavr: avrdude always recover fuses"          OFF )
-    option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_FLASH_ERASE_ENABLED "picolibrary-microchip-avr-megaavr: avrdude disable automatic Flash erase" OFF )
-    option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_VERIFY_ENABLED      "picolibrary-microchip-avr-megaavr: avrdude disable automatic verify"      OFF )
-    option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_FUSE_CHECKS_ENABLED           "picolibrary-microchip-avr-megaavr: avrdude disable fuse checks"           OFF )
-    option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_WRITES_ENABLED                "picolibrary-microchip-avr-megaavr: avrdude disalbe writes"                OFF )
-    option( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_OVERRIDE_SIGNATURE_CHECK_ENABLED      "picolibrary-microchip-avr-megaavr: avrdude override signature check"      OFF )
+    option( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_ALWAYS_RECOVER_FUSES_ENABLED          "picolibrary-microchip-megaavr: avrdude always recover fuses"          OFF )
+    option( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_FLASH_ERASE_ENABLED "picolibrary-microchip-megaavr: avrdude disable automatic Flash erase" OFF )
+    option( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_VERIFY_ENABLED      "picolibrary-microchip-megaavr: avrdude disable automatic verify"      OFF )
+    option( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_FUSE_CHECKS_ENABLED           "picolibrary-microchip-megaavr: avrdude disable fuse checks"           OFF )
+    option( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_WRITES_ENABLED                "picolibrary-microchip-megaavr: avrdude disalbe writes"                OFF )
+    option( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_OVERRIDE_SIGNATURE_CHECK_ENABLED      "picolibrary-microchip-megaavr: avrdude override signature check"      OFF )
     mark_as_advanced(
-        PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_ALWAYS_RECOVER_FUSES_ENABLED
-        PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_FLASH_ERASE_ENABLED
-        PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_VERIFY_ENABLED
-        PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_FUSE_CHECKS_ENABLED
-        PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_WRITES_ENABLED
-        PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_OVERRIDE_SIGNATURE_CHECK_ENABLED
+        PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_ALWAYS_RECOVER_FUSES_ENABLED
+        PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_FLASH_ERASE_ENABLED
+        PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_VERIFY_ENABLED
+        PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_FUSE_CHECKS_ENABLED
+        PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_WRITES_ENABLED
+        PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_OVERRIDE_SIGNATURE_CHECK_ENABLED
     )
 
-    set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_BAUD_RATE           ""        CACHE STRING "picolibrary-microchip-avr-megaavr: avrdude baud rate"           )
-    set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_BIT_CLOCK           ""        CACHE STRING "picolibrary-microchip-avr-megaavr: avrdude bit clock"           )
-    set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_CONFIGURATION_FILE  ""        CACHE STRING "picolibrary-microchip-avr-megaavr: avrdude configuration file"  )
-    set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DELAY               ""        CACHE STRING "picolibrary-microchip-avr-megaavr: avrdude delay"               )
-    set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_EXIT_SPECIFICATION  ""        CACHE STRING "picolibrary-microchip-avr-megaavr: avrdude exit specification"  )
-    set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_EXTENDED_PARAMETERS ""        CACHE STRING "picolibrary-microchip-avr-megaavr: avrdude extended parameters" )
-    set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_PART                ""        CACHE STRING "picolibrary-microchip-avr-megaavr: avrdude part"                )
-    set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_PORT                ""        CACHE STRING "picolibrary-microchip-avr-megaavr: avrdude port"                )
-    set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_PROGRAMMER          ""        CACHE STRING "picolibrary-microchip-avr-megaavr: avrdude programmer"          )
-    set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_VERBOSITY           "VERBOSE" CACHE STRING "picolibrary-microchip-avr-megaavr: avrdude verbosity"           )
+    set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_BAUD_RATE           ""        CACHE STRING "picolibrary-microchip-megaavr: avrdude baud rate"           )
+    set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_BIT_CLOCK           ""        CACHE STRING "picolibrary-microchip-megaavr: avrdude bit clock"           )
+    set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_CONFIGURATION_FILE  ""        CACHE STRING "picolibrary-microchip-megaavr: avrdude configuration file"  )
+    set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DELAY               ""        CACHE STRING "picolibrary-microchip-megaavr: avrdude delay"               )
+    set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_EXIT_SPECIFICATION  ""        CACHE STRING "picolibrary-microchip-megaavr: avrdude exit specification"  )
+    set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_EXTENDED_PARAMETERS ""        CACHE STRING "picolibrary-microchip-megaavr: avrdude extended parameters" )
+    set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_PART                ""        CACHE STRING "picolibrary-microchip-megaavr: avrdude part"                )
+    set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_PORT                ""        CACHE STRING "picolibrary-microchip-megaavr: avrdude port"                )
+    set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_PROGRAMMER          ""        CACHE STRING "picolibrary-microchip-megaavr: avrdude programmer"          )
+    set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_VERBOSITY           "VERBOSE" CACHE STRING "picolibrary-microchip-megaavr: avrdude verbosity"           )
 
-    if( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_ALWAYS_RECOVER_FUSES_ENABLED} )
-        set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_ALWAYS_RECOVER_FUSES "ALWAYS_RECOVER_FUSES" )
-    endif( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_ALWAYS_RECOVER_FUSES_ENABLED} )
+    if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_ALWAYS_RECOVER_FUSES_ENABLED} )
+        set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_ALWAYS_RECOVER_FUSES "ALWAYS_RECOVER_FUSES" )
+    endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_ALWAYS_RECOVER_FUSES_ENABLED} )
 
-    if( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_FLASH_ERASE_ENABLED} )
-        set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_FLASH_ERASE "DISABLE_AUTOMATIC_FLASH_ERASE" )
-    endif( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_FLASH_ERASE_ENABLED} )
+    if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_FLASH_ERASE_ENABLED} )
+        set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_FLASH_ERASE "DISABLE_AUTOMATIC_FLASH_ERASE" )
+    endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_FLASH_ERASE_ENABLED} )
 
-    if( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_VERIFY_ENABLED} )
-        set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_VERIFY "DISABLE_AUTOMATIC_VERIFY" )
-    endif( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_VERIFY_ENABLED} )
+    if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_VERIFY_ENABLED} )
+        set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_VERIFY "DISABLE_AUTOMATIC_VERIFY" )
+    endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_VERIFY_ENABLED} )
 
-    if( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_FUSE_CHECKS_ENABLED} )
-        set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_FUSE_CHECKS "DISABLE_FUSE_CHECKS" )
-    endif( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_FUSE_CHECKS_ENABLED} )
+    if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_FUSE_CHECKS_ENABLED} )
+        set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_FUSE_CHECKS "DISABLE_FUSE_CHECKS" )
+    endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_FUSE_CHECKS_ENABLED} )
 
-    if( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_WRITES_ENABLED} )
-        set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_WRITES "DISABLE_WRITES" )
-    endif( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_DISABLE_WRITES_ENABLED} )
+    if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_WRITES_ENABLED} )
+        set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_WRITES "DISABLE_WRITES" )
+    endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_WRITES_ENABLED} )
 
-    if( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_OVERRIDE_SIGNATURE_CHECK_ENABLED} )
-        set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_OVERRIDE_SIGNATURE_CHECK "OVERRIDE_SIGNATURE_CHECK" )
-    endif( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_AVRDUDE_OVERRIDE_SIGNATURE_CHECK_ENABLED} )
-endif( ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
+    if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_OVERRIDE_SIGNATURE_CHECK_ENABLED} )
+        set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_OVERRIDE_SIGNATURE_CHECK "OVERRIDE_SIGNATURE_CHECK" )
+    endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_OVERRIDE_SIGNATURE_CHECK_ENABLED} )
+endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
 
 # build the library
 add_subdirectory( source )

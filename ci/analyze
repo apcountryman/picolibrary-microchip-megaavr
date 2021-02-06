@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-# picolibrary-microchip-avr-megaavr
+# picolibrary-microchip-megaavr
 #
-# Copyright 2020 Andrew Countryman <apcountryman@gmail.com>
+# Copyright 2020, 2021 Andrew Countryman <apcountryman@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
 # file except in compliance with the License. You may obtain a copy of the License at
@@ -15,7 +15,7 @@
 # permissions and limitations under the License.
 
 # File: ci/analyze
-# Description: picolibrary-microchip-avr-megaavr repository CI static analysis script.
+# Description: picolibrary-microchip-megaavr repository CI static analysis script.
 
 function error()
 {
@@ -38,16 +38,15 @@ function abort()
 function display_help_text()
 {
     echo "NAME"
-    echo "    $mnemonic - Run a static analyzer against"
-    echo "        picolibrary-microchip-avr-megaavr."
+    echo "    $mnemonic - Run a static analyzer against picolibrary-microchip-megaavr."
     echo "SYNOPSIS"
     echo "    $mnemonic --help"
     echo "    $mnemonic --version"
     echo "    $mnemonic --analyzer <analyzer>"
     echo "OPTIONS"
     echo "    --analyzer <analyzer>"
-    echo "        Specify the analyzer to run against picolibrary-microchip-avr-megaavr."
-    echo "        The following analyzers are supported:"
+    echo "        Specify the analyzer to run against picolibrary-microchip-megaavr. The"
+    echo "        following analyzers are supported:"
     echo "            cppcheck"
     echo "            lizard"
     echo "            shellcheck"
