@@ -1,6 +1,6 @@
-# picolibrary-microchip-avr-megaavr
+# picolibrary-microchip-megaavr
 #
-# Copyright 2020 Andrew Countryman <apcountryman@gmail.com>
+# Copyright 2020, 2021 Andrew Countryman <apcountryman@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
 # file except in compliance with the License. You may obtain a copy of the License at
@@ -13,43 +13,42 @@
 # permissions and limitations under the License.
 
 # File: source/CMakeLists.txt
-# Description: picolibrary-microchip-avr-megaavr CMake rules.
+# Description: picolibrary-microchip-megaavr CMake rules.
 
 configure_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/picolibrary/microchip/avr/megaavr/version.cc.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/picolibrary/microchip/avr/megaavr/version.cc"
+    "${CMAKE_CURRENT_SOURCE_DIR}/picolibrary/microchip/megaavr/version.cc.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/picolibrary/microchip/megaavr/version.cc"
     @ONLY
 )
 
 set(
-    PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_SOURCE_FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/picolibrary/microchip/avr/megaavr/version.cc"
-    "picolibrary/microchip/avr.cc"
-    "picolibrary/microchip/avr/megaavr.cc"
-    "picolibrary/microchip/avr/megaavr/asynchronous_serial.cc"
-    "picolibrary/microchip/avr/megaavr/gpio.cc"
-    "picolibrary/microchip/avr/megaavr/peripheral.cc"
-    "picolibrary/microchip/avr/megaavr/peripheral/atmega2560.cc"
-    "picolibrary/microchip/avr/megaavr/peripheral/atmega328p.cc"
-    "picolibrary/microchip/avr/megaavr/peripheral/instance.cc"
-    "picolibrary/microchip/avr/megaavr/peripheral/port.cc"
-    "picolibrary/microchip/avr/megaavr/peripheral/usart.cc"
-    "picolibrary/microchip/avr/megaavr/register.cc"
+    PICOLIBRARY_MICROCHIP_MEGAAVR_SOURCE_FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/picolibrary/microchip/megaavr/version.cc"
+    "picolibrary/microchip/megaavr.cc"
+    "picolibrary/microchip/megaavr/asynchronous_serial.cc"
+    "picolibrary/microchip/megaavr/gpio.cc"
+    "picolibrary/microchip/megaavr/peripheral.cc"
+    "picolibrary/microchip/megaavr/peripheral/atmega2560.cc"
+    "picolibrary/microchip/megaavr/peripheral/atmega328p.cc"
+    "picolibrary/microchip/megaavr/peripheral/instance.cc"
+    "picolibrary/microchip/megaavr/peripheral/port.cc"
+    "picolibrary/microchip/megaavr/peripheral/usart.cc"
+    "picolibrary/microchip/megaavr/register.cc"
 )
 list(
-    APPEND PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_LINK_LIBRARIES
+    APPEND PICOLIBRARY_MICROCHIP_MEGAAVR_LINK_LIBRARIES
     "picolibrary"
 )
 
 add_library(
-    picolibrary-microchip-avr-megaavr
-    ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_SOURCE_FILES}
+    picolibrary-microchip-megaavr
+    ${PICOLIBRARY_MICROCHIP_MEGAAVR_SOURCE_FILES}
 )
 target_include_directories(
-    picolibrary-microchip-avr-megaavr
+    picolibrary-microchip-megaavr
     PUBLIC "${PROJECT_SOURCE_DIR}/include"
 )
 target_link_libraries(
-    picolibrary-microchip-avr-megaavr
-    ${PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_LINK_LIBRARIES}
+    picolibrary-microchip-megaavr
+    ${PICOLIBRARY_MICROCHIP_MEGAAVR_LINK_LIBRARIES}
 )

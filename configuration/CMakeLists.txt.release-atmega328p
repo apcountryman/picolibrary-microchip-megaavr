@@ -1,6 +1,6 @@
-# picolibrary-microchip-avr-megaavr
+# picolibrary-microchip-megaavr
 #
-# Copyright 2020 Andrew Countryman <apcountryman@gmail.com>
+# Copyright 2020, 2021 Andrew Countryman <apcountryman@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
 # file except in compliance with the License. You may obtain a copy of the License at
@@ -13,35 +13,35 @@
 # permissions and limitations under the License.
 
 # File: configuration/CMakeLists.txt.release-atmega328p
-# Description: picolibrary-microchip-avr-megaavr ATmega328/P release configuration.
+# Description: picolibrary-microchip-megaavr ATmega328/P release configuration.
 
 # install prefix is not applicable
 mark_as_advanced( CMAKE_INSTALL_PREFIX )
 
 # build configuration
-set( CMAKE_BUILD_TYPE                                                  "MinSizeRel" CACHE STRING "" FORCE )
-set( CMAKE_EXPORT_COMPILE_COMMANDS                                     ON           CACHE BOOL   "" FORCE )
-set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_F_CPU                           "16000000UL" CACHE STRING "" FORCE )
-set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_MCU                             "atmega328p" CACHE STRING "" FORCE )
-set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS  OFF          CACHE BOOL   "" FORCE )
-set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS OFF          CACHE BOOL   "" FORCE )
+set( CMAKE_BUILD_TYPE                                              "MinSizeRel" CACHE STRING "" FORCE )
+set( CMAKE_EXPORT_COMPILE_COMMANDS                                 ON           CACHE BOOL   "" FORCE )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU                           "16000000UL" CACHE STRING "" FORCE )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_MCU                             "atmega328p" CACHE STRING "" FORCE )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS  OFF          CACHE BOOL   "" FORCE )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS OFF          CACHE BOOL   "" FORCE )
 mark_as_advanced(
     CMAKE_BUILD_TYPE
     CMAKE_EXPORT_COMPILE_COMMANDS
-    PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_F_CPU
-    PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_MCU
-    PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS
-    PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS
+    PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU
+    PICOLIBRARY_MICROCHIP_MEGAAVR_MCU
+    PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS
+    PICOLIBRARY_MICROCHIP_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS
 )
 
 # avr-libcpp configuration
-set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP OFF CACHE BOOL "" FORCE )
-mark_as_advanced( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP OFF CACHE BOOL "" FORCE )
+mark_as_advanced( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP )
 
 # picolibrary configuration
-set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY OFF CACHE BOOL "" FORCE )
-mark_as_advanced( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY OFF CACHE BOOL "" FORCE )
+mark_as_advanced( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY )
 
 # interactive testing configuration
-set( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING OFF CACHE BOOL "" FORCE )
-mark_as_advanced( PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_ENABLE_INTERACTIVE_TESTING )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING OFF CACHE BOOL "" FORCE )
+mark_as_advanced( PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING )

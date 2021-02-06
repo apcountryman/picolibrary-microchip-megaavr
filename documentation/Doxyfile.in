@@ -1,6 +1,6 @@
-# picolibrary-microchip-avr-megaavr
+# picolibrary-microchip-megaavr
 #
-# Copyright 2020 Andrew Countryman <apcountryman@gmail.com>
+# Copyright 2020, 2021 Andrew Countryman <apcountryman@gmail.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
 # file except in compliance with the License. You may obtain a copy of the License at
@@ -13,13 +13,13 @@
 # permissions and limitations under the License.
 
 # File: documentation/Doxyfile.in
-# Description: picolibrary-microchip-avr-megaavr Doxygen configuration.
+# Description: picolibrary-microchip-megaavr Doxygen configuration.
 
 # project configuration
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = @CMAKE_PROJECT_NAME@
-PROJECT_NUMBER         = @PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_VERSION@
-PROJECT_BRIEF          = "https://github.com/apcountryman/picolibrary Hardware Interface Layer (HIL) for Microchip AVR megaAVR microcontrollers."
+PROJECT_NUMBER         = @PICOLIBRARY_MICROCHIP_MEGAAVR_VERSION@
+PROJECT_BRIEF          = "https://github.com/apcountryman/picolibrary Hardware Interface Layer (HIL) for Microchip megaAVR microcontrollers."
 PROJECT_LOGO           = ""
 OUTPUT_DIRECTORY       = ""
 CREATE_SUBDIRS         = NO
@@ -121,7 +121,7 @@ FILE_PATTERNS          = *.cc \
 RECURSIVE              = YES
 EXCLUDE                = ""
 EXCLUDE_SYMLINKS       = NO
-EXCLUDE_PATTERNS       = @PICOLIBRARY_MICROCHIP_AVR_MEGAAVR_DOCUMENTATION_EXCLUDE_PATTERNS@
+EXCLUDE_PATTERNS       = @PICOLIBRARY_MICROCHIP_MEGAAVR_DOCUMENTATION_EXCLUDE_PATTERNS@
 EXCLUDE_SYMBOLS        = MOCK_METHOD* MOCK_CONST_METHOD*
 EXAMPLE_PATH           = ""
 EXAMPLE_PATTERNS       = ""
