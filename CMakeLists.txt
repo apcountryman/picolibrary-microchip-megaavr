@@ -37,7 +37,7 @@ list(
 # configure compilation and linking
 if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
     set( CMAKE_CXX_STANDARD 17 )
-    set( CMAKE_CXX_EXTENSIONS OFF )
+
     set(
         CMAKE_CXX_FLAGS
         "${CMAKE_CXX_FLAGS} \
