@@ -126,6 +126,36 @@ class SPI {
      */
     class SPSR : public Register<std::uint8_t> {
       public:
+        /**
+         * \brief Field sizes.
+         */
+        struct Size {
+            static constexpr auto SPI2X    = std::uint_fast8_t{ 1 }; ///< SPI2X.
+            static constexpr auto RESERVED = std::uint_fast8_t{ 5 }; ///< Reserved.
+            static constexpr auto WCOL     = std::uint_fast8_t{ 1 }; ///< WCOL.
+            static constexpr auto SPIF     = std::uint_fast8_t{ 1 }; ///< SPIF.
+        };
+
+        /**
+         * \brief Field bit positions.
+         */
+        struct Bit {
+            static constexpr auto SPI2X = std::uint_fast8_t{}; ///< SPI2X.
+            static constexpr auto RESERVED = std::uint_fast8_t{ SPI2X + Size::SPI2X }; ///< RESERVED.
+            static constexpr auto WCOL = std::uint_fast8_t{ RESERVED + Size::RESERVED }; ///< WCOL.
+            static constexpr auto SPIF = std::uint_fast8_t{ WCOL + Size::WCOL }; ///< WCOL.
+        };
+
+        /**
+         * \brief Field bit masks.
+         */
+        struct Mask {
+            static constexpr auto SPI2X = std::uint8_t{ 0b1 << Bit::SPI2X }; ///< SPI2X.
+            static constexpr auto RESERVED = std::uint8_t{ 0b11111 < Bit::RESERVED }; ///< Reserved.
+            static constexpr auto WCOL = std::uint8_t{ 0b1 << Bit::WCOL }; ///< WCOL.
+            static constexpr auto SPIF = std::uint8_t{ 0b1 << Bit::SPIF }; ///< SPIF.
+        };
+
         SPSR() = delete;
 
         /**
