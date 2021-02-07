@@ -25,5 +25,7 @@
 namespace picolibrary::Microchip::megaAVR::Peripheral {
 
 static_assert( sizeof( SPI ) == 3 );
+static_assert( SPI::SPCR::Bit::SPIE == 7 );
+static_assert( SPI::SPSR::Bit::SPIF == 7 );
 
 } // namespace picolibrary::Microchip::megaAVR::Peripheral
