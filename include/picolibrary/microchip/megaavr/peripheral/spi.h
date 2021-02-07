@@ -48,6 +48,45 @@ class SPI {
      */
     class SPCR : public Register<std::uint8_t> {
       public:
+        /**
+         * \brief Field sizes.
+         */
+        struct Size {
+            static constexpr auto SPR  = std::uint_fast8_t{ 2 }; ///< SPR.
+            static constexpr auto CPHA = std::uint_fast8_t{ 1 }; ///< CPHA.
+            static constexpr auto CPOL = std::uint_fast8_t{ 1 }; ///< CPOL.
+            static constexpr auto MSTR = std::uint_fast8_t{ 1 }; ///< MSTR.
+            static constexpr auto DORD = std::uint_fast8_t{ 1 }; ///< DORD.
+            static constexpr auto SPE  = std::uint_fast8_t{ 1 }; ///< SPE.
+            static constexpr auto SPIE = std::uint_fast8_t{ 1 }; ///< SPIE.
+        };
+
+        /**
+         * \brief Field bit positions.
+         */
+        struct Bit {
+            static constexpr auto SPR  = std::uint_fast8_t{};                  ///< SPR.
+            static constexpr auto CPHA = std::uint_fast8_t{ SPR + Size::SPR }; ///< CPHA.
+            static constexpr auto CPOL = std::uint_fast8_t{ CPHA + Size::CPHA }; ///< CPOL.
+            static constexpr auto MSTR = std::uint_fast8_t{ CPOL + Size::CPOL }; ///< MSTR.
+            static constexpr auto DORD = std::uint_fast8_t{ MSTR + Size::MSTR }; ///< DORD.
+            static constexpr auto SPE  = std::uint_fast8_t{ DORD + Size::DORD }; ///< SPE.
+            static constexpr auto SPIE = std::uint_fast8_t{ SPE + Size::SPE }; ///< SPIE.
+        };
+
+        /**
+         * \brief Field bit masks.
+         */
+        struct Mask {
+            static constexpr auto SPR  = std::uint8_t{ 0b11 << Bit::SPR }; ///< SPR.
+            static constexpr auto CPHA = std::uint8_t{ 0b1 << Bit::CPHA }; ///< CPHA.
+            static constexpr auto CPOL = std::uint8_t{ 0b1 << Bit::CPOL }; ///< CPOL.
+            static constexpr auto MSTR = std::uint8_t{ 0b1 << Bit::MSTR }; ///< MSTR.
+            static constexpr auto DORD = std::uint8_t{ 0b1 << Bit::DORD }; ///< DORD.
+            static constexpr auto SPE  = std::uint8_t{ 0b1 << Bit::SPE };  ///< SPE.
+            static constexpr auto SPIE = std::uint8_t{ 0b1 << Bit::SPIE }; ///< SPIE.
+        };
+
         SPCR() = delete;
 
         /**
