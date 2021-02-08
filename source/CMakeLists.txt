@@ -33,6 +33,7 @@ set(
     "picolibrary/microchip/megaavr/peripheral/atmega328p.cc"
     "picolibrary/microchip/megaavr/peripheral/instance.cc"
     "picolibrary/microchip/megaavr/peripheral/port.cc"
+    "picolibrary/microchip/megaavr/peripheral/spi.cc"
     "picolibrary/microchip/megaavr/peripheral/usart.cc"
     "picolibrary/microchip/megaavr/register.cc"
 )
