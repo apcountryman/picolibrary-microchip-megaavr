@@ -24,6 +24,7 @@
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA2560_H
 
 #include "picolibrary/microchip/megaavr/peripheral/port.h"
+#include "picolibrary/microchip/megaavr/peripheral/spi.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
 
 /**
@@ -133,6 +134,15 @@ using PORTK = PORT_Instance<0x0106>;
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTL.
  */
 using PORTL = PORT_Instance<0x0109>;
+
+/**
+ * \brief SPI0.
+ *
+ * \attention This type should never be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::SPI0.
+ */
+using SPI0 = SPI_Instance<0x004C>;
 
 /**
  * \brief USART0.

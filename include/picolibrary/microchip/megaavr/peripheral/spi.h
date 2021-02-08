@@ -25,6 +25,7 @@
 
 #include <cstdint>
 
+#include "picolibrary/microchip/megaavr/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr/register.h"
 
 namespace picolibrary::Microchip::megaAVR::Peripheral {
@@ -472,6 +473,14 @@ inline void SPI::SPSR::configure( Clock_Rate clock_rate ) noexcept
 {
     *this = ( *this & Mask::SPI2X ) | ( static_cast<std::uint8_t>( clock_rate ) & Mask::SPI2X );
 }
+
+/**
+ * \brief Microchip megaAVR Serial Peripheral Interface (SPI) peripheral instance.
+ *
+ * \tparam INSTANCE_ADDRESS The address of the SPI instance.
+ */
+template<std::uintptr_t INSTANCE_ADDRESS>
+using SPI_Instance = Instance<SPI, INSTANCE_ADDRESS>;
 
 } // namespace picolibrary::Microchip::megaAVR::Peripheral
 
