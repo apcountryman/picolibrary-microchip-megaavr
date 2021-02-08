@@ -217,7 +217,7 @@ class SPI {
          */
         struct Bit {
             static constexpr auto SPI2X = std::uint_fast8_t{}; ///< SPI2X.
-            static constexpr auto RESERVED = std::uint_fast8_t{ SPI2X + Size::SPI2X }; ///< RESERVED.
+            static constexpr auto RESERVED = std::uint_fast8_t{ SPI2X + Size::SPI2X }; ///< Reserved.
             static constexpr auto WCOL = std::uint_fast8_t{ RESERVED + Size::RESERVED }; ///< WCOL.
             static constexpr auto SPIF = std::uint_fast8_t{ WCOL + Size::WCOL }; ///< WCOL.
         };
@@ -441,7 +441,7 @@ class SPI {
     }
 
     /**
-     * \brief Write data the transmit buffer.
+     * \brief Write data to the transmit buffer.
      *
      * \param[in] data The data to write to the transmit buffer.
      */
