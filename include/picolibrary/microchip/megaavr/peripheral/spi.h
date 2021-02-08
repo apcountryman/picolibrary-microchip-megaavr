@@ -471,7 +471,7 @@ inline void SPI::SPCR::configure( Clock_Rate clock_rate, Clock_Polarity clock_po
 
 inline void SPI::SPSR::configure( Clock_Rate clock_rate ) noexcept
 {
-    *this = ( *this & Mask::SPI2X ) | ( static_cast<std::uint8_t>( clock_rate ) & Mask::SPI2X );
+    *this = static_cast<std::uint8_t>( clock_rate );
 }
 
 /**
