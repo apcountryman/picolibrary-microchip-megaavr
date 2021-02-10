@@ -113,30 +113,14 @@ class USART {
 
         UCSRA() = delete;
 
-        /**
-         * \todo #27
-         */
         UCSRA( UCSRA && ) = delete;
 
-        /**
-         * \todo #27
-         */
         UCSRA( UCSRA const & ) = delete;
 
         ~UCSRA() = delete;
 
-        /**
-         * \todo #27
-         *
-         * \return
-         */
         auto operator=( UCSRA && ) = delete;
 
-        /**
-         * \todo #27
-         *
-         * \return
-         */
         auto operator=( UCSRA const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
@@ -340,30 +324,14 @@ class USART {
 
         UCSRB() = delete;
 
-        /**
-         * \todo #27
-         */
         UCSRB( UCSRB && ) = delete;
 
-        /**
-         * \todo #27
-         */
         UCSRB( UCSRB const & ) = delete;
 
         ~UCSRB() = delete;
 
-        /**
-         * \todo #27
-         *
-         * \return
-         */
         auto operator=( UCSRB && ) = delete;
 
-        /**
-         * \todo #27
-         *
-         * \return
-         */
         auto operator=( UCSRB const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
@@ -531,30 +499,14 @@ class USART {
 
         UCSRC() = delete;
 
-        /**
-         * \todo #27
-         */
         UCSRC( UCSRC && ) = delete;
 
-        /**
-         * \todo #27
-         */
         UCSRC( UCSRC const & ) = delete;
 
         ~UCSRC() = delete;
 
-        /**
-         * \todo #27
-         *
-         * \return
-         */
         auto operator=( UCSRC && ) = delete;
 
-        /**
-         * \todo #27
-         *
-         * \return
-         */
         auto operator=( UCSRC const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
@@ -713,30 +665,14 @@ class USART {
 
     USART() = delete;
 
-    /**
-     * \todo #27
-     */
     USART( USART && ) = delete;
 
-    /**
-     * \todo #27
-     */
     USART( USART const & ) = delete;
 
     ~USART() = delete;
 
-    /**
-     * \todo #27
-     *
-     * \return
-     */
     auto operator=( USART && ) = delete;
 
-    /**
-     * \todo #27
-     *
-     * \return
-     */
     auto operator=( USART const & ) = delete;
 
     /**

@@ -52,30 +52,14 @@ class PORT {
 
     PORT() = delete;
 
-    /**
-     * \todo #27
-     */
     PORT( PORT && ) = delete;
 
-    /**
-     * \todo #27
-     */
     PORT( PORT const & ) = delete;
 
     ~PORT() = delete;
 
-    /**
-     * \todo #27
-     *
-     * \return
-     */
     auto operator=( PORT && ) = delete;
 
-    /**
-     * \todo #27
-     *
-     * \return
-     */
     auto operator=( PORT const & ) = delete;
 
     /**

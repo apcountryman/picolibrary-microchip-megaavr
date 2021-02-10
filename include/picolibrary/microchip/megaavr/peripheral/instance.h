@@ -58,30 +58,14 @@ class Instance {
 
     Instance() = delete;
 
-    /**
-     * \todo #27
-     */
     Instance( Instance && ) = delete;
 
-    /**
-     * \todo #27
-     */
     Instance( Instance const & ) = delete;
 
     ~Instance() = delete;
 
-    /**
-     * \todo #27
-     *
-     * \return
-     */
     auto operator=( Instance && ) = delete;
 
-    /**
-     * \todo #27
-     *
-     * \return
-     */
     auto operator=( Instance const & ) = delete;
 };
 
