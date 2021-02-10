@@ -184,7 +184,9 @@ class Internally_Pulled_Up_Input_Pin {
      */
     void disable() noexcept
     {
-        if ( m_port ) { m_port->disable_pull_up( m_mask ); }
+        if ( m_port ) {
+            m_port->disable_pull_up( m_mask );
+        } // if
     }
 };
 
