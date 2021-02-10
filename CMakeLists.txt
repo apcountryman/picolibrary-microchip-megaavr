@@ -113,41 +113,6 @@ execute_git_command(
     COMMAND describe --match=none --always --dirty --broken
 )
 
-# configure Doxygen
-find_package( Doxygen )
-if( ${DOXYGEN_FOUND} )
-    set(
-        PICOLIBRARY_MICROCHIP_MEGAAVR_DOCUMENTATION_EXCLUDE_PATTERNS
-        " \
-        */.git/* \
-        */README.md \
-        */avr-libcpp/* \
-        */build/* \
-        */cmake/modules/* \
-        */lizard/* \
-        */picolibrary/README.md \
-        */picolibrary/cmake/modules/* \
-        */picolibrary/documentation/mainpage.md \
-        */picolibrary/googletest/* \
-        */picolibrary/lizard/* \
-        */toolchain-avr-gcc/* \
-        "
-    )
-
-    set( DOXYFILE "${CMAKE_CURRENT_BINARY_DIR}/documentation/Doxyfile" )
-    configure_file(
-        "${CMAKE_CURRENT_SOURCE_DIR}/documentation/Doxyfile.in"
-        "${DOXYFILE}"
-        @ONLY
-    )
-    add_custom_target(
-        picolibrary-microchip-megaavr-documentation
-        ALL
-        COMMAND           "${DOXYGEN_EXECUTABLE}" "${DOXYFILE}"
-        WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/documentation"
-    )
-endif( ${DOXYGEN_FOUND} )
-
 # configure avrdude
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
     if( "${CMAKE_AVRDUDE}" STREQUAL "CMAKE_AVRDUDE-NOTFOUND" )

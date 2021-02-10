@@ -105,30 +105,14 @@ class SPI {
 
         SPCR() = delete;
 
-        /**
-         * \todo #27
-         */
         SPCR( SPCR && ) = delete;
 
-        /**
-         * \todo #27
-         */
         SPCR( SPCR const & ) = delete;
 
         ~SPCR() = delete;
 
-        /**
-         * \todo #27
-         *
-         * \return
-         */
         auto operator=( SPCR && ) = delete;
 
-        /**
-         * \todo #27
-         *
-         * \return
-         */
         auto operator=( SPCR const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
@@ -234,30 +218,14 @@ class SPI {
 
         SPSR() = delete;
 
-        /**
-         * \todo #27
-         */
         SPSR( SPSR && ) = delete;
 
-        /**
-         * \todo #27
-         */
         SPSR( SPSR const & ) = delete;
 
         ~SPSR() = delete;
 
-        /**
-         * \todo #27
-         *
-         * \return
-         */
         auto operator=( SPSR && ) = delete;
 
-        /**
-         * \todo #27
-         *
-         * \return
-         */
         auto operator=( SPSR const & ) = delete;
 
         using Register<std::uint8_t>::operator=;

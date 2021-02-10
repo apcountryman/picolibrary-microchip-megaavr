@@ -106,9 +106,6 @@ class Basic_Transmitter {
         source.m_usart = nullptr;
     }
 
-    /**
-     * \todo #27
-     */
     Basic_Transmitter( Basic_Transmitter const & ) = delete;
 
     /**
@@ -139,11 +136,6 @@ class Basic_Transmitter {
         return *this;
     }
 
-    /**
-     * \todo #27
-     *
-     * \return
-     */
     auto operator=( Basic_Transmitter const & ) = delete;
 
     /**
@@ -236,9 +228,6 @@ class Transmitter_8_N_1 : private Transmitter<std::uint8_t> {
      */
     constexpr Transmitter_8_N_1( Transmitter_8_N_1 && source ) noexcept = default;
 
-    /**
-     * \todo #27
-     */
     Transmitter_8_N_1( Transmitter_8_N_1 const & ) = delete;
 
     /**
@@ -255,11 +244,6 @@ class Transmitter_8_N_1 : private Transmitter<std::uint8_t> {
      */
     auto operator=( Transmitter_8_N_1 && expression ) noexcept -> Transmitter_8_N_1 & = default;
 
-    /**
-     * \todo #27
-     *
-     * \return
-     */
     auto operator=( Transmitter_8_N_1 const & ) = delete;
 
     using Transmitter<std::uint8_t>::initialize;

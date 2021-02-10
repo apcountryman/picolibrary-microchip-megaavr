@@ -78,9 +78,6 @@ class Internally_Pulled_Up_Input_Pin {
         source.m_mask = 0;
     }
 
-    /**
-     * \todo #27
-     */
     Internally_Pulled_Up_Input_Pin( Internally_Pulled_Up_Input_Pin const & ) = delete;
 
     /**
@@ -113,11 +110,6 @@ class Internally_Pulled_Up_Input_Pin {
         return *this;
     }
 
-    /**
-     * \todo #27
-     *
-     * \return
-     */
     auto operator=( Internally_Pulled_Up_Input_Pin const & ) = delete;
 
     /**
@@ -239,9 +231,6 @@ class Open_Drain_IO_Pin {
         source.m_mask = 0;
     }
 
-    /**
-     * \todo #27
-     */
     Open_Drain_IO_Pin( Open_Drain_IO_Pin const & ) = delete;
 
     /**
@@ -274,11 +263,6 @@ class Open_Drain_IO_Pin {
         return *this;
     }
 
-    /**
-     * \todo #27
-     *
-     * \return
-     */
     auto operator=( Open_Drain_IO_Pin const & ) = delete;
 
     /**
@@ -417,9 +401,6 @@ class Push_Pull_IO_Pin {
         source.m_mask = 0;
     }
 
-    /**
-     * \todo #27
-     */
     Push_Pull_IO_Pin( Push_Pull_IO_Pin const & ) = delete;
 
     /**
@@ -452,11 +433,6 @@ class Push_Pull_IO_Pin {
         } // if
     }
 
-    /**
-     * \todo #27
-     *
-     * \return
-     */
     auto operator=( Push_Pull_IO_Pin const & ) = delete;
 
     /**

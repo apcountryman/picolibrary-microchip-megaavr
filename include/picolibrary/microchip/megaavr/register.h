@@ -40,30 +40,14 @@ class Register {
 
     Register() = delete;
 
-    /**
-     * \todo #27
-     */
     Register( Register && ) = delete;
 
-    /**
-     * \todo #27
-     */
     Register( Register const && ) = delete;
 
     ~Register() = delete;
 
-    /**
-     * \todo #27
-     *
-     * \return
-     */
     auto operator=( Register && ) = delete;
 
-    /**
-     * \todo #27
-     *
-     * \return
-     */
     auto operator=( Register const & ) = delete;
 
     /**
@@ -154,30 +138,14 @@ class Reserved_Register {
 
     Reserved_Register() = delete;
 
-    /**
-     * \todo #27
-     */
     Reserved_Register( Reserved_Register && ) = delete;
 
-    /**
-     * \todo #27
-     */
     Reserved_Register( Reserved_Register const && ) = delete;
 
     ~Reserved_Register() = delete;
 
-    /**
-     * \todo #27
-     *
-     * \return
-     */
     auto operator=( Reserved_Register && ) = delete;
 
-    /**
-     * \todo #27
-     *
-     * \return
-     */
     auto operator=( Reserved_Register const & ) = delete;
 
   private:
