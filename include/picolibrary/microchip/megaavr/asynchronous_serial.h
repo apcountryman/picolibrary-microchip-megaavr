@@ -177,7 +177,9 @@ class Basic_Transmitter {
      */
     void disable() noexcept
     {
-        if ( m_usart ) { m_usart->disable_transmitter(); }
+        if ( m_usart ) {
+            m_usart->disable_transmitter();
+        } // if
     }
 };
 
@@ -187,8 +189,8 @@ class Basic_Transmitter {
  * \tparam Data_Type The integral type used to hold the data to be transmitted.
  */
 template<typename Data_Type>
-class Transmitter
-    : public ::picolibrary::Asynchronous_Serial::Transmitter<Basic_Transmitter<Data_Type>> {
+class Transmitter :
+    public ::picolibrary::Asynchronous_Serial::Transmitter<Basic_Transmitter<Data_Type>> {
   public:
     using ::picolibrary::Asynchronous_Serial::Transmitter<Basic_Transmitter<Data_Type>>::Transmitter;
 };
