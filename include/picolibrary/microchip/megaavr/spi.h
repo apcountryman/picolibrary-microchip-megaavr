@@ -23,6 +23,8 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_H
 
+#include "picolibrary/spi.h"
+
 /**
  * \brief Microchip megaAVR Serial Peripheral Interface (SPI) facilities.
  */
@@ -36,6 +38,15 @@ namespace picolibrary::Microchip::megaAVR::SPI {
  */
 template<typename Peripheral>
 class Basic_Controller;
+
+/**
+ * \brief SPI controller.
+ *
+ * \tparam Peripheral The type of peripheral used to implement SPI controller
+ *         functionality.
+ */
+template<typename Peripheral>
+using Controller = ::picolibrary::SPI::Controller<Basic_Controller<Peripheral>>;
 
 } // namespace picolibrary::Microchip::megaAVR::SPI
 
