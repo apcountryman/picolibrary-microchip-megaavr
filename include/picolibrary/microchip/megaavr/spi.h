@@ -163,6 +163,7 @@ class Basic_Controller<Peripheral::SPI> {
         static_cast<void>( m_sck.initialize() );
         static_cast<void>( m_mosi.initialize() );
 
+        m_spi->configure_controller();
         m_spi->enable();
 
         return {};
