@@ -37,42 +37,31 @@ list(
 # configure compilation and linking
 if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
     set( CMAKE_CXX_STANDARD 17 )
-
+    set( PICOLIBRARY_MICROCHIP_MEGAAVR_MCU   "" CACHE STRING "picolibrary-microchip-megaavr: MCU type"             )
+    set( PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU "" CACHE STRING "picolibrary-microchip-megaavr: CPU frequency, in Hz" )
     set(
         CMAKE_CXX_FLAGS
         "${CMAKE_CXX_FLAGS} \
+        -mmcu=${PICOLIBRARY_MICROCHIP_MEGAAVR_MCU} \
+        -DF_CPU=${PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU} \
         -Werror -Wall -Wextra \
+        -Wcast-align=strict \
         -Wcast-qual \
+        -Wduplicated-cond \
         -Wextra-semi \
         -Wfloat-equal \
+        -Wimplicit-fallthrough=5 \
+        -Wlogical-op \
         -Wmissing-field-initializers \
         -Wmissing-include-dirs \
         -Wold-style-cast \
+        -Wplacement-new=2 \
         -Wpointer-arith \
         -Wshadow \
+        -Wunsafe-loop-optimizations \
         -flto \
         "
     )
-
-    option( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS "picolibrary-microchip-megaavr: use static analysis build flags" OFF )
-    if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS} )
-        set( PICOLIBRARY_MICROCHIP_MEGAAVR_MCU   "" CACHE STRING "picolibrary-microchip-megaavr: MCU type"             )
-        set( PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU "" CACHE STRING "picolibrary-microchip-megaavr: CPU frequency, in Hz" )
-
-        set(
-            CMAKE_CXX_FLAGS
-            "${CMAKE_CXX_FLAGS} \
-            -mmcu=${PICOLIBRARY_MICROCHIP_MEGAAVR_MCU} \
-            -DF_CPU=${PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU} \
-            -Wcast-align=strict \
-            -Wduplicated-cond \
-            -Wimplicit-fallthrough=5 \
-            -Wlogical-op \
-            -Wplacement-new=2 \
-            -Wunsafe-loop-optimizations \
-            "
-        )
-    endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_STATIC_ANALYSIS_BUILD_FLAGS} )
 endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
 
 # configure avr-libcpp
