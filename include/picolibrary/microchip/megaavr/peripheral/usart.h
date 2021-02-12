@@ -293,11 +293,11 @@ class USART {
          * \brief Field bit masks.
          */
         struct Mask {
-            static constexpr auto TXB8 = std::uint8_t{ 0b1 << Bit::TXB8 }; ///< TXB8.
-            static constexpr auto RXB8 = std::uint8_t{ 0b1 << Bit::RXB8 }; ///< RXB8.
-            static constexpr auto UCSZ = std::uint8_t{ 0b1 << Bit::UCSZ }; ///< UCSZ.
-            static constexpr auto TXEN = std::uint8_t{ 0b1 << Bit::TXEN }; ///< TXEN.
-            static constexpr auto RXEN = std::uint8_t{ 0b1 << Bit::RXEN }; ///< RXEN.
+            static constexpr auto TXB8  = std::uint8_t{ 0b1 << Bit::TXB8 };  ///< TXB8.
+            static constexpr auto RXB8  = std::uint8_t{ 0b1 << Bit::RXB8 };  ///< RXB8.
+            static constexpr auto UCSZ  = std::uint8_t{ 0b1 << Bit::UCSZ };  ///< UCSZ.
+            static constexpr auto TXEN  = std::uint8_t{ 0b1 << Bit::TXEN };  ///< TXEN.
+            static constexpr auto RXEN  = std::uint8_t{ 0b1 << Bit::RXEN };  ///< RXEN.
             static constexpr auto UDRIE = std::uint8_t{ 0b1 << Bit::UDRIE }; ///< UDRIE.
             static constexpr auto TXCIE = std::uint8_t{ 0b1 << Bit::TXCIE }; ///< TXCIE.
             static constexpr auto RXCIE = std::uint8_t{ 0b1 << Bit::RXCIE }; ///< RXCIE.
@@ -487,10 +487,10 @@ class USART {
          * \brief Field bit masks.
          */
         struct Mask {
-            static constexpr auto UCPOL = std::uint8_t{ 0b1 << Bit::UCPOL }; ///< UCPOL.
-            static constexpr auto UCSZ = std::uint8_t{ 0b11 << Bit::UCSZ }; ///< UCSZ.
-            static constexpr auto USBS = std::uint8_t{ 0b1 << Bit::USBS }; ///< USBS.
-            static constexpr auto UPM  = std::uint8_t{ 0b11 << Bit::UPM }; ///< UPM.
+            static constexpr auto UCPOL = std::uint8_t{ 0b1 << Bit::UCPOL };  ///< UCPOL.
+            static constexpr auto UCSZ  = std::uint8_t{ 0b11 << Bit::UCSZ };  ///< UCSZ.
+            static constexpr auto USBS  = std::uint8_t{ 0b1 << Bit::USBS };   ///< USBS.
+            static constexpr auto UPM   = std::uint8_t{ 0b11 << Bit::UPM };   ///< UPM.
             static constexpr auto UMSEL = std::uint8_t{ 0b11 << Bit::UMSEL }; ///< UMSEL.
 
             static constexpr auto UCPHA = std::uint8_t{ 0b1 << Bit::UCPHA }; ///< UCPHA.
