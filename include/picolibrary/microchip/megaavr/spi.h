@@ -98,10 +98,10 @@ class Basic_Controller<Peripheral::SPI> {
      * \param[in] mosi The MOSI pin.
      * \param[in] spi The SPI peripheral used by the SPI controller.
      */
-    Basic_Controller( GPIO::Push_Pull_IO_Pin sck, GPIO::Push_Pull_IO_Pin mosi, Peripheral::SPI * spi ) noexcept :
+    Basic_Controller( GPIO::Push_Pull_IO_Pin sck, GPIO::Push_Pull_IO_Pin mosi, Peripheral::SPI & spi ) noexcept :
         m_sck{ std::move( sck ) },
         m_mosi{ std::move( mosi ) },
-        m_spi{ spi }
+        m_spi{ &spi }
     {
         m_spi->configure_controller();
     }
