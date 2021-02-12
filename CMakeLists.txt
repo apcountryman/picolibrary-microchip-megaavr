@@ -37,6 +37,7 @@ list(
 # configure compilation and linking
 if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
     set( CMAKE_CXX_STANDARD 17 )
+    set( CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE )
     set( PICOLIBRARY_MICROCHIP_MEGAAVR_MCU   "" CACHE STRING "picolibrary-microchip-megaavr: MCU type"             )
     set( PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU "" CACHE STRING "picolibrary-microchip-megaavr: CPU frequency, in Hz" )
     set(
@@ -59,7 +60,6 @@ if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
         -Wpointer-arith \
         -Wshadow \
         -Wunsafe-loop-optimizations \
-        -flto \
         "
     )
 endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
