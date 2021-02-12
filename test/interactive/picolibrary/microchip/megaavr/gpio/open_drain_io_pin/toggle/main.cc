@@ -47,4 +47,6 @@ int main()
     toggle( Open_Drain_IO_Pin{ PIN_PORT::instance(), PIN_MASK }, []() {
         avrlibcpp::delay_ms( 500 );
     } );
+
+    for ( ;; ) {}
 }

@@ -49,4 +49,6 @@ int main()
         TRANSMITTER_USART::instance(),
         { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
           .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } } );
+
+    for ( ;; ) {}
 }
