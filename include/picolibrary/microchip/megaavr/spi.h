@@ -241,19 +241,14 @@ template<>
 class Basic_Controller<Peripheral::USART> {
   public:
     /**
-     * \brief Clock (USART mode, operating speed, polarity, and phase), and data exchange
-     *        bit order configuration.
+     * \brief Clock (frequency, polarity, and phase), and data exchange bit order
+     *        configuration.
      */
     struct Configuration {
         /**
-         * \brief USART mode.
+         * \brief The clock generator scaling factor.
          */
-        Peripheral::USART::Mode mode;
-
-        /**
-         * \brief Operating speed.
-         */
-        Peripheral::USART::Operating_Speed operating_speed;
+        std::uint16_t scaling_factor;
 
         /**
          * \brief Clock polarity.
@@ -359,9 +354,13 @@ class Basic_Controller<Peripheral::USART> {
      *
      * \return Success.
      */
-    auto configure() noexcept -> Result<Void, Void>
+    auto configure( Configuration const & configuration ) noexcept -> Result<Void, Void>
     {
-        m_usart->configure();
+        m_usart->configure(
+            configuration.clock_polarity,
+            configuration.clock_phase,
+            configuration.bit_order,
+            configuration.scaling_factor );
 
         return {};
     }
