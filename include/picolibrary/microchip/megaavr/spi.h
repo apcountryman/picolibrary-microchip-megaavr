@@ -250,7 +250,12 @@ class Basic_Controller<Peripheral::USART> {
      *
      * \param[in] source The source of the move.
      */
-    constexpr Basic_Controller( Basic_Controller && source ) noexcept = default;
+    constexpr Basic_Controller( Basic_Controller && source ) noexcept :
+        m_xck{ std::move( source.m_xck ) },
+        m_usart{ source.m_usart }
+    {
+        source.m_usart = nullptr;
+    }
 
     Basic_Controller( Basic_Controller const & ) = delete;
 
@@ -261,14 +266,50 @@ class Basic_Controller<Peripheral::USART> {
      *
      * \return The assigned to object.
      */
-    auto operator=( Basic_Controller && expression ) noexcept -> Basic_Controller & = default;
+    auto & operator=( Basic_Controller && expression ) noexcept
+    {
+        if ( &expression != this ) {
+            disable();
+
+            m_xck   = std::move( expression.m_xck );
+            m_usart = expression.m_usart;
+
+            expression.m_usart = nullptr;
+        } // if
+
+        return *this;
+    }
 
     auto operator=( Basic_Controller const & ) = delete;
 
     /**
      * \brief Destructor.
      */
-    ~Basic_Controller() noexcept = default;
+    ~Basic_Controller() noexcept
+    {
+        disable();
+    }
+
+  private:
+    /**
+     * \brief The XCK pin.
+     */
+    GPIO::Push_Pull_IO_Pin m_xck{};
+
+    /**
+     * \brief The USART peripheral used by the SPI controller.
+     */
+    Peripheral::USART * m_usart{};
+
+    /**
+     * \brief Disable the SPI.
+     */
+    void disable() noexcept
+    {
+        if ( m_usart ) {
+            m_usart->disable();
+        } // if
+    }
 };
 
 } // namespace picolibrary::Microchip::megaAVR::SPI
