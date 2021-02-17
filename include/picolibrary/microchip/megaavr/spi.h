@@ -350,6 +350,22 @@ class Basic_Controller<Peripheral::USART> {
         return {};
     }
 
+    /**
+     * \brief Configure the controller's clock, and data exchange bit order to meet a
+     *        specific device's communication requirements.
+     *
+     * \param[in] configuration The clock, and data exchange bit order configuration that
+     *            meets the device's communication requirements.
+     *
+     * \return Success.
+     */
+    auto configure() noexcept -> Result<Void, Void>
+    {
+        m_usart->configure();
+
+        return {};
+    }
+
   private:
     /**
      * \brief The XCK pin.
