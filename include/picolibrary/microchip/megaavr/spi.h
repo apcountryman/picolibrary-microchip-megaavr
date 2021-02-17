@@ -241,6 +241,37 @@ template<>
 class Basic_Controller<Peripheral::USART> {
   public:
     /**
+     * \brief Clock (USART mode, operating speed, polarity, and phase), and data exchange
+     *        bit order configuration.
+     */
+    struct Configuration {
+        /**
+         * \brief USART mode.
+         */
+        Peripheral::USART::Mode mode;
+
+        /**
+         * \brief Operating speed.
+         */
+        Peripheral::USART::Operating_Speed operating_speed;
+
+        /**
+         * \brief Clock polarity.
+         */
+        Peripheral::USART::Clock_Polarity clock_polarity;
+
+        /**
+         * \brief Clock phase.
+         */
+        Peripheral::USART::Clock_Phase clock_phase;
+
+        /**
+         * \brief Data exchange bit order.
+         */
+        Peripheral::USART::Bit_Order bit_order;
+    };
+
+    /**
      * \brief Constructor.
      */
     constexpr Basic_Controller() noexcept = default;
