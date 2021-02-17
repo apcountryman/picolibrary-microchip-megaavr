@@ -27,6 +27,7 @@
 
 #include "picolibrary/microchip/megaavr/gpio.h"
 #include "picolibrary/microchip/megaavr/peripheral/spi.h"
+#include "picolibrary/microchip/megaavr/peripheral/usart.h"
 #include "picolibrary/result.h"
 #include "picolibrary/spi.h"
 #include "picolibrary/utility.h"
@@ -231,6 +232,43 @@ class Basic_Controller<Peripheral::SPI> {
             m_spi->disable();
         } // if
     }
+};
+
+/**
+ * \brief USART peripheral based SPI basic controller.
+ */
+template<>
+class Basic_Controller<Peripheral::USART> {
+  public:
+    /**
+     * \brief Constructor.
+     */
+    constexpr Basic_Controller() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Basic_Controller( Basic_Controller && source ) noexcept = default;
+
+    Basic_Controller( Basic_Controller const & ) = delete;
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    auto operator=( Basic_Controller && expression ) noexcept -> Basic_Controller & = default;
+
+    auto operator=( Basic_Controller const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Basic_Controller() noexcept = default;
 };
 
 } // namespace picolibrary::Microchip::megaAVR::SPI
