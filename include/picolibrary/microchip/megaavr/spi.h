@@ -306,6 +306,14 @@ class Basic_Controller<Peripheral::USART> {
     Basic_Controller( Basic_Controller const & ) = delete;
 
     /**
+     * \brief Destructor.
+     */
+    ~Basic_Controller() noexcept
+    {
+        disable();
+    }
+
+    /**
      * \brief Assignment operator.
      *
      * \param[in] expression The expression to be assigned.
@@ -329,11 +337,17 @@ class Basic_Controller<Peripheral::USART> {
     auto operator=( Basic_Controller const & ) = delete;
 
     /**
-     * \brief Destructor.
+     * \brief Initialize the controller's hardware.
+     *
+     * \return Success.
      */
-    ~Basic_Controller() noexcept
+    auto initialize() noexcept -> Result<Void, Void>
     {
-        disable();
+        static_cast<void>( m_xck.initialize() );
+
+        m_usart->enable();
+
+        return {};
     }
 
   private:
