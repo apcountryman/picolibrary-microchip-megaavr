@@ -103,6 +103,8 @@ class Basic_Controller<Peripheral::SPI> {
         m_mosi{ std::move( mosi ) },
         m_spi{ &spi }
     {
+        m_spi->disable();
+
         m_spi->configure_controller();
     }
 
@@ -163,7 +165,6 @@ class Basic_Controller<Peripheral::SPI> {
         static_cast<void>( m_sck.initialize() );
         static_cast<void>( m_mosi.initialize() );
 
-        m_spi->configure_controller();
         m_spi->enable();
 
         return {};
