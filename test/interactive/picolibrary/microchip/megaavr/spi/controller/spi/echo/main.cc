@@ -55,24 +55,18 @@ using Controller = ::picolibrary::Microchip::megaAVR::SPI::Controller<SPI>;
  */
 int main()
 {
-    {
-        auto ss = Push_Pull_IO_Pin{ SS_PORT::instance(), SS_MASK };
-
-        static_cast<void>( ss.initialize() );
-
-        echo<Unbuffered_Output_Stream>(
-            Transmitter_8_N_1{ TRANSMITTER_USART::instance(),
-                               { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
-                                 .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } },
-            Controller{ Push_Pull_IO_Pin{ SCK_PORT::instance(), SCK_MASK },
-                        Push_Pull_IO_Pin{ MOSI_PORT::instance(), MOSI_MASK },
-                        CONTROLLER_SPI::instance() },
-            { SPI::Clock_Rate::CONTROLLER_CLOCK_RATE,
-              SPI::Clock_Polarity::CONTROLLER_CLOCK_POLARITY,
-              SPI::Clock_Phase::CONTROLLER_CLOCK_PHASE,
-              SPI::Bit_Order::CONTROLLER_BIT_ORDER },
-            []() { avrlibcpp::delay_ms( 100 ); } );
-    }
+    echo<Unbuffered_Output_Stream>(
+        Transmitter_8_N_1{ TRANSMITTER_USART::instance(),
+                           { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
+                             .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } },
+        Controller{ Push_Pull_IO_Pin{ SCK_PORT::instance(), SCK_MASK },
+                    Push_Pull_IO_Pin{ MOSI_PORT::instance(), MOSI_MASK },
+                    CONTROLLER_SPI::instance() },
+        { SPI::Clock_Rate::CONTROLLER_CLOCK_RATE,
+          SPI::Clock_Polarity::CONTROLLER_CLOCK_POLARITY,
+          SPI::Clock_Phase::CONTROLLER_CLOCK_PHASE,
+          SPI::Bit_Order::CONTROLLER_BIT_ORDER },
+        []() { avrlibcpp::delay_ms( 100 ); } );
 
     for ( ;; ) {}
 }

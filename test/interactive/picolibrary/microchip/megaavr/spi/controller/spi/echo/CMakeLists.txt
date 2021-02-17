@@ -29,17 +29,6 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
 
     if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_CONTROLLER_SPI_ENABLE_ECHO_INTERACTIVE_TEST} )
         set(
-            PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_SS_PORT
-            "" CACHE STRING
-            "picolibrary-microchip-megaavr: picolibrary::Microchip::megaAVR::SPI::Controller<picolibrary::Microchip::megaAVR::Peripheral::SPI> echo interactive test SS port"
-        )
-        set(
-            PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_SS_MASK
-            "" CACHE STRING
-            "picolibrary-microchip-megaavr: picolibrary::Microchip::megaAVR::SPI::Controller<picolibrary::Microchip::megaAVR::Peripheral::SPI> echo interactive test SS mask"
-        )
-
-        set(
             PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_TRANSMITTER_USART
             "" CACHE STRING
             "picolibrary-microchip-megaavr: picolibrary::Microchip::megaAVR::SPI::Controller<picolibrary::Microchip::megaAVR::Peripheral::SPI> echo interactive test transmitter USART"
@@ -109,8 +98,6 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
         )
         target_compile_definitions(
             test-interactive-picolibrary-microchip-megaavr-spi-controller-spi-echo
-            PRIVATE SS_PORT=${PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_SS_PORT}
-            PRIVATE SS_MASK=${PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_SS_MASK}
             PRIVATE TRANSMITTER_USART=${PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_TRANSMITTER_USART}
             PRIVATE TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED=${PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED}
             PRIVATE TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR=${PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR}
