@@ -366,6 +366,24 @@ class Basic_Controller<Peripheral::USART> {
         return {};
     }
 
+    /**
+     * \brief Exchange data with a device.
+     *
+     * \param[in] data The data to transmit.
+     *
+     * \return The received data.
+     */
+    auto exchange( std::uint8_t data ) noexcept -> Result<std::uint8_t, Void>
+    {
+        while ( not m_usart->transmit_buffer_empty() ) {}
+
+        m_usart->transmit( data );
+
+        while ( not m_usart->data_available() ) {}
+
+        return m_usart->receive<std::uint8_t>();
+    }
+
   private:
     /**
      * \brief The XCK pin.
