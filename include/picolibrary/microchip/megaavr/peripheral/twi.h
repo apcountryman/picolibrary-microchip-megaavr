@@ -284,6 +284,8 @@ class TWI {
      * \brief Peripheral/bus status.
      */
     enum class Status : std::uint8_t {
+        // #lizard forgives the length
+
         BUS_ERROR = 0x00, ///< Bus error due to illegal start or stop condition
 
         CONTROLLER_START_CONDITION_TRANSMITTED = 0x08, ///< Controller mode: start condition transmitted.
