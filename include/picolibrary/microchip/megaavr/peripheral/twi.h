@@ -221,6 +221,16 @@ class TWI {
         auto operator=( TWAR const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Configure the device address.
+         *
+         * \param[in] address The device address in transmitted form.
+         * \param[in] general_call_recognition The general call recognition configuration.
+         */
+        void configure(
+            std::uint8_t address                              = 0,
+            General_Call_Recognition general_call_recognition = General_Call_Recognition::DISABLED ) noexcept;
     };
 
     /**
@@ -365,6 +375,11 @@ inline void TWI::TWSR::configure( TWI::Prescaler prescaler ) noexcept
 inline auto TWI::TWSR::status() const noexcept -> TWI::Status
 {
     return static_cast<TWI::Status>( *this & Mask::TWS );
+}
+
+inline void TWI::TWAR::configure( std::uint8_t address, TWI::General_Call_Recognition general_call_recognition ) noexcept
+{
+    *this = address | static_cast<std::uint8_t>( general_call_recognition );
 }
 
 } // namespace picolibrary::Microchip::megaAVR::Peripheral
