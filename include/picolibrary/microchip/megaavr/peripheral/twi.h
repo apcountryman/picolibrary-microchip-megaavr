@@ -37,6 +37,10 @@ class TWI {
   public:
     enum class Prescaler : std::uint8_t;
 
+    enum class Interrupt_Enable_State : std::uint8_t;
+
+    enum class Response : std::uint8_t;
+
     enum class Status : std::uint8_t;
 
     enum class General_Call_Recognition : std::uint8_t;
@@ -110,6 +114,132 @@ class TWI {
         auto operator=( TWCR const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Configure the TWI.
+         */
+        void configure() noexcept
+        {
+            *this = 0;
+        }
+
+        /**
+         * \brief Enable the TWI.
+         */
+        void enable() noexcept
+        {
+            *this |= Mask::TWEN;
+        }
+
+        /**
+         * \brief Disable the TWI.
+         */
+        void disable() noexcept
+        {
+            *this &= ~Mask::TWEN;
+        }
+
+        /**
+         * \brief Get the interrupt enable state.
+         *
+         * \return The interrupt enable state.
+         */
+        auto const interrupt_enable_state() const noexcept -> Interrupt_Enable_State;
+
+        /**
+         * \brief Enable the TWI interrupt.
+         */
+        void enable_interrupt() noexcept
+        {
+            *this |= Mask::TWIE;
+        }
+
+        /**
+         * \brief Disable the TWI interrupt.
+         */
+        void disable_interrupt() noexcept
+        {
+            *this &= ~Mask::TWIE;
+        }
+
+        /**
+         * \brief Enable ACK.
+         */
+        void enable_ack() noexcept
+        {
+            *this |= Mask::TWEA;
+        }
+
+        /**
+         * \brief Disable ACK.
+         */
+        void disable_ack() noexcept
+        {
+            *this &= ~Mask::TWEA;
+        }
+
+        /**
+         * \brief Check if a write collision occurred.
+         *
+         * \return true if a write collision occurred.
+         * \return false if a write collision did not occur.
+         */
+        auto write_collision() const noexcept -> bool
+        {
+            return *this & Mask::TWWC;
+        }
+
+        /**
+         * \brief Check if an operation is complete.
+         *
+         * \return true if the operation is complete.
+         * \return false if the operation is not complete.
+         */
+        auto operation_complete() const noexcept -> bool
+        {
+            return *this & Mask::TWINT;
+        }
+
+        /**
+         * \brief Initiate transmission of a start condition or a repeated start
+         *        condition.
+         *
+         * \param[in] interrupt_enable_state The interrupt enable state.
+         */
+        void start( Interrupt_Enable_State interrupt_enable_state ) noexcept
+        {
+            *this = Mask::TWINT | Mask::TWSTA | Mask::TWEN
+                    | static_cast<std::uint8_t>( interrupt_enable_state );
+        }
+
+        /**
+         * \brief Transmit a stop condition.
+         *
+         * \param[in] interrupt_enable_state The interrupt enable state.
+         */
+        void stop( Interrupt_Enable_State interrupt_enable_state ) noexcept
+        {
+            *this = Mask::TWINT | Mask::TWSTO | Mask::TWEN
+                    | static_cast<std::uint8_t>( interrupt_enable_state );
+        }
+
+        /**
+         * \brief Initiate a write of a device address and operation or a data byte.
+         *
+         * \param[in] interrupt_enable_state The interrupt enable state.
+         */
+        void write( Interrupt_Enable_State interrupt_enable_state ) noexcept
+        {
+            *this = Mask::TWINT | Mask::TWEN | static_cast<std::uint8_t>( interrupt_enable_state );
+        }
+
+        /**
+         * \brief Initiate a data read.
+         *
+         * \param[in] response The response to send after the data is read.
+         * \param[in] interrupt_enable_state The interrupt enable state.
+         */
+        void read( Response response, Interrupt_Enable_State interrupt_enable_state ) noexcept;
     };
 
     /**
@@ -301,6 +431,22 @@ class TWI {
     };
 
     /**
+     * \brief Interrupt enable state.
+     */
+    enum class Interrupt_Enable_State : std::uint8_t {
+        DISABLED = 0b0 << TWCR::Bit::TWIE, ///< Disabled.
+        ENABLED  = 0b1 << TWCR::Bit::TWIE, ///< Enabled.
+    };
+
+    /**
+     * \brief Response.
+     */
+    enum class Response : std::uint8_t {
+        ACK  = 0b1 << TWCR::Bit::TWEA, ///< ACK.
+        NACK = 0b0 << TWCR::Bit::TWEA, ///< NACK.
+    };
+
+    /**
      * \brief Peripheral/bus status.
      */
     enum class Status : std::uint8_t {
@@ -377,17 +523,28 @@ class TWI {
     TWAMR twamr;
 };
 
-inline void TWI::TWSR::configure( TWI::Prescaler prescaler ) noexcept
+inline auto TWI::TWCR::interrupt_enable_state() const noexcept -> Interrupt_Enable_State
+{
+    return static_cast<Interrupt_Enable_State>( *this & Mask::TWIE );
+}
+
+inline void TWI::TWCR::read( Response response, Interrupt_Enable_State interrupt_enable_state ) noexcept
+{
+    *this = Mask::TWINT | Mask::TWEN | static_cast<std::uint8_t>( response )
+            | static_cast<std::uint8_t>( interrupt_enable_state );
+}
+
+inline void TWI::TWSR::configure( Prescaler prescaler ) noexcept
 {
     *this = static_cast<std::uint8_t>( prescaler );
 }
 
-inline auto TWI::TWSR::status() const noexcept -> TWI::Status
+inline auto TWI::TWSR::status() const noexcept -> Status
 {
-    return static_cast<TWI::Status>( *this & Mask::TWS );
+    return static_cast<Status>( *this & Mask::TWS );
 }
 
-inline void TWI::TWAR::configure( std::uint8_t address, TWI::General_Call_Recognition general_call_recognition ) noexcept
+inline void TWI::TWAR::configure( std::uint8_t address, General_Call_Recognition general_call_recognition ) noexcept
 {
     *this = address | static_cast<std::uint8_t>( general_call_recognition );
 }
