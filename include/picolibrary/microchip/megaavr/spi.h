@@ -246,7 +246,7 @@ class Basic_Controller<Peripheral::USART> {
      */
     struct Configuration {
         /**
-         * \brief The clock generator scaling factor.
+         * \brief Clock generator scaling factor.
          */
         std::uint16_t scaling_factor;
 
@@ -395,7 +395,7 @@ class Basic_Controller<Peripheral::USART> {
     Peripheral::USART * m_usart{};
 
     /**
-     * \brief Disable the SPI.
+     * \brief Disable the USART.
      */
     void disable() noexcept
     {
