@@ -278,6 +278,16 @@ class TWI {
         auto operator=( TWAMR const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Configure the device address mask.
+         *
+         * \param[in] address_mask The device address mask in transmitted form.
+         */
+        void configure( std::uint8_t address_mask = 0 ) noexcept
+        {
+            *this = address_mask;
+        }
     };
 
     /**
