@@ -57,6 +57,7 @@ See the `install` script's help text for usage details.
 
 ## Authors
 - Andrew Countryman
+- Jay Lamb
 
 ## License
 `picolibrary-microchip-megaavr` is licensed under the Apache License, Version 2.0.
