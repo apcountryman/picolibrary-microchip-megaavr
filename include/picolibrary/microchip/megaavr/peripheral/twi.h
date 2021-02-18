@@ -159,6 +159,18 @@ class TWI {
         auto operator=( TWSR const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+
+        /**
+         * \brief Configure the TWI bit rate generator prescaler value.
+         *
+         * \param[in] The desired bit rate generator prescaler value.
+         */
+        void configure( Prescaler prescaler ) noexcept;
+
+        /**
+         * \brief Get the peripheral/bus status.
+         */
+        auto status() const noexcept -> Status;
     };
 
     /**
@@ -267,7 +279,7 @@ class TWI {
     };
 
     /**
-     * \brief Status.
+     * \brief Peripheral/bus status.
      */
     enum class Status : std::uint8_t {
         BUS_ERROR = 0x00, ///< Bus error due to illegal start or stop condition
@@ -332,6 +344,16 @@ class TWI {
      */
     TWAMR twamr;
 };
+
+inline void TWI::TWSR::configure( TWI::Prescaler prescaler ) noexcept
+{
+    *this = static_cast<std::uint8_t>( prescaler );
+}
+
+inline auto TWI::TWSR::status() const noexcept -> TWI::Status
+{
+    return static_cast<TWI::Status>( *this & Mask::TWS );
+}
 
 } // namespace picolibrary::Microchip::megaAVR::Peripheral
 
