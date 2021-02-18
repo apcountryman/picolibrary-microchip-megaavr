@@ -717,6 +717,14 @@ inline void TWI::TWAR::configure( std::uint8_t address, General_Call_Recognition
     *this = address | static_cast<std::uint8_t>( general_call_recognition );
 }
 
+/**
+ * \brief Microchip megaAVR 2-wire Serial Interface (TWI) peripheral instance.
+ *
+ * \tparam INSTANCE_ADDRESS The address of the TWI instance.
+ */
+template<std::uintptr_t INSTANCE_ADDRESS>
+using TWI_Instance = Instance<TWI, INSTANCE_ADDRESS>;
+
 } // namespace picolibrary::Microchip::megaAVR::Peripheral
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_TWI_H
