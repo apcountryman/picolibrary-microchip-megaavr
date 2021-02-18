@@ -144,7 +144,7 @@ class TWI {
          *
          * \return The interrupt enable state.
          */
-        auto const interrupt_enable_state() const noexcept -> Interrupt_Enable_State;
+        auto interrupt_enable_state() const noexcept -> Interrupt_Enable_State;
 
         /**
          * \brief Enable the TWI interrupt.
@@ -224,7 +224,7 @@ class TWI {
         }
 
         /**
-         * \brief Initiate a write of a device address and operation or a data byte.
+         * \brief Initiate a write of a device address and operation, or a data byte.
          *
          * \param[in] interrupt_enable_state The interrupt enable state.
          */
@@ -297,7 +297,7 @@ class TWI {
          *
          * \param[in] The desired bit rate generator prescaler value.
          */
-        void configure( Prescaler prescaler ) noexcept;
+        void configure( Prescaler prescaler = Prescaler::_1 ) noexcept;
 
         /**
          * \brief Get the peripheral/bus status.
@@ -358,9 +358,7 @@ class TWI {
          * \param[in] address The device address in transmitted form.
          * \param[in] general_call_recognition The general call recognition configuration.
          */
-        void configure(
-            std::uint8_t address                              = 0,
-            General_Call_Recognition general_call_recognition = General_Call_Recognition::DISABLED ) noexcept;
+        void configure( std::uint8_t address, General_Call_Recognition general_call_recognition ) noexcept;
     };
 
     /**
@@ -414,7 +412,7 @@ class TWI {
          *
          * \param[in] address_mask The device address mask in transmitted form.
          */
-        void configure( std::uint8_t address_mask = 0 ) noexcept
+        void configure( std::uint8_t address_mask ) noexcept
         {
             *this = address_mask;
         }
@@ -521,6 +519,176 @@ class TWI {
      * \brief TWAMR.
      */
     TWAMR twamr;
+
+    /**
+     * \brief Configure the TWI for use as a controller.
+     *
+     * \param[in] prescaler The desired bit rate generator prescaler value.
+     * \param[in] scaling_factor The desired bit rate generator scaling factor.
+     * \param[in] address The controller's device address in transmitted form.
+     * \param[in] general_call_recognition The general call recognition configuration.
+     * \param[in] address_mask The controller's device address mask in transmitted form.
+     */
+    void configure(
+        Prescaler                prescaler,
+        std::uint8_t             scaling_factor,
+        std::uint8_t             address                  = 0,
+        General_Call_Recognition general_call_recognition = General_Call_Recognition::DISABLED,
+        std::uint8_t             address_mask             = 0 ) noexcept
+    {
+        twcr.configure();
+        twsr.configure( prescaler );
+
+        twbr = scaling_factor;
+
+        twar.configure( address, general_call_recognition );
+        twamr.configure( address_mask );
+    }
+
+    /**
+     * \brief Configure the TWI for use as a device.
+     *
+     * \param[in] address The controller's device address in transmitted form.
+     * \param[in] general_call_recognition The general call recognition configuration.
+     * \param[in] address_mask The controller's device address mask in transmitted form.
+     */
+    void configure( std::uint8_t address, General_Call_Recognition general_call_recognition, std::uint8_t address_mask ) noexcept
+    {
+        twcr.configure();
+        twsr.configure();
+
+        twbr = 0;
+
+        twar.configure( address, general_call_recognition );
+        twamr.configure( address_mask );
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::enable()
+     */
+    void enable() noexcept
+    {
+        twcr.enable();
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::disable()
+     */
+    void disable() noexcept
+    {
+        twcr.disable();
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::interrupt_enable_state()
+     */
+    auto interrupt_enable_state() const noexcept
+    {
+        return twcr.interrupt_enable_state();
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::enable_interrupt()
+     */
+    void enable_interrupt() noexcept
+    {
+        twcr.enable_interrupt();
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::disable_interrupt()
+     */
+    void disable_interrupt() noexcept
+    {
+        twcr.disable_interrupt();
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::enable_ack()
+     */
+    void enable_ack() noexcept
+    {
+        twcr.enable_ack();
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::disable_ack()
+     */
+    void disable_ack() noexcept
+    {
+        twcr.disable_ack();
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::write_collision()
+     */
+    auto write_collision() const noexcept
+    {
+        return twcr.write_collision();
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::operation_complete()
+     */
+    auto operation_complete() const noexcept
+    {
+        return twcr.operation_complete();
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::start()
+     */
+    void start( Interrupt_Enable_State interrupt_enable_state = Interrupt_Enable_State::DISABLED ) noexcept
+    {
+        twcr.start( interrupt_enable_state );
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::stop()
+     */
+    void stop( Interrupt_Enable_State interrupt_enable_state = Interrupt_Enable_State::DISABLED ) noexcept
+    {
+        twcr.stop( interrupt_enable_state );
+    }
+
+    /**
+     * \brief Initiate a write of a device address and operation, or a data byte.
+     *
+     * \param[in] data The device address and operation, or the data byte to write.
+     * \param[in] interrupt_enable_state The interrupt enable state.
+     */
+    void write( std::uint8_t data, Interrupt_Enable_State interrupt_enable_state = Interrupt_Enable_State::DISABLED ) noexcept
+    {
+        twdr = data;
+
+        twcr.write( interrupt_enable_state );
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::read()
+     */
+    void read( Response response, Interrupt_Enable_State interrupt_enable_state = Interrupt_Enable_State::DISABLED ) noexcept
+    {
+        twcr.read( response, interrupt_enable_state );
+    }
+
+    /**
+     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWSR::status()
+     */
+    auto status() const noexcept
+    {
+        return twsr.status();
+    }
+
+    /**
+     * \brief Read received data.
+     *
+     * \return The received data.
+     */
+    auto read() const noexcept -> std::uint8_t
+    {
+        return twdr;
+    }
 };
 
 inline auto TWI::TWCR::interrupt_enable_state() const noexcept -> Interrupt_Enable_State
