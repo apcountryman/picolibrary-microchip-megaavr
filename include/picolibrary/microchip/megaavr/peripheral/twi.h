@@ -301,6 +301,8 @@ class TWI {
 
         /**
          * \brief Get the peripheral/bus status.
+         *
+         * \return The peripheral/bus status.
          */
         auto status() const noexcept -> Status;
     };
@@ -365,7 +367,7 @@ class TWI {
      * \brief TWI (Device) Address Mask Register (TWAMR).
      *
      * This register has the following fields:
-     * - TWI (Device) Address Mask(TWAM)
+     * - TWI (Device) Address Mask (TWAM)
      */
     class TWAMR : public Register<std::uint8_t> {
       public:
@@ -450,7 +452,7 @@ class TWI {
     enum class Status : std::uint8_t {
         // #lizard forgives the length
 
-        BUS_ERROR = 0x00, ///< Bus error due to illegal start or stop condition
+        BUS_ERROR = 0x00, ///< Bus error due to illegal start or stop condition.
 
         CONTROLLER_START_CONDITION_TRANSMITTED = 0x08, ///< Controller mode: start condition transmitted.
         CONTROLLER_REPEATED_START_CONDITION_TRANSMITTED    = 0x10, ///< Controller mode: repeated start condition transmitted.
@@ -548,9 +550,9 @@ class TWI {
     /**
      * \brief Configure the TWI for use as a device.
      *
-     * \param[in] address The controller's device address in transmitted form.
+     * \param[in] address The device address in transmitted form.
      * \param[in] general_call_recognition The general call recognition configuration.
-     * \param[in] address_mask The controller's device address mask in transmitted form.
+     * \param[in] address_mask The device address mask in transmitted form.
      */
     void configure( std::uint8_t address, General_Call_Recognition general_call_recognition, std::uint8_t address_mask ) noexcept
     {
