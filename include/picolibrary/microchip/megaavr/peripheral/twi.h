@@ -35,6 +35,10 @@ namespace picolibrary::Microchip::megaAVR::Peripheral {
  */
 class TWI {
   public:
+    enum class Prescaler : std::uint8_t;
+
+    enum class Status : std::uint8_t;
+
     /**
      * \brief TWI Control Register (TWCR).
      *
@@ -250,6 +254,52 @@ class TWI {
         auto operator=( TWAMR const & ) = delete;
 
         using Register<std::uint8_t>::operator=;
+    };
+
+    /**
+     * \brief Bit rate generator prescaler value.
+     */
+    enum class Prescaler : std::uint8_t {
+        _1  = 0b00 << TWSR::Bit::TWPS, ///< 1.
+        _4  = 0b01 << TWSR::Bit::TWPS, ///< 4.
+        _16 = 0b10 << TWSR::Bit::TWPS, ///< 16.
+        _64 = 0b11 << TWSR::Bit::TWPS, ///< 64.
+    };
+
+    /**
+     * \brief Status.
+     */
+    enum class Status : std::uint8_t {
+        BUS_ERROR = 0x00, ///< Bus error due to illegal start or stop condition
+
+        CONTROLLER_START_CONDITION_TRANSMITTED = 0x08, ///< Controller mode: start condition transmitted.
+        CONTROLLER_REPEATED_START_CONDITION_TRANSMITTED    = 0x10, ///< Controller mode: repeated start condition transmitted.
+        CONTROLLER_ADDRESS_WRITE_TRANSMITTED_ACK_RESPONSE  = 0x18, ///< Controller mode: device address + write transmitted, ACK response.
+        CONTROLLER_ADDRESS_WRITE_TRANSMITTED_NACK_RESPONSE = 0x20, ///< Controller mode: device address + write transmitted, NACK response.
+        CONTROLLER_DATA_TRANSMITTED_ACK_RESPONSE = 0x28, ///< Controller mode: data transmitted, ACK response.
+        CONTROLLER_DATA_TRANSMITTED_NACK_RESPONSE = 0x30, ///< Controller mode: data transmitted, NACK response.
+        CONTROLLER_ARBITRATION_LOST = 0x38, ///< Controller mode: arbitration lost.
+        CONTROLLER_ADDRESS_READ_TRANSMITTED_ACK_RESPONSE  = 0x40, ///< Controller mode: device address + read transmitted, ACK response.
+        CONTROLLER_ADDRESS_READ_TRANSMITTED_NACK_RESPONSE = 0x48, ///< Controller mode: device address + read transmitted, NACK response.
+        CONTROLLER_DATA_RECEIVED_ACK_RESPONSE = 0x50, ///< Controller mode: data received, ACK response.
+        CONTROLLER_DATA_RECEIVED_NACK_RESPONSE = 0x58, ///< Controller mode: data received, NACK response.
+
+        DEVICE_ADDRESS_WRITE_RECEIVED_ACK_RESPONSE                  = 0x60, ///< Device mode: device address + write received, ACK response.
+        DEVICE_ARBITRATION_LOST_ADDRESS_WRITE_RECEIVED_ACK_RESPONSE = 0x68, ///< Device mode: arbitration lost, device address + write received, ACK response.
+        DEVICE_GENERAL_CALL_RECEIVED_ACK_RESPONSE = 0x70, ///< General call address received, ACK response.
+        DEVICE_ARBITRATION_LOST_GENERAL_CALL_RECEIVED_ACK_RESPONSE = 0x78, ///< Device mode: arbitration lost, general call address received, ACK response.
+        DEVICE_DATA_RECEIVED_ACK_RESPONSE = 0x80, ///< Device mode: data received, ACK response.
+        DEVICE_DATA_RECEIVED_NACK_RESPONSE = 0x88, ///< Device mode: data received, NACK response.
+        DEVICE_GENERAL_CALL_DATA_RECEIVED_ACK_RESPONSE             = 0x90, ///< Device mode: general call, data received, ACK response.
+        DEVICE_GENERAL_CALL_DATA_RECEIVED_NACK_RESPONSE            = 0x98, ///< Device mode: general call, data received, NACK response.
+        DEVICE_STOP_OR_REPEATED_START_RECEIVED                     = 0xA0, ///< Device mode: stop condition or repeated start condition received.
+        DEVICE_ADDRESS_READ_RECEIVED_ACK_RESPONSE                  = 0xA8, ///< Device mode: device address + read received, ACK response.
+        DEVICE_ARBITRATION_LOST_ADDRESS_READ_RECEIVED_ACK_RESPONSE = 0xB0, ///< Device mode: arbitration lost, device address + read received, ACK response.
+        DEVICE_DATA_TRANSMITTED_ACK_RESPONSE = 0xB8, ///< Device mode: data transmitted, ACK response.
+        DEVICE_DATA_TRANSMITTED_NACK_RESPONSE = 0xC0, ///< Device mode: data transmitted, NACK response.
+        DEVICE_ALL_DATA_TRANSMITTED_ACK_RESPONSE = 0xC8, ///< Device mode: all data transmitted, ACK response.
+
+        NO_STATE_INFORMATION_AVAILABLE = 0xF8, ///< No state information available.
     };
 
     /**
