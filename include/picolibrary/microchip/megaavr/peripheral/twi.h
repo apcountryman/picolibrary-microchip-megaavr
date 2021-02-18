@@ -39,6 +39,8 @@ class TWI {
 
     enum class Status : std::uint8_t;
 
+    enum class General_Call_Recognition : std::uint8_t;
+
     /**
      * \brief TWI Control Register (TWCR).
      *
@@ -312,6 +314,14 @@ class TWI {
         DEVICE_ALL_DATA_TRANSMITTED_ACK_RESPONSE = 0xC8, ///< Device mode: all data transmitted, ACK response.
 
         NO_STATE_INFORMATION_AVAILABLE = 0xF8, ///< No state information available.
+    };
+
+    /**
+     * \brief General call recognition configuration.
+     */
+    enum class General_Call_Recognition : std::uint8_t {
+        DISABLED = 0b0 << TWAR::Bit::TWGCE, ///< Disabled.
+        ENABLED  = 0b1 << TWAR::Bit::TWGCE, ///< Enabled.
     };
 
     /**
