@@ -103,7 +103,7 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
             picolibrary-microchip-megaavr
         )
         add_avrdude_programming_targets(
-            test-interactive-picolibrary-microchip-megaavr-spi-controller-spi-echo
+            test-interactive-picolibrary-microchip-megaavr-spi-controller-usart-echo
             "${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_ALWAYS_RECOVER_FUSES}"
             "${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_FLASH_ERASE}"
             "${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_DISABLE_AUTOMATIC_VERIFY}"

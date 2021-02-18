@@ -59,7 +59,7 @@ int main()
                            { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
                              .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } },
         Controller{ Push_Pull_IO_Pin{ XCK_PORT::instance(), XCK_MASK }, CONTROLLER_USART::instance() },
-        { USART::Scaling_Factor::CONTROLLER_SCALING_FACTOR,
+        { CONTROLLER_SCALING_FACTOR,
           USART::Clock_Polarity::CONTROLLER_CLOCK_POLARITY,
           USART::Clock_Phase::CONTROLLER_CLOCK_PHASE,
           USART::Bit_Order::CONTROLLER_BIT_ORDER },
