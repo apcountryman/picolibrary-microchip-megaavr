@@ -237,6 +237,38 @@ class Basic_Controller {
         } // switch
     }
 
+    /**
+     * \brief Write data to a device.
+     *
+     * \param[in] data The data to write.
+     *
+     * \return Nothing if the write succeeded.
+     * \return picolibrary::Generic_Error::BUS_ERROR if a bus error occurred.
+     * \return picolibrary::Generic_Error::NONRESPONSIVE_DEVICE if the device did not
+     *         acknowledge the write.
+     * \return picolibrary::Generic_Error::ARBITRATION_LOST if the controller lost
+     *         arbitration during the write.
+     * \return picolibrary::Generic_Error::LOGIC_ERROR if an unexpected TWI peripheral
+     *         status is encountered.
+     */
+    auto write( std::uint8_t data ) noexcept -> Result<Void, Error_Code>
+    {
+        m_twi->write( data );
+
+        while ( not m_twi->operation_complete() ) {}
+
+        switch ( m_twi->status() ) {
+            case Peripheral::TWI::Status::BUS_ERROR: return Generic_Error::BUS_ERROR;
+            case Peripheral::TWI::Status::CONTROLLER_DATA_TRANSMITTED_ACK_RESPONSE:
+                return {};
+            case Peripheral::TWI::Status::CONTROLLER_DATA_TRANSMITTED_NACK_RESPONSE:
+                return Generic_Error::NONRESPONSIVE_DEVICE;
+            case Peripheral::TWI::Status::CONTROLLER_ARBITRATION_LOST:
+                return Generic_Error::ARBITRATION_LOST;
+            default: return Generic_Error::LOGIC_ERROR;
+        } // switch
+    }
+
   private:
     /**
      * \brief The TWI peripheral used by the I2C controller.
