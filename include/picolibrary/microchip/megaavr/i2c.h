@@ -26,6 +26,7 @@
 #include <cstdint>
 
 #include "picolibrary/error.h"
+#include "picolibrary/i2c.h"
 #include "picolibrary/microchip/megaavr/peripheral/twi.h"
 #include "picolibrary/result.h"
 #include "picolibrary/utility.h"
@@ -170,6 +171,43 @@ class Basic_Controller {
         m_twi->stop();
 
         return {};
+    }
+
+    /**
+     * \brief Address a device.
+     *
+     * \param[in] address The address of the device to address.
+     * \param[in] operation The operation that will be performed once the device has been
+     *            addressed.
+     *
+     * \return Nothing if addressing the device succeeded.
+     * \return picolibrary::Generic_Error::BUS_ERROR if a bus error occurred.
+     * \return picolibrary::Generic_Error::NONRESPONSIVE_DEVICE if the device did not
+     *         respond when addressed.
+     * \return picolibrary::Generic_Error::ARBITRATION_LOST if the controller lost
+     *         arbitration while attempting to address the device.
+     * \return picolibrary::Generic_Error::LOGIC_ERROR if an unexpected TWI peripheral
+     *         status is encountered.
+     */
+    auto address( ::picolibrary::I2C::Address address, ::picolibrary::I2C::Operation operation ) noexcept
+        -> Result<Void, Error_Code>
+    {
+        m_twi->write( address.transmitted() | static_cast<std::uint8_t>( operation ) );
+
+        while ( not m_twi->operation_complete() ) {}
+
+        switch ( m_twi->status() ) {
+            case Peripheral::TWI::Status::BUS_ERROR: return Generic_Error::BUS_ERROR;
+            case Peripheral::TWI::Status::CONTROLLER_ADDRESS_WRITE_TRANSMITTED_ACK_RESPONSE:
+            case Peripheral::TWI::Status::CONTROLLER_ADDRESS_READ_TRANSMITTED_ACK_RESPONSE:
+                return {};
+            case Peripheral::TWI::Status::CONTROLLER_ADDRESS_WRITE_TRANSMITTED_NACK_RESPONSE:
+            case Peripheral::TWI::Status::CONTROLLER_ADDRESS_READ_TRANSMITTED_NACK_RESPONSE:
+                return Generic_Error::NONRESPONSIVE_DEVICE;
+            case Peripheral::TWI::Status::CONTROLLER_ARBITRATION_LOST:
+                return Generic_Error::ARBITRATION_LOST;
+            default: return Generic_Error::LOGIC_ERROR;
+        } // switch
     }
 
   private:
