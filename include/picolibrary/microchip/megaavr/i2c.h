@@ -27,6 +27,43 @@
  * \brief Microchip megaAVR Inter-Integrated Circuit (I2C) facilities.
  */
 namespace picolibrary::Microchip::megaAVR::I2C {
+
+/**
+ * \brief I2C basic controller.
+ */
+class Basic_Controller {
+  public:
+    /**
+     * \brief Constructor.
+     */
+    constexpr Basic_Controller() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Basic_Controller( Basic_Controller && source ) noexcept = default;
+
+    Basic_Controller( Basic_Controller const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Basic_Controller() noexcept = default;
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto operator=( Basic_Controller && expression ) noexcept -> Basic_Controller & = default;
+
+    auto operator=( Basic_Controller const & ) = delete;
+};
+
 } // namespace picolibrary::Microchip::megaAVR::I2C
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_I2C_H
