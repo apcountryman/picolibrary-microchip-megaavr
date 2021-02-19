@@ -42,6 +42,21 @@ namespace picolibrary::Microchip::megaAVR::I2C {
 class Basic_Controller {
   public:
     /**
+     * \brief Bit rate generator configuration.
+     */
+    struct Bit_Rate_Generator_Configuration {
+        /**
+         * \brief Prescaler.
+         */
+        Peripheral::TWI::Prescaler prescaler;
+
+        /**
+         * \brief Scaling factor.
+         */
+        std::uint8_t scaling_factor;
+    };
+
+    /**
      * \brief Constructor.
      */
     constexpr Basic_Controller() noexcept = default;
@@ -50,16 +65,17 @@ class Basic_Controller {
      * \brief Constructor.
      *
      * \param[in] twi The TWI peripheral used by the I2C controller.
-     * \param[in] prescaler The desired bit rate generator prescaler value.
-     * \param[in] scaling_factor The desired bit rate generator scaling factor.
+     * \param[in] bit_rate_generator_configuration The desired bit rate generator
+     *            configuration.
      */
-    Basic_Controller( Peripheral::TWI & twi, Peripheral::TWI::Prescaler prescaler, std::uint8_t scaling_factor ) noexcept
+    Basic_Controller( Peripheral::TWI & twi, Bit_Rate_Generator_Configuration bit_rate_generator_configuration ) noexcept
         :
         m_twi{ &twi }
     {
         m_twi->disable();
 
-        m_twi->configure( prescaler, scaling_factor );
+        m_twi->configure(
+            bit_rate_generator_configuration.prescaler, bit_rate_generator_configuration.scaling_factor );
     }
 
     /**
