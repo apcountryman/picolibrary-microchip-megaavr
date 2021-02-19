@@ -23,6 +23,10 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_I2C_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_I2C_H
 
+#include <cstdint>
+
+#include "picolibrary/microchip/megaavr/peripheral/twi.h"
+
 /**
  * \brief Microchip megaAVR Inter-Integrated Circuit (I2C) facilities.
  */
@@ -41,16 +45,39 @@ class Basic_Controller {
     /**
      * \brief Constructor.
      *
+     * \param[in] twi The TWI peripheral used by the I2C controller.
+     * \param[in] prescaler The desired bit rate generator prescaler value.
+     * \param[in] scaling_factor The desired bit rate generator scaling factor.
+     */
+    Basic_Controller( Peripheral::TWI & twi, Peripheral::TWI::Prescaler prescaler, std::uint8_t scaling_factor ) noexcept
+        :
+        m_twi{ &twi }
+    {
+        m_twi->disable();
+
+        m_twi->configure( prescaler, scaling_factor );
+    }
+
+    /**
+     * \brief Constructor.
+     *
      * \param[in] source The source of the move.
      */
-    constexpr Basic_Controller( Basic_Controller && source ) noexcept = default;
+    constexpr Basic_Controller( Basic_Controller && source ) noexcept :
+        m_twi{ source.m_twi }
+    {
+        source.m_twi = nullptr;
+    }
 
     Basic_Controller( Basic_Controller const & ) = delete;
 
     /**
      * \brief Destructor.
      */
-    ~Basic_Controller() noexcept = default;
+    ~Basic_Controller() noexcept
+    {
+        disable();
+    }
 
     /**
      * \brief Assignment operator.
@@ -59,9 +86,36 @@ class Basic_Controller {
      *
      * \return The assigned to object.
      */
-    constexpr auto operator=( Basic_Controller && expression ) noexcept -> Basic_Controller & = default;
+    auto & operator=( Basic_Controller && expression ) noexcept
+    {
+        if ( &expression != this ) {
+            disable();
+
+            m_twi = expression.m_twi;
+
+            expression.m_twi = nullptr;
+        } // if
+
+        return *this;
+    }
 
     auto operator=( Basic_Controller const & ) = delete;
+
+  private:
+    /**
+     * \brief The TWI peripheral used by the I2C controller.
+     */
+    Peripheral::TWI * m_twi{};
+
+    /**
+     * \brief Disable the TWI.
+     */
+    void disable() noexcept
+    {
+        if ( m_twi ) {
+            m_twi->disable();
+        } // if
+    }
 };
 
 } // namespace picolibrary::Microchip::megaAVR::I2C
