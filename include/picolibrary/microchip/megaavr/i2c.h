@@ -210,6 +210,33 @@ class Basic_Controller {
         } // switch
     }
 
+    /**
+     * \brief Read data from a device.
+     *
+     * \param[in] response The response to send after the data is read.
+     *
+     * \return The read data if the read succeeded.
+     * \return picolibrary::Generic_Error::BUS_ERROR if a bus error occurred.
+     * \return picolibrary::Generic_Error::LOGIC_ERROR if an unexpected TWI peripheral
+     *         status is encountered.
+     */
+    auto read( ::picolibrary::I2C::Response response ) noexcept -> Result<std::uint8_t, Error_Code>
+    {
+        m_twi->read(
+            response == ::picolibrary::I2C::Response::ACK ? Peripheral::TWI::Response::ACK
+                                                          : Peripheral::TWI::Response::NACK );
+
+        while ( not m_twi->operation_complete() ) {}
+
+        switch ( m_twi->status() ) {
+            case Peripheral::TWI::Status::BUS_ERROR: return Generic_Error::BUS_ERROR;
+            case Peripheral::TWI::Status::CONTROLLER_DATA_RECEIVED_ACK_RESPONSE:
+            case Peripheral::TWI::Status::CONTROLLER_DATA_RECEIVED_NACK_RESPONSE:
+                return m_twi->read();
+            default: return Generic_Error::LOGIC_ERROR;
+        } // switch
+    }
+
   private:
     /**
      * \brief The TWI peripheral used by the I2C controller.
