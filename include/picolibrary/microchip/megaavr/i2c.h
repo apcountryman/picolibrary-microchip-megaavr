@@ -138,6 +138,28 @@ class Basic_Controller {
         } // switch
     }
 
+    /**
+     * \brief Transmit a repeated start condition.
+     *
+     * \return Nothing if repeated start condition transmission succeeded.
+     * \return picolibrary::Generic_Error::BUS_ERROR if a bus error occurred.
+     * \return picolibrary::Generic_Error::LOGIC_ERROR if an unexpected TWI peripheral
+     *         status is encountered.
+     */
+    auto repeated_start() noexcept -> Result<Void, Error_Code>
+    {
+        m_twi->start();
+
+        while ( not m_twi->operation_complete() ) {}
+
+        switch ( m_twi->status() ) {
+            case Peripheral::TWI::Status::BUS_ERROR: return Generic_Error::BUS_ERROR;
+            case Peripheral::TWI::Status::CONTROLLER_REPEATED_START_CONDITION_TRANSMITTED:
+                return {};
+            default: return Generic_Error::LOGIC_ERROR;
+        } // switch
+    }
+
   private:
     /**
      * \brief The TWI peripheral used by the I2C controller.
