@@ -26,6 +26,8 @@
 #include <cstdint>
 
 #include "picolibrary/microchip/megaavr/peripheral/twi.h"
+#include "picolibrary/result.h"
+#include "picolibrary/utility.h"
 
 /**
  * \brief Microchip megaAVR Inter-Integrated Circuit (I2C) facilities.
@@ -100,6 +102,18 @@ class Basic_Controller {
     }
 
     auto operator=( Basic_Controller const & ) = delete;
+
+    /**
+     * \brief Initialize the controller's hardware.
+     *
+     * \return Success.
+     */
+    auto initialize() noexcept -> Result<Void, Void>
+    {
+        m_twi->enable();
+
+        return {};
+    }
 
   private:
     /**
