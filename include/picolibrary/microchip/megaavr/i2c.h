@@ -25,6 +25,7 @@
 
 #include <cstdint>
 
+#include "picolibrary/error.h"
 #include "picolibrary/microchip/megaavr/peripheral/twi.h"
 #include "picolibrary/result.h"
 #include "picolibrary/utility.h"
@@ -113,6 +114,28 @@ class Basic_Controller {
         m_twi->enable();
 
         return {};
+    }
+
+    /**
+     * \brief Transmit a start condition.
+     *
+     * \return Nothing if start condition transmission succeeded.
+     * \return picolibrary::Generic_Error::BUS_ERROR if a bus error occurred.
+     * \return picolibrary::Generic_Error::LOGIC_ERROR if an unexpected TWI peripheral
+     *         status is encountered.
+     */
+    auto start() noexcept -> Result<Void, Error_Code>
+    {
+        m_twi->start();
+
+        while ( not m_twi->operation_complete() ) {}
+
+        switch ( m_twi->status() ) {
+            case Peripheral::TWI::Status::BUS_ERROR: return Generic_Error::BUS_ERROR;
+            case Peripheral::TWI::Status::CONTROLLER_START_CONDITION_TRANSMITTED:
+                return {};
+            default: return Generic_Error::LOGIC_ERROR;
+        } // switch
     }
 
   private:
