@@ -62,10 +62,10 @@ int main()
         Controller{ Push_Pull_IO_Pin{ SCK_PORT::instance(), SCK_MASK },
                     Push_Pull_IO_Pin{ MOSI_PORT::instance(), MOSI_MASK },
                     CONTROLLER_SPI::instance() },
-        { SPI::Clock_Rate::CONTROLLER_CLOCK_RATE,
-          SPI::Clock_Polarity::CONTROLLER_CLOCK_POLARITY,
-          SPI::Clock_Phase::CONTROLLER_CLOCK_PHASE,
-          SPI::Bit_Order::CONTROLLER_BIT_ORDER },
+        { .clock_rate     = SPI::Clock_Rate::CONTROLLER_CLOCK_RATE,
+          .clock_polarity = SPI::Clock_Polarity::CONTROLLER_CLOCK_POLARITY,
+          .clock_phase    = SPI::Clock_Phase::CONTROLLER_CLOCK_PHASE,
+          .bit_order      = SPI::Bit_Order::CONTROLLER_BIT_ORDER },
         []() { avrlibcpp::delay_ms( 100 ); } );
 
     for ( ;; ) {}
