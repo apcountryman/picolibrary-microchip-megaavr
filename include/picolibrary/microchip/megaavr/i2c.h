@@ -160,6 +160,18 @@ class Basic_Controller {
         } // switch
     }
 
+    /**
+     * \brief Transmit a stop condition.
+     *
+     * \return Success.
+     */
+    auto stop() noexcept -> Result<Void, Void>
+    {
+        m_twi->stop();
+
+        return {};
+    }
+
   private:
     /**
      * \brief The TWI peripheral used by the I2C controller.
