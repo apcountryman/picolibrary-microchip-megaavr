@@ -23,15 +23,21 @@
 
 #include <avr-libcpp/delay>
 
+#include "picolibrary/asynchronous_serial/stream.h"
+#include "picolibrary/microchip/megaavr/asynchronous_serial.h"
 #include "picolibrary/microchip/megaavr/gpio.h"
 #include "picolibrary/microchip/megaavr/peripheral.h"
+#include "picolibrary/microchip/megaavr/peripheral/usart.h"
 #include "picolibrary/testing/interactive/gpio.h"
 
 namespace {
 
 using namespace ::picolibrary::Microchip::megaAVR::Peripheral;
 
+using ::picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream;
+using ::picolibrary::Microchip::megaAVR::Asynchronous_Serial::Transmitter_8_N_1;
 using ::picolibrary::Microchip::megaAVR::GPIO::Open_Drain_IO_Pin;
+using ::picolibrary::Microchip::megaAVR::Peripheral::USART;
 using ::picolibrary::Testing::Interactive::GPIO::toggle;
 
 } // namespace
@@ -44,9 +50,12 @@ using ::picolibrary::Testing::Interactive::GPIO::toggle;
  */
 int main()
 {
-    toggle( Open_Drain_IO_Pin{ PIN_PORT::instance(), PIN_MASK }, []() {
-        avrlibcpp::delay_ms( 500 );
-    } );
+    toggle<Unbuffered_Output_Stream>(
+        Transmitter_8_N_1{ TRANSMITTER_USART::instance(),
+                           { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
+                             .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } },
+        Open_Drain_IO_Pin{ PIN_PORT::instance(), PIN_MASK },
+        []() { avrlibcpp::delay_ms( 500 ); } );
 
     for ( ;; ) {}
 }

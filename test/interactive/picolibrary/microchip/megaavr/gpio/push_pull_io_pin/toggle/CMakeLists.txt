@@ -28,6 +28,22 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
 
     if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_GPIO_PUSH_PULL_IO_PIN_ENABLE_TOGGLE_INTERACTIVE_TEST} )
         set(
+            PICOLIBRARY_MICROCHIP_MEGAAVR_GPIO_PUSH_PULL_IO_PIN_TOGGLE_INTERACTIVE_TEST_TRANSMITTER_USART
+            "" CACHE STRING
+            "picolibrary-microchip-megaavr: picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin toggle interactive test transmitter USART"
+        )
+        set(
+            PICOLIBRARY_MICROCHIP_MEGAAVR_GPIO_PUSH_PULL_IO_PIN_TOGGLE_INTERACTIVE_TEST_TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED
+            "" CACHE STRING
+            "picolibrary-microchip-megaavr: picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin toggle interactive test transmitter clock generator operating speed"
+        )
+        set(
+            PICOLIBRARY_MICROCHIP_MEGAAVR_GPIO_PUSH_PULL_IO_PIN_TOGGLE_INTERACTIVE_TEST_TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR
+            "" CACHE STRING
+            "picolibrary-microchip-megaavr: picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin toggle interactive test transmitter clock generator scaling factor"
+        )
+
+        set(
             PICOLIBRARY_MICROCHIP_MEGAAVR_GPIO_PUSH_PULL_IO_PIN_TOGGLE_INTERACTIVE_TEST_PIN_PORT
             "" CACHE STRING
             "picolibrary-microchip-megaavr: picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin toggle interactive test pin PORT"
@@ -44,6 +60,9 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
         )
         target_compile_definitions(
             test-interactive-picolibrary-microchip-megaavr-gpio-push_pull_io_pin-toggle
+            PRIVATE TRANSMITTER_USART=${PICOLIBRARY_MICROCHIP_MEGAAVR_GPIO_PUSH_PULL_IO_PIN_TOGGLE_INTERACTIVE_TEST_TRANSMITTER_USART}
+            PRIVATE TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED=${PICOLIBRARY_MICROCHIP_MEGAAVR_GPIO_PUSH_PULL_IO_PIN_TOGGLE_INTERACTIVE_TEST_TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED}
+            PRIVATE TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR=${PICOLIBRARY_MICROCHIP_MEGAAVR_GPIO_PUSH_PULL_IO_PIN_TOGGLE_INTERACTIVE_TEST_TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR}
             PRIVATE PIN_PORT=${PICOLIBRARY_MICROCHIP_MEGAAVR_GPIO_PUSH_PULL_IO_PIN_TOGGLE_INTERACTIVE_TEST_PIN_PORT}
             PRIVATE PIN_MASK=${PICOLIBRARY_MICROCHIP_MEGAAVR_GPIO_PUSH_PULL_IO_PIN_TOGGLE_INTERACTIVE_TEST_PIN_MASK}
         )
