@@ -30,7 +30,7 @@
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
 #include "picolibrary/result.h"
 #include "picolibrary/spi.h"
-#include "picolibrary/utility.h"
+#include "picolibrary/void.h"
 
 /**
  * \brief Microchip megaAVR Serial Peripheral Interface (SPI) facilities.

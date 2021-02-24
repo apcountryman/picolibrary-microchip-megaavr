@@ -29,7 +29,7 @@
 #include "picolibrary/i2c.h"
 #include "picolibrary/microchip/megaavr/peripheral/twi.h"
 #include "picolibrary/result.h"
-#include "picolibrary/utility.h"
+#include "picolibrary/void.h"
 
 /**
  * \brief Microchip megaAVR Inter-Integrated Circuit (I2C) facilities.
