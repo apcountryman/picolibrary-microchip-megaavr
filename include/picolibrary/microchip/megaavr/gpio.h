@@ -28,7 +28,7 @@
 #include "picolibrary/gpio.h"
 #include "picolibrary/microchip/megaavr/peripheral/port.h"
 #include "picolibrary/result.h"
-#include "picolibrary/utility.h"
+#include "picolibrary/void.h"
 
 /**
  * \brief Microchip megaAVR General Purpose Input/Output (GPIO) facilities.
