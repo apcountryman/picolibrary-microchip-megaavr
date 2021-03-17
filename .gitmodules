@@ -39,4 +39,4 @@
 # lizard
 [submodule "lizard"]
 	path = lizard
-	url = ../terryyin-lizard
+	url = ../lizard
