@@ -1,5 +1,5 @@
 # picolibrary-microchip-megaavr
-![CI](https://github.com/apcountryman/picolibrary-microchip-megaavr/workflows/CI/badge.svg)
+[![CI](https://github.com/apcountryman/picolibrary-microchip-megaavr/actions/workflows/ci.yml/badge.svg)](https://github.com/apcountryman/picolibrary-microchip-megaavr/actions/workflows/ci.yml)
 
 [`picolibrary`](https://github.com/apcountryman/picolibrary) Hardware Interface Layer
 (HIL) for Microchip megaAVR microcontrollers.
