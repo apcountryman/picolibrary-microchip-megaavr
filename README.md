@@ -1,5 +1,6 @@
 # picolibrary-microchip-megaavr
 [![CI](https://github.com/apcountryman/picolibrary-microchip-megaavr/actions/workflows/ci.yml/badge.svg)](https://github.com/apcountryman/picolibrary-microchip-megaavr/actions/workflows/ci.yml)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 [`picolibrary`](https://github.com/apcountryman/picolibrary) Hardware Interface Layer
 (HIL) for Microchip megaAVR microcontrollers.
@@ -54,6 +55,11 @@ See the `install` script's help text for usage details.
 ```shell
 ./git/hooks/install --help
 ```
+
+## Code of Conduct
+`picolibrary-microchip-megaavr` has adopted the Contributor Covenant 2.0 code of conduct.
+For more information, [see the `CODE_OF_CONDUCT.md` file in this
+repository](CODE_OF_CONDUCT.md).
 
 ## Contributing
 If you are interested in contributing to `picolibrary-microchip-megaavr`, please [read the
