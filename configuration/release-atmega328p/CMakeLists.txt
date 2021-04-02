@@ -13,7 +13,7 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/CMakeLists.txt.release-atmega328p
+# File: configuration/release-atmega328p/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr ATmega328/P release configuration.
 
 # install prefix is not applicable

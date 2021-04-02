@@ -13,8 +13,8 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/CMakeLists.txt.release-atmega2560
-# Description: picolibrary-microchip-megaavr ATmega2560 release configuration.
+# File: configuration/analysis/CMakeLists.txt
+# Description: picolibrary-microchip-megaavr static analysis configuration.
 
 # install prefix is not applicable
 mark_as_advanced( CMAKE_INSTALL_PREFIX )
@@ -42,5 +42,5 @@ set( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY OFF CACHE BOOL
 mark_as_advanced( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY )
 
 # interactive testing configuration
-set( PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING OFF CACHE BOOL "" FORCE )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING ON CACHE BOOL "" FORCE )
 mark_as_advanced( PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING )
