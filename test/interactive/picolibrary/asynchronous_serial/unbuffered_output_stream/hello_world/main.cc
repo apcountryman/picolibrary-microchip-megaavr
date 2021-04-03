@@ -17,8 +17,8 @@
 
 /**
  * \file
- * \brief picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream hello world Microchip
- *        megaAVR interactive test program.
+ * \brief picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream hello world
+ *        interactive test program.
  */
 
 #include "picolibrary/asynchronous_serial/stream.h"
@@ -40,7 +40,7 @@ using ::picolibrary::Testing::Interactive::Asynchronous_Serial::Stream::hello_wo
 
 /**
  * \brief Execute the picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream hello
- *        world Microchip megaAVR interactive test.
+ *        world interactive test.
  *
  * \return 0.
  */
