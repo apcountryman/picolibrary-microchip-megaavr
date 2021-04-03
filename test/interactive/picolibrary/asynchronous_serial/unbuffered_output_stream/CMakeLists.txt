@@ -18,5 +18,5 @@
 #       tests CMake rules.
 
 # build the picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream hello world
-# interactive tests
+# interactive test
 add_subdirectory( hello_world )

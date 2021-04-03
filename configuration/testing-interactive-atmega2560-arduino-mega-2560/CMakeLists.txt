@@ -76,7 +76,7 @@ mark_as_advanced(
     PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_PROGRAMMER
 )
 
-include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/asynchronous_serial/unbuffered_output_stream/hello_world/microchip/megaavr/CMakeLists.txt" )
+include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/asynchronous_serial/unbuffered_output_stream/hello_world/CMakeLists.txt" )
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/asynchronous_serial/transmitter_8_n_1/hello_world/CMakeLists.txt" )
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/gpio/internally_pulled_up_input_pin/state/CMakeLists.txt" )
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/gpio/open_drain_io_pin/toggle/CMakeLists.txt" )
