@@ -16,7 +16,7 @@
 # File: configuration/testing-interactive-atmega328p-adafruit-metro-mini/test/interactive/picolibrary/asynchronous_serial/unbuffered_output_stream/hello_world/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr ATmega328/P Adafruit Metro Mini
 #       picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream hello world interactive
-#       test configuration
+#       test configuration.
 
 set( PICOLIBRARY_ASYNCHRONOUS_SERIAL_UNBUFFERED_OUTPUT_STREAM_ENABLE_HELLO_WORLD_INTERACTIVE_TEST                                      ON       CACHE BOOL   "" FORCE )
 set( PICOLIBRARY_ASYNCHRONOUS_SERIAL_UNBUFFERED_OUTPUT_STREAM_HELLO_WORLD_INTERACTIVE_TEST_TRANSMITTER_USART                           "USART0" CACHE STRING "" FORCE )
