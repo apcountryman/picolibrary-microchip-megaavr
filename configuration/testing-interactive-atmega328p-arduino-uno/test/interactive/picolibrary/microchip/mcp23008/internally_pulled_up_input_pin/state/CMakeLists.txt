@@ -15,7 +15,7 @@
 
 # File: configuration/testing-interactive-atmega328p-arduino-uno/test/interactive/picolibrary/microchip/mcp23008/internally_pulled_up_input_pin/state/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr ATmega328/P Arduino Uno
-#       picolibrary::Microchip::MCP23008_INTERNALLY_PULLED_UP_INPUT_PIN state interactive
+#       picolibrary::Microchip::MCP23008::Internally_Pulled_Up_Input_Pin state interactive
 #       test configuration.
 
 set( PICOLIBRARY_MICROCHIP_MCP23008_INTERNALLY_PULLED_UP_INPUT_PIN_ENABLE_STATE_INTERACTIVE_TEST                                       ON       CACHE BOOL   "" FORCE )
