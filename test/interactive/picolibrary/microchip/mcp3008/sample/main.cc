@@ -75,7 +75,7 @@ int main()
           .clock_phase    = SPI::Clock_Phase::CAPTURE_IDLE_TO_ACTIVE,
           .bit_order      = SPI::Bit_Order::MSB_FIRST },
         GPIO_Output_Pin_Device_Selector<Active_Low_IO_Pin<Push_Pull_IO_Pin>>{ SS_PORT::instance(), SS_MASK },
-        Input{ MCP3008_INPUT },
+        MCP3008_INPUT,
         []() { avrlibcpp::delay_ms( 1000 ); } );
 
     for ( ;; ) {}
