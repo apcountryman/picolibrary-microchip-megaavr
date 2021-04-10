@@ -165,7 +165,7 @@ class Internally_Pulled_Up_Input_Pin {
      */
     auto state() const noexcept -> Result<::picolibrary::GPIO::Pin_State, Void>
     {
-        return m_port->state( m_mask );
+        return static_cast<bool>( m_port->state( m_mask ));
     }
 
   private:
@@ -299,7 +299,7 @@ class Open_Drain_IO_Pin {
      */
     auto state() const noexcept -> Result<::picolibrary::GPIO::Pin_State, Void>
     {
-        return m_port->state( m_mask );
+        return static_cast<bool>( m_port->state( m_mask ));
     }
 
     /**
@@ -469,7 +469,7 @@ class Push_Pull_IO_Pin {
      */
     auto state() const noexcept -> Result<::picolibrary::GPIO::Pin_State, Void>
     {
-        return m_port->state( m_mask );
+        return static_cast<bool>( m_port->state( m_mask ));
     }
 
     /**
