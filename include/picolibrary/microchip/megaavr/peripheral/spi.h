@@ -25,6 +25,7 @@
 
 #include <cstdint>
 
+#include "picolibrary/bit_manipulation.h"
 #include "picolibrary/microchip/megaavr/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr/register.h"
 
@@ -87,13 +88,13 @@ class SPI {
          * \brief Field bit masks.
          */
         struct Mask {
-            static constexpr auto SPR  = std::uint8_t{ 0b11 << Bit::SPR }; ///< SPR.
-            static constexpr auto CPHA = std::uint8_t{ 0b1 << Bit::CPHA }; ///< CPHA.
-            static constexpr auto CPOL = std::uint8_t{ 0b1 << Bit::CPOL }; ///< CPOL.
-            static constexpr auto MSTR = std::uint8_t{ 0b1 << Bit::MSTR }; ///< MSTR.
-            static constexpr auto DORD = std::uint8_t{ 0b1 << Bit::DORD }; ///< DORD.
-            static constexpr auto SPE  = std::uint8_t{ 0b1 << Bit::SPE };  ///< SPE.
-            static constexpr auto SPIE = std::uint8_t{ 0b1 << Bit::SPIE }; ///< SPIE.
+            static constexpr auto SPR = mask<std::uint8_t>( Size::SPR, Bit::SPR ); ///< SPR.
+            static constexpr auto CPHA = mask<std::uint8_t>( Size::CPHA, Bit::CPHA ); ///< CPHA.
+            static constexpr auto CPOL = mask<std::uint8_t>( Size::CPOL, Bit::CPOL ); ///< CPOL.
+            static constexpr auto MSTR = mask<std::uint8_t>( Size::MSTR, Bit::MSTR ); ///< MSTR.
+            static constexpr auto DORD = mask<std::uint8_t>( Size::DORD, Bit::DORD ); ///< DORD.
+            static constexpr auto SPE = mask<std::uint8_t>( Size::SPE, Bit::SPE ); ///< SPE.
+            static constexpr auto SPIE = mask<std::uint8_t>( Size::SPIE, Bit::SPIE ); ///< SPIE.
         };
 
         /**
@@ -210,10 +211,10 @@ class SPI {
          * \brief Field bit masks.
          */
         struct Mask {
-            static constexpr auto SPI2X = std::uint8_t{ 0b1 << Bit::SPI2X }; ///< SPI2X.
-            static constexpr auto RESERVED = std::uint8_t{ 0b11111 < Bit::RESERVED }; ///< Reserved.
-            static constexpr auto WCOL = std::uint8_t{ 0b1 << Bit::WCOL }; ///< WCOL.
-            static constexpr auto SPIF = std::uint8_t{ 0b1 << Bit::SPIF }; ///< SPIF.
+            static constexpr auto SPI2X = mask<std::uint8_t>( Size::SPI2X, Bit::SPI2X ); ///< SPI2X.
+            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto WCOL = mask<std::uint8_t>( Size::WCOL, Bit::WCOL ); ///< WCOL.
+            static constexpr auto SPIF = mask<std::uint8_t>( Size::SPIF, Bit::SPIF ); ///< SPIF.
         };
 
         SPSR() = delete;
