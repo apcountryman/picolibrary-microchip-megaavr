@@ -25,6 +25,7 @@
 
 #include <cstdint>
 
+#include "picolibrary/bit_manipulation.h"
 #include "picolibrary/microchip/megaavr/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr/register.h"
 
@@ -91,14 +92,14 @@ class TWI {
          * \brief Field bit masks.
          */
         struct Mask {
-            static constexpr auto TWIE = std::uint8_t{ 0b1 << Bit::TWIE }; ///< TWIE.
-            static constexpr auto RESERVED = std::uint8_t{ 0b1 << Bit::RESERVED }; ///< Reserved.
-            static constexpr auto TWEN  = std::uint8_t{ 0b1 << Bit::TWEN };  ///< TWEN.
-            static constexpr auto TWWC  = std::uint8_t{ 0b1 << Bit::TWWC };  ///< TWWC.
-            static constexpr auto TWSTO = std::uint8_t{ 0b1 << Bit::TWSTO }; ///< TWSTO.
-            static constexpr auto TWSTA = std::uint8_t{ 0b1 << Bit::TWSTA }; ///< TWSTA.
-            static constexpr auto TWEA  = std::uint8_t{ 0b1 << Bit::TWEA };  ///< TWEA.
-            static constexpr auto TWINT = std::uint8_t{ 0b1 << Bit::TWINT }; ///< TWINT.
+            static constexpr auto TWIE = mask<std::uint8_t>( Size::TWIE, Bit::TWIE ); ///< TWIE.
+            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto TWEN = mask<std::uint8_t>( Size::TWEN, Bit::TWEN ); ///< TWEN.
+            static constexpr auto TWWC = mask<std::uint8_t>( Size::TWWC, Bit::TWWC ); ///< TWWC.
+            static constexpr auto TWSTO = mask<std::uint8_t>( Size::TWSTO, Bit::TWSTO ); ///< TWSTO.
+            static constexpr auto TWSTA = mask<std::uint8_t>( Size::TWSTA, Bit::TWSTA ); ///< TWSTA.
+            static constexpr auto TWEA = mask<std::uint8_t>( Size::TWEA, Bit::TWEA ); ///< TWEA.
+            static constexpr auto TWINT = mask<std::uint8_t>( Size::TWINT, Bit::TWINT ); ///< TWINT.
         };
 
         TWCR() = delete;
@@ -273,9 +274,9 @@ class TWI {
          * \brief Field bit masks.
          */
         struct Mask {
-            static constexpr auto TWPS = std::uint8_t{ 0b11 << Bit::TWPS }; ///< TWPS.
-            static constexpr auto RESERVED = std::uint8_t{ 0b1 << Bit::RESERVED }; ///< Reserved.
-            static constexpr auto TWS = std::uint8_t{ 0b1'1111 << Bit::TWS }; ///< TWS.
+            static constexpr auto TWPS = mask<std::uint8_t>( Size::TWPS, Bit::TWPS ); ///< TWPS.
+            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto TWS = mask<std::uint8_t>( Size::TWS, Bit::TWS ); ///< TWS.
         };
 
         TWSR() = delete;
@@ -336,8 +337,8 @@ class TWI {
          * \brief Field bit masks.
          */
         struct Mask {
-            static constexpr auto TWGCE = std::uint8_t{ 0b1 << Bit::TWGCE }; ///< TWGCE.
-            static constexpr auto TWA = std::uint8_t{ 0b111'1111 << Bit::TWA }; ///< TWA.
+            static constexpr auto TWGCE = mask<std::uint8_t>( Size::TWGCE, Bit::TWGCE ); ///< TWGCE.
+            static constexpr auto TWA = mask<std::uint8_t>( Size::TWA, Bit::TWA ); ///< TWA.
         };
 
         TWAR() = delete;
@@ -391,8 +392,8 @@ class TWI {
          * \brief Field bit masks.
          */
         struct Mask {
-            static constexpr auto RESERVED = std::uint8_t{ 0b1 << Bit::RESERVED }; ///< Reserved.
-            static constexpr auto TWAM = std::uint8_t{ 0b111'1111 << Bit::TWAM }; ///< TWAM.
+            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto TWAM = mask<std::uint8_t>( Size::TWAM, Bit::TWAM ); ///< TWAM.
         };
 
         TWAMR() = delete;
