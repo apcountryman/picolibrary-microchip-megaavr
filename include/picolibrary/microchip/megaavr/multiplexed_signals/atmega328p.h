@@ -39,6 +39,11 @@
 namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega328P {
 
 /**
+ * \brief USART peripheral signals.
+ */
+inline namespace USART {
+
+/**
  * \brief Lookup a USART peripheral's XCK pin port.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
@@ -209,6 +214,7 @@ inline auto rxd_pin_mask( Peripheral::USART const & usart ) noexcept -> std::uin
     return 1 << rxd_pin_number( usart );
 }
 
+} // namespace USART
 } // namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega328P
 
 namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals {
