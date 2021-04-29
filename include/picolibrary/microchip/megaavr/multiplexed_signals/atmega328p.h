@@ -45,7 +45,7 @@ namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega328P {
 inline namespace SPI {
 
 /**
- * \brief Lookup a SPI peripheral's DS pin port.
+ * \brief Lookup an SPI peripheral's DS pin port.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega328p` and call
@@ -66,7 +66,7 @@ inline auto ds_port( Peripheral::SPI const & usart ) noexcept -> Peripheral::POR
 }
 
 /**
- * \brief Lookup a SPI peripheral's DS pin number.
+ * \brief Lookup an SPI peripheral's DS pin number.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega328p` and call
@@ -86,7 +86,7 @@ inline auto ds_number( Peripheral::SPI const & usart ) noexcept -> std::uint_fas
 }
 
 /**
- * \brief Lookup a SPI peripheral's DS pin mask.
+ * \brief Lookup an SPI peripheral's DS pin mask.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega328p` and call
@@ -102,7 +102,7 @@ inline auto ds_mask( Peripheral::SPI const & usart ) noexcept -> std::uint8_t
 }
 
 /**
- * \brief Lookup a SPI peripheral's SCK pin port.
+ * \brief Lookup an SPI peripheral's SCK pin port.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega328p` and call
@@ -123,7 +123,7 @@ inline auto sck_port( Peripheral::SPI const & usart ) noexcept -> Peripheral::PO
 }
 
 /**
- * \brief Lookup a SPI peripheral's SCK pin number.
+ * \brief Lookup an SPI peripheral's SCK pin number.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega328p` and call
@@ -143,7 +143,7 @@ inline auto sck_number( Peripheral::SPI const & usart ) noexcept -> std::uint_fa
 }
 
 /**
- * \brief Lookup a SPI peripheral's SCK pin mask.
+ * \brief Lookup an SPI peripheral's SCK pin mask.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega328p` and call
@@ -159,7 +159,7 @@ inline auto sck_mask( Peripheral::SPI const & usart ) noexcept -> std::uint8_t
 }
 
 /**
- * \brief Lookup a SPI peripheral's CODI pin port.
+ * \brief Lookup an SPI peripheral's CODI pin port.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega328p` and call
@@ -180,7 +180,7 @@ inline auto codi_port( Peripheral::SPI const & usart ) noexcept -> Peripheral::P
 }
 
 /**
- * \brief Lookup a SPI peripheral's CODI pin number.
+ * \brief Lookup an SPI peripheral's CODI pin number.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega328p` and call
@@ -200,7 +200,7 @@ inline auto codi_number( Peripheral::SPI const & usart ) noexcept -> std::uint_f
 }
 
 /**
- * \brief Lookup a SPI peripheral's CODI pin mask.
+ * \brief Lookup an SPI peripheral's CODI pin mask.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega328p` and call
@@ -216,7 +216,7 @@ inline auto codi_mask( Peripheral::SPI const & usart ) noexcept -> std::uint8_t
 }
 
 /**
- * \brief Lookup a SPI peripheral's CIDO pin port.
+ * \brief Lookup an SPI peripheral's CIDO pin port.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega328p` and call
@@ -237,7 +237,7 @@ inline auto cido_port( Peripheral::SPI const & usart ) noexcept -> Peripheral::P
 }
 
 /**
- * \brief Lookup a SPI peripheral's CIDO pin number.
+ * \brief Lookup an SPI peripheral's CIDO pin number.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega328p` and call
@@ -257,7 +257,7 @@ inline auto cido_number( Peripheral::SPI const & usart ) noexcept -> std::uint_f
 }
 
 /**
- * \brief Lookup a SPI peripheral's CIDO pin mask.
+ * \brief Lookup an SPI peripheral's CIDO pin mask.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega328p` and call
