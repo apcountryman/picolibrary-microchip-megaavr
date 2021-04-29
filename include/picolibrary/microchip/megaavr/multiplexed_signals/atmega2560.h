@@ -28,6 +28,7 @@
 #include "picolibrary/microchip/megaavr/peripheral/atmega2560.h"
 #include "picolibrary/microchip/megaavr/peripheral/port.h"
 #include "picolibrary/microchip/megaavr/peripheral/spi.h"
+#include "picolibrary/microchip/megaavr/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
 
 /**
@@ -273,6 +274,127 @@ inline auto cido_mask( Peripheral::SPI const & usart ) noexcept -> std::uint8_t
 }
 
 } // namespace SPI
+
+/**
+ * \brief TWI peripheral signals.
+ */
+inline namespace TWI {
+
+/**
+ * \brief Lookup a TWI peripheral's SCL pin port.
+ *
+ * \attention This function should never be called directly. Instead, set the `-mmcu`
+ *            compiler flag to `atmega2560` and call
+ *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::scl_port().
+ *
+ * \param[in] usart The TWI peripheral whose SCL pin port is to be looked up.
+ *
+ * \return The TWI peripheral's SCL pin port.
+ */
+inline auto scl_port( Peripheral::TWI const & usart ) noexcept -> Peripheral::PORT &
+{
+    switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
+        case Peripheral::ATmega2560::TWI0::ADDRESS:
+            return Peripheral::ATmega2560::PORTD::instance();
+    } // switch
+
+    return *static_cast<Peripheral::PORT *>( nullptr );
+}
+
+/**
+ * \brief Lookup a TWI peripheral's SCL pin number.
+ *
+ * \attention This function should never be called directly. Instead, set the `-mmcu`
+ *            compiler flag to `atmega2560` and call
+ *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::scl_number().
+ *
+ * \param[in] usart The TWI peripheral whose SCL pin number is to be looked up.
+ *
+ * \return The TWI peripheral's SCL pin number.
+ */
+inline auto scl_number( Peripheral::TWI const & usart ) noexcept -> std::uint_fast8_t
+{
+    switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
+        case Peripheral::ATmega2560::TWI0::ADDRESS: return 0;
+    } // switch
+
+    return 0;
+}
+
+/**
+ * \brief Lookup a TWI peripheral's SCL pin mask.
+ *
+ * \attention This function should never be called directly. Instead, set the `-mmcu`
+ *            compiler flag to `atmega2560` and call
+ *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::scl_mask().
+ *
+ * \param[in] usart The TWI peripheral whose SCL pin mask is to be looked up.
+ *
+ * \return The TWI peripheral's SCL pin mask.
+ */
+inline auto scl_mask( Peripheral::TWI const & usart ) noexcept -> std::uint8_t
+{
+    return 1 << scl_number( usart );
+}
+
+/**
+ * \brief Lookup a TWI peripheral's SDA pin port.
+ *
+ * \attention This function should never be called directly. Instead, set the `-mmcu`
+ *            compiler flag to `atmega2560` and call
+ *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::sda_port().
+ *
+ * \param[in] usart The TWI peripheral whose SDA pin port is to be looked up.
+ *
+ * \return The TWI peripheral's SDA pin port.
+ */
+inline auto sda_port( Peripheral::TWI const & usart ) noexcept -> Peripheral::PORT &
+{
+    switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
+        case Peripheral::ATmega2560::TWI0::ADDRESS:
+            return Peripheral::ATmega2560::PORTD::instance();
+    } // switch
+
+    return *static_cast<Peripheral::PORT *>( nullptr );
+}
+
+/**
+ * \brief Lookup a TWI peripheral's SDA pin number.
+ *
+ * \attention This function should never be called directly. Instead, set the `-mmcu`
+ *            compiler flag to `atmega2560` and call
+ *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::sda_number().
+ *
+ * \param[in] usart The TWI peripheral whose SDA pin number is to be looked up.
+ *
+ * \return The TWI peripheral's SDA pin number.
+ */
+inline auto sda_number( Peripheral::TWI const & usart ) noexcept -> std::uint_fast8_t
+{
+    switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
+        case Peripheral::ATmega2560::TWI0::ADDRESS: return 1;
+    } // switch
+
+    return 0;
+}
+
+/**
+ * \brief Lookup a TWI peripheral's SDA pin mask.
+ *
+ * \attention This function should never be called directly. Instead, set the `-mmcu`
+ *            compiler flag to `atmega2560` and call
+ *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::sda_mask().
+ *
+ * \param[in] usart The TWI peripheral whose SDA pin mask is to be looked up.
+ *
+ * \return The TWI peripheral's SDA pin mask.
+ */
+inline auto sda_mask( Peripheral::TWI const & usart ) noexcept -> std::uint8_t
+{
+    return 1 << sda_number( usart );
+}
+
+} // namespace TWI
 
 /**
  * \brief USART peripheral signals.
