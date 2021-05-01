@@ -25,7 +25,6 @@
 
 #include "picolibrary/asynchronous_serial/stream.h"
 #include "picolibrary/microchip/megaavr/asynchronous_serial.h"
-#include "picolibrary/microchip/megaavr/gpio.h"
 #include "picolibrary/microchip/megaavr/peripheral.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr/spi.h"
@@ -37,7 +36,6 @@ using namespace ::picolibrary::Microchip::megaAVR::Peripheral;
 
 using ::picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream;
 using ::picolibrary::Microchip::megaAVR::Asynchronous_Serial::Transmitter_8_N_1;
-using ::picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin;
 using ::picolibrary::Microchip::megaAVR::Peripheral::USART;
 using ::picolibrary::Testing::Interactive::SPI::echo;
 
@@ -58,7 +56,7 @@ int main()
         Transmitter_8_N_1{ TRANSMITTER_USART::instance(),
                            { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
                              .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } },
-        Controller{ Push_Pull_IO_Pin{ XCK_PORT::instance(), XCK_MASK }, CONTROLLER_USART::instance() },
+        Controller{ CONTROLLER_USART::instance() },
         { .scaling_factor = CONTROLLER_SCALING_FACTOR,
           .clock_polarity = USART::Clock_Polarity::CONTROLLER_CLOCK_POLARITY,
           .clock_phase    = USART::Clock_Phase::CONTROLLER_CLOCK_PHASE,
