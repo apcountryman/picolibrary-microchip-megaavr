@@ -27,6 +27,7 @@
 #include "picolibrary/microchip/mcp3008.h"
 #include "picolibrary/microchip/megaavr/asynchronous_serial.h"
 #include "picolibrary/microchip/megaavr/gpio.h"
+#include "picolibrary/microchip/megaavr/multiplexed_signals.h"
 #include "picolibrary/microchip/megaavr/peripheral.h"
 #include "picolibrary/microchip/megaavr/peripheral/spi.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
@@ -45,6 +46,8 @@ using ::picolibrary::Microchip::MCP3008::Channel_Pair;
 using ::picolibrary::Microchip::MCP3008::Input;
 using ::picolibrary::Microchip::megaAVR::Asynchronous_Serial::Transmitter_8_N_1;
 using ::picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin;
+using ::picolibrary::Microchip::megaAVR::Multiplexed_Signals::ds_mask;
+using ::picolibrary::Microchip::megaAVR::Multiplexed_Signals::ds_port;
 using ::picolibrary::Microchip::megaAVR::Peripheral::SPI;
 using ::picolibrary::Microchip::megaAVR::Peripheral::USART;
 using ::picolibrary::SPI::GPIO_Output_Pin_Device_Selector;
@@ -67,14 +70,13 @@ int main()
         Transmitter_8_N_1{ TRANSMITTER_USART::instance(),
                            { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
                              .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } },
-        Controller{ Push_Pull_IO_Pin{ SCK_PORT::instance(), SCK_MASK },
-                    Push_Pull_IO_Pin{ MOSI_PORT::instance(), MOSI_MASK },
-                    CONTROLLER_SPI::instance() },
+        Controller{ CONTROLLER_SPI::instance() },
         { .clock_rate     = SPI::Clock_Rate::CONTROLLER_CLOCK_RATE,
           .clock_polarity = SPI::Clock_Polarity::IDLE_LOW,
           .clock_phase    = SPI::Clock_Phase::CAPTURE_IDLE_TO_ACTIVE,
           .bit_order      = SPI::Bit_Order::MSB_FIRST },
-        GPIO_Output_Pin_Device_Selector<Active_Low_IO_Pin<Push_Pull_IO_Pin>>{ SS_PORT::instance(), SS_MASK },
+        GPIO_Output_Pin_Device_Selector<Active_Low_IO_Pin<Push_Pull_IO_Pin>>{
+            ds_port( CONTROLLER_SPI::instance() ), ds_mask( CONTROLLER_SPI::instance() ) },
         MCP3008_INPUT,
         []() { avrlibcpp::delay_ms( 1000 ); } );
 
