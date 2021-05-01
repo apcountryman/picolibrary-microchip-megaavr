@@ -25,7 +25,6 @@
 
 #include "picolibrary/asynchronous_serial/stream.h"
 #include "picolibrary/microchip/megaavr/asynchronous_serial.h"
-#include "picolibrary/microchip/megaavr/gpio.h"
 #include "picolibrary/microchip/megaavr/peripheral.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr/spi.h"
@@ -37,7 +36,6 @@ using namespace ::picolibrary::Microchip::megaAVR::Peripheral;
 
 using ::picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream;
 using ::picolibrary::Microchip::megaAVR::Asynchronous_Serial::Transmitter_8_N_1;
-using ::picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin;
 using ::picolibrary::Microchip::megaAVR::Peripheral::SPI;
 using ::picolibrary::Microchip::megaAVR::Peripheral::USART;
 using ::picolibrary::Testing::Interactive::SPI::echo;
@@ -59,9 +57,7 @@ int main()
         Transmitter_8_N_1{ TRANSMITTER_USART::instance(),
                            { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
                              .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } },
-        Controller{ Push_Pull_IO_Pin{ SCK_PORT::instance(), SCK_MASK },
-                    Push_Pull_IO_Pin{ MOSI_PORT::instance(), MOSI_MASK },
-                    CONTROLLER_SPI::instance() },
+        Controller{ CONTROLLER_SPI::instance() },
         { .clock_rate     = SPI::Clock_Rate::CONTROLLER_CLOCK_RATE,
           .clock_polarity = SPI::Clock_Polarity::CONTROLLER_CLOCK_POLARITY,
           .clock_phase    = SPI::Clock_Phase::CONTROLLER_CLOCK_PHASE,

@@ -26,6 +26,7 @@
 #include <cstdint>
 
 #include "picolibrary/microchip/megaavr/gpio.h"
+#include "picolibrary/microchip/megaavr/multiplexed_signals.h"
 #include "picolibrary/microchip/megaavr/peripheral/spi.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
 #include "picolibrary/result.h"
@@ -95,13 +96,11 @@ class Basic_Controller<Peripheral::SPI> {
     /**
      * \brief Constructor.
      *
-     * \param[in] sck The SCK pin.
-     * \param[in] mosi The MOSI pin.
      * \param[in] spi The SPI peripheral used by the SPI controller.
      */
-    Basic_Controller( GPIO::Push_Pull_IO_Pin sck, GPIO::Push_Pull_IO_Pin mosi, Peripheral::SPI & spi ) noexcept :
-        m_sck{ std::move( sck ) },
-        m_mosi{ std::move( mosi ) },
+    Basic_Controller( Peripheral::SPI & spi ) noexcept :
+        m_sck{ Multiplexed_Signals::sck_port( spi ), Multiplexed_Signals::sck_mask( spi ) },
+        m_codi{ Multiplexed_Signals::codi_port( spi ), Multiplexed_Signals::codi_mask( spi ) },
         m_spi{ &spi }
     {
         m_spi->disable();
@@ -116,7 +115,7 @@ class Basic_Controller<Peripheral::SPI> {
      */
     constexpr Basic_Controller( Basic_Controller && source ) noexcept :
         m_sck{ std::move( source.m_sck ) },
-        m_mosi{ std::move( source.m_mosi ) },
+        m_codi{ std::move( source.m_codi ) },
         m_spi{ source.m_spi }
     {
         source.m_spi = nullptr;
@@ -145,7 +144,7 @@ class Basic_Controller<Peripheral::SPI> {
             disable();
 
             m_sck  = std::move( expression.m_sck );
-            m_mosi = std::move( expression.m_mosi );
+            m_codi = std::move( expression.m_codi );
             m_spi  = expression.m_spi;
 
             expression.m_spi = nullptr;
@@ -164,7 +163,7 @@ class Basic_Controller<Peripheral::SPI> {
     auto initialize() noexcept -> Result<Void, Void>
     {
         static_cast<void>( m_sck.initialize() );
-        static_cast<void>( m_mosi.initialize() );
+        static_cast<void>( m_codi.initialize() );
 
         m_spi->enable();
 
@@ -216,7 +215,7 @@ class Basic_Controller<Peripheral::SPI> {
     /**
      * \brief The MOSI pin.
      */
-    GPIO::Push_Pull_IO_Pin m_mosi{};
+    GPIO::Push_Pull_IO_Pin m_codi{};
 
     /**
      * \brief The SPI peripheral used by the SPI controller.
