@@ -273,11 +273,10 @@ class Basic_Controller<Peripheral::USART> {
     /**
      * \brief Constructor.
      *
-     * \param[in] xck The XCK pin.
      * \param[in] usart The USART peripheral used by the SPI controller.
      */
-    Basic_Controller( GPIO::Push_Pull_IO_Pin xck, Peripheral::USART & usart ) noexcept :
-        m_xck{ std::move( xck ) },
+    Basic_Controller( Peripheral::USART & usart ) noexcept :
+        m_xck{ Multiplexed_Signals::xck_port( usart ), Multiplexed_Signals::xck_mask( usart ) },
         m_usart{ &usart }
     {
         m_usart->disable();
