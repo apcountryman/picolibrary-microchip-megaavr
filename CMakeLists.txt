@@ -67,12 +67,20 @@ endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
 # configure avr-libcpp
 if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP} )
     set( AVRLIBCPP_USE_PARENT_PROJECT_BUILD_FLAGS ON CACHE BOOL "" FORCE )
-    mark_as_advanced( AVRLIBCPP_USE_PARENT_PROJECT_BUILD_FLAGS )
+    set( AVRLIBCPP_SUPPRESS_SFR_MACROS            ON CACHE BOOL "" FORCE )
+    mark_as_advanced(
+        AVRLIBCPP_USE_PARENT_PROJECT_BUILD_FLAGS
+        AVRLIBCPP_SUPPRESS_SFR_MACROS
+    )
 
     add_subdirectory( avr-libcpp )
 
     link_libraries( avr-libcpp )
 endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP} )
+
+if( NOT ${AVRLIBCPP_SUPPRESS_SFR_MACROS} )
+    message( FATAL_ERROR "picolibrary-microchip-megaavr requires suppression of avr-libcpp SFR macros" )
+endif( NOT ${AVRLIBCPP_SUPPRESS_SFR_MACROS} )
 
 # configure picolibrary
 if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY} )
