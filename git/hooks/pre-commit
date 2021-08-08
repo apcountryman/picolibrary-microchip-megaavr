@@ -57,6 +57,7 @@ function display_help_text()
     echo "        - No whitespace errors are present"
     echo "        - No script errors are present"
     echo "        - No release build errors are present"
+    echo "        - No interactive testing build errors are present"
     echo "SYNOPSIS"
     echo "    $mnemonic --help"
     echo "    $mnemonic --version"
