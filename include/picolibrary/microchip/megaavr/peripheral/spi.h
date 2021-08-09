@@ -51,7 +51,7 @@ class SPI {
      * - SPI Clock Rate Select (SPR)
      * - Clock Phase (CPHA)
      * - Clock Polarity (CPOL)
-     * - Master/Slave Select (MSTR)
+     * - Host/Client Select (HOST)
      * - Data Order (DORD)
      * - SPI Enable (SPE)
      * - SPI Interrupt Enable (SPIE)
@@ -65,7 +65,7 @@ class SPI {
             static constexpr auto SPR  = std::uint_fast8_t{ 2 }; ///< SPR.
             static constexpr auto CPHA = std::uint_fast8_t{ 1 }; ///< CPHA.
             static constexpr auto CPOL = std::uint_fast8_t{ 1 }; ///< CPOL.
-            static constexpr auto MSTR = std::uint_fast8_t{ 1 }; ///< MSTR.
+            static constexpr auto HOST = std::uint_fast8_t{ 1 }; ///< HOST.
             static constexpr auto DORD = std::uint_fast8_t{ 1 }; ///< DORD.
             static constexpr auto SPE  = std::uint_fast8_t{ 1 }; ///< SPE.
             static constexpr auto SPIE = std::uint_fast8_t{ 1 }; ///< SPIE.
@@ -78,8 +78,8 @@ class SPI {
             static constexpr auto SPR  = std::uint_fast8_t{};                  ///< SPR.
             static constexpr auto CPHA = std::uint_fast8_t{ SPR + Size::SPR }; ///< CPHA.
             static constexpr auto CPOL = std::uint_fast8_t{ CPHA + Size::CPHA }; ///< CPOL.
-            static constexpr auto MSTR = std::uint_fast8_t{ CPOL + Size::CPOL }; ///< MSTR.
-            static constexpr auto DORD = std::uint_fast8_t{ MSTR + Size::MSTR }; ///< DORD.
+            static constexpr auto HOST = std::uint_fast8_t{ CPOL + Size::CPOL }; ///< HOST.
+            static constexpr auto DORD = std::uint_fast8_t{ HOST + Size::HOST }; ///< DORD.
             static constexpr auto SPE  = std::uint_fast8_t{ DORD + Size::DORD }; ///< SPE.
             static constexpr auto SPIE = std::uint_fast8_t{ SPE + Size::SPE }; ///< SPIE.
         };
@@ -91,7 +91,7 @@ class SPI {
             static constexpr auto SPR = mask<std::uint8_t>( Size::SPR, Bit::SPR ); ///< SPR.
             static constexpr auto CPHA = mask<std::uint8_t>( Size::CPHA, Bit::CPHA ); ///< CPHA.
             static constexpr auto CPOL = mask<std::uint8_t>( Size::CPOL, Bit::CPOL ); ///< CPOL.
-            static constexpr auto MSTR = mask<std::uint8_t>( Size::MSTR, Bit::MSTR ); ///< MSTR.
+            static constexpr auto HOST = mask<std::uint8_t>( Size::HOST, Bit::HOST ); ///< HOST.
             static constexpr auto DORD = mask<std::uint8_t>( Size::DORD, Bit::DORD ); ///< DORD.
             static constexpr auto SPE = mask<std::uint8_t>( Size::SPE, Bit::SPE ); ///< SPE.
             static constexpr auto SPIE = mask<std::uint8_t>( Size::SPIE, Bit::SPIE ); ///< SPIE.
@@ -123,7 +123,7 @@ class SPI {
          */
         void configure_controller() noexcept
         {
-            *this = Mask::MSTR;
+            *this = Mask::HOST;
         }
 
         /**
