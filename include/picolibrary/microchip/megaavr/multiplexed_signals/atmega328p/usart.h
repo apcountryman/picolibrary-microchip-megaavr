@@ -33,6 +33,27 @@
 namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega328P {
 
 /**
+ * \brief Lookup a USART peripheral's pins port.
+ *
+ * \attention This function should never be called directly. Instead, set the `-mmcu`
+ *            compiler flag to `atmega328p` and call
+ *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::usart_port().
+ *
+ * \param[in] usart The USART peripheral whose pins port is to be looked up.
+ *
+ * \return The USART peripheral's pins port.
+ */
+inline auto usart_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
+{
+    switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
+        case Peripheral::ATmega328P::USART0::ADDRESS:
+            return Peripheral::ATmega328P::PORTD::instance();
+    } // switch
+
+    return *static_cast<Peripheral::PORT *>( nullptr );
+}
+
+/**
  * \brief Lookup a USART peripheral's XCK pin port.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
@@ -43,14 +64,9 @@ namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega328P {
  *
  * \return The USART peripheral's XCK pin port.
  */
-inline auto xck_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
+inline auto & xck_port( Peripheral::USART const & usart ) noexcept
 {
-    switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
-        case Peripheral::ATmega328P::USART0::ADDRESS:
-            return Peripheral::ATmega328P::PORTD::instance();
-    } // switch
-
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    return usart_port( usart );
 }
 
 /**
@@ -100,14 +116,9 @@ inline auto xck_mask( Peripheral::USART const & usart ) noexcept -> std::uint8_t
  *
  * \return The USART peripheral's TXD pin port.
  */
-inline auto txd_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
+inline auto & txd_port( Peripheral::USART const & usart ) noexcept
 {
-    switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
-        case Peripheral::ATmega328P::USART0::ADDRESS:
-            return Peripheral::ATmega328P::PORTD::instance();
-    } // switch
-
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    return usart_port( usart );
 }
 
 /**
@@ -157,14 +168,9 @@ inline auto txd_mask( Peripheral::USART const & usart ) noexcept -> std::uint8_t
  *
  * \return The USART peripheral's RXD pin port.
  */
-inline auto rxd_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
+inline auto & rxd_port( Peripheral::USART const & usart ) noexcept
 {
-    switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
-        case Peripheral::ATmega328P::USART0::ADDRESS:
-            return Peripheral::ATmega328P::PORTD::instance();
-    } // switch
-
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    return usart_port( usart );
 }
 
 /**
