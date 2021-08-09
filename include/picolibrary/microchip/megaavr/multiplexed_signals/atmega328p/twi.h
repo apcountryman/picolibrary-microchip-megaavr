@@ -32,6 +32,27 @@
 namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega328P {
 
 /**
+ * \brief Lookup a TWI peripheral's pins port.
+ *
+ * \attention This function should never be called directly. Instead, set the `-mmcu`
+ *            compiler flag to `atmega328p` and call
+ *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::twi_port().
+ *
+ * \param[in] twi The TWI peripheral whose pins port is to be looked up.
+ *
+ * \return The TWI peripheral's pins port.
+ */
+inline auto twi_port( Peripheral::TWI const & twi ) noexcept -> Peripheral::PORT &
+{
+    switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
+        case Peripheral::ATmega328P::TWI0::ADDRESS:
+            return Peripheral::ATmega328P::PORTC::instance();
+    } // switch
+
+    return *static_cast<Peripheral::PORT *>( nullptr );
+}
+
+/**
  * \brief Lookup a TWI peripheral's SCL pin port.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
@@ -42,14 +63,9 @@ namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega328P {
  *
  * \return The TWI peripheral's SCL pin port.
  */
-inline auto scl_port( Peripheral::TWI const & twi ) noexcept -> Peripheral::PORT &
+inline auto & scl_port( Peripheral::TWI const & twi ) noexcept
 {
-    switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
-        case Peripheral::ATmega328P::TWI0::ADDRESS:
-            return Peripheral::ATmega328P::PORTC::instance();
-    } // switch
-
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    return twi_port( twi );
 }
 
 /**
@@ -99,14 +115,9 @@ inline auto scl_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
  *
  * \return The TWI peripheral's SDA pin port.
  */
-inline auto sda_port( Peripheral::TWI const & twi ) noexcept -> Peripheral::PORT &
+inline auto & sda_port( Peripheral::TWI const & twi ) noexcept
 {
-    switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
-        case Peripheral::ATmega328P::TWI0::ADDRESS:
-            return Peripheral::ATmega328P::PORTC::instance();
-    } // switch
-
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    return twi_port( twi );
 }
 
 /**

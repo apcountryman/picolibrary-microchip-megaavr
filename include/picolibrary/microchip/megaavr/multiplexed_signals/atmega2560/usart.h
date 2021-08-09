@@ -33,17 +33,17 @@
 namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega2560 {
 
 /**
- * \brief Lookup a USART peripheral's XCK pin port.
+ * \brief Lookup a USART peripheral's pins port.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
- *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::xck_port().
+ *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::usart_port().
  *
- * \param[in] usart The USART peripheral whose XCK pin port is to be looked up.
+ * \param[in] usart The USART peripheral whose pins port is to be looked up.
  *
- * \return The USART peripheral's XCK pin port.
+ * \return The USART peripheral's pins port.
  */
-inline auto xck_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
+inline auto usart_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
 {
     switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
         case Peripheral::ATmega2560::USART0::ADDRESS:
@@ -57,6 +57,22 @@ inline auto xck_port( Peripheral::USART const & usart ) noexcept -> Peripheral::
     } // switch
 
     return *static_cast<Peripheral::PORT *>( nullptr );
+}
+
+/**
+ * \brief Lookup a USART peripheral's XCK pin port.
+ *
+ * \attention This function should never be called directly. Instead, set the `-mmcu`
+ *            compiler flag to `atmega2560` and call
+ *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::xck_port().
+ *
+ * \param[in] usart The USART peripheral whose XCK pin port is to be looked up.
+ *
+ * \return The USART peripheral's XCK pin port.
+ */
+inline auto & xck_port( Peripheral::USART const & usart ) noexcept
+{
+    return usart_port( usart );
 }
 
 /**
@@ -109,20 +125,9 @@ inline auto xck_mask( Peripheral::USART const & usart ) noexcept -> std::uint8_t
  *
  * \return The USART peripheral's TXD pin port.
  */
-inline auto txd_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
+inline auto & txd_port( Peripheral::USART const & usart ) noexcept
 {
-    switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
-        case Peripheral::ATmega2560::USART0::ADDRESS:
-            return Peripheral::ATmega2560::PORTE::instance();
-        case Peripheral::ATmega2560::USART1::ADDRESS:
-            return Peripheral::ATmega2560::PORTD::instance();
-        case Peripheral::ATmega2560::USART2::ADDRESS:
-            return Peripheral::ATmega2560::PORTH::instance();
-        case Peripheral::ATmega2560::USART3::ADDRESS:
-            return Peripheral::ATmega2560::PORTJ::instance();
-    } // switch
-
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    return usart_port( usart );
 }
 
 /**
@@ -175,20 +180,9 @@ inline auto txd_mask( Peripheral::USART const & usart ) noexcept -> std::uint8_t
  *
  * \return The USART peripheral's RXD pin port.
  */
-inline auto rxd_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
+inline auto & rxd_port( Peripheral::USART const & usart ) noexcept
 {
-    switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
-        case Peripheral::ATmega2560::USART0::ADDRESS:
-            return Peripheral::ATmega2560::PORTE::instance();
-        case Peripheral::ATmega2560::USART1::ADDRESS:
-            return Peripheral::ATmega2560::PORTD::instance();
-        case Peripheral::ATmega2560::USART2::ADDRESS:
-            return Peripheral::ATmega2560::PORTH::instance();
-        case Peripheral::ATmega2560::USART3::ADDRESS:
-            return Peripheral::ATmega2560::PORTJ::instance();
-    } // switch
-
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    return usart_port( usart );
 }
 
 /**

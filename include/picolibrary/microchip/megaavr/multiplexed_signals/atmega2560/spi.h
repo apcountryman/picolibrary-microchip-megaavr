@@ -32,6 +32,27 @@
 namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega2560 {
 
 /**
+ * \brief Lookup an SPI peripheral's pins port.
+ *
+ * \attention This function should never be called directly. Instead, set the `-mmcu`
+ *            compiler flag to `atmega2560` and call
+ *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::spi_port().
+ *
+ * \param[in] spi The SPI peripheral whose pins port is to be looked up.
+ *
+ * \return The SPI peripheral's pins port.
+ */
+inline auto spi_port( Peripheral::SPI const & spi ) noexcept -> Peripheral::PORT &
+{
+    switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
+        case Peripheral::ATmega2560::SPI0::ADDRESS:
+            return Peripheral::ATmega2560::PORTB::instance();
+    } // switch
+
+    return *static_cast<Peripheral::PORT *>( nullptr );
+}
+
+/**
  * \brief Lookup an SPI peripheral's DS pin port.
  *
  * \attention This function should never be called directly. Instead, set the `-mmcu`
@@ -42,14 +63,9 @@ namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega2560 {
  *
  * \return The SPI peripheral's DS pin port.
  */
-inline auto ds_port( Peripheral::SPI const & spi ) noexcept -> Peripheral::PORT &
+inline auto & ds_port( Peripheral::SPI const & spi ) noexcept
 {
-    switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
-        case Peripheral::ATmega2560::SPI0::ADDRESS:
-            return Peripheral::ATmega2560::PORTB::instance();
-    } // switch
-
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    return spi_port( spi );
 }
 
 /**
@@ -99,14 +115,9 @@ inline auto ds_mask( Peripheral::SPI const & spi ) noexcept -> std::uint8_t
  *
  * \return The SPI peripheral's SCK pin port.
  */
-inline auto sck_port( Peripheral::SPI const & spi ) noexcept -> Peripheral::PORT &
+inline auto & sck_port( Peripheral::SPI const & spi ) noexcept
 {
-    switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
-        case Peripheral::ATmega2560::SPI0::ADDRESS:
-            return Peripheral::ATmega2560::PORTB::instance();
-    } // switch
-
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    return spi_port( spi );
 }
 
 /**
@@ -156,14 +167,9 @@ inline auto sck_mask( Peripheral::SPI const & spi ) noexcept -> std::uint8_t
  *
  * \return The SPI peripheral's CODI pin port.
  */
-inline auto codi_port( Peripheral::SPI const & spi ) noexcept -> Peripheral::PORT &
+inline auto & codi_port( Peripheral::SPI const & spi ) noexcept
 {
-    switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
-        case Peripheral::ATmega2560::SPI0::ADDRESS:
-            return Peripheral::ATmega2560::PORTB::instance();
-    } // switch
-
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    return spi_port( spi );
 }
 
 /**
@@ -213,14 +219,9 @@ inline auto codi_mask( Peripheral::SPI const & spi ) noexcept -> std::uint8_t
  *
  * \return The SPI peripheral's CIDO pin port.
  */
-inline auto cido_port( Peripheral::SPI const & spi ) noexcept -> Peripheral::PORT &
+inline auto & cido_port( Peripheral::SPI const & spi ) noexcept
 {
-    switch ( reinterpret_cast<std::uintptr_t>( &spi ) ) {
-        case Peripheral::ATmega2560::SPI0::ADDRESS:
-            return Peripheral::ATmega2560::PORTB::instance();
-    } // switch
-
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    return spi_port( spi );
 }
 
 /**
