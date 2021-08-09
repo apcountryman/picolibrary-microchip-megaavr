@@ -38,13 +38,13 @@ namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega2560 {
  *            compiler flag to `atmega2560` and call
  *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::scl_port().
  *
- * \param[in] usart The TWI peripheral whose SCL pin port is to be looked up.
+ * \param[in] twi The TWI peripheral whose SCL pin port is to be looked up.
  *
  * \return The TWI peripheral's SCL pin port.
  */
-inline auto scl_port( Peripheral::TWI const & usart ) noexcept -> Peripheral::PORT &
+inline auto scl_port( Peripheral::TWI const & twi ) noexcept -> Peripheral::PORT &
 {
-    switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
+    switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
         case Peripheral::ATmega2560::TWI0::ADDRESS:
             return Peripheral::ATmega2560::PORTD::instance();
     } // switch
@@ -59,13 +59,13 @@ inline auto scl_port( Peripheral::TWI const & usart ) noexcept -> Peripheral::PO
  *            compiler flag to `atmega2560` and call
  *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::scl_number().
  *
- * \param[in] usart The TWI peripheral whose SCL pin number is to be looked up.
+ * \param[in] twi The TWI peripheral whose SCL pin number is to be looked up.
  *
  * \return The TWI peripheral's SCL pin number.
  */
-inline auto scl_number( Peripheral::TWI const & usart ) noexcept -> std::uint_fast8_t
+inline auto scl_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast8_t
 {
-    switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
+    switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
         case Peripheral::ATmega2560::TWI0::ADDRESS: return 0;
     } // switch
 
@@ -79,13 +79,13 @@ inline auto scl_number( Peripheral::TWI const & usart ) noexcept -> std::uint_fa
  *            compiler flag to `atmega2560` and call
  *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::scl_mask().
  *
- * \param[in] usart The TWI peripheral whose SCL pin mask is to be looked up.
+ * \param[in] twi The TWI peripheral whose SCL pin mask is to be looked up.
  *
  * \return The TWI peripheral's SCL pin mask.
  */
-inline auto scl_mask( Peripheral::TWI const & usart ) noexcept -> std::uint8_t
+inline auto scl_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
 {
-    return 1 << scl_number( usart );
+    return 1 << scl_number( twi );
 }
 
 /**
@@ -95,13 +95,13 @@ inline auto scl_mask( Peripheral::TWI const & usart ) noexcept -> std::uint8_t
  *            compiler flag to `atmega2560` and call
  *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::sda_port().
  *
- * \param[in] usart The TWI peripheral whose SDA pin port is to be looked up.
+ * \param[in] twi The TWI peripheral whose SDA pin port is to be looked up.
  *
  * \return The TWI peripheral's SDA pin port.
  */
-inline auto sda_port( Peripheral::TWI const & usart ) noexcept -> Peripheral::PORT &
+inline auto sda_port( Peripheral::TWI const & twi ) noexcept -> Peripheral::PORT &
 {
-    switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
+    switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
         case Peripheral::ATmega2560::TWI0::ADDRESS:
             return Peripheral::ATmega2560::PORTD::instance();
     } // switch
@@ -116,13 +116,13 @@ inline auto sda_port( Peripheral::TWI const & usart ) noexcept -> Peripheral::PO
  *            compiler flag to `atmega2560` and call
  *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::sda_number().
  *
- * \param[in] usart The TWI peripheral whose SDA pin number is to be looked up.
+ * \param[in] twi The TWI peripheral whose SDA pin number is to be looked up.
  *
  * \return The TWI peripheral's SDA pin number.
  */
-inline auto sda_number( Peripheral::TWI const & usart ) noexcept -> std::uint_fast8_t
+inline auto sda_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast8_t
 {
-    switch ( reinterpret_cast<std::uintptr_t>( &usart ) ) {
+    switch ( reinterpret_cast<std::uintptr_t>( &twi ) ) {
         case Peripheral::ATmega2560::TWI0::ADDRESS: return 1;
     } // switch
 
@@ -136,13 +136,13 @@ inline auto sda_number( Peripheral::TWI const & usart ) noexcept -> std::uint_fa
  *            compiler flag to `atmega2560` and call
  *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::sda_mask().
  *
- * \param[in] usart The TWI peripheral whose SDA pin mask is to be looked up.
+ * \param[in] twi The TWI peripheral whose SDA pin mask is to be looked up.
  *
  * \return The TWI peripheral's SDA pin mask.
  */
-inline auto sda_mask( Peripheral::TWI const & usart ) noexcept -> std::uint8_t
+inline auto sda_mask( Peripheral::TWI const & twi ) noexcept -> std::uint8_t
 {
-    return 1 << sda_number( usart );
+    return 1 << sda_number( twi );
 }
 
 } // namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega2560
