@@ -23,15 +23,14 @@
 
 #include "picolibrary/microchip/megaavr/asynchronous_serial.h"
 #include "picolibrary/microchip/megaavr/peripheral.h"
-#include "picolibrary/microchip/megaavr/peripheral/usart.h"
 #include "picolibrary/testing/interactive/asynchronous_serial.h"
 
 namespace {
 
 using namespace ::picolibrary::Microchip::megaAVR::Peripheral;
 
+using ::picolibrary::Microchip::megaAVR::Asynchronous_Serial::Clock_Configuration;
 using ::picolibrary::Microchip::megaAVR::Asynchronous_Serial::Transmitter_8_N_1;
-using ::picolibrary::Microchip::megaAVR::Peripheral::USART;
 using ::picolibrary::Testing::Interactive::Asynchronous_Serial::hello_world;
 
 } // namespace
@@ -47,7 +46,7 @@ int main()
 {
     hello_world( Transmitter_8_N_1{
         TRANSMITTER_USART::instance(),
-        { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
+        { .operating_speed = Clock_Configuration::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
           .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } } );
 
     for ( ;; ) {}
