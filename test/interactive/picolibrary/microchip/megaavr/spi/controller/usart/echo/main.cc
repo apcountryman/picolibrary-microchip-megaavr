@@ -35,6 +35,7 @@ namespace {
 using namespace ::picolibrary::Microchip::megaAVR::Peripheral;
 
 using ::picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream;
+using ::picolibrary::Microchip::megaAVR::Asynchronous_Serial::Clock_Configuration;
 using ::picolibrary::Microchip::megaAVR::Asynchronous_Serial::Transmitter_8_N_1;
 using ::picolibrary::Microchip::megaAVR::Peripheral::USART;
 using ::picolibrary::Testing::Interactive::SPI::echo;
@@ -54,7 +55,7 @@ int main()
 {
     echo<Unbuffered_Output_Stream>(
         Transmitter_8_N_1{ TRANSMITTER_USART::instance(),
-                           { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
+                           { .operating_speed = Clock_Configuration::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
                              .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } },
         Controller{ CONTROLLER_USART::instance() },
         { .scaling_factor = CONTROLLER_SCALING_FACTOR,

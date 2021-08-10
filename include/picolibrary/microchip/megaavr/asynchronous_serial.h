@@ -40,9 +40,14 @@ namespace picolibrary::Microchip::megaAVR::Asynchronous_Serial {
  */
 struct Clock_Configuration {
     /**
+     * \brief Clock generator operating speed.
+     */
+    using Operating_Speed = Peripheral::USART::Operating_Speed;
+
+    /**
      * \brief The clock generator operating speed.
      */
-    Peripheral::USART::Operating_Speed operating_speed;
+    Operating_Speed operating_speed;
 
     /**
      * \brief The clock generator scaling factor.
