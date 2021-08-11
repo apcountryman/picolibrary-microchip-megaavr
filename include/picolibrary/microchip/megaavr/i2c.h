@@ -74,7 +74,7 @@ class Basic_Controller {
     {
         m_twi->disable();
 
-        m_twi->configure(
+        m_twi->configure_as_i2c_controller(
             bit_rate_generator_configuration.prescaler, bit_rate_generator_configuration.scaling_factor );
     }
 
