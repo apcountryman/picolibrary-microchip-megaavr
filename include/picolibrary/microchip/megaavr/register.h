@@ -132,7 +132,7 @@ template<typename T>
 class Reserved_Register {
   public:
     /**
-     * \brief The reserved register's underlying integer type.
+     * \brief The reserved register's underlying integral type.
      */
     using Type = T;
 
