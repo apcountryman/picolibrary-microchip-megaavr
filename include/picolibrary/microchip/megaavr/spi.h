@@ -281,7 +281,7 @@ class Basic_Controller<Peripheral::USART> {
     {
         m_usart->disable();
 
-        m_usart->configure();
+        m_usart->configure_as_spi_controller();
     }
 
     /**

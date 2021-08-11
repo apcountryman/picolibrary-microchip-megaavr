@@ -127,16 +127,17 @@ class USART {
         using Register<std::uint8_t>::operator=;
 
         /**
-         * \brief Configure the USART for use as an asynchronous USART.
+         * \brief Configure the USART for use as an asynchronous serial USART.
          *
          * \param[in] operating_speed The desired clock generator operating speed.
          */
-        void configure( Operating_Speed operating_speed ) noexcept;
+        void configure_as_asynchronous_serial_usart( Operating_Speed operating_speed ) noexcept;
 
         /**
-         * \brief Configure the USART for use as a synchronous USART or an SPI controller.
+         * \brief Configure the USART for use as a synchronous serial USART or an SPI
+         *        controller.
          */
-        void configure() noexcept
+        void configure_as_synchronous_serial_usart_or_spi_controller() noexcept
         {
             *this = 0;
         }
@@ -338,16 +339,17 @@ class USART {
         using Register<std::uint8_t>::operator=;
 
         /**
-         * \brief Configure the USART for use as an asynchronous or synchronous USART.
+         * \brief Configure the USART for use as an asynchronous or synchronous serial
+         *        USART.
          *
          * \param[in] data_bits The desired number of data bits.
          */
-        void configure( Data_Bits data_bits ) noexcept;
+        void configure_as_asynchronous_or_synchronous_serial_usart( Data_Bits data_bits ) noexcept;
 
         /**
          * \brief Configure the USART for use as an SPI controller.
          */
-        void configure() noexcept
+        void configure_as_spi_controller() noexcept
         {
             *this = Mask::RXEN | Mask::TXEN;
         }
@@ -513,28 +515,28 @@ class USART {
         using Register<std::uint8_t>::operator=;
 
         /**
-         * \brief Configure the USART for use as an asynchronous USART.
+         * \brief Configure the USART for use as an asynchronous serial USART.
          *
          * \param[in] data_bits The desired number of data bits.
          * \param[in] parity The desired parity mode.
          * \param[in] stop_bits The desired number of stop bits.
          */
-        void configure( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits ) noexcept;
+        void configure_as_asynchronous_serial_usart( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits ) noexcept;
 
         /**
-         * \brief Configure the USART for use as a synchronous USART.
+         * \brief Configure the USART for use as a synchronous serial USART.
          *
          * \param[in] data_bits The desired number of data bits.
          * \param[in] parity The desired parity mode.
          * \param[in] stop_bits The desired number of stop bits.
          * \param[in] clock_polarity The desired clock polarity.
          */
-        void configure( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits, Clock_Polarity clock_polarity ) noexcept;
+        void configure_as_synchronous_serial_usart( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits, Clock_Polarity clock_polarity ) noexcept;
 
         /**
          * \brief Configure the USART for use as an SPI controller.
          */
-        void configure() noexcept;
+        void configure_as_spi_controller() noexcept;
 
         /**
          * \brief Configure SPI data exchange.
@@ -561,8 +563,8 @@ class USART {
      * \brief USART mode.
      */
     enum class Mode : std::uint8_t {
-        ASYNCHRONOUS_USART = 0b00 << UCSRC::Bit::UMSEL, ///< Asynchronous USART.
-        SYNCHRONOUS_USART  = 0b01 << UCSRC::Bit::UMSEL, ///< Synchronous USART.
+        ASYNCHRONOUS_USART = 0b00 << UCSRC::Bit::UMSEL, ///< Asynchronous serial USART.
+        SYNCHRONOUS_USART  = 0b01 << UCSRC::Bit::UMSEL, ///< Synchronous serial USART.
         SPI_CONTROLLER     = 0b11 << UCSRC::Bit::UMSEL, ///< SPI controller.
     };
 
@@ -677,7 +679,7 @@ class USART {
     auto operator=( USART const & ) = delete;
 
     /**
-     * \brief Configure the USART for use as an asynchronous USART.
+     * \brief Configure the USART for use as an asynchronous serial USART.
      *
      * \param[in] data_bits The desired number of data bits.
      * \param[in] parity The desired parity mode.
@@ -685,17 +687,22 @@ class USART {
      * \param[in] operating_speed The desired clock generator operating speed.
      * \param[in] scaling_factor The desired clock generator scaling factor.
      */
-    void configure( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits, Operating_Speed operating_speed, std::uint16_t scaling_factor ) noexcept
+    void configure_as_asynchronous_serial_usart(
+        Data_Bits       data_bits,
+        Parity          parity,
+        Stop_Bits       stop_bits,
+        Operating_Speed operating_speed,
+        std::uint16_t   scaling_factor ) noexcept
     {
-        ucsrc.configure( data_bits, parity, stop_bits );
-        ucsrb.configure( data_bits );
-        ucsra.configure( operating_speed );
+        ucsrc.configure_as_asynchronous_serial_usart( data_bits, parity, stop_bits );
+        ucsrb.configure_as_asynchronous_or_synchronous_serial_usart( data_bits );
+        ucsra.configure_as_asynchronous_serial_usart( operating_speed );
 
         ubrr = scaling_factor;
     }
 
     /**
-     * \brief Configure the USART for use as a synchronous USART.
+     * \brief Configure the USART for use as a synchronous serial USART.
      *
      * \param[in] data_bits The desired number of data bits.
      * \param[in] parity The desired parity mode.
@@ -703,11 +710,16 @@ class USART {
      * \param[in] clock_polarity The desired clock polarity.
      * \param[in] scaling_factor The desired clock generator scaling factor.
      */
-    void configure( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits, Clock_Polarity clock_polarity, std::uint16_t scaling_factor ) noexcept
+    void configure_as_synchronous_serial_usart(
+        Data_Bits      data_bits,
+        Parity         parity,
+        Stop_Bits      stop_bits,
+        Clock_Polarity clock_polarity,
+        std::uint16_t  scaling_factor ) noexcept
     {
-        ucsrc.configure( data_bits, parity, stop_bits, clock_polarity );
-        ucsrb.configure( data_bits );
-        ucsra.configure();
+        ucsrc.configure_as_synchronous_serial_usart( data_bits, parity, stop_bits, clock_polarity );
+        ucsrb.configure_as_asynchronous_or_synchronous_serial_usart( data_bits );
+        ucsra.configure_as_synchronous_serial_usart_or_spi_controller();
 
         ubrr = scaling_factor;
     }
@@ -715,13 +727,13 @@ class USART {
     /**
      * \brief Configure the USART for use as an SPI controller.
      */
-    void configure() noexcept
+    void configure_as_spi_controller() noexcept
     {
         ubrr = 0;
 
-        ucsrc.configure();
-        ucsrb.configure();
-        ucsra.configure();
+        ucsrc.configure_as_spi_controller();
+        ucsrb.configure_as_spi_controller();
+        ucsra.configure_as_synchronous_serial_usart_or_spi_controller();
     }
 
     /**
@@ -931,7 +943,7 @@ class USART {
     }
 };
 
-inline void USART::UCSRA::configure( Operating_Speed operating_speed ) noexcept
+inline void USART::UCSRA::configure_as_asynchronous_serial_usart( Operating_Speed operating_speed ) noexcept
 {
     *this = static_cast<std::uint8_t>( operating_speed );
 }
@@ -942,26 +954,30 @@ inline void USART::UCSRA::set_incoming_frame_type( Frame_Type frame_type ) noexc
             | static_cast<std::uint8_t>( frame_type );
 }
 
-inline void USART::UCSRB::configure( Data_Bits data_bits ) noexcept
+inline void USART::UCSRB::configure_as_asynchronous_or_synchronous_serial_usart( Data_Bits data_bits ) noexcept
 {
     *this = ( static_cast<std::uint8_t>( data_bits ) >> Offset::UCSZ ) & Mask::UCSZ;
 }
 
-inline void USART::UCSRC::configure( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits ) noexcept
+inline void USART::UCSRC::configure_as_asynchronous_serial_usart( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits ) noexcept
 {
     *this = static_cast<std::uint8_t>( Mode::ASYNCHRONOUS_USART )
             | static_cast<std::uint8_t>( data_bits ) | static_cast<std::uint8_t>( parity )
             | static_cast<std::uint8_t>( stop_bits );
 }
 
-inline void USART::UCSRC::configure( Data_Bits data_bits, Parity parity, Stop_Bits stop_bits, Clock_Polarity clock_polarity ) noexcept
+inline void USART::UCSRC::configure_as_synchronous_serial_usart(
+    Data_Bits      data_bits,
+    Parity         parity,
+    Stop_Bits      stop_bits,
+    Clock_Polarity clock_polarity ) noexcept
 {
     *this = static_cast<std::uint8_t>( Mode::SYNCHRONOUS_USART )
             | static_cast<std::uint8_t>( data_bits ) | static_cast<std::uint8_t>( parity )
             | static_cast<std::uint8_t>( stop_bits ) | static_cast<std::uint8_t>( clock_polarity );
 }
 
-inline void USART::UCSRC::configure() noexcept
+inline void USART::UCSRC::configure_as_spi_controller() noexcept
 {
     *this = static_cast<std::uint8_t>( Mode::SPI_CONTROLLER );
 }

@@ -92,7 +92,7 @@ class Basic_Transmitter {
     {
         m_usart->disable();
 
-        m_usart->configure(
+        m_usart->configure_as_asynchronous_serial_usart(
             data_bits,
             parity,
             stop_bits,
