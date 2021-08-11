@@ -334,8 +334,8 @@ class SPI {
      */
     void configure_as_spi_controller() noexcept
     {
-        spsr.configure_as_spi_controller();
         spcr.configure_as_spi_controller();
+        spsr.configure_as_spi_controller();
     }
 
     /**
@@ -343,8 +343,8 @@ class SPI {
      */
     void configure_as_spi_device() noexcept
     {
-        spsr.configure_as_spi_device();
         spcr.configure_as_spi_device();
+        spsr.configure_as_spi_device();
     }
 
     /**
