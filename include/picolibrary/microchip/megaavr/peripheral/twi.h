@@ -524,7 +524,7 @@ class TWI {
     TWAMR twamr;
 
     /**
-     * \brief Configure the TWI for use as a controller.
+     * \brief Configure the TWI for use as an I2C controller.
      *
      * \param[in] prescaler The desired bit rate generator prescaler value.
      * \param[in] scaling_factor The desired bit rate generator scaling factor.
@@ -532,7 +532,7 @@ class TWI {
      * \param[in] general_call_recognition The general call recognition configuration.
      * \param[in] address_mask The controller's device address mask in transmitted form.
      */
-    void configure(
+    void configure_as_i2c_controller(
         Prescaler                prescaler,
         std::uint8_t             scaling_factor,
         std::uint8_t             address                  = 0,
@@ -549,13 +549,13 @@ class TWI {
     }
 
     /**
-     * \brief Configure the TWI for use as a device.
+     * \brief Configure the TWI for use as an I2C device.
      *
      * \param[in] address The device address in transmitted form.
      * \param[in] general_call_recognition The general call recognition configuration.
      * \param[in] address_mask The device address mask in transmitted form.
      */
-    void configure( std::uint8_t address, General_Call_Recognition general_call_recognition, std::uint8_t address_mask ) noexcept
+    void configure_as_i2c_device( std::uint8_t address, General_Call_Recognition general_call_recognition, std::uint8_t address_mask ) noexcept
     {
         twcr.configure();
         twsr.configure();
