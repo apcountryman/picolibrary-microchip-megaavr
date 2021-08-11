@@ -210,13 +210,10 @@ class Open_Drain_IO_Pin {
      * \param[in] port The GPIO port the pin is a member of.
      * \param[in] mask The mask identifying the pin.
      */
-    Open_Drain_IO_Pin( Peripheral::PORT & port, std::uint8_t mask ) noexcept :
+    constexpr Open_Drain_IO_Pin( Peripheral::PORT & port, std::uint8_t mask ) noexcept :
         m_port{ &port },
         m_mask{ mask }
     {
-        m_port->disable_pull_up( m_mask );
-
-        m_port->configure_pin_as_internally_pulled_up_input( m_mask );
     }
 
     /**
