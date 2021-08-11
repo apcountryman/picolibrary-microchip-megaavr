@@ -105,7 +105,7 @@ class Basic_Controller<Peripheral::SPI> {
     {
         m_spi->disable();
 
-        m_spi->configure_controller();
+        m_spi->configure_as_spi_controller();
     }
 
     /**
@@ -201,7 +201,7 @@ class Basic_Controller<Peripheral::SPI> {
     {
         m_spi->transmit( data );
 
-        while ( not m_spi->exchange_complete() ) {}
+        while ( not m_spi->data_exchange_complete() ) {}
 
         return m_spi->receive();
     }
