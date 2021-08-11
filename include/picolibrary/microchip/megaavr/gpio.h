@@ -56,13 +56,10 @@ class Internally_Pulled_Up_Input_Pin {
      * \param[in] port The GPIO port the pin is a member of.
      * \param[in] mask The mask identifying the pin.
      */
-    Internally_Pulled_Up_Input_Pin( Peripheral::PORT & port, std::uint8_t mask ) noexcept :
+    constexpr Internally_Pulled_Up_Input_Pin( Peripheral::PORT & port, std::uint8_t mask ) noexcept :
         m_port{ &port },
         m_mask{ mask }
     {
-        m_port->disable_pull_up( m_mask );
-
-        m_port->configure_pin_as_internally_pulled_up_input( m_mask );
     }
 
     /**
@@ -123,6 +120,8 @@ class Internally_Pulled_Up_Input_Pin {
     auto initialize( Initial_Pull_Up_State initial_pull_up_state = Initial_Pull_Up_State::DISABLED ) noexcept
         -> Result<Void, Void>
     {
+        m_port->configure_pin_as_internally_pulled_up_input( m_mask );
+
         switch ( initial_pull_up_state ) {
             case Initial_Pull_Up_State::ENABLED: m_port->enable_pull_up( m_mask ); break;
             case Initial_Pull_Up_State::DISABLED:
