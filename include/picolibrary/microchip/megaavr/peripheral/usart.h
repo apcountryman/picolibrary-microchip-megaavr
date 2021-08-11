@@ -694,8 +694,8 @@ class USART {
         Operating_Speed operating_speed,
         std::uint16_t   scaling_factor ) noexcept
     {
-        ucsrc.configure_as_asynchronous_serial_usart( data_bits, parity, stop_bits );
         ucsrb.configure_as_asynchronous_or_synchronous_serial_usart( data_bits );
+        ucsrc.configure_as_asynchronous_serial_usart( data_bits, parity, stop_bits );
         ucsra.configure_as_asynchronous_serial_usart( operating_speed );
 
         ubrr = scaling_factor;
@@ -717,8 +717,8 @@ class USART {
         Clock_Polarity clock_polarity,
         std::uint16_t  scaling_factor ) noexcept
     {
-        ucsrc.configure_as_synchronous_serial_usart( data_bits, parity, stop_bits, clock_polarity );
         ucsrb.configure_as_asynchronous_or_synchronous_serial_usart( data_bits );
+        ucsrc.configure_as_synchronous_serial_usart( data_bits, parity, stop_bits, clock_polarity );
         ucsra.configure_as_synchronous_serial_usart_or_spi_controller();
 
         ubrr = scaling_factor;
@@ -731,8 +731,8 @@ class USART {
     {
         ubrr = 0;
 
-        ucsrc.configure_as_spi_controller();
         ucsrb.configure_as_spi_controller();
+        ucsrc.configure_as_spi_controller();
         ucsra.configure_as_synchronous_serial_usart_or_spi_controller();
     }
 
