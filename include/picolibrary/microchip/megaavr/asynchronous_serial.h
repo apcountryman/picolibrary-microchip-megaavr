@@ -90,8 +90,6 @@ class Basic_Transmitter {
         Clock_Configuration const &  clock_configuration ) noexcept :
         m_usart{ &usart }
     {
-        m_usart->disable();
-
         m_usart->configure_as_asynchronous_serial_usart(
             data_bits,
             parity,
