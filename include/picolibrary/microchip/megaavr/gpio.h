@@ -273,14 +273,14 @@ class Open_Drain_IO_Pin {
     auto initialize( Initial_Pin_State initial_pin_state = Initial_Pin_State::LOW ) noexcept
         -> Result<Void, Void>
     {
-        m_port->configure_pin_as_open_drain_output( m_mask );
+        m_port->configure_pin_as_open_drain_io( m_mask );
 
         switch ( initial_pin_state ) {
             case Initial_Pin_State::HIGH:
-                m_port->transition_open_drain_output_to_high( m_mask );
+                m_port->transition_open_drain_io_to_high( m_mask );
                 break;
             case Initial_Pin_State::LOW:
-                m_port->transition_open_drain_output_to_low( m_mask );
+                m_port->transition_open_drain_io_to_low( m_mask );
                 break;
         } // switch
 
@@ -305,7 +305,7 @@ class Open_Drain_IO_Pin {
      */
     auto transition_to_high() noexcept -> Result<Void, Void>
     {
-        m_port->transition_open_drain_output_to_high( m_mask );
+        m_port->transition_open_drain_io_to_high( m_mask );
 
         return {};
     }
@@ -317,7 +317,7 @@ class Open_Drain_IO_Pin {
      */
     auto transition_to_low() noexcept -> Result<Void, Void>
     {
-        m_port->transition_open_drain_output_to_low( m_mask );
+        m_port->transition_open_drain_io_to_low( m_mask );
 
         return {};
     }
@@ -329,7 +329,7 @@ class Open_Drain_IO_Pin {
      */
     auto toggle() noexcept -> Result<Void, Void>
     {
-        m_port->toggle_open_drain_output( m_mask );
+        m_port->toggle_open_drain_io( m_mask );
 
         return {};
     }
@@ -442,14 +442,14 @@ class Push_Pull_IO_Pin {
     {
         switch ( initial_pin_state ) {
             case Initial_Pin_State::HIGH:
-                m_port->transition_push_pull_output_to_high( m_mask );
+                m_port->transition_push_pull_io_to_high( m_mask );
                 break;
             case Initial_Pin_State::LOW:
-                m_port->transition_push_pull_output_to_low( m_mask );
+                m_port->transition_push_pull_io_to_low( m_mask );
                 break;
         } // switch
 
-        m_port->configure_pin_as_push_pull_output( m_mask );
+        m_port->configure_pin_as_push_pull_io( m_mask );
 
         return {};
     }
@@ -472,7 +472,7 @@ class Push_Pull_IO_Pin {
      */
     auto transition_to_high() noexcept -> Result<Void, Void>
     {
-        m_port->transition_push_pull_output_to_high( m_mask );
+        m_port->transition_push_pull_io_to_high( m_mask );
 
         return {};
     }
@@ -484,7 +484,7 @@ class Push_Pull_IO_Pin {
      */
     auto transition_to_low() noexcept -> Result<Void, Void>
     {
-        m_port->transition_push_pull_output_to_low( m_mask );
+        m_port->transition_push_pull_io_to_low( m_mask );
 
         return {};
     }
@@ -496,7 +496,7 @@ class Push_Pull_IO_Pin {
      */
     auto toggle() noexcept -> Result<Void, Void>
     {
-        m_port->toggle_push_pull_output( m_mask );
+        m_port->toggle_push_pull_io( m_mask );
 
         return {};
     }
