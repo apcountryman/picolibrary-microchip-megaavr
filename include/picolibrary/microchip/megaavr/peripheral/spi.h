@@ -121,7 +121,7 @@ class SPI {
         /**
          * \brief Configure the SPI for use as an SPI controller.
          */
-        void configure_controller() noexcept
+        void configure_as_spi_controller() noexcept
         {
             *this = Mask::HOST;
         }
@@ -129,7 +129,7 @@ class SPI {
         /**
          * \brief Configure the SPI for use as an SPI device.
          */
-        void configure_device() noexcept
+        void configure_as_spi_device() noexcept
         {
             *this = 0;
         }
@@ -234,7 +234,7 @@ class SPI {
         /**
          * \brief Configure the SPI for use as an SPI controller.
          */
-        void configure_controller() noexcept
+        void configure_as_spi_controller() noexcept
         {
             *this = 0;
         }
@@ -242,7 +242,7 @@ class SPI {
         /**
          * \brief Configure the SPI for use as an SPI device.
          */
-        void configure_device() noexcept
+        void configure_as_spi_device() noexcept
         {
             *this = 0;
         }
@@ -255,12 +255,12 @@ class SPI {
         void configure( Clock_Rate clock_rate ) noexcept;
 
         /**
-         * \brief Check if exchange is complete.
+         * \brief Check if data exchange is complete.
          *
-         * \return true if exchange is complete.
-         * \return false if exchange is not complete.
+         * \return true if data exchange is complete.
+         * \return false if data exchange is not complete.
          */
-        auto exchange_complete() const noexcept -> bool
+        auto data_exchange_complete() const noexcept -> bool
         {
             return *this & Mask::SPIF;
         }
@@ -332,19 +332,19 @@ class SPI {
     /**
      * \brief Configure the SPI for use as an SPI controller.
      */
-    void configure_controller() noexcept
+    void configure_as_spi_controller() noexcept
     {
-        spsr.configure_controller();
-        spcr.configure_controller();
+        spsr.configure_as_spi_controller();
+        spcr.configure_as_spi_controller();
     }
 
     /**
      * \brief Configure the SPI for use as an SPI device.
      */
-    void configure_device() noexcept
+    void configure_as_spi_device() noexcept
     {
-        spsr.configure_device();
-        spcr.configure_device();
+        spsr.configure_as_spi_device();
+        spcr.configure_as_spi_device();
     }
 
     /**
@@ -394,11 +394,11 @@ class SPI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::SPI::SPSR::exchange_complete()
+     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::SPI::SPSR::data_exchange_complete()
      */
-    auto exchange_complete() const noexcept
+    auto data_exchange_complete() const noexcept
     {
-        return spsr.exchange_complete();
+        return spsr.data_exchange_complete();
     }
 
     /**
