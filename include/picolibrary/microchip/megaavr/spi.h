@@ -103,8 +103,6 @@ class Basic_Controller<Peripheral::SPI> {
         m_codi{ Multiplexed_Signals::codi_port( spi ), Multiplexed_Signals::codi_mask( spi ) },
         m_spi{ &spi }
     {
-        m_spi->disable();
-
         m_spi->configure_as_spi_controller();
     }
 
