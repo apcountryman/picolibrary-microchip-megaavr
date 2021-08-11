@@ -34,7 +34,7 @@ template<typename T>
 class Register {
   public:
     /**
-     * \brief The register's underlying integer type.
+     * \brief The register's underlying integral type.
      */
     using Type = T;
 
