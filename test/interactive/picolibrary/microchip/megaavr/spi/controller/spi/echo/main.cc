@@ -26,7 +26,6 @@
 #include "picolibrary/asynchronous_serial/stream.h"
 #include "picolibrary/microchip/megaavr/asynchronous_serial.h"
 #include "picolibrary/microchip/megaavr/peripheral.h"
-#include "picolibrary/microchip/megaavr/peripheral/spi.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr/spi.h"
 #include "picolibrary/testing/interactive/spi.h"
