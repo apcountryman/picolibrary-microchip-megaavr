@@ -30,6 +30,7 @@
 #include "picolibrary/microchip/megaavr/i2c.h"
 #include "picolibrary/microchip/megaavr/peripheral.h"
 #include "picolibrary/microchip/megaavr/peripheral/twi.h"
+#include "picolibrary/microchip/megaavr/peripheral/usart.h"
 #include "picolibrary/testing/interactive/microchip/mcp23008.h"
 
 namespace {
@@ -39,10 +40,10 @@ using namespace ::picolibrary::Microchip::megaAVR::Peripheral;
 using ::picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream;
 using ::picolibrary::I2C::Address;
 using ::picolibrary::Microchip::MCP23008::Open_Drain_IO_Pin;
-using ::picolibrary::Microchip::megaAVR::Asynchronous_Serial::Clock_Configuration;
 using ::picolibrary::Microchip::megaAVR::Asynchronous_Serial::Transmitter_8_N_1;
 using ::picolibrary::Microchip::megaAVR::I2C::Controller;
 using ::picolibrary::Microchip::megaAVR::Peripheral::TWI;
+using ::picolibrary::Microchip::megaAVR::Peripheral::USART;
 using ::picolibrary::Testing::Interactive::Microchip::MCP23008::toggle;
 
 } // namespace
@@ -57,7 +58,7 @@ int main()
 {
     toggle<Unbuffered_Output_Stream, Open_Drain_IO_Pin>(
         Transmitter_8_N_1{ TRANSMITTER_USART::instance(),
-                           { .operating_speed = Clock_Configuration::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
+                           { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
                              .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } },
         Controller{ CONTROLLER_TWI::instance(),
                     { .prescaler = TWI::Prescaler::CONTROLLER_BIT_RATE_GENERATOR_PRESCALER,
