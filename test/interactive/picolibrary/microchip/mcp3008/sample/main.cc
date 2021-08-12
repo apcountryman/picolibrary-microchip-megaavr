@@ -30,6 +30,7 @@
 #include "picolibrary/microchip/megaavr/multiplexed_signals.h"
 #include "picolibrary/microchip/megaavr/peripheral.h"
 #include "picolibrary/microchip/megaavr/peripheral/spi.h"
+#include "picolibrary/microchip/megaavr/peripheral/usart.h"
 #include "picolibrary/microchip/megaavr/spi.h"
 #include "picolibrary/spi.h"
 #include "picolibrary/testing/interactive/microchip/mcp3008.h"
@@ -43,12 +44,12 @@ using ::picolibrary::GPIO::Active_Low_IO_Pin;
 using ::picolibrary::Microchip::MCP3008::Channel;
 using ::picolibrary::Microchip::MCP3008::Channel_Pair;
 using ::picolibrary::Microchip::MCP3008::Input;
-using ::picolibrary::Microchip::megaAVR::Asynchronous_Serial::Clock_Configuration;
 using ::picolibrary::Microchip::megaAVR::Asynchronous_Serial::Transmitter_8_N_1;
 using ::picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin;
 using ::picolibrary::Microchip::megaAVR::Multiplexed_Signals::ds_mask;
 using ::picolibrary::Microchip::megaAVR::Multiplexed_Signals::ds_port;
 using ::picolibrary::Microchip::megaAVR::Peripheral::SPI;
+using ::picolibrary::Microchip::megaAVR::Peripheral::USART;
 using ::picolibrary::SPI::GPIO_Output_Pin_Device_Selector;
 using ::picolibrary::Testing::Interactive::Microchip::MCP3008::sample;
 
@@ -67,7 +68,7 @@ int main()
 {
     sample<Unbuffered_Output_Stream>(
         Transmitter_8_N_1{ TRANSMITTER_USART::instance(),
-                           { .operating_speed = Clock_Configuration::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
+                           { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
                              .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } },
         Controller{ CONTROLLER_SPI::instance() },
         { .clock_rate     = SPI::Clock_Rate::CONTROLLER_CLOCK_RATE,
