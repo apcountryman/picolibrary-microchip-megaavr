@@ -141,9 +141,9 @@ class TWI {
         }
 
         /**
-         * \brief Get the interrupt enable state.
+         * \brief Get the TWI interrupt enable state.
          *
-         * \return The interrupt enable state.
+         * \return The TWI interrupt enable state.
          */
         auto interrupt_enable_state() const noexcept -> Interrupt_Enable_State;
 
@@ -432,7 +432,7 @@ class TWI {
     };
 
     /**
-     * \brief Interrupt enable state.
+     * \brief TWI interrupt enable state.
      */
     enum class Interrupt_Enable_State : std::uint8_t {
         DISABLED = 0b0 << TWCR::Bit::TWIE, ///< Disabled.
@@ -567,7 +567,7 @@ class TWI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::enable()
+     * \brief Enable the TWI.
      */
     void enable() noexcept
     {
@@ -575,7 +575,7 @@ class TWI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::disable()
+     * \brief Disable the TWI.
      */
     void disable() noexcept
     {
@@ -583,7 +583,9 @@ class TWI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::interrupt_enable_state()
+     * \brief Get the TWI interrupt enable state.
+     *
+     * \return The TWI interrupt enable state.
      */
     auto interrupt_enable_state() const noexcept
     {
@@ -591,7 +593,7 @@ class TWI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::enable_interrupt()
+     * \brief Enable the TWI interrupt.
      */
     void enable_interrupt() noexcept
     {
@@ -599,7 +601,7 @@ class TWI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::disable_interrupt()
+     * \brief Disable the TWI interrupt.
      */
     void disable_interrupt() noexcept
     {
@@ -607,7 +609,7 @@ class TWI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::enable_ack()
+     * \brief Enable ACK.
      */
     void enable_ack() noexcept
     {
@@ -615,7 +617,7 @@ class TWI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::disable_ack()
+     * \brief Disable ACK.
      */
     void disable_ack() noexcept
     {
@@ -623,7 +625,10 @@ class TWI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::write_collision()
+     * \brief Check if a write collision occurred.
+     *
+     * \return true if a write collision occurred.
+     * \return false if a write collision did not occur.
      */
     auto write_collision() const noexcept
     {
@@ -631,7 +636,10 @@ class TWI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::operation_complete()
+     * \brief Check if an operation is complete.
+     *
+     * \return true if the operation is complete.
+     * \return false if the operation is not complete.
      */
     auto operation_complete() const noexcept
     {
@@ -639,7 +647,9 @@ class TWI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::start()
+     * \brief Initiate transmission of a start condition or a repeated start condition.
+     *
+     * \param[in] interrupt_enable_state The interrupt enable state.
      */
     void start( Interrupt_Enable_State interrupt_enable_state = Interrupt_Enable_State::DISABLED ) noexcept
     {
@@ -647,7 +657,9 @@ class TWI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::stop()
+     * \brief Transmit a stop condition.
+     *
+     * \param[in] interrupt_enable_state The interrupt enable state.
      */
     void stop( Interrupt_Enable_State interrupt_enable_state = Interrupt_Enable_State::DISABLED ) noexcept
     {
@@ -668,7 +680,10 @@ class TWI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWCR::read()
+     * \brief Initiate a data read.
+     *
+     * \param[in] response The response to send after the data is read.
+     * \param[in] interrupt_enable_state The interrupt enable state.
      */
     void read( Response response, Interrupt_Enable_State interrupt_enable_state = Interrupt_Enable_State::DISABLED ) noexcept
     {
@@ -676,7 +691,9 @@ class TWI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::TWI::TWSR::status()
+     * \brief Get the peripheral/bus status.
+     *
+     * \return The peripheral/bus status.
      */
     auto status() const noexcept
     {
