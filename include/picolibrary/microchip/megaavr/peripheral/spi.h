@@ -348,7 +348,7 @@ class SPI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::SPI::SPCR::enable()
+     * \brief Enable the SPI.
      */
     void enable() noexcept
     {
@@ -356,7 +356,7 @@ class SPI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::SPI::SPCR::disable()
+     * \brief Disable the SPI.
      */
     void disable() noexcept
     {
@@ -364,7 +364,7 @@ class SPI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::SPI::SPCR::enable_interrupt()
+     * \brief Enable the SPI interrupt.
      */
     void enable_interrupt() noexcept
     {
@@ -372,7 +372,7 @@ class SPI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::SPI::SPCR::disable_interrupt()
+     * \brief Disable the SPI interrupt.
      */
     void disable_interrupt() noexcept
     {
@@ -394,7 +394,10 @@ class SPI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::SPI::SPSR::data_exchange_complete()
+     * \brief Check if data exchange is complete.
+     *
+     * \return true if data exchange is complete.
+     * \return false if data exchange is not complete.
      */
     auto data_exchange_complete() const noexcept
     {
@@ -402,7 +405,10 @@ class SPI {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::SPI::SPSR::write_collision()
+     * \brief Check if a write collision occurred.
+     *
+     * \return true if a write collision occurred.
+     * \return false if a write collision did not occur.
      */
     auto write_collision() const noexcept
     {

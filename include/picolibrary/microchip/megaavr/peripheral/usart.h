@@ -752,7 +752,7 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRB::enable_receiver()
+     * \brief Enable the receiver.
      */
     void enable_receiver() noexcept
     {
@@ -760,7 +760,7 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRB::enable_transmitter()
+     * \brief Enable the transmitter.
      */
     void enable_transmitter() noexcept
     {
@@ -768,7 +768,7 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRB::enable()
+     * \brief Enable the receiver and transmitter.
      */
     void enable() noexcept
     {
@@ -776,7 +776,7 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRB::disable_receiver()
+     * \brief Disable the receiver.
      */
     void disable_receiver() noexcept
     {
@@ -784,7 +784,7 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRB::disable_transmitter()
+     * \brief Disable the transmitter.
      */
     void disable_transmitter() noexcept
     {
@@ -792,7 +792,7 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRB::disable()
+     * \brief Disable the receiver and transmitter.
      */
     void disable() noexcept
     {
@@ -800,7 +800,9 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRB::enable_interrupts()
+     * \brief Enable interrupts.
+     *
+     * \param[in] interrupts The mask identifying the interrupts to enable.
      */
     void enable_interrupts( std::uint8_t interrupts ) noexcept
     {
@@ -808,7 +810,9 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRB::disable_interrupts()
+     * \brief Disable interrupts.
+     *
+     * \param[in] interrupts The mask identifying the interrupts to disable.
      */
     void disable_interrupts( std::uint8_t interrupts = Interrupt::ALL )
     {
@@ -816,7 +820,10 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRA::set_incoming_frame_type()
+     * \brief Set the multi-processor communication mode frame type of the next incoming
+     *        frame.
+     *
+     * \param[in] frame_type The frame type of the next incoming frame.
      */
     void set_incoming_frame_type( Frame_Type frame_type ) noexcept
     {
@@ -824,7 +831,10 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRA::data_available()
+     * \brief Check if data is available in the receive buffer.
+     *
+     * \return true if data is available in the receive buffer.
+     * \return false if no data is available in the receive buffer.
      */
     auto data_available() const noexcept
     {
@@ -832,7 +842,16 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRA::error()
+     * \brief Check if a framing error or parity error occurred during reception of the
+     *        next data in the receive buffer, or the receive buffer has experienced a
+     *        data overrun.
+     *
+     * \return true if a framing error or parity error occurred during reception of the
+     *         next data in the receive buffer, or the receive buffer has experienced a
+     *         data overrun.
+     * \return false if neither a framing error nor a parity error occurred during
+     *         reception of the next data in the receive buffer, and the receive buffer
+     *         has not experienced a data overrun.
      */
     auto error() const noexcept
     {
@@ -840,7 +859,13 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRA::framing_error()
+     * \brief Check if a framing error occurred during reception of the next data in the
+     *        receive buffer.
+     *
+     * \return true if a framing error occurred during reception of the next data in the
+     *         receive buffer.
+     * \return false if a framing error did not occur during reception of the next data in
+     *         the receive buffer.
      */
     auto framing_error() const noexcept
     {
@@ -848,7 +873,13 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRA::parity_error()
+     * \brief Check if a parity error occurred during reception of the next data in the
+     *        receive buffer.
+     *
+     * \return true if a parity error occurred during reception of the next data in the
+     *         receive buffer.
+     * \return false if a parity error did not occur during reception of the next data in
+     *         the receive buffer.
      */
     auto parity_error() const noexcept
     {
@@ -856,7 +887,10 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRA::overrun_error()
+     * \brief Check if the receive buffer has experienced a data overrun.
+     *
+     * \return true if the receive buffer has experienced a data overrun.
+     * \return false if the receive buffer has not experienced a data overrun.
      */
     auto overrun_error() const noexcept
     {
@@ -877,7 +911,10 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRA::transmit_buffer_empty()
+     * \brief Check if the transmit buffer is empty.
+     *
+     * \return true if the transmit buffer is empty.
+     * \return false if the transmit buffer is not empty.
      */
     auto transmit_buffer_empty() const noexcept
     {
@@ -885,7 +922,10 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRA::transmission_complete()
+     * \brief Check if transmission is complete.
+     *
+     * \return true if transmission is complete.
+     * \return false if transmission is not complete.
      */
     auto transmission_complete() const noexcept
     {
@@ -893,7 +933,7 @@ class USART {
     }
 
     /**
-     * \copydoc picolibrary::Microchip::megaAVR::Peripheral::USART::UCSRA::clear_transmission_complete()
+     * \brief Clear the transmission complete flag.
      */
     void clear_transmission_complete() noexcept
     {
