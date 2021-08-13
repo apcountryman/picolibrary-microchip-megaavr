@@ -399,6 +399,15 @@ class Basic_Controller<Peripheral::USART> {
     }
 };
 
+/**
+ * \brief Fixed configuration SPI basic controller.
+ *
+ * \tparam Peripheral The type of peripheral used to implement SPI basic controller
+ *         functionality.
+ */
+template<typename Peripheral>
+class Fixed_Configuration_Basic_Controller;
+
 } // namespace picolibrary::Microchip::megaAVR::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_H
