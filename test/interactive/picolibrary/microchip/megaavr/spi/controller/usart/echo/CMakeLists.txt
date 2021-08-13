@@ -13,7 +13,7 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/microchip/megaavr/spi/controller/spi/echo/CMakeLists.txt
+# File: test/interactive/picolibrary/microchip/megaavr/spi/controller/usart/echo/CMakeLists.txt
 # Description: picolibrary::Microchip::megaAVR::SPI::Controller<picolibrary::Microchip::megaAVR::Peripheral::USART>
 #       echo interactive test CMake rules.
 
