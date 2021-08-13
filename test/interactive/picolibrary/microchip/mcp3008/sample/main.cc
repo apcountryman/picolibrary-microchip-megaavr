@@ -58,9 +58,7 @@ using Controller = ::picolibrary::Microchip::megaAVR::SPI::Controller<SPI>;
 } // namespace
 
 /**
- * \brief Execute the
- *        picolibrary::Microchip::megaAVR::SPI::Controller<picolibrary::Microchip::megaAVR::Peripheral::SPI>
- *        echo interactive test.
+ * \brief Execute the picolibrary::Microchip::MCP3008 sample interactive test.
  *
  * \return 0.
  */
