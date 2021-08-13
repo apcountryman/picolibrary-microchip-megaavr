@@ -580,6 +580,161 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
     }
 };
 
+/**
+ * \brief USART peripheral based fixed configuration SPI basic controller.
+ */
+template<>
+class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
+  public:
+    /**
+     * \brief Clock (frequency, polarity, and phase), and data exchange bit order
+     *        configuration.
+     */
+    struct Configuration {
+    };
+
+    /**
+     * \brief Constructor.
+     */
+    constexpr Fixed_Configuration_Basic_Controller() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] usart The USART peripheral used by the SPI controller.
+     * \param[in] scaling_factor The desired clock generator scaling factor.
+     * \param[in] clock_polarity The desired clock polarity.
+     * \param[in] clock_phase The desired clock phase.
+     * \param[in] bit_order The desired data exchange bit order.
+     */
+    Fixed_Configuration_Basic_Controller(
+        Peripheral::USART &               usart,
+        std::uint16_t                     scaling_factor,
+        Peripheral::USART::Clock_Polarity clock_polarity,
+        Peripheral::USART::Clock_Phase    clock_phase,
+        Peripheral::USART::Bit_Order      bit_order ) noexcept :
+        m_xck{ Multiplexed_Signals::xck_port( usart ), Multiplexed_Signals::xck_mask( usart ) },
+        m_usart{ &usart }
+    {
+        m_usart->configure_as_spi_controller();
+        m_usart->configure( clock_polarity, clock_phase, bit_order, scaling_factor );
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Fixed_Configuration_Basic_Controller( Fixed_Configuration_Basic_Controller && source ) noexcept :
+        m_xck{ std::move( source.m_xck ) },
+        m_usart{ source.m_usart }
+    {
+        source.m_usart = nullptr;
+    }
+
+    Fixed_Configuration_Basic_Controller( Fixed_Configuration_Basic_Controller const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Fixed_Configuration_Basic_Controller() noexcept
+    {
+        disable();
+    }
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    auto & operator=( Fixed_Configuration_Basic_Controller && expression ) noexcept
+    {
+        if ( &expression != this ) {
+            disable();
+
+            m_xck   = std::move( expression.m_xck );
+            m_usart = expression.m_usart;
+
+            expression.m_usart = nullptr;
+        } // if
+
+        return *this;
+    }
+
+    auto operator=( Fixed_Configuration_Basic_Controller const & ) = delete;
+
+    /**
+     * \brief Initialize the controller's hardware.
+     *
+     * \return Success.
+     */
+    auto initialize() noexcept -> Result<Void, Void>
+    {
+        static_cast<void>( m_xck.initialize() );
+
+        m_usart->enable();
+
+        return {};
+    }
+
+    /**
+     * \brief Configure the controller's clock, and data exchange bit order to meet a
+     *        specific device's communication requirements.
+     *
+     * \param[in] configuration The clock, and data exchange bit order configuration that
+     *            meets the device's communication requirements.
+     *
+     * \return Success.
+     */
+    constexpr auto configure( Configuration configuration ) noexcept -> Result<Void, Void>
+    {
+        static_cast<void>( configuration );
+
+        return {};
+    }
+
+    /**
+     * \brief Exchange data with a device.
+     *
+     * \param[in] data The data to transmit.
+     *
+     * \return The received data.
+     */
+    auto exchange( std::uint8_t data ) noexcept -> Result<std::uint8_t, Void>
+    {
+        while ( not m_usart->transmit_buffer_empty() ) {}
+
+        m_usart->transmit( data );
+
+        while ( not m_usart->data_available() ) {}
+
+        return m_usart->receive<std::uint8_t>();
+    }
+
+  private:
+    /**
+     * \brief The XCK pin.
+     */
+    GPIO::Push_Pull_IO_Pin m_xck{};
+
+    /**
+     * \brief The USART peripheral used by the SPI controller.
+     */
+    Peripheral::USART * m_usart{};
+
+    /**
+     * \brief Disable the USART.
+     */
+    void disable() noexcept
+    {
+        if ( m_usart ) {
+            m_usart->disable();
+        } // if
+    }
+};
+
 } // namespace picolibrary::Microchip::megaAVR::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_H
