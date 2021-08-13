@@ -53,7 +53,7 @@ using ::picolibrary::Microchip::megaAVR::Peripheral::USART;
 using ::picolibrary::SPI::GPIO_Output_Pin_Device_Selector;
 using ::picolibrary::Testing::Interactive::Microchip::MCP3008::sample;
 
-using Controller = ::picolibrary::Microchip::megaAVR::SPI::Controller<SPI>;
+using Fixed_Configuration_Controller = ::picolibrary::Microchip::megaAVR::SPI::Fixed_Configuration_Controller<SPI>;
 
 } // namespace
 
@@ -68,11 +68,12 @@ int main()
         Transmitter_8_N_1{ TRANSMITTER_USART::instance(),
                            { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
                              .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } },
-        Controller{ CONTROLLER_SPI::instance() },
-        { .clock_rate     = SPI::Clock_Rate::CONTROLLER_CLOCK_RATE,
-          .clock_polarity = SPI::Clock_Polarity::IDLE_LOW,
-          .clock_phase    = SPI::Clock_Phase::CAPTURE_IDLE_TO_ACTIVE,
-          .bit_order      = SPI::Bit_Order::MSB_FIRST },
+        Fixed_Configuration_Controller{ CONTROLLER_SPI::instance(),
+                                        SPI::Clock_Rate::CONTROLLER_CLOCK_RATE,
+                                        SPI::Clock_Polarity::IDLE_LOW,
+                                        SPI::Clock_Phase::CAPTURE_IDLE_TO_ACTIVE,
+                                        SPI::Bit_Order::MSB_FIRST },
+        {},
         GPIO_Output_Pin_Device_Selector<Active_Low_IO_Pin<Push_Pull_IO_Pin>>{
             ds_port( CONTROLLER_SPI::instance() ), ds_mask( CONTROLLER_SPI::instance() ) },
         MCP3008_INPUT,
