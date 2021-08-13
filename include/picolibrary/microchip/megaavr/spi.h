@@ -211,7 +211,7 @@ class Basic_Controller<Peripheral::SPI> {
     GPIO::Push_Pull_IO_Pin m_sck{};
 
     /**
-     * \brief The MOSI pin.
+     * \brief The CODI pin.
      */
     GPIO::Push_Pull_IO_Pin m_codi{};
 
@@ -560,7 +560,7 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
     GPIO::Push_Pull_IO_Pin m_sck{};
 
     /**
-     * \brief The MOSI pin.
+     * \brief The CODI pin.
      */
     GPIO::Push_Pull_IO_Pin m_codi{};
 
