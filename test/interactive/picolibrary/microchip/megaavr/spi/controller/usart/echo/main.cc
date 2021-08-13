@@ -57,7 +57,7 @@ int main()
                            { .operating_speed = USART::Operating_Speed::TRANSMITTER_CLOCK_GENERATOR_OPERATING_SPEED,
                              .scaling_factor = TRANSMITTER_CLOCK_GENERATOR_SCALING_FACTOR } },
         Controller{ CONTROLLER_USART::instance() },
-        { .scaling_factor = CONTROLLER_SCALING_FACTOR,
+        { .scaling_factor = CONTROLLER_CLOCK_GENERATOR_SCALING_FACTOR,
           .clock_polarity = USART::Clock_Polarity::CONTROLLER_CLOCK_POLARITY,
           .clock_phase    = USART::Clock_Phase::CONTROLLER_CLOCK_PHASE,
           .bit_order      = USART::Bit_Order::CONTROLLER_BIT_ORDER },
