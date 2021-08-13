@@ -99,9 +99,9 @@ class Basic_Controller<Peripheral::SPI> {
      * \param[in] spi The SPI peripheral used by the SPI controller.
      */
     Basic_Controller( Peripheral::SPI & spi ) noexcept :
+        m_spi{ &spi },
         m_sck{ Multiplexed_Signals::sck_port( spi ), Multiplexed_Signals::sck_mask( spi ) },
-        m_codi{ Multiplexed_Signals::codi_port( spi ), Multiplexed_Signals::codi_mask( spi ) },
-        m_spi{ &spi }
+        m_codi{ Multiplexed_Signals::codi_port( spi ), Multiplexed_Signals::codi_mask( spi ) }
     {
         m_spi->configure_as_spi_controller();
     }
@@ -112,9 +112,9 @@ class Basic_Controller<Peripheral::SPI> {
      * \param[in] source The source of the move.
      */
     constexpr Basic_Controller( Basic_Controller && source ) noexcept :
+        m_spi{ source.m_spi },
         m_sck{ std::move( source.m_sck ) },
-        m_codi{ std::move( source.m_codi ) },
-        m_spi{ source.m_spi }
+        m_codi{ std::move( source.m_codi ) }
     {
         source.m_spi = nullptr;
     }
@@ -141,9 +141,9 @@ class Basic_Controller<Peripheral::SPI> {
         if ( &expression != this ) {
             disable();
 
+            m_spi  = expression.m_spi;
             m_sck  = std::move( expression.m_sck );
             m_codi = std::move( expression.m_codi );
-            m_spi  = expression.m_spi;
 
             expression.m_spi = nullptr;
         } // if
@@ -206,6 +206,11 @@ class Basic_Controller<Peripheral::SPI> {
 
   private:
     /**
+     * \brief The SPI peripheral used by the SPI controller.
+     */
+    Peripheral::SPI * m_spi{};
+
+    /**
      * \brief The SCK pin.
      */
     GPIO::Push_Pull_IO_Pin m_sck{};
@@ -214,11 +219,6 @@ class Basic_Controller<Peripheral::SPI> {
      * \brief The CODI pin.
      */
     GPIO::Push_Pull_IO_Pin m_codi{};
-
-    /**
-     * \brief The SPI peripheral used by the SPI controller.
-     */
-    Peripheral::SPI * m_spi{};
 
     /**
      * \brief Disable the SPI.
@@ -274,8 +274,8 @@ class Basic_Controller<Peripheral::USART> {
      * \param[in] usart The USART peripheral used by the SPI controller.
      */
     Basic_Controller( Peripheral::USART & usart ) noexcept :
-        m_xck{ Multiplexed_Signals::xck_port( usart ), Multiplexed_Signals::xck_mask( usart ) },
-        m_usart{ &usart }
+        m_usart{ &usart },
+        m_xck{ Multiplexed_Signals::xck_port( usart ), Multiplexed_Signals::xck_mask( usart ) }
     {
         m_usart->configure_as_spi_controller();
     }
@@ -286,8 +286,8 @@ class Basic_Controller<Peripheral::USART> {
      * \param[in] source The source of the move.
      */
     constexpr Basic_Controller( Basic_Controller && source ) noexcept :
-        m_xck{ std::move( source.m_xck ) },
-        m_usart{ source.m_usart }
+        m_usart{ source.m_usart },
+        m_xck{ std::move( source.m_xck ) }
     {
         source.m_usart = nullptr;
     }
@@ -314,8 +314,8 @@ class Basic_Controller<Peripheral::USART> {
         if ( &expression != this ) {
             disable();
 
-            m_xck   = std::move( expression.m_xck );
             m_usart = expression.m_usart;
+            m_xck   = std::move( expression.m_xck );
 
             expression.m_usart = nullptr;
         } // if
@@ -379,14 +379,14 @@ class Basic_Controller<Peripheral::USART> {
 
   private:
     /**
-     * \brief The XCK pin.
-     */
-    GPIO::Push_Pull_IO_Pin m_xck{};
-
-    /**
      * \brief The USART peripheral used by the SPI controller.
      */
     Peripheral::USART * m_usart{};
+
+    /**
+     * \brief The XCK pin.
+     */
+    GPIO::Push_Pull_IO_Pin m_xck{};
 
     /**
      * \brief Disable the USART.
@@ -451,9 +451,9 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
         Peripheral::SPI::Clock_Polarity clock_polarity,
         Peripheral::SPI::Clock_Phase    clock_phase,
         Peripheral::SPI::Bit_Order      bit_order ) noexcept :
+        m_spi{ &spi },
         m_sck{ Multiplexed_Signals::sck_port( spi ), Multiplexed_Signals::sck_mask( spi ) },
-        m_codi{ Multiplexed_Signals::codi_port( spi ), Multiplexed_Signals::codi_mask( spi ) },
-        m_spi{ &spi }
+        m_codi{ Multiplexed_Signals::codi_port( spi ), Multiplexed_Signals::codi_mask( spi ) }
     {
         m_spi->configure_as_spi_controller();
         m_spi->configure( clock_rate, clock_polarity, clock_phase, bit_order );
@@ -465,9 +465,9 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
      * \param[in] source The source of the move.
      */
     constexpr Fixed_Configuration_Basic_Controller( Fixed_Configuration_Basic_Controller && source ) noexcept :
+        m_spi{ source.m_spi },
         m_sck{ std::move( source.m_sck ) },
-        m_codi{ std::move( source.m_codi ) },
-        m_spi{ source.m_spi }
+        m_codi{ std::move( source.m_codi ) }
     {
         source.m_spi = nullptr;
     }
@@ -494,9 +494,9 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
         if ( &expression != this ) {
             disable();
 
+            m_spi  = expression.m_spi;
             m_sck  = std::move( expression.m_sck );
             m_codi = std::move( expression.m_codi );
-            m_spi  = expression.m_spi;
 
             expression.m_spi = nullptr;
         } // if
@@ -555,6 +555,11 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
 
   private:
     /**
+     * \brief The SPI peripheral used by the SPI controller.
+     */
+    Peripheral::SPI * m_spi{};
+
+    /**
      * \brief The SCK pin.
      */
     GPIO::Push_Pull_IO_Pin m_sck{};
@@ -563,11 +568,6 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
      * \brief The CODI pin.
      */
     GPIO::Push_Pull_IO_Pin m_codi{};
-
-    /**
-     * \brief The SPI peripheral used by the SPI controller.
-     */
-    Peripheral::SPI * m_spi{};
 
     /**
      * \brief Disable the SPI.
@@ -613,8 +613,8 @@ class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
         Peripheral::USART::Clock_Polarity clock_polarity,
         Peripheral::USART::Clock_Phase    clock_phase,
         Peripheral::USART::Bit_Order      bit_order ) noexcept :
-        m_xck{ Multiplexed_Signals::xck_port( usart ), Multiplexed_Signals::xck_mask( usart ) },
-        m_usart{ &usart }
+        m_usart{ &usart },
+        m_xck{ Multiplexed_Signals::xck_port( usart ), Multiplexed_Signals::xck_mask( usart ) }
     {
         m_usart->configure_as_spi_controller();
         m_usart->configure( clock_polarity, clock_phase, bit_order, scaling_factor );
@@ -626,8 +626,8 @@ class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
      * \param[in] source The source of the move.
      */
     constexpr Fixed_Configuration_Basic_Controller( Fixed_Configuration_Basic_Controller && source ) noexcept :
-        m_xck{ std::move( source.m_xck ) },
-        m_usart{ source.m_usart }
+        m_usart{ source.m_usart },
+        m_xck{ std::move( source.m_xck ) }
     {
         source.m_usart = nullptr;
     }
@@ -654,8 +654,8 @@ class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
         if ( &expression != this ) {
             disable();
 
-            m_xck   = std::move( expression.m_xck );
             m_usart = expression.m_usart;
+            m_xck   = std::move( expression.m_xck );
 
             expression.m_usart = nullptr;
         } // if
@@ -715,14 +715,14 @@ class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
 
   private:
     /**
-     * \brief The XCK pin.
-     */
-    GPIO::Push_Pull_IO_Pin m_xck{};
-
-    /**
      * \brief The USART peripheral used by the SPI controller.
      */
     Peripheral::USART * m_usart{};
+
+    /**
+     * \brief The XCK pin.
+     */
+    GPIO::Push_Pull_IO_Pin m_xck{};
 
     /**
      * \brief Disable the USART.
