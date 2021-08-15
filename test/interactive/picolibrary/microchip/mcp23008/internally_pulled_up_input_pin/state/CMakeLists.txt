@@ -88,6 +88,7 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
         )
         target_link_libraries(
             test-interactive-picolibrary-microchip-mcp23008-internally_pulled_up_input_pin-state
+            picolibrary-fatal_error
             picolibrary-microchip-megaavr
         )
         add_avrdude_programming_targets(
