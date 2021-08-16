@@ -191,10 +191,10 @@ class SPI {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto SPI2X    = std::uint_fast8_t{ 1 }; ///< SPI2X.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 5 }; ///< Reserved.
-            static constexpr auto WCOL     = std::uint_fast8_t{ 1 }; ///< WCOL.
-            static constexpr auto SPIF     = std::uint_fast8_t{ 1 }; ///< SPIF.
+            static constexpr auto SPI2X     = std::uint_fast8_t{ 1 }; ///< SPI2X.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ 5 }; ///< RESERVED1.
+            static constexpr auto WCOL      = std::uint_fast8_t{ 1 }; ///< WCOL.
+            static constexpr auto SPIF      = std::uint_fast8_t{ 1 }; ///< SPIF.
         };
 
         /**
@@ -202,8 +202,8 @@ class SPI {
          */
         struct Bit {
             static constexpr auto SPI2X = std::uint_fast8_t{}; ///< SPI2X.
-            static constexpr auto RESERVED = std::uint_fast8_t{ SPI2X + Size::SPI2X }; ///< Reserved.
-            static constexpr auto WCOL = std::uint_fast8_t{ RESERVED + Size::RESERVED }; ///< WCOL.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ SPI2X + Size::SPI2X }; ///< RESERVED1.
+            static constexpr auto WCOL = std::uint_fast8_t{ RESERVED1 + Size::RESERVED1 }; ///< WCOL.
             static constexpr auto SPIF = std::uint_fast8_t{ WCOL + Size::WCOL }; ///< WCOL.
         };
 
@@ -212,7 +212,7 @@ class SPI {
          */
         struct Mask {
             static constexpr auto SPI2X = mask<std::uint8_t>( Size::SPI2X, Bit::SPI2X ); ///< SPI2X.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED1 = mask<std::uint8_t>( Size::RESERVED1, Bit::RESERVED1 ); ///< RESERVED1.
             static constexpr auto WCOL = mask<std::uint8_t>( Size::WCOL, Bit::WCOL ); ///< WCOL.
             static constexpr auto SPIF = mask<std::uint8_t>( Size::SPIF, Bit::SPIF ); ///< SPIF.
         };
