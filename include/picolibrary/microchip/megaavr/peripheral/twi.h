@@ -64,14 +64,14 @@ class TWI {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto TWIE     = std::uint_fast8_t{ 1 }; ///< TWIE.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 1 }; ///< Reserved.
-            static constexpr auto TWEN     = std::uint_fast8_t{ 1 }; ///< TWEN.
-            static constexpr auto TWWC     = std::uint_fast8_t{ 1 }; ///< TWWC.
-            static constexpr auto TWSTO    = std::uint_fast8_t{ 1 }; ///< TWSTO.
-            static constexpr auto TWSTA    = std::uint_fast8_t{ 1 }; ///< TWSTA.
-            static constexpr auto TWEA     = std::uint_fast8_t{ 1 }; ///< TWEA.
-            static constexpr auto TWINT    = std::uint_fast8_t{ 1 }; ///< TWINT.
+            static constexpr auto TWIE      = std::uint_fast8_t{ 1 }; ///< TWIE.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ 1 }; ///< RESERVED1.
+            static constexpr auto TWEN      = std::uint_fast8_t{ 1 }; ///< TWEN.
+            static constexpr auto TWWC      = std::uint_fast8_t{ 1 }; ///< TWWC.
+            static constexpr auto TWSTO     = std::uint_fast8_t{ 1 }; ///< TWSTO.
+            static constexpr auto TWSTA     = std::uint_fast8_t{ 1 }; ///< TWSTA.
+            static constexpr auto TWEA      = std::uint_fast8_t{ 1 }; ///< TWEA.
+            static constexpr auto TWINT     = std::uint_fast8_t{ 1 }; ///< TWINT.
         };
 
         /**
@@ -79,8 +79,8 @@ class TWI {
          */
         struct Bit {
             static constexpr auto TWIE = std::uint_fast8_t{}; ///< TWIE.
-            static constexpr auto RESERVED = std::uint_fast8_t{ TWIE + Size::TWIE }; ///< Reserved.
-            static constexpr auto TWEN = std::uint_fast8_t{ RESERVED + Size::RESERVED }; ///< TWEN.
+            static constexpr auto RESERVED1 = std::uint_fast8_t{ TWIE + Size::TWIE }; ///< RESERVED1.
+            static constexpr auto TWEN = std::uint_fast8_t{ RESERVED1 + Size::RESERVED1 }; ///< TWEN.
             static constexpr auto TWWC = std::uint_fast8_t{ TWEN + Size::TWEN }; ///< TWWC.
             static constexpr auto TWSTO = std::uint_fast8_t{ TWWC + Size::TWWC }; ///< TWSTO.
             static constexpr auto TWSTA = std::uint_fast8_t{ TWSTO + Size::TWSTO }; ///< TWSTA.
@@ -93,7 +93,7 @@ class TWI {
          */
         struct Mask {
             static constexpr auto TWIE = mask<std::uint8_t>( Size::TWIE, Bit::TWIE ); ///< TWIE.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED1 = mask<std::uint8_t>( Size::RESERVED1, Bit::RESERVED1 ); ///< RESERVED1.
             static constexpr auto TWEN = mask<std::uint8_t>( Size::TWEN, Bit::TWEN ); ///< TWEN.
             static constexpr auto TWWC = mask<std::uint8_t>( Size::TWWC, Bit::TWWC ); ///< TWWC.
             static constexpr auto TWSTO = mask<std::uint8_t>( Size::TWSTO, Bit::TWSTO ); ///< TWSTO.
@@ -256,9 +256,9 @@ class TWI {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto TWPS     = std::uint_fast8_t{ 2 }; ///< TWPS.
-            static constexpr auto RESERVED = std::uint_fast8_t{ 1 }; ///< Reserved.
-            static constexpr auto TWS      = std::uint_fast8_t{ 5 }; ///< TWS.
+            static constexpr auto TWPS      = std::uint_fast8_t{ 2 }; ///< TWPS.
+            static constexpr auto RESERVED2 = std::uint_fast8_t{ 1 }; ///< RESERVED2.
+            static constexpr auto TWS       = std::uint_fast8_t{ 5 }; ///< TWS.
         };
 
         /**
@@ -266,8 +266,8 @@ class TWI {
          */
         struct Bit {
             static constexpr auto TWPS = std::uint_fast8_t{}; ///< TWPS.
-            static constexpr auto RESERVED = std::uint_fast8_t{ TWPS + Size::TWPS }; ///< Reserved.
-            static constexpr auto TWS = std::uint_fast8_t{ RESERVED + Size::RESERVED }; ///< TWS.
+            static constexpr auto RESERVED2 = std::uint_fast8_t{ TWPS + Size::TWPS }; ///< RESERVED2.
+            static constexpr auto TWS = std::uint_fast8_t{ RESERVED2 + Size::RESERVED2 }; ///< TWS.
         };
 
         /**
@@ -275,7 +275,7 @@ class TWI {
          */
         struct Mask {
             static constexpr auto TWPS = mask<std::uint8_t>( Size::TWPS, Bit::TWPS ); ///< TWPS.
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED2 = mask<std::uint8_t>( Size::RESERVED2, Bit::RESERVED2 ); ///< RESERVED2.
             static constexpr auto TWS = mask<std::uint8_t>( Size::TWS, Bit::TWS ); ///< TWS.
         };
 
@@ -376,23 +376,23 @@ class TWI {
          * \brief Field sizes.
          */
         struct Size {
-            static constexpr auto RESERVED = std::uint_fast8_t{ 1 }; ///< Reserved.
-            static constexpr auto TWAM     = std::uint_fast8_t{ 7 }; ///< TWAM.
+            static constexpr auto RESERVED0 = std::uint_fast8_t{ 1 }; ///< RESERVED0.
+            static constexpr auto TWAM      = std::uint_fast8_t{ 7 }; ///< TWAM.
         };
 
         /**
          * \brief Field bit positions.
          */
         struct Bit {
-            static constexpr auto RESERVED = std::uint_fast8_t{}; ///< Reserved.
-            static constexpr auto TWAM = std::uint_fast8_t{ RESERVED + Size::RESERVED }; ///< TWAM.
+            static constexpr auto RESERVED0 = std::uint_fast8_t{}; ///< RESERVED0.
+            static constexpr auto TWAM = std::uint_fast8_t{ RESERVED0 + Size::RESERVED0 }; ///< TWAM.
         };
 
         /**
          * \brief Field bit masks.
          */
         struct Mask {
-            static constexpr auto RESERVED = mask<std::uint8_t>( Size::RESERVED, Bit::RESERVED ); ///< Reserved.
+            static constexpr auto RESERVED0 = mask<std::uint8_t>( Size::RESERVED0, Bit::RESERVED0 ); ///< RESERVED0.
             static constexpr auto TWAM = mask<std::uint8_t>( Size::TWAM, Bit::TWAM ); ///< TWAM.
         };
 
