@@ -25,6 +25,7 @@
 
 #include <cstdint>
 
+#include "picolibrary/fatal_error.h"
 #include "picolibrary/microchip/megaavr/peripheral/atmega2560.h"
 #include "picolibrary/microchip/megaavr/peripheral/port.h"
 #include "picolibrary/microchip/megaavr/peripheral/spi.h"
@@ -49,7 +50,7 @@ inline auto spi_port( Peripheral::SPI const & spi ) noexcept -> Peripheral::PORT
             return Peripheral::ATmega2560::PORTB::instance();
     } // switch
 
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    trap_fatal_error();
 }
 
 /**
@@ -85,7 +86,7 @@ inline auto ds_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fast8
         case Peripheral::ATmega2560::SPI0::ADDRESS: return 0;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**
@@ -137,7 +138,7 @@ inline auto sck_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fast
         case Peripheral::ATmega2560::SPI0::ADDRESS: return 1;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**
@@ -189,7 +190,7 @@ inline auto codi_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fas
         case Peripheral::ATmega2560::SPI0::ADDRESS: return 2;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**
@@ -241,7 +242,7 @@ inline auto cido_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fas
         case Peripheral::ATmega2560::SPI0::ADDRESS: return 3;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**

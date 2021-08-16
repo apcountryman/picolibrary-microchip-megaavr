@@ -25,6 +25,7 @@
 
 #include <cstdint>
 
+#include "picolibrary/fatal_error.h"
 #include "picolibrary/microchip/megaavr/peripheral/atmega2560.h"
 #include "picolibrary/microchip/megaavr/peripheral/port.h"
 #include "picolibrary/microchip/megaavr/peripheral/twi.h"
@@ -49,7 +50,7 @@ inline auto twi_port( Peripheral::TWI const & twi ) noexcept -> Peripheral::PORT
             return Peripheral::ATmega2560::PORTD::instance();
     } // switch
 
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    trap_fatal_error();
 }
 
 /**
@@ -85,7 +86,7 @@ inline auto scl_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast
         case Peripheral::ATmega2560::TWI0::ADDRESS: return 0;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**
@@ -137,7 +138,7 @@ inline auto sda_number( Peripheral::TWI const & twi ) noexcept -> std::uint_fast
         case Peripheral::ATmega2560::TWI0::ADDRESS: return 1;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**
