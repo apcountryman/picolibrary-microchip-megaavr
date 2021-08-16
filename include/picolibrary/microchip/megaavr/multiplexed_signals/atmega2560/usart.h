@@ -26,6 +26,7 @@
 
 #include <cstdint>
 
+#include "picolibrary/fatal_error.h"
 #include "picolibrary/microchip/megaavr/peripheral/atmega2560.h"
 #include "picolibrary/microchip/megaavr/peripheral/port.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
@@ -56,7 +57,7 @@ inline auto usart_port( Peripheral::USART const & usart ) noexcept -> Peripheral
             return Peripheral::ATmega2560::PORTJ::instance();
     } // switch
 
-    return *static_cast<Peripheral::PORT *>( nullptr );
+    trap_fatal_error();
 }
 
 /**
@@ -95,7 +96,7 @@ inline auto xck_number( Peripheral::USART const & usart ) noexcept -> std::uint_
         case Peripheral::ATmega2560::USART3::ADDRESS: return 2;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**
@@ -150,7 +151,7 @@ inline auto txd_number( Peripheral::USART const & usart ) noexcept -> std::uint_
         case Peripheral::ATmega2560::USART3::ADDRESS: return 1;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**
@@ -205,7 +206,7 @@ inline auto rxd_number( Peripheral::USART const & usart ) noexcept -> std::uint_
         case Peripheral::ATmega2560::USART3::ADDRESS: return 0;
     } // switch
 
-    return 0;
+    trap_fatal_error();
 }
 
 /**
