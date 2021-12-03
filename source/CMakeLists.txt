@@ -24,7 +24,6 @@ configure_file(
 
 set(
     PICOLIBRARY_MICROCHIP_MEGAAVR_SOURCE_FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/picolibrary/microchip/megaavr/version.cc"
     "picolibrary/microchip/megaavr.cc"
     "picolibrary/microchip/megaavr/asynchronous_serial.cc"
     "picolibrary/microchip/megaavr/gpio.cc"
@@ -65,4 +64,13 @@ target_include_directories(
 target_link_libraries(
     picolibrary-microchip-megaavr
     ${PICOLIBRARY_MICROCHIP_MEGAAVR_LINK_LIBRARIES}
+)
+
+add_library(
+    picolibrary-microchip-megaavr-version
+    "${CMAKE_CURRENT_BINARY_DIR}/picolibrary/microchip/megaavr/version.cc"
+)
+target_include_directories(
+    picolibrary-microchip-megaavr-version
+    PUBLIC "${PROJECT_SOURCE_DIR}/include"
 )
