@@ -15,15 +15,3 @@
 
 # File: test/interactive/picolibrary/microchip/megaavr/CMakeLists.txt
 # Description: picolibrary::Microchip::megaAVR interactive tests CMake rules.
-
-# build the picolibrary::Microchip::megaAVR::Asynchronous_Serial interactive tests
-add_subdirectory( asynchronous_serial )
-
-# build the picolibrary::Microchip::megaAVR::GPIO interactive tests
-add_subdirectory( gpio )
-
-# build the picolibrary::Microchip::megaAVR::I2C interactive tests
-add_subdirectory( i2c )
-
-# build the picolibrary::Microchip::megaAVR::SPI interactive tests
-add_subdirectory( spi )
