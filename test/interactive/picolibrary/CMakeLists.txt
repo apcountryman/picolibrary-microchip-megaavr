@@ -16,8 +16,5 @@
 # File: test/interactive/picolibrary/CMakeLists.txt
 # Description: picolibrary interactive tests CMake rules.
 
-# build the picolibrary::Asynchronous_Serial interactive tests
-add_subdirectory( asynchronous_serial )
-
 # build the picolibrary::Microchip interactive tests
 add_subdirectory( microchip )

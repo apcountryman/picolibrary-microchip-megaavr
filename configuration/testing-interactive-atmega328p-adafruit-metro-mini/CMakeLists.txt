@@ -40,13 +40,7 @@ mark_as_advanced( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP )
 
 # picolibrary configuration
 set( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY OFF CACHE BOOL "" FORCE )
-set( PICOLIBRARY_SUPPRESS_HUMAN_READABLE_ERROR_INFORMATION        OFF CACHE BOOL "" FORCE )
-set( PICOLIBRARY_SUPPRESS_HUMAN_READABLE_EVENT_INFORMATION        OFF CACHE BOOL "" FORCE )
-mark_as_advanced(
-    PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY
-    PICOLIBRARY_SUPPRESS_HUMAN_READABLE_ERROR_INFORMATION
-    PICOLIBRARY_SUPPRESS_HUMAN_READABLE_EVENT_INFORMATION
-)
+mark_as_advanced( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY )
 
 # interactive testing configuration
 set( PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING ON CACHE BOOL "" FORCE )
@@ -61,18 +55,3 @@ mark_as_advanced(
     PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_RESET_ENABLED
     PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_VERIFY_FLASH
 )
-
-include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/asynchronous_serial/unbuffered_output_stream/hello_world/CMakeLists.txt" )
-include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/mcp23008/internally_pulled_up_input_pin/state/CMakeLists.txt" )
-include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/mcp23008/open_drain_io_pin/toggle/CMakeLists.txt" )
-include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/mcp23008/push_pull_io_pin/toggle/CMakeLists.txt" )
-include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/mcp3008/sample/CMakeLists.txt" )
-include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/asynchronous_serial/transmitter_8_n_1/hello_world/CMakeLists.txt" )
-include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/gpio/internally_pulled_up_input_pin/state/CMakeLists.txt" )
-include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/gpio/open_drain_io_pin/toggle/CMakeLists.txt" )
-include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/gpio/push_pull_io_pin/toggle/CMakeLists.txt" )
-include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/i2c/controller/scan/CMakeLists.txt" )
-include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/spi/controller/spi/echo/CMakeLists.txt" )
-include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/spi/controller/usart/echo/CMakeLists.txt" )
-include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/spi/fixed_configuration_controller/spi/echo/CMakeLists.txt" )
-include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/spi/fixed_configuration_controller/usart/echo/CMakeLists.txt" )

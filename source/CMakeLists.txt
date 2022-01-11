@@ -25,28 +25,6 @@ configure_file(
 set(
     PICOLIBRARY_MICROCHIP_MEGAAVR_SOURCE_FILES
     "picolibrary/microchip/megaavr.cc"
-    "picolibrary/microchip/megaavr/asynchronous_serial.cc"
-    "picolibrary/microchip/megaavr/gpio.cc"
-    "picolibrary/microchip/megaavr/i2c.cc"
-    "picolibrary/microchip/megaavr/multiplexed_signals.cc"
-    "picolibrary/microchip/megaavr/multiplexed_signals/atmega2560.cc"
-    "picolibrary/microchip/megaavr/multiplexed_signals/atmega2560/spi.cc"
-    "picolibrary/microchip/megaavr/multiplexed_signals/atmega2560/twi.cc"
-    "picolibrary/microchip/megaavr/multiplexed_signals/atmega2560/usart.cc"
-    "picolibrary/microchip/megaavr/multiplexed_signals/atmega328p.cc"
-    "picolibrary/microchip/megaavr/multiplexed_signals/atmega328p/spi.cc"
-    "picolibrary/microchip/megaavr/multiplexed_signals/atmega328p/twi.cc"
-    "picolibrary/microchip/megaavr/multiplexed_signals/atmega328p/usart.cc"
-    "picolibrary/microchip/megaavr/peripheral.cc"
-    "picolibrary/microchip/megaavr/peripheral/atmega2560.cc"
-    "picolibrary/microchip/megaavr/peripheral/atmega328p.cc"
-    "picolibrary/microchip/megaavr/peripheral/instance.cc"
-    "picolibrary/microchip/megaavr/peripheral/port.cc"
-    "picolibrary/microchip/megaavr/peripheral/spi.cc"
-    "picolibrary/microchip/megaavr/peripheral/twi.cc"
-    "picolibrary/microchip/megaavr/peripheral/usart.cc"
-    "picolibrary/microchip/megaavr/register.cc"
-    "picolibrary/microchip/megaavr/spi.cc"
 )
 list(
     APPEND PICOLIBRARY_MICROCHIP_MEGAAVR_LINK_LIBRARIES

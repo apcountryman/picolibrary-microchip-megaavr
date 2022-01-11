@@ -16,11 +16,5 @@
 # File: test/interactive/picolibrary/microchip/CMakeLists.txt
 # Description: picolibrary::Microchip interactive tests CMake rules.
 
-# build the picolibrary::Microchip::MCP23008 interactive tests
-add_subdirectory( mcp23008 )
-
-# build the picolibrary::Microchip::MCP3008 interactive tests
-add_subdirectory( mcp3008 )
-
 # build the picolibrary::Microchip::megaAVR interactive tests
 add_subdirectory( megaavr )
