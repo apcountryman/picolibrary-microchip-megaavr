@@ -24,6 +24,7 @@
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA2560_H
 
 #include "picolibrary/microchip/megaavr/peripheral/port.h"
+#include "picolibrary/microchip/megaavr/peripheral/usart.h"
 
 /**
  * \brief Microchip megaAVR ATmega2560 peripherals.
@@ -98,6 +99,33 @@ using PORTF = PORT_Instance<0x002F>;
 using PORTG = PORT_Instance<0x0032>;
 
 /**
+ * \brief USART0.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::USART0.
+ */
+using USART0 = USART_Instance<0x00C0>;
+
+/**
+ * \brief USART1.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::USART1.
+ */
+using USART1 = USART_Instance<0x00C8>;
+
+/**
+ * \brief USART2.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::USART2.
+ */
+using USART2 = USART_Instance<0x00D0>;
+
+/**
  * \brief PORTH.
  *
  * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
@@ -132,6 +160,15 @@ using PORTK = PORT_Instance<0x0106>;
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTL.
  */
 using PORTL = PORT_Instance<0x0109>;
+
+/**
+ * \brief USART3.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::USART3.
+ */
+using USART3 = USART_Instance<0x0130>;
 
 } // namespace picolibrary::Microchip::megaAVR::Peripheral::ATmega2560
 
