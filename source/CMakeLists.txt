@@ -29,6 +29,7 @@ set(
     "picolibrary/microchip/megaavr/peripheral/atmega2560.cc"
     "picolibrary/microchip/megaavr/peripheral/atmega328p.cc"
     "picolibrary/microchip/megaavr/peripheral/instance.cc"
+    "picolibrary/microchip/megaavr/peripheral/port.cc"
     "picolibrary/microchip/megaavr/register.cc"
 )
 list(

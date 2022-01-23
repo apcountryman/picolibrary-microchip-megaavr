@@ -23,6 +23,8 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA2560_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA2560_H
 
+#include "picolibrary/microchip/megaavr/peripheral/port.h"
+
 /**
  * \brief Microchip megaAVR ATmega2560 peripherals.
  *
@@ -31,6 +33,106 @@
  *            picolibrary::Microchip::megaAVR::Peripheral namespace.
  */
 namespace picolibrary::Microchip::megaAVR::Peripheral::ATmega2560 {
+
+/**
+ * \brief PORTA.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::PORTA.
+ */
+using PORTA = PORT_Instance<0x0020>;
+
+/**
+ * \brief PORTB.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::PORTB.
+ */
+using PORTB = PORT_Instance<0x0023>;
+
+/**
+ * \brief PORTC.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::PORTC.
+ */
+using PORTC = PORT_Instance<0x0026>;
+
+/**
+ * \brief PORTD.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::PORTD.
+ */
+using PORTD = PORT_Instance<0x0029>;
+
+/**
+ * \brief PORTE.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::PORTE.
+ */
+using PORTE = PORT_Instance<0x002C>;
+
+/**
+ * \brief PORTF.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::PORTF.
+ */
+using PORTF = PORT_Instance<0x002F>;
+
+/**
+ * \brief PORTG.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::PORTG.
+ */
+using PORTG = PORT_Instance<0x0032>;
+
+/**
+ * \brief PORTH.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::PORTH.
+ */
+using PORTH = PORT_Instance<0x0100>;
+
+/**
+ * \brief PORTJ.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::PORTJ.
+ */
+using PORTJ = PORT_Instance<0x0103>;
+
+/**
+ * \brief PORTK.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::PORTK.
+ */
+using PORTK = PORT_Instance<0x0106>;
+
+/**
+ * \brief PORTL.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::PORTL.
+ */
+using PORTL = PORT_Instance<0x0109>;
+
 } // namespace picolibrary::Microchip::megaAVR::Peripheral::ATmega2560
 
 namespace picolibrary::Microchip::megaAVR::Peripheral {
