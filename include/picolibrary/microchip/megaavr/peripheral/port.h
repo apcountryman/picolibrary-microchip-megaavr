@@ -17,7 +17,7 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR::Peripheral::Port interface.
+ * \brief picolibrary::Microchip::megaAVR::Peripheral::PORT interface.
  */
 
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_PORT_H

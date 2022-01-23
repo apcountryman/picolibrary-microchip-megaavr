@@ -17,7 +17,7 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR::Peripheral::Port implementation.
+ * \brief picolibrary::Microchip::megaAVR::Peripheral::PORT implementation.
  */
 
 #include "picolibrary/microchip/megaavr/peripheral/port.h"
