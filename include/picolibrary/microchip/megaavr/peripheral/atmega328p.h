@@ -24,6 +24,7 @@
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA328P_H
 
 #include "picolibrary/microchip/megaavr/peripheral/port.h"
+#include "picolibrary/microchip/megaavr/peripheral/usart.h"
 
 /**
  * \brief Microchip megaAVR ATmega328/P peripherals.
@@ -60,6 +61,15 @@ using PORTC = PORT_Instance<0x0026>;
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTD.
  */
 using PORTD = PORT_Instance<0x0029>;
+
+/**
+ * \brief USART0.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega328p` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::USART0.
+ */
+using USART0 = USART_Instance<0x00C0>;
 
 } // namespace picolibrary::Microchip::megaAVR::Peripheral::ATmega328P
 
