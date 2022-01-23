@@ -17,19 +17,28 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR::Peripheral interface.
+ * \brief picolibrary::Microchip::megaAVR::Peripheral::ATmega2560 interface.
  */
 
-#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_H
-#define PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_H
-
-#include "picolibrary/microchip/megaavr/peripheral/atmega2560.h"
-#include "picolibrary/microchip/megaavr/peripheral/atmega328p.h"
+#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA2560_H
+#define PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA2560_H
 
 /**
- * \brief Microchip megaAVR peripheral facilities.
+ * \brief Microchip megaAVR ATmega2560 peripherals.
+ *
+ * \attention The contents of this namespace should not be used directly. Instead, set the
+ *            `-mmcu` compiler flag to `atmega2560` and use them through the
+ *            picolibrary::Microchip::megaAVR::Peripheral namespace.
  */
+namespace picolibrary::Microchip::megaAVR::Peripheral::ATmega2560 {
+} // namespace picolibrary::Microchip::megaAVR::Peripheral::ATmega2560
+
 namespace picolibrary::Microchip::megaAVR::Peripheral {
+
+#ifdef __AVR_ATmega2560__
+using namespace ATmega2560;
+#endif // __AVR_ATmega2560__
+
 } // namespace picolibrary::Microchip::megaAVR::Peripheral
 
-#endif // PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_H
+#endif // PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA2560_H
