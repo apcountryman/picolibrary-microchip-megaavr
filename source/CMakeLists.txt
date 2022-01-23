@@ -25,6 +25,7 @@ configure_file(
 set(
     PICOLIBRARY_MICROCHIP_MEGAAVR_SOURCE_FILES
     "picolibrary/microchip/megaavr.cc"
+    "picolibrary/microchip/megaavr/register.cc"
 )
 list(
     APPEND PICOLIBRARY_MICROCHIP_MEGAAVR_LINK_LIBRARIES
