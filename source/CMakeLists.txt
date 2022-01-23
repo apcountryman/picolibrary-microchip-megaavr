@@ -26,6 +26,7 @@ set(
     PICOLIBRARY_MICROCHIP_MEGAAVR_SOURCE_FILES
     "picolibrary/microchip/megaavr.cc"
     "picolibrary/microchip/megaavr/peripheral.cc"
+    "picolibrary/microchip/megaavr/peripheral/atmega328p.cc"
     "picolibrary/microchip/megaavr/register.cc"
 )
 list(

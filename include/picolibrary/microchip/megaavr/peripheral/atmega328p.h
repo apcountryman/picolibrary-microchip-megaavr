@@ -17,18 +17,28 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR::Peripheral interface.
+ * \brief picolibrary::Microchip::megaAVR::Peripheral::ATmega328P interface.
  */
 
-#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_H
-#define PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_H
-
-#include "picolibrary/microchip/megaavr/peripheral/atmega328p.h"
+#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA328P_H
+#define PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA328P_H
 
 /**
- * \brief Microchip megaAVR peripheral facilities.
+ * \brief Microchip megaAVR ATmega328/P peripherals.
+ *
+ * \attention The contents of this namespace should not be used directly. Instead, set the
+ *            `-mmcu` compiler flag to `atmega328p` and use them through the
+ *            picolibrary::Microchip::megaAVR::Peripheral namespace.
  */
+namespace picolibrary::Microchip::megaAVR::Peripheral::ATmega328P {
+} // namespace picolibrary::Microchip::megaAVR::Peripheral::ATmega328P
+
 namespace picolibrary::Microchip::megaAVR::Peripheral {
+
+#ifdef __AVR_ATmega328P__
+using namespace ATmega328P;
+#endif // __AVR_ATmega328P__
+
 } // namespace picolibrary::Microchip::megaAVR::Peripheral
 
-#endif // PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_H
+#endif // PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA328P_H
