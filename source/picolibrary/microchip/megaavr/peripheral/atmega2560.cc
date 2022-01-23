@@ -17,19 +17,7 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR::Peripheral interface.
+ * \brief picolibrary::Microchip::megaAVR::Peripheral::ATmega2560 implementation.
  */
-
-#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_H
-#define PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_H
 
 #include "picolibrary/microchip/megaavr/peripheral/atmega2560.h"
-#include "picolibrary/microchip/megaavr/peripheral/atmega328p.h"
-
-/**
- * \brief Microchip megaAVR peripheral facilities.
- */
-namespace picolibrary::Microchip::megaAVR::Peripheral {
-} // namespace picolibrary::Microchip::megaAVR::Peripheral
-
-#endif // PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_H
