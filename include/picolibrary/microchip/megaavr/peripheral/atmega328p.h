@@ -23,6 +23,8 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA328P_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA328P_H
 
+#include "picolibrary/microchip/megaavr/peripheral/port.h"
+
 /**
  * \brief Microchip megaAVR ATmega328/P peripherals.
  *
@@ -31,6 +33,34 @@
  *            picolibrary::Microchip::megaAVR::Peripheral namespace.
  */
 namespace picolibrary::Microchip::megaAVR::Peripheral::ATmega328P {
+
+/**
+ * \brief PORTB.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega328p` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::PORTB.
+ */
+using PORTB = PORT_Instance<0x0023>;
+
+/**
+ * \brief PORTC.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega328p` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::PORTC.
+ */
+using PORTC = PORT_Instance<0x0026>;
+
+/**
+ * \brief PORTD.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega328p` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::PORTD.
+ */
+using PORTD = PORT_Instance<0x0029>;
+
 } // namespace picolibrary::Microchip::megaAVR::Peripheral::ATmega328P
 
 namespace picolibrary::Microchip::megaAVR::Peripheral {
