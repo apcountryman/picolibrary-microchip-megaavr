@@ -257,8 +257,8 @@ class USART {
          * \brief USART mode.
          */
         enum class Mode : std::uint8_t {
-            ASYNCHRONOUS = 0b00 << UCSRC::Bit::UMSEL, ///< Asynchronous.
-            SYNCHRONOUS  = 0b01 << UCSRC::Bit::UMSEL, ///< Synchronous.
+            ASYNCHRONOUS_USART = 0b00 << UCSRC::Bit::UMSEL, ///< Asynchronous USART.
+            SYNCHRONOUS_USART  = 0b01 << UCSRC::Bit::UMSEL, ///< Synchronous USART.
         };
 
         /**
