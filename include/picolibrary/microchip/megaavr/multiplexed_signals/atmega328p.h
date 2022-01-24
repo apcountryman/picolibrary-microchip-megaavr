@@ -17,18 +17,28 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR::Multiplexed_Signals interface.
+ * \brief picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega328P interface.
  */
 
-#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_MULTIPLEXED_SIGNALS_H
-#define PICOLIBRARY_MICROCHIP_MEGAAVR_MULTIPLEXED_SIGNALS_H
-
-#include "picolibrary/microchip/megaavr/multiplexed_signals/atmega328p.h"
+#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_MULTIPLEXED_SIGNALS_ATMEGA328P_H
+#define PICOLIBRARY_MICROCHIP_MEGAAVR_MULTIPLEXED_SIGNALS_ATMEGA328P_H
 
 /**
- * \brief Microchip megaAVR multiplexed signals facilities.
+ * \brief Microchip megaAVR ATmega328/P multiplexed signals facilities.
+ *
+ * \attention The contents of this namespace should not be used directly. Instead, set the
+ *            `-mmcu` compiler flag to `atmega328p` and use them through the
+ *            picolibrary::Microchip::megaAVR::Multiplexed_Signals namespace.
  */
+namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega328P {
+} // namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega328P
+
 namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals {
+
+#ifdef __AVR_ATmega328P__
+using namespace ATmega328P;
+#endif // __AVR_ATmega328P__
+
 } // namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals
 
-#endif // PICOLIBRARY_MICROCHIP_MEGAAVR_MULTIPLEXED_SIGNALS_H
+#endif // PICOLIBRARY_MICROCHIP_MEGAAVR_MULTIPLEXED_SIGNALS_ATMEGA328P_H
