@@ -25,6 +25,7 @@ configure_file(
 set(
     PICOLIBRARY_MICROCHIP_MEGAAVR_SOURCE_FILES
     "picolibrary/microchip/megaavr.cc"
+    "picolibrary/microchip/megaavr/multiplexed_signals.cc"
     "picolibrary/microchip/megaavr/peripheral.cc"
     "picolibrary/microchip/megaavr/peripheral/atmega2560.cc"
     "picolibrary/microchip/megaavr/peripheral/atmega328p.cc"
