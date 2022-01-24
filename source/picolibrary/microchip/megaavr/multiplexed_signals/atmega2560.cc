@@ -17,19 +17,7 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR::Multiplexed_Signals interface.
+ * \brief picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega2560 implementation.
  */
-
-#ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_MULTIPLEXED_SIGNALS_H
-#define PICOLIBRARY_MICROCHIP_MEGAAVR_MULTIPLEXED_SIGNALS_H
 
 #include "picolibrary/microchip/megaavr/multiplexed_signals/atmega2560.h"
-#include "picolibrary/microchip/megaavr/multiplexed_signals/atmega328p.h"
-
-/**
- * \brief Microchip megaAVR multiplexed signals facilities.
- */
-namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals {
-} // namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals
-
-#endif // PICOLIBRARY_MICROCHIP_MEGAAVR_MULTIPLEXED_SIGNALS_H
