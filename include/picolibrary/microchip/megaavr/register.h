@@ -85,7 +85,7 @@ class Register {
      *
      * \return The assigned to object.
      */
-    auto operator&=( Type expression ) noexcept
+    auto & operator&=( Type expression ) noexcept
     {
         m_register &= expression;
 
@@ -99,7 +99,7 @@ class Register {
      *
      * \return The assigned to object.
      */
-    auto operator|=( Type expression ) noexcept
+    auto & operator|=( Type expression ) noexcept
     {
         m_register |= expression;
 
@@ -113,7 +113,7 @@ class Register {
      *
      * \return The assigned to object.
      */
-    auto operator^=( Type expression ) noexcept
+    auto & operator^=( Type expression ) noexcept
     {
         m_register ^= expression;
 
