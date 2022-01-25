@@ -73,7 +73,7 @@ constexpr auto usart_port_address( std::uintptr_t usart_address ) noexcept -> st
  *
  * \return The USART peripheral's pins port peripheral.
  */
-inline auto usart_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
+inline auto & usart_port( Peripheral::USART const & usart ) noexcept
 {
     return *reinterpret_cast<Peripheral::PORT *>(
         usart_port_address( reinterpret_cast<std::uintptr_t>( &usart ) ) );
@@ -124,7 +124,7 @@ inline auto & xck_port( Peripheral::USART const & usart ) noexcept
  *
  * \return The USART peripheral's XCK pin number.
  */
-constexpr auto xck_number( std::uintptr_t usart_address ) noexcept -> uint_fast8_t
+constexpr auto xck_number( std::uintptr_t usart_address ) noexcept -> std::uint_fast8_t
 {
     switch ( usart_address ) {
         case Peripheral::ATmega2560::USART0::ADDRESS: return 2;
@@ -164,7 +164,7 @@ inline auto xck_number( Peripheral::USART const & usart ) noexcept
  *
  * \return The USART peripheral's XCK pin mask.
  */
-constexpr auto xck_mask( std::uintptr_t usart_address ) noexcept -> uint8_t
+constexpr auto xck_mask( std::uintptr_t usart_address ) noexcept -> std::uint8_t
 {
     return 1 << xck_number( usart_address );
 }
@@ -230,7 +230,7 @@ inline auto & txd_port( Peripheral::USART const & usart ) noexcept
  *
  * \return The USART peripheral's TXD pin number.
  */
-constexpr auto txd_number( std::uintptr_t usart_address ) noexcept -> uint_fast8_t
+constexpr auto txd_number( std::uintptr_t usart_address ) noexcept -> std::uint_fast8_t
 {
     switch ( usart_address ) {
         case Peripheral::ATmega2560::USART0::ADDRESS: return 1;
@@ -270,7 +270,7 @@ inline auto txd_number( Peripheral::USART const & usart ) noexcept
  *
  * \return The USART peripheral's TXD pin mask.
  */
-constexpr auto txd_mask( std::uintptr_t usart_address ) noexcept -> uint8_t
+constexpr auto txd_mask( std::uintptr_t usart_address ) noexcept -> std::uint8_t
 {
     return 1 << txd_number( usart_address );
 }
@@ -336,7 +336,7 @@ inline auto & rxd_port( Peripheral::USART const & usart ) noexcept
  *
  * \return The USART peripheral's RXD pin number.
  */
-constexpr auto rxd_number( std::uintptr_t usart_address ) noexcept -> uint_fast8_t
+constexpr auto rxd_number( std::uintptr_t usart_address ) noexcept -> std::uint_fast8_t
 {
     switch ( usart_address ) {
         case Peripheral::ATmega2560::USART0::ADDRESS: return 0;
@@ -376,7 +376,7 @@ inline auto rxd_number( Peripheral::USART const & usart ) noexcept
  *
  * \return The USART peripheral's RXD pin mask.
  */
-constexpr auto rxd_mask( std::uintptr_t usart_address ) noexcept -> uint8_t
+constexpr auto rxd_mask( std::uintptr_t usart_address ) noexcept -> std::uint8_t
 {
     return 1 << rxd_number( usart_address );
 }

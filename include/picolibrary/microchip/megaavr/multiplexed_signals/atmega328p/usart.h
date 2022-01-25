@@ -67,7 +67,7 @@ constexpr auto usart_port_address( std::uintptr_t usart_address ) noexcept -> st
  *
  * \return The USART peripheral's pins port peripheral.
  */
-inline auto usart_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
+inline auto & usart_port( Peripheral::USART const & usart ) noexcept
 {
     return *reinterpret_cast<Peripheral::PORT *>(
         usart_port_address( reinterpret_cast<std::uintptr_t>( &usart ) ) );
