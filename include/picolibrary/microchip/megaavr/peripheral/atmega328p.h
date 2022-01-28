@@ -23,6 +23,7 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA328P_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA328P_H
 
+#include "picolibrary/microchip/megaavr/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr/peripheral/port.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
 
@@ -42,7 +43,7 @@ namespace picolibrary::Microchip::megaAVR::Peripheral::ATmega328P {
  *            flag to `atmega328p` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTB.
  */
-using PORTB = PORT_Instance<0x0023>;
+using PORTB = Instance<PORT, 0x0023>;
 
 /**
  * \brief PORTC.
@@ -51,7 +52,7 @@ using PORTB = PORT_Instance<0x0023>;
  *            flag to `atmega328p` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTC.
  */
-using PORTC = PORT_Instance<0x0026>;
+using PORTC = Instance<PORT, 0x0026>;
 
 /**
  * \brief PORTD.
@@ -60,7 +61,7 @@ using PORTC = PORT_Instance<0x0026>;
  *            flag to `atmega328p` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTD.
  */
-using PORTD = PORT_Instance<0x0029>;
+using PORTD = Instance<PORT, 0x0029>;
 
 /**
  * \brief USART0.
@@ -69,7 +70,7 @@ using PORTD = PORT_Instance<0x0029>;
  *            flag to `atmega328p` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::USART0.
  */
-using USART0 = USART_Instance<0x00C0>;
+using USART0 = Instance<USART, 0x00C0>;
 
 } // namespace picolibrary::Microchip::megaAVR::Peripheral::ATmega328P
 

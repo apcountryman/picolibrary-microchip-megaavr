@@ -25,7 +25,6 @@
 
 #include <cstdint>
 
-#include "picolibrary/microchip/megaavr/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr/register.h"
 
 namespace picolibrary::Microchip::megaAVR::Peripheral {
@@ -62,15 +61,6 @@ class PORT {
 
     auto operator=( PORT const & ) = delete;
 };
-
-/**
- * \brief Microchip megaAVR General Purpose Input/Output (GPIO) Port (PORT) peripheral
- *        instance.
- *
- * \tparam INSTANCE_ADDRESS The address of the PORT peripheral instance.
- */
-template<std::uintptr_t INSTANCE_ADDRESS>
-using PORT_Instance = Instance<PORT, INSTANCE_ADDRESS>;
 
 } // namespace picolibrary::Microchip::megaAVR::Peripheral
 
