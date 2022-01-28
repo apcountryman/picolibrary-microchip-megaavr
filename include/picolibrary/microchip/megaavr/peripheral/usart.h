@@ -26,7 +26,6 @@
 #include <cstdint>
 
 #include "picolibrary/bit_manipulation.h"
-#include "picolibrary/microchip/megaavr/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr/register.h"
 
 namespace picolibrary::Microchip::megaAVR::Peripheral {
@@ -636,15 +635,6 @@ class USART {
 
     auto operator=( USART const & ) = delete;
 };
-
-/**
- * \brief Microchip megaAVR Universal Synchronous and Asynchronous Receiver and
- *        Transmitter (USART) peripheral instance.
- *
- * \tparam INSTANCE_ADDRESS The address of the USART peripheral instance.
- */
-template<std::uintptr_t INSTANCE_ADDRESS>
-using USART_Instance = Instance<USART, INSTANCE_ADDRESS>;
 
 } // namespace picolibrary::Microchip::megaAVR::Peripheral
 
