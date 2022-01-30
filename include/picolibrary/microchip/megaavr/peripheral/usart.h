@@ -170,13 +170,6 @@ class USART {
                 static constexpr auto RXCIE = mask<std::uint8_t>( Size::RXCIE, Bit::RXCIE ); ///< RXCIE.
             };
 
-            /**
-             * \brief enum class field offsets
-             */
-            struct Offset {
-                static constexpr auto UCSZ = std::uint_fast8_t{ 1 }; ///< UCSZ.
-            };
-
             UCSRB() = delete;
 
             UCSRB( UCSRB && ) = delete;
@@ -250,66 +243,6 @@ class USART {
             auto operator=( UCSRC const & ) = delete;
 
             using Register<std::uint8_t>::operator=;
-        };
-
-        /**
-         * \brief USART mode.
-         */
-        enum class Mode : std::uint8_t {
-            ASYNCHRONOUS_USART = 0b00 << UCSRC::Bit::UMSEL, ///< Asynchronous USART.
-            SYNCHRONOUS_USART  = 0b01 << UCSRC::Bit::UMSEL, ///< Synchronous USART.
-        };
-
-        /**
-         * \brief Clock generator operating speed.
-         */
-        enum class Operating_Speed : std::uint8_t {
-            NORMAL = 0b0 << UCSRA::Bit::U2X, ///< Normal.
-            DOUBLE = 0b1 << UCSRA::Bit::U2X, ///< Double.
-        };
-
-        /**
-         * \brief Data bits.
-         */
-        enum class Data_Bits : std::uint8_t {
-            _5 = ( 0b0 << ( UCSRB::Bit::UCSZ + UCSRB::Offset::UCSZ ) ) | ( 0b00 << UCSRC::Bit::UCSZ ), ///< 5.
-            _6 = ( 0b0 << ( UCSRB::Bit::UCSZ + UCSRB::Offset::UCSZ ) ) | ( 0b01 << UCSRC::Bit::UCSZ ), ///< 6.
-            _7 = ( 0b0 << ( UCSRB::Bit::UCSZ + UCSRB::Offset::UCSZ ) ) | ( 0b10 << UCSRC::Bit::UCSZ ), ///< 7.
-            _8 = ( 0b0 << ( UCSRB::Bit::UCSZ + UCSRB::Offset::UCSZ ) ) | ( 0b11 << UCSRC::Bit::UCSZ ), ///< 8.
-            _9 = ( 0b1 << ( UCSRB::Bit::UCSZ + UCSRB::Offset::UCSZ ) ) | ( 0b11 << UCSRC::Bit::UCSZ ), ///< 9.
-        };
-
-        /**
-         * \brief Parity mode.
-         */
-        enum class Parity : std::uint8_t {
-            NONE = 0b00 << UCSRC::Bit::UPM, ///< None.
-            EVEN = 0b10 << UCSRC::Bit::UPM, ///< Even.
-            ODD  = 0b11 << UCSRC::Bit::UPM, ///< Odd.
-        };
-
-        /**
-         * \brief Stop bits.
-         */
-        enum class Stop_Bits : std::uint8_t {
-            _1 = 0b0 << UCSRC::Bit::USBS, ///< 1.
-            _2 = 0b1 << UCSRC::Bit::USBS, ///< 2.
-        };
-
-        /**
-         * \brief Clock polarity.
-         */
-        enum class Clock_Polarity : std::uint8_t {
-            IDLE_LOW  = 0b0 << UCSRC::Bit::UCPOL, ///< Idle low.
-            IDLE_HIGH = 0b1 << UCSRC::Bit::UCPOL, ///< Idle high.
-        };
-
-        /**
-         * \brief Multi-processor communication mode frame type.
-         */
-        enum class Frame_Type : std::uint8_t {
-            DATA    = 0b0 << UCSRA::Bit::MPCM, ///< Data.
-            ADDRESS = 0b1 << UCSRA::Bit::MPCM, ///< Address.
         };
 
         /**
@@ -535,37 +468,6 @@ class USART {
             auto operator=( UCSRC const & ) = delete;
 
             using Register<std::uint8_t>::operator=;
-        };
-
-        /**
-         * \brief USART mode.
-         */
-        enum class Mode : std::uint8_t {
-            SPI_CONTROLLER = 0b11 << UCSRC::Bit::UMSEL, ///< SPI controller.
-        };
-
-        /**
-         * \brief Clock polarity.
-         */
-        enum class Clock_Polarity : std::uint8_t {
-            IDLE_LOW  = 0b0 << UCSRC::Bit::UCPOL, ///< Idle low.
-            IDLE_HIGH = 0b1 << UCSRC::Bit::UCPOL, ///< Idle high.
-        };
-
-        /**
-         * \brief Clock phase.
-         */
-        enum class Clock_Phase : std::uint8_t {
-            CAPTURE_IDLE_TO_ACTIVE = 0b0 << UCSRC::Bit::UCPHA, ///< Capture data on the idle-to-active clock transition.
-            CAPTURE_ACTIVE_TO_IDLE = 0b1 << UCSRC::Bit::UCPHA, ///< Capture data on the active-to-idle clock transition.
-        };
-
-        /**
-         * \brief Data exchange bit order.
-         */
-        enum class Bit_Order : std::uint8_t {
-            MSB_FIRST = 0b0 << UCSRC::Bit::UDORD, ///< Exchange data MSB first.
-            LSB_FIRST = 0b1 << UCSRC::Bit::UDORD, ///< Exchange data LSB first.
         };
 
         /**
