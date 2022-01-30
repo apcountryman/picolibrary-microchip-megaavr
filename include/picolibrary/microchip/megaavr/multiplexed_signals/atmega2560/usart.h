@@ -35,16 +35,16 @@
 namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega2560 {
 
 /**
- * \brief Lookup a USART peripheral's pins port peripheral address.
+ * \brief Lookup a USART peripheral's pins PORT peripheral address.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
  *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::usart_port_address().
  *
- * \param[in] usart_address The address of the USART peripheral whose pins port peripheral
+ * \param[in] usart_address The address of the USART peripheral whose pins PORT peripheral
  *            address is to be looked up.
  *
- * \return The USART peripheral's pins port peripheral address.
+ * \return The USART peripheral's pins PORT peripheral address.
  */
 constexpr auto usart_port_address( std::uintptr_t usart_address ) noexcept -> std::uintptr_t
 {
@@ -63,15 +63,15 @@ constexpr auto usart_port_address( std::uintptr_t usart_address ) noexcept -> st
 }
 
 /**
- * \brief Lookup a USART peripheral's pins port peripheral.
+ * \brief Lookup a USART peripheral's pins PORT peripheral.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
  *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::usart_port().
  *
- * \param[in] usart The USART peripheral whose pins port peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose pins PORT peripheral is to be looked up.
  *
- * \return The USART peripheral's pins port peripheral.
+ * \return The USART peripheral's pins PORT peripheral.
  */
 inline auto & usart_port( Peripheral::USART const & usart ) noexcept
 {
@@ -80,16 +80,16 @@ inline auto & usart_port( Peripheral::USART const & usart ) noexcept
 }
 
 /**
- * \brief Lookup a USART peripheral's XCK pin port peripheral address.
+ * \brief Lookup a USART peripheral's XCK pin PORT peripheral address.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
  *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::xck_port_address().
  *
- * \param[in] usart_address The address of the USART peripheral whose XCK pin port
+ * \param[in] usart_address The address of the USART peripheral whose XCK pin PORT
  *            peripheral address is to be looked up.
  *
- * \return The USART peripheral's XCK pin port peripheral address.
+ * \return The USART peripheral's XCK pin PORT peripheral address.
  */
 constexpr auto xck_port_address( std::uintptr_t usart_address ) noexcept
 {
@@ -97,15 +97,15 @@ constexpr auto xck_port_address( std::uintptr_t usart_address ) noexcept
 }
 
 /**
- * \brief Lookup a USART peripheral's XCK pin port peripheral.
+ * \brief Lookup a USART peripheral's XCK pin PORT peripheral.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
  *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::xck_port().
  *
- * \param[in] usart The USART peripheral whose XCK pin port peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose XCK pin PORT peripheral is to be looked up.
  *
- * \return The USART peripheral's XCK pin port peripheral.
+ * \return The USART peripheral's XCK pin PORT peripheral.
  */
 inline auto & xck_port( Peripheral::USART const & usart ) noexcept
 {
@@ -186,16 +186,16 @@ inline auto xck_mask( Peripheral::USART const & usart ) noexcept
 }
 
 /**
- * \brief Lookup a USART peripheral's TXD pin port peripheral address.
+ * \brief Lookup a USART peripheral's TXD pin PORT peripheral address.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
  *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::txd_port_address().
  *
- * \param[in] usart_address The address of the USART peripheral whose TXD pin port
+ * \param[in] usart_address The address of the USART peripheral whose TXD pin PORT
  *            peripheral address is to be looked up.
  *
- * \return The USART peripheral's TXD pin port peripheral address.
+ * \return The USART peripheral's TXD pin PORT peripheral address.
  */
 constexpr auto txd_port_address( std::uintptr_t usart_address ) noexcept
 {
@@ -203,15 +203,15 @@ constexpr auto txd_port_address( std::uintptr_t usart_address ) noexcept
 }
 
 /**
- * \brief Lookup a USART peripheral's TXD pin port peripheral.
+ * \brief Lookup a USART peripheral's TXD pin PORT peripheral.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
  *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::txd_port().
  *
- * \param[in] usart The USART peripheral whose TXD pin port peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose TXD pin PORT peripheral is to be looked up.
  *
- * \return The USART peripheral's TXD pin port peripheral.
+ * \return The USART peripheral's TXD pin PORT peripheral.
  */
 inline auto & txd_port( Peripheral::USART const & usart ) noexcept
 {
@@ -292,16 +292,16 @@ inline auto txd_mask( Peripheral::USART const & usart ) noexcept
 }
 
 /**
- * \brief Lookup a USART peripheral's RXD pin port peripheral address.
+ * \brief Lookup a USART peripheral's RXD pin PORT peripheral address.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
  *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::rxd_port_address().
  *
- * \param[in] usart_address The address of the USART peripheral whose RXD pin port
+ * \param[in] usart_address The address of the USART peripheral whose RXD pin PORT
  *            peripheral address is to be looked up.
  *
- * \return The USART peripheral's RXD pin port peripheral address.
+ * \return The USART peripheral's RXD pin PORT peripheral address.
  */
 constexpr auto rxd_port_address( std::uintptr_t usart_address ) noexcept
 {
@@ -309,15 +309,15 @@ constexpr auto rxd_port_address( std::uintptr_t usart_address ) noexcept
 }
 
 /**
- * \brief Lookup a USART peripheral's RXD pin port peripheral.
+ * \brief Lookup a USART peripheral's RXD pin PORT peripheral.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
  *            picolibrary::Microchip::megaAVR::Multiplexed_Signals::rxd_port().
  *
- * \param[in] usart The USART peripheral whose RXD pin port peripheral is to be looked up.
+ * \param[in] usart The USART peripheral whose RXD pin PORT peripheral is to be looked up.
  *
- * \return The USART peripheral's RXD pin port peripheral.
+ * \return The USART peripheral's RXD pin PORT peripheral.
  */
 inline auto & rxd_port( Peripheral::USART const & usart ) noexcept
 {
