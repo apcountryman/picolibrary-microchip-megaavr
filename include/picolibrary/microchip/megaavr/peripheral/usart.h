@@ -170,6 +170,17 @@ class USART {
                 static constexpr auto RXCIE = mask<std::uint8_t>( Size::RXCIE, Bit::RXCIE ); ///< RXCIE.
             };
 
+            /**
+             * \brief UCSZ.
+             */
+            enum UCSZ : std::uint8_t {
+                UCSZ_5_BIT = 0b0 << Bit::UCSZ, ///< 5-bit character size.
+                UCSZ_6_BIT = 0b0 << Bit::UCSZ, ///< 6-bit character size.
+                UCSZ_7_BIT = 0b0 << Bit::UCSZ, ///< 7-bit character size.
+                UCSZ_8_BIT = 0b0 << Bit::UCSZ, ///< 8-bit character size.
+                UCSZ_9_BIT = 0b1 << Bit::UCSZ, ///< 9-bit character size.
+            };
+
             UCSRB() = delete;
 
             UCSRB( UCSRB && ) = delete;
@@ -228,6 +239,50 @@ class USART {
                 static constexpr auto USBS = mask<std::uint8_t>( Size::USBS, Bit::USBS ); ///< USBS.
                 static constexpr auto UPM = mask<std::uint8_t>( Size::UPM, Bit::UPM ); ///< UPM.
                 static constexpr auto UMSEL = mask<std::uint8_t>( Size::UMSEL, Bit::UMSEL ); ///< UMSEL.
+            };
+
+            /**
+             * \brief UCPOL.
+             */
+            enum UCPOL : std::uint8_t {
+                UCPOL_TRANSMIT_RISING_RECEIVE_FALLING = 0b0 << Bit::UCPOL, ///< Transmit data on rising XCK edge, receive data on falling XCK edge.
+                UCPOL_TRANSMIT_FALLING_RECEIVE_RISING = 0b1 << Bit::UCPOL, ///< Transmit data on falling XCK edge, receive data on rising XCK edge.
+            };
+
+            /**
+             * \brief UCSZ.
+             */
+            enum UCSZ : std::uint8_t {
+                UCSZ_5_BIT = 0b00 << Bit::UCSZ, ///< 5-bit character size.
+                UCSZ_6_BIT = 0b01 << Bit::UCSZ, ///< 6-bit character size.
+                UCSZ_7_BIT = 0b10 << Bit::UCSZ, ///< 7-bit character size.
+                UCSZ_8_BIT = 0b11 << Bit::UCSZ, ///< 8-bit character size.
+                UCSZ_9_BIT = 0b11 << Bit::UCSZ, ///< 9-bit character size.
+            };
+
+            /**
+             * \brief USBS.
+             */
+            enum USBS : std::uint8_t {
+                USBS_1_BIT = 0b0 << Bit::USBS, ///< 1 stop bit.
+                USBS_2_BIT = 0b1 << Bit::USBS, ///< 2 stop bits.
+            };
+
+            /**
+             * \brief UPM.
+             */
+            enum UPM : std::uint8_t {
+                UPM_DISABLED            = 0b00 << Bit::UPM, ///< Parity disabled.
+                UPM_ENABLED_EVEN_PARITY = 0b10 << Bit::UPM, ///< Parity enabled, even parity.
+                UPM_ENABLED_ODD_PARITY = 0b11 << Bit::UPM, ///< Parity enabled, odd parity.
+            };
+
+            /**
+             * \brief UMSEL.
+             */
+            enum UMSEL : std::uint8_t {
+                UMSEL_ASYNCHRONOUS_USART = 0b00 << Bit::UMSEL, ///< Asynchronous USART.
+                UMSEL_SYNCHRONOUS_USART  = 0b01 << Bit::UMSEL, ///< Synchronous USART.
             };
 
             UCSRC() = delete;
@@ -453,6 +508,13 @@ class USART {
                 static constexpr auto UDORD = mask<std::uint8_t>( Size::UDORD, Bit::UDORD ); ///< UDORD.
                 static constexpr auto RESERVED3 = mask<std::uint8_t>( Size::RESERVED3, Bit::RESERVED3 ); ///< RESERVED3.
                 static constexpr auto UMSEL = mask<std::uint8_t>( Size::UMSEL, Bit::UMSEL ); ///< UMSEL.
+            };
+
+            /**
+             * \brief UMSEL.
+             */
+            enum UMSEL : std::uint8_t {
+                UMSEL_HOST_SPI = 0b11 << Bit::UMSEL, ///< Host SPI.
             };
 
             UCSRC() = delete;
