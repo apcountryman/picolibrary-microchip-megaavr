@@ -103,12 +103,9 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
         picolibrary-microchip-megaavr-testing-interactive-fatal_error STATIC
         "picolibrary/testing/interactive/microchip/megaavr/fatal_error.cc"
     )
-    target_include_directories(
-        picolibrary-microchip-megaavr-testing-interactive-fatal_error
-        PUBLIC "${PROJECT_SOURCE_DIR}/include"
-    )
     target_link_libraries(
         picolibrary-microchip-megaavr-testing-interactive-fatal_error
+        picolibrary
         picolibrary-microchip-megaavr
     )
 endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
