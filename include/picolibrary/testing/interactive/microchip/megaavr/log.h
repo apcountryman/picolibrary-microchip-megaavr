@@ -261,7 +261,7 @@ class Log : public Output_Stream {
      */
     static void transmit( char const * string ) noexcept
     {
-        while ( auto const character = *string ) { transmit( character ); } // while
+        while ( auto const character = *string++ ) { transmit( character ); } // while
     }
 };
 
