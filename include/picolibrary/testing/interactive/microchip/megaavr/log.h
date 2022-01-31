@@ -102,7 +102,7 @@ class Log : public Output_Stream {
     static void initialize() noexcept
     {
         initialize(
-            picolibrary::Microchip::megaAVR::Peripheral::PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR_LOG_USART::instance(),
+            ::picolibrary::Microchip::megaAVR::Peripheral::PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR_LOG_USART::instance(),
             USART_Clock_Generator_Operating_Speed::PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR_LOG_USART_CLOCK_GENERATOR_OPERATING_SPEED,
             PICOLIBRARY_TESTING_INTERACTIVE_MICROCHIP_MEGAAVR_LOG_USART_CLOCK_GENERATOR_SCALING_FACTOR );
     }
