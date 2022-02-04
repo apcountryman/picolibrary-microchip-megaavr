@@ -75,9 +75,7 @@ class Internally_Pulled_Up_Input_Pin {
      */
     ~Internally_Pulled_Up_Input_Pin() noexcept
     {
-        if ( m_port ) {
-            disable_pull_up();
-        } // if
+        disable();
     }
 
     /**
@@ -90,9 +88,7 @@ class Internally_Pulled_Up_Input_Pin {
     auto & operator=( Internally_Pulled_Up_Input_Pin && expression ) noexcept
     {
         if ( &expression != this ) {
-            if ( m_port ) {
-                disable_pull_up();
-            } // if
+            disable();
 
             m_port = expression.m_port;
             m_mask = expression.m_mask;
@@ -203,6 +199,16 @@ class Internally_Pulled_Up_Input_Pin {
     void configure_pin_as_internally_pulled_up_input() noexcept
     {
         m_port->ddr &= ~m_mask;
+    }
+
+    /**
+     * \brief Disable the pin.
+     */
+    void disable() noexcept
+    {
+        if ( m_port ) {
+            disable_pull_up();
+        } // if
     }
 };
 
