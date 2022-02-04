@@ -40,7 +40,7 @@ using namespace ::picolibrary::Microchip::megaAVR::Peripheral;
 
 /**
  * \brief Execute the picolibrary::Microchip::megaAVR::GPIO::Open_Drain_IO_Pin toggle
- *        interactive test
+ *        interactive test.
  *
  * \return N/A
  */
