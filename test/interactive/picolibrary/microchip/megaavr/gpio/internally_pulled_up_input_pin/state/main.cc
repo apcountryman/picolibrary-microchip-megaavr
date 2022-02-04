@@ -41,7 +41,7 @@ using namespace ::picolibrary::Microchip::megaAVR::Peripheral;
 /**
  * \brief Execute the
  *        picolibrary::Microchip::megaAVR::GPIO::Internally_Pulled_Up_Input_Pin state
- *        interactive test
+ *        interactive test.
  *
  * \return N/A
  */
