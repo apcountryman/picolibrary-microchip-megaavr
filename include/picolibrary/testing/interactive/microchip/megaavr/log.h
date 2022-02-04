@@ -127,25 +127,24 @@ class Log : public Output_Stream {
     }
 
     /**
-     * \brief Constructor.
+     * \brief Get the log instance.
      *
      * \pre picolibrary::Testing::Interactive::Microchip::megaAVR::Log::is_initialized()
+     *
+     * \return The log instance.
      */
-    Log() noexcept
+    static auto & instance() noexcept
     {
         expect( is_initialized(), Generic_Error::LOGIC_ERROR );
 
-        set_buffer( &BUFFER );
+        static auto log = Log{};
+
+        return log;
     }
 
     Log( Log && ) = delete;
 
     Log( Log const & ) = delete;
-
-    /**
-     * \brief Destructor.
-     */
-    ~Log() noexcept = default;
 
     auto operator=( Log && ) = delete;
 
@@ -263,6 +262,19 @@ class Log : public Output_Stream {
     {
         while ( auto const character = *string++ ) { transmit( character ); } // while
     }
+
+    /**
+     * \brief Constructor.
+     */
+    Log() noexcept
+    {
+        set_buffer( &BUFFER );
+    }
+
+    /**
+     * \brief Destructor.
+     */
+    ~Log() noexcept = default;
 };
 
 } // namespace picolibrary::Testing::Interactive::Microchip::megaAVR
