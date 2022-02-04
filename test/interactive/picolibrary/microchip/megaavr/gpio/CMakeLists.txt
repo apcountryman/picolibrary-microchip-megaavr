@@ -13,8 +13,5 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/microchip/megaavr/CMakeLists.txt
-# Description: picolibrary::Microchip::megaAVR interactive tests CMake rules.
-
-# build the picolibrary::Microchip::megaAVR::GPIO interactive tests
-add_subdirectory( gpio )
+# File: test/interactive/picolibrary/microchip/megaavr/gpio/CMakeLists.txt
+# Description: picolibrary::Microchip::megaAVR::GPIO interactive tests CMake rules.
