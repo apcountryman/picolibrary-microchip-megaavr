@@ -70,3 +70,4 @@ mark_as_advanced(
 
 # configure interactive tests
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/gpio/internally_pulled_up_input_pin/state/CMakeLists.txt" )
+include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/gpio/open_drain_io_pin/toggle/CMakeLists.txt" )
