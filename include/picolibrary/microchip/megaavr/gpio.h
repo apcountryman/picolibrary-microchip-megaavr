@@ -194,7 +194,7 @@ class Internally_Pulled_Up_Input_Pin {
     std::uint8_t m_mask{};
 
     /**
-     * \brief Configure the pin as an internally pulled-up input.
+     * \brief Configure the pin to act as an internally pulled-up input.
      */
     void configure_pin_as_internally_pulled_up_input() noexcept
     {
