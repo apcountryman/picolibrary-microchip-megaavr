@@ -75,7 +75,9 @@ class Internally_Pulled_Up_Input_Pin {
      */
     ~Internally_Pulled_Up_Input_Pin() noexcept
     {
-        // TODO
+        if ( m_port ) {
+            disable_pull_up();
+        } // if
     }
 
     /**
@@ -88,7 +90,9 @@ class Internally_Pulled_Up_Input_Pin {
     auto & operator=( Internally_Pulled_Up_Input_Pin && expression ) noexcept
     {
         if ( &expression != this ) {
-            // TODO
+            if ( m_port ) {
+                disable_pull_up();
+            } // if
 
             m_port = expression.m_port;
             m_mask = expression.m_mask;
