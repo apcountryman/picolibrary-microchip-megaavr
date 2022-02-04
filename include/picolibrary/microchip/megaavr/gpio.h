@@ -130,7 +130,7 @@ class Internally_Pulled_Up_Input_Pin {
      */
     auto pull_up_is_disabled() const noexcept
     {
-        return not( m_port->port & m_mask );
+        return not pull_up_is_enabled();
     }
 
     /**
@@ -168,7 +168,7 @@ class Internally_Pulled_Up_Input_Pin {
      */
     auto is_low() const noexcept
     {
-        return not( m_port->pin & m_mask );
+        return not is_high();
     }
 
     /**
