@@ -117,8 +117,12 @@ class Internally_Pulled_Up_Input_Pin {
         configure_pin_as_internally_pulled_up_input();
 
         switch ( initial_pull_up_state ) {
-            case ::picolibrary::GPIO::Initial_Pull_Up_State::DISABLED: disable_pull_up();
-            case ::picolibrary::GPIO::Initial_Pull_Up_State::ENABLED: enable_pull_up();
+            case ::picolibrary::GPIO::Initial_Pull_Up_State::DISABLED:
+                disable_pull_up();
+                break;
+            case ::picolibrary::GPIO::Initial_Pull_Up_State::ENABLED:
+                enable_pull_up();
+                break;
         } // switch
     }
 
