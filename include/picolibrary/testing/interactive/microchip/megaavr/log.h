@@ -75,7 +75,7 @@ class Log : public Output_Stream {
         USART_Clock_Generator_Operating_Speed usart_clock_generator_operating_speed,
         std::uint16_t usart_clock_generator_scaling_factor ) noexcept
     {
-        expect( not is_initialized, Generic_Error::LOGIC_ERROR );
+        expect( not is_initialized(), Generic_Error::LOGIC_ERROR );
 
         usart.normal.ucsrb = ::picolibrary::Microchip::megaAVR::Peripheral::USART::Normal::UCSRB::UCSZ_8_BIT;
         usart.normal.ucsrc =
