@@ -60,6 +60,7 @@ if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
         -Wpointer-arith \
         -Wshadow \
         -Wunsafe-loop-optimizations \
+        -fno-threadsafe-statics \
         "
     )
 endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )

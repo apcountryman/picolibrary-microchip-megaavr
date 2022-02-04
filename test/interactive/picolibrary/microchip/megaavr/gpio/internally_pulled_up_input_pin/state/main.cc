@@ -49,9 +49,7 @@ int main() noexcept
 {
     Log::initialize();
 
-    auto log = Log{};
-
-    state( log, Internally_Pulled_Up_Input_Pin{ PIN_PORT::instance(), PIN_MASK }, []() {
+    state( Log::instance(), Internally_Pulled_Up_Input_Pin{ PIN_PORT::instance(), PIN_MASK }, []() {
         avrlibcpp::delay_ms( 1000 );
     } );
 
