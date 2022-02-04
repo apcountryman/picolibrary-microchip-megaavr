@@ -16,3 +16,7 @@
 # File: test/interactive/picolibrary/microchip/megaavr/gpio/internally_pulled_up_input_pin/CMakeLists.txt
 # Description: picolibrary::Microchip::megaAVR::GPIO::Internally_Pulled_Up_Input_Pin
 #       interactive tests CMake rules.
+
+# build the picolibrary::Microchip::megaAVR::GPIO::Internally_Pulled_Up_Input_Pin state
+# interactive test
+add_subdirectory( state )
