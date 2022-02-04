@@ -67,3 +67,6 @@ mark_as_advanced(
     PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_RESET_ENABLED
     PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_VERIFY_FLASH
 )
+
+# configure interactive tests
+include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/gpio/internally_pulled_up_input_pin/state/CMakeLists.txt" )
