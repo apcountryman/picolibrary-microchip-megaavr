@@ -60,6 +60,8 @@ constexpr auto usart_port_address( std::uintptr_t usart_address ) noexcept -> st
     } // switch
 
     expect( false, Generic_Error::INVALID_ARGUMENT );
+
+    return 0; // unreachable
 }
 
 /**
@@ -134,6 +136,8 @@ constexpr auto xck_number( std::uintptr_t usart_address ) noexcept -> std::uint_
     } // switch
 
     expect( false, Generic_Error::INVALID_ARGUMENT );
+
+    return 0; // unreachable
 }
 
 /**
@@ -240,6 +244,8 @@ constexpr auto txd_number( std::uintptr_t usart_address ) noexcept -> std::uint_
     } // switch
 
     expect( false, Generic_Error::INVALID_ARGUMENT );
+
+    return 0; // unreachable
 }
 
 /**
@@ -346,6 +352,8 @@ constexpr auto rxd_number( std::uintptr_t usart_address ) noexcept -> std::uint_
     } // switch
 
     expect( false, Generic_Error::INVALID_ARGUMENT );
+
+    return 0; // unreachable
 }
 
 /**
