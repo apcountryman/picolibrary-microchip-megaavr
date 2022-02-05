@@ -244,7 +244,7 @@ class Pin {
      */
     void toggle_push_pull_io() noexcept
     {
-        m_port->port ^= m_mask;
+        m_port->pin = m_mask;
     }
 
   private:
