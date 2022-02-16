@@ -53,6 +53,15 @@ enum class USART_Data_Bits : std::uint_fast8_t {
          | ( 0b11 << Peripheral::USART::Normal::UCSRC::Bit::UCSZ ), ///< 9.
 };
 
+/**
+ * \brief USART parity configuration.
+ */
+enum class USART_Parity : std::uint8_t {
+    NONE = 0b00 << Peripheral::USART::Normal::UCSRC::Bit::UPM, ///< None.
+    EVEN = 0b10 << Peripheral::USART::Normal::UCSRC::Bit::UPM, ///< Even.
+    ODD  = 0b11 << Peripheral::USART::Normal::UCSRC::Bit::UPM, ///< Odd.
+};
+
 } // namespace picolibrary::Microchip::megaAVR::Asynchronous_Serial
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_ASYNCHRONOUS_SERIAL_H
