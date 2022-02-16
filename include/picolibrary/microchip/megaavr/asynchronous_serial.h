@@ -70,6 +70,14 @@ enum class USART_Stop_Bits : std::uint8_t {
     _2 = Peripheral::USART::Normal::UCSRC::USBS_2_BIT, ///< 2.
 };
 
+/**
+ * \brief USART clock generator operating speed.
+ */
+enum class USART_Clock_Generator_Operating_Speed : std::uint8_t {
+    NORMAL = 0b0 << Peripheral::USART::Normal::UCSRA::Bit::U2X, ///< Normal.
+    DOUBLE = 0b1 << Peripheral::USART::Normal::UCSRA::Bit::U2X, ///< Double.
+};
+
 } // namespace picolibrary::Microchip::megaAVR::Asynchronous_Serial
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_ASYNCHRONOUS_SERIAL_H
