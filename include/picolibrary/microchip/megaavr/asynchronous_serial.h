@@ -62,6 +62,14 @@ enum class USART_Parity : std::uint8_t {
     ODD  = 0b11 << Peripheral::USART::Normal::UCSRC::Bit::UPM, ///< Odd.
 };
 
+/**
+ * \brief USART stop bits.
+ */
+enum class USART_Stop_Bits : std::uint8_t {
+    _1 = Peripheral::USART::Normal::UCSRC::USBS_1_BIT, ///< 1.
+    _2 = Peripheral::USART::Normal::UCSRC::USBS_2_BIT, ///< 2.
+};
+
 } // namespace picolibrary::Microchip::megaAVR::Asynchronous_Serial
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_ASYNCHRONOUS_SERIAL_H
