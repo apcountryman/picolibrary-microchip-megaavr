@@ -41,25 +41,25 @@ constexpr auto USART_DATA_BITS_UCSRB_UCSZ_OFFSET = std::uint_fast8_t{ 1 };
  * \brief USART data bits configuration.
  */
 enum class USART_Data_Bits : std::uint_fast8_t {
-    _5 = ( 0b0 << ( Peripheral::USART::Normal::UCSRB::Bit::UCSZ + USART_DATA_BITS_UCSRB_UCSZ_OFFSET ) )
-         | ( 0b00 << Peripheral::USART::Normal::UCSRC::Bit::UCSZ ), ///< 5.
-    _6 = ( 0b0 << ( Peripheral::USART::Normal::UCSRB::Bit::UCSZ + USART_DATA_BITS_UCSRB_UCSZ_OFFSET ) )
-         | ( 0b01 << Peripheral::USART::Normal::UCSRC::Bit::UCSZ ), ///< 6.
-    _7 = ( 0b0 << ( Peripheral::USART::Normal::UCSRB::Bit::UCSZ + USART_DATA_BITS_UCSRB_UCSZ_OFFSET ) )
-         | ( 0b10 << Peripheral::USART::Normal::UCSRC::Bit::UCSZ ), ///< 7.
-    _8 = ( 0b0 << ( Peripheral::USART::Normal::UCSRB::Bit::UCSZ + USART_DATA_BITS_UCSRB_UCSZ_OFFSET ) )
-         | ( 0b11 << Peripheral::USART::Normal::UCSRC::Bit::UCSZ ), ///< 8.
-    _9 = ( 0b1 << ( Peripheral::USART::Normal::UCSRB::Bit::UCSZ + USART_DATA_BITS_UCSRB_UCSZ_OFFSET ) )
-         | ( 0b11 << Peripheral::USART::Normal::UCSRC::Bit::UCSZ ), ///< 9.
+    _5 = ( Peripheral::USART::Normal::UCSRB::UCSZ_5_BIT << USART_DATA_BITS_UCSRB_UCSZ_OFFSET )
+         | Peripheral::USART::Normal::UCSRC::UCSZ_5_BIT, ///< 5.
+    _6 = ( Peripheral::USART::Normal::UCSRB::UCSZ_6_BIT << USART_DATA_BITS_UCSRB_UCSZ_OFFSET )
+         | Peripheral::USART::Normal::UCSRC::UCSZ_6_BIT, ///< 6.
+    _7 = ( Peripheral::USART::Normal::UCSRB::UCSZ_7_BIT << USART_DATA_BITS_UCSRB_UCSZ_OFFSET )
+         | Peripheral::USART::Normal::UCSRC::UCSZ_7_BIT, ///< 7.
+    _8 = ( Peripheral::USART::Normal::UCSRB::UCSZ_8_BIT << USART_DATA_BITS_UCSRB_UCSZ_OFFSET )
+         | Peripheral::USART::Normal::UCSRC::UCSZ_8_BIT, ///< 8.
+    _9 = ( Peripheral::USART::Normal::UCSRB::UCSZ_9_BIT << USART_DATA_BITS_UCSRB_UCSZ_OFFSET )
+         | Peripheral::USART::Normal::UCSRC::UCSZ_9_BIT, ///< 9.
 };
 
 /**
  * \brief USART parity configuration.
  */
 enum class USART_Parity : std::uint8_t {
-    NONE = 0b00 << Peripheral::USART::Normal::UCSRC::Bit::UPM, ///< None.
-    EVEN = 0b10 << Peripheral::USART::Normal::UCSRC::Bit::UPM, ///< Even.
-    ODD  = 0b11 << Peripheral::USART::Normal::UCSRC::Bit::UPM, ///< Odd.
+    NONE = Peripheral::USART::Normal::UCSRC::UPM_DISABLED,            ///< None.
+    EVEN = Peripheral::USART::Normal::UCSRC::UPM_ENABLED_EVEN_PARITY, ///< Even.
+    ODD  = Peripheral::USART::Normal::UCSRC::UPM_ENABLED_ODD_PARITY,  ///< Odd.
 };
 
 /**
