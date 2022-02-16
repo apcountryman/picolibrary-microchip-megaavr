@@ -23,10 +23,36 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_ASYNCHRONOUS_SERIAL_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_ASYNCHRONOUS_SERIAL_H
 
+#include <cstdint>
+
+#include "picolibrary/microchip/megaavr/peripheral/usart.h"
+
 /**
  * \brief Microchip megaAVR asynchronous serial facilities.
  */
 namespace picolibrary::Microchip::megaAVR::Asynchronous_Serial {
+
+/**
+ * \brief USART data bits configuration UCSRB register UCSZ field offset.
+ */
+constexpr auto USART_DATA_BITS_UCSRB_UCSZ_OFFSET = std::uint_fast8_t{ 1 };
+
+/**
+ * \brief USART data bits configuration.
+ */
+enum class USART_Data_Bits : std::uint_fast8_t {
+    _5 = ( 0b0 << ( Peripheral::USART::Normal::UCSRB::Bit::UCSZ + USART_DATA_BITS_UCSRB_UCSZ_OFFSET ) )
+         | ( 0b00 << Peripheral::USART::Normal::UCSRC::Bit::UCSZ ), ///< 5.
+    _6 = ( 0b0 << ( Peripheral::USART::Normal::UCSRB::Bit::UCSZ + USART_DATA_BITS_UCSRB_UCSZ_OFFSET ) )
+         | ( 0b01 << Peripheral::USART::Normal::UCSRC::Bit::UCSZ ), ///< 6.
+    _7 = ( 0b0 << ( Peripheral::USART::Normal::UCSRB::Bit::UCSZ + USART_DATA_BITS_UCSRB_UCSZ_OFFSET ) )
+         | ( 0b10 << Peripheral::USART::Normal::UCSRC::Bit::UCSZ ), ///< 7.
+    _8 = ( 0b0 << ( Peripheral::USART::Normal::UCSRB::Bit::UCSZ + USART_DATA_BITS_UCSRB_UCSZ_OFFSET ) )
+         | ( 0b11 << Peripheral::USART::Normal::UCSRC::Bit::UCSZ ), ///< 8.
+    _9 = ( 0b1 << ( Peripheral::USART::Normal::UCSRB::Bit::UCSZ + USART_DATA_BITS_UCSRB_UCSZ_OFFSET ) )
+         | ( 0b11 << Peripheral::USART::Normal::UCSRC::Bit::UCSZ ), ///< 9.
+};
+
 } // namespace picolibrary::Microchip::megaAVR::Asynchronous_Serial
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_ASYNCHRONOUS_SERIAL_H
