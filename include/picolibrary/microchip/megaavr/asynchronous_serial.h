@@ -78,6 +78,199 @@ enum class USART_Clock_Generator_Operating_Speed : std::uint8_t {
     DOUBLE = 0b1 << Peripheral::USART::Normal::UCSRA::Bit::U2X, ///< Double.
 };
 
+/**
+ * \brief Basic transmitter.
+ *
+ * \tparam Data_Type The integral type used to hold the data to be transmitted.
+ */
+template<typename Data_Type>
+class Basic_Transmitter {
+  public:
+    /**
+     * \brief The integral type used to hold the data to be transmitted.
+     */
+    using Data = Data_Type;
+
+    /**
+     * \brief Constructor.
+     */
+    constexpr Basic_Transmitter() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] usart The USART to be used by the transmitter.
+     * \param[in] usart_data_bits The desired USART data bits configuration.
+     * \param[in] usart_parity The desired USART parity configuration.
+     * \param[in] usart_stop_bits The desired USART stop bits configuration.
+     * \param[in] usart_clock_generator_operating_speed The desired USART clock generator
+     *            operating speed.
+     * \param[in] usart_clock_generator_scaling_factor The desired USART clock generator
+     *            scaling factor (UBRR register value).
+     */
+    Basic_Transmitter(
+        Peripheral::USART &                   usart,
+        USART_Data_Bits                       usart_data_bits,
+        USART_Parity                          usart_parity,
+        USART_Stop_Bits                       usart_stop_bits,
+        USART_Clock_Generator_Operating_Speed usart_clock_generator_operating_speed,
+        std::uint16_t usart_clock_generator_scaling_factor ) noexcept :
+        m_usart{ &usart }
+    {
+        configure_transmitter(
+            usart_data_bits, usart_parity, usart_stop_bits, usart_clock_generator_operating_speed, usart_clock_generator_scaling_factor );
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Basic_Transmitter( Basic_Transmitter && source ) noexcept :
+        m_usart{ source.m_usart }
+    {
+        source.m_usart = nullptr;
+    }
+
+    Basic_Transmitter( Basic_Transmitter const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Basic_Transmitter() noexcept
+    {
+        disable_transmitter();
+    }
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    auto & operator=( Basic_Transmitter && expression ) noexcept
+    {
+        if ( &expression != this ) {
+            disable_transmitter();
+
+            m_usart = expression.m_usart;
+
+            expression.m_usart = nullptr;
+        } // if
+
+        return *this;
+    }
+
+    auto operator=( Basic_Transmitter const & ) = delete;
+
+    /**
+     * \brief Initialize the transmitter's hardware.
+     */
+    void initialize() noexcept
+    {
+        enable_transmitter();
+    }
+
+    /**
+     * \brief Transmit data.
+     *
+     * \param[in] data The data to transmit.
+     */
+    void transmit( Data data ) noexcept
+    {
+        while ( not transmit_buffer_is_empty() ) {} // while
+
+        load_transmit_buffer( data );
+    }
+
+  private:
+    /**
+     * \brief The USART used by the transmitter.
+     */
+    Peripheral::USART * m_usart{};
+
+    /**
+     * \brief Configure the transmitter.
+     *
+     * \param[in] usart_data_bits The desired USART data bits configuration.
+     * \param[in] usart_parity The desired USART parity configuration.
+     * \param[in] usart_stop_bits The desired USART stop bits configuration.
+     * \param[in] usart_clock_generator_operating_speed The desired USART clock generator
+     *            operating speed.
+     * \param[in] usart_clock_generator_scaling_factor The desired USART clock generator
+     *            scaling factor (UBRR register value).
+     */
+    void configure_transmitter(
+        USART_Data_Bits                       usart_data_bits,
+        USART_Parity                          usart_parity,
+        USART_Stop_Bits                       usart_stop_bits,
+        USART_Clock_Generator_Operating_Speed usart_clock_generator_operating_speed,
+        std::uint16_t usart_clock_generator_scaling_factor ) noexcept
+    {
+        m_usart->normal.ucsrb = ( static_cast<std::uint8_t>( usart_data_bits ) >> USART_DATA_BITS_UCSRB_UCSZ_OFFSET )
+                                & Peripheral::USART::Normal::UCSRB::Mask::UCSZ;
+        m_usart->normal.ucsrc = Peripheral::USART::Normal::UCSRC::UMSEL_ASYNCHRONOUS_USART
+                                | ( static_cast<std::uint8_t>( usart_data_bits )
+                                    & Peripheral::USART::Normal::UCSRC::Mask::UCSZ )
+                                | static_cast<std::uint8_t>( usart_parity )
+                                | static_cast<std::uint8_t>( usart_stop_bits );
+        m_usart->normal.ucsra = static_cast<std::uint8_t>( usart_clock_generator_operating_speed );
+        m_usart->normal.ubrr = usart_clock_generator_scaling_factor;
+    }
+
+    /**
+     * \brief Disable the transmitter.
+     */
+    void disable_transmitter() noexcept
+    {
+        if ( m_usart ) {
+            m_usart->normal.ucsrb &= ~Peripheral::USART::Normal::UCSRB::Mask::TXEN;
+        } // if
+    }
+
+    /**
+     * \brief Enable the transmitter.
+     */
+    void enable_transmitter() noexcept
+    {
+        m_usart->normal.ucsrb |= Peripheral::USART::Normal::UCSRB::Mask::TXEN;
+    }
+
+    /**
+     * \brief Check if the transmit buffer is empty.
+     *
+     * \return true if the transmit buffer is empty.
+     * \return false if the transmit buffer is not empty.
+     */
+    auto transmit_buffer_is_empty() const noexcept -> bool
+    {
+        return m_usart->normal.ucsra & Peripheral::USART::Normal::UCSRA::Mask::UDRE;
+    }
+
+    /**
+     * \brief Load data into the transmit buffer.
+     *
+     * \param[in] data The data to load into the transmit buffer.
+     */
+    void load_transmit_buffer( std::uint8_t data ) noexcept
+    {
+        m_usart->normal.udr = data;
+    }
+
+    /**
+     * \brief Load data into the transmit buffer.
+     *
+     * \param[in] data The data to load into the transmit buffer.
+     */
+    void load_transmit_buffer( std::uint16_t data ) noexcept
+    {
+        m_usart->normal.ucsrb = ( m_usart->normal.ucsrb & Peripheral::USART::Normal::UCSRB::Mask::TXB8 )
+                                | ( data & 0x0100 ? Peripheral::USART::Normal::UCSRB::Mask::TXB8 : 0 );
+        m_usart->normal.udr = data;
+    }
+};
+
 } // namespace picolibrary::Microchip::megaAVR::Asynchronous_Serial
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_ASYNCHRONOUS_SERIAL_H
