@@ -13,10 +13,12 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/microchip/megaavr/asynchronous_serial/transmitter/CMakeLists.txt
-# Description: picolibrary::Microchip::megaAVR::Asynchronous_Serial::Transmitter
-#       interactive tests CMake rules.
+# File: configuration/testing-interactive-atmega328p-arduino-uno/test/interactive/picolibrary/microchip/megaavr/asynchronous_serial/transmitter/hello_world/CMakeLists.txt
+# Description: picolibrary-microchip-megaavr ATmega328/P Arduino Uno
+#       picolibrary::Microchip::megaAVR::Asynchronous_Serial::Transmitter hello world
+#       interactive test configuration.
 
-# build the picolibrary::Microchip::megaAVR::Asynchronous_Serial::Transmitter hello world
-# interactive test
-add_subdirectory( hello_world )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_ASYNCHRONOUS_SERIAL_TRANSMITTER_ENABLE_HELLO_WORLD_INTERACTIVE_TEST OFF CACHE BOOL "" FORCE )
+mark_as_advanced(
+    PICOLIBRARY_MICROCHIP_MEGAAVR_ASYNCHRONOUS_SERIAL_TRANSMITTER_ENABLE_HELLO_WORLD_INTERACTIVE_TEST
+)
