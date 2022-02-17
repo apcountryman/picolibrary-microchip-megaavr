@@ -24,6 +24,7 @@
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_ASYNCHRONOUS_SERIAL_H
 
 #include <cstdint>
+#include <type_traits>
 
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
 
@@ -81,11 +82,14 @@ enum class USART_Clock_Generator_Operating_Speed : std::uint8_t {
 /**
  * \brief Basic transmitter.
  *
- * \tparam Data_Type The integral type used to hold the data to be transmitted.
+ * \tparam Data_Type The integral type used to hold the data to be transmitted (must be
+ *         std::uint8_t or std::uint16_t).
  */
 template<typename Data_Type>
 class Basic_Transmitter {
   public:
+    static_assert( std::is_same_v<Data_Type, std::uint8_t> or std::is_same_v<Data_Type, std::uint16_t> );
+
     /**
      * \brief The integral type used to hold the data to be transmitted.
      */
