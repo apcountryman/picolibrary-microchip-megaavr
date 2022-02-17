@@ -26,6 +26,7 @@
 #include <cstdint>
 #include <type_traits>
 
+#include "picolibrary/asynchronous_serial.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
 
 /**
@@ -281,6 +282,19 @@ class Basic_Transmitter {
                                 | ( data & 0x0100 ? Peripheral::USART::Normal::UCSRB::Mask::TXB8 : 0 );
         m_usart->normal.udr = data;
     }
+};
+
+/**
+ * \brief Transmitter.
+ *
+ * \tparam Data_Type The integral type used to hold the data to be transmitted (must be
+ *         std::uint8_t or std::uint16_t).
+ */
+template<typename Data_Type>
+class Transmitter :
+    public ::picolibrary::Asynchronous_Serial::Transmitter<Basic_Transmitter<Data_Type>> {
+  public:
+    using ::picolibrary::Asynchronous_Serial::Transmitter<Basic_Transmitter<Data_Type>>::Transmitter;
 };
 
 } // namespace picolibrary::Microchip::megaAVR::Asynchronous_Serial
