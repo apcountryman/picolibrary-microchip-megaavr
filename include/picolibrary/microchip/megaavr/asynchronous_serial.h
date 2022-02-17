@@ -139,7 +139,7 @@ class Basic_Transmitter {
      */
     ~Basic_Transmitter() noexcept
     {
-        disable_transmitter();
+        disable();
     }
 
     /**
@@ -152,7 +152,7 @@ class Basic_Transmitter {
     auto & operator=( Basic_Transmitter && expression ) noexcept
     {
         if ( &expression != this ) {
-            disable_transmitter();
+            disable();
 
             m_usart = expression.m_usart;
 
@@ -191,6 +191,16 @@ class Basic_Transmitter {
     Peripheral::USART * m_usart{};
 
     /**
+     * \brief Disable the transmitter.
+     */
+    void disable() noexcept
+    {
+        if ( m_usart ) {
+            disable_transmitter();
+        } // if
+    }
+
+    /**
      * \brief Configure the transmitter.
      *
      * \param[in] usart_data_bits The desired USART data bits configuration.
@@ -224,9 +234,7 @@ class Basic_Transmitter {
      */
     void disable_transmitter() noexcept
     {
-        if ( m_usart ) {
-            m_usart->normal.ucsrb &= ~Peripheral::USART::Normal::UCSRB::Mask::TXEN;
-        } // if
+        m_usart->normal.ucsrb &= ~Peripheral::USART::Normal::UCSRB::Mask::TXEN;
     }
 
     /**
