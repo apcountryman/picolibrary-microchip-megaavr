@@ -13,10 +13,12 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/asynchronous_serial/unbuffered_output_stream/CMakeLists.txt
-# Description: picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream interactive
-#       tests CMake rules.
+# File: configuration/testing-interactive-atmega328p-arduino-uno/test/interactive/picolibrary/asynchronous_serial/unbuffered_output_stream/hello_world/CMakeLists.txt
+# Description: picolibrary-microchip-megaavr ATmega328/P Arduino Uno
+#       picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream hello world interactive
+#       test configuration.
 
-# build the picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream hello world
-# interactive test
-add_subdirectory( hello_world )
+set( PICOLIBRARY_ASYNCHRONOUS_SERIAL_UNBUFFERED_OUTPUT_STREAM_ENABLE_HELLO_WORLD_INTERACTIVE_TEST OFF CACHE BOOL "" FORCE )
+mark_as_advanced(
+    PICOLIBRARY_ASYNCHRONOUS_SERIAL_UNBUFFERED_OUTPUT_STREAM_ENABLE_HELLO_WORLD_INTERACTIVE_TEST
+)
