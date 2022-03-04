@@ -64,7 +64,7 @@ class TWI {
         };
 
         /**
-         * \brief Field bit positions
+         * \brief Field bit positions.
          */
         struct Bit {
             static constexpr auto TWIE = std::uint_fast8_t{}; ///< TWIE.
@@ -125,7 +125,7 @@ class TWI {
         };
 
         /**
-         * \brief Field bit positions
+         * \brief Field bit positions.
          */
         struct Bit {
             static constexpr auto TWPS = std::uint_fast8_t{}; ///< TWPS.
@@ -220,7 +220,7 @@ class TWI {
         };
 
         /**
-         * \brief Field bit positions
+         * \brief Field bit positions.
          */
         struct Bit {
             static constexpr auto TWGCE = std::uint_fast8_t{}; ///< TWGCE.
@@ -267,7 +267,7 @@ class TWI {
         };
 
         /**
-         * \brief Field bit positions
+         * \brief Field bit positions.
          */
         struct Bit {
             static constexpr auto RESERVED0 = std::uint_fast8_t{}; ///< RESERVED0.
