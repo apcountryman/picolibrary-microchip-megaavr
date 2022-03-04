@@ -17,8 +17,7 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega328P TWI
- *        interface.
+ * \brief picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega328P TWI interface.
  */
 
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_MULTIPLEXED_SIGNALS_ATMEGA328P_TWI_H
