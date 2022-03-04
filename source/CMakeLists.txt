@@ -27,6 +27,7 @@ set(
     "picolibrary/microchip/megaavr.cc"
     "picolibrary/microchip/megaavr/asynchronous_serial.cc"
     "picolibrary/microchip/megaavr/gpio.cc"
+    "picolibrary/microchip/megaavr/i2c.cc"
     "picolibrary/microchip/megaavr/multiplexed_signals.cc"
     "picolibrary/microchip/megaavr/multiplexed_signals/atmega2560.cc"
     "picolibrary/microchip/megaavr/multiplexed_signals/atmega2560/twi.cc"
