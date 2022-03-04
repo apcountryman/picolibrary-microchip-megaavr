@@ -291,11 +291,7 @@ class Basic_Transmitter {
  *         std::uint8_t or std::uint16_t).
  */
 template<typename Data_Type>
-class Transmitter :
-    public ::picolibrary::Asynchronous_Serial::Transmitter<Basic_Transmitter<Data_Type>> {
-  public:
-    using ::picolibrary::Asynchronous_Serial::Transmitter<Basic_Transmitter<Data_Type>>::Transmitter;
-};
+using Transmitter = ::picolibrary::Asynchronous_Serial::Transmitter<Basic_Transmitter<Data_Type>>;
 
 } // namespace picolibrary::Microchip::megaAVR::Asynchronous_Serial
 
