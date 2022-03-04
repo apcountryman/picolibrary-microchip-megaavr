@@ -25,6 +25,7 @@
 
 #include "picolibrary/microchip/megaavr/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr/peripheral/port.h"
+#include "picolibrary/microchip/megaavr/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
 
 /**
@@ -62,6 +63,15 @@ using PORTC = Instance<PORT, 0x0026>;
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTD.
  */
 using PORTD = Instance<PORT, 0x0029>;
+
+/**
+ * \brief TWI0.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega328p` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::TWI0.
+ */
+using TWI0 = Instance<TWI, 0x00B8>;
 
 /**
  * \brief USART0.
