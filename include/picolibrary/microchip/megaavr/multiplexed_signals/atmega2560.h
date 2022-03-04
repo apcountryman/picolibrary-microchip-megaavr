@@ -23,6 +23,7 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_MULTIPLEXED_SIGNALS_ATMEGA2560_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_MULTIPLEXED_SIGNALS_ATMEGA2560_H
 
+#include "picolibrary/microchip/megaavr/multiplexed_signals/atmega2560/twi.h"
 #include "picolibrary/microchip/megaavr/multiplexed_signals/atmega2560/usart.h"
 
 /**
