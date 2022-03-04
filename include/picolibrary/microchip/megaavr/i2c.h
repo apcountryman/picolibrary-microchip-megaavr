@@ -23,10 +23,25 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_I2C_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_I2C_H
 
+#include <cstdint>
+
+#include "picolibrary/microchip/megaavr/peripheral/twi.h"
+
 /**
  * \brief Microchip megaAVR Inter-Integrated Circuit (I2C) facilities.
  */
 namespace picolibrary::Microchip::megaAVR::I2C {
+
+/**
+ * \brief TWI bit rate generator prescaler value.
+ */
+enum class TWI_Bit_Rate_Generator_Prescaler_Value : std::uint8_t {
+    _1  = Peripheral::TWI::TWSR::TWPS_1,  ///< 1.
+    _4  = Peripheral::TWI::TWSR::TWPS_4,  ///< 4.
+    _16 = Peripheral::TWI::TWSR::TWPS_16, ///< 16.
+    _64 = Peripheral::TWI::TWSR::TWPS_64, ///< 64.
+};
+
 } // namespace picolibrary::Microchip::megaAVR::I2C
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_I2C_H
