@@ -23,6 +23,7 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_MULTIPLEXED_SIGNALS_ATMEGA328P_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_MULTIPLEXED_SIGNALS_ATMEGA328P_H
 
+#include "picolibrary/microchip/megaavr/multiplexed_signals/atmega328p/twi.h"
 #include "picolibrary/microchip/megaavr/multiplexed_signals/atmega328p/usart.h"
 
 /**
