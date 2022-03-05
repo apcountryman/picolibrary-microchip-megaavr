@@ -29,7 +29,6 @@
 #include "picolibrary/i2c.h"
 #include "picolibrary/microchip/megaavr/peripheral/twi.h"
 #include "picolibrary/postcondition.h"
-#include "picolibrary/precondition.h"
 
 /**
  * \brief Microchip megaAVR Inter-Integrated Circuit (I2C) facilities.
@@ -139,8 +138,6 @@ class Basic_Controller {
     /**
      * \brief Transmit a start condition.
      *
-     * \pre a bus error is not present
-     *
      * \post a start condition has been transmitted
      */
     void start() noexcept
@@ -153,7 +150,7 @@ class Basic_Controller {
             case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_START_CONDITION_TRANSMITTED:
                 return;
             case Peripheral::TWI::TWSR::TWS::TWS_BUS_ERROR:
-                expect( false, Generic_Error::BUS_ERROR );
+                ensure( false, Generic_Error::BUS_ERROR );
                 break;
             default: ensure( false, Generic_Error::LOGIC_ERROR );
         } // switch
@@ -161,8 +158,6 @@ class Basic_Controller {
 
     /**
      * \brief Transmit a repeated start condition.
-     *
-     * \pre a bus error is not present
      *
      * \post a repeated start condition has been transmitted
      */
@@ -176,7 +171,7 @@ class Basic_Controller {
             case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_REPEATED_START_CONDITION_TRANSMITTED:
                 return;
             case Peripheral::TWI::TWSR::TWS::TWS_BUS_ERROR:
-                expect( false, Generic_Error::BUS_ERROR );
+                ensure( false, Generic_Error::BUS_ERROR );
                 break;
             default: ensure( false, Generic_Error::LOGIC_ERROR );
         } // switch
@@ -192,8 +187,6 @@ class Basic_Controller {
 
     /**
      * \brief Address a device.
-     *
-     * \pre a bus error is not present
      *
      * \param[in] address The address of the device to address.
      * \param[in] operation The operation that will be performed once the device has been
@@ -223,7 +216,7 @@ class Basic_Controller {
             case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_ADDRESS_READ_TRANSMITTED_NACK_RECEIVED:
                 return ::picolibrary::I2C::Response::NACK;
             case Peripheral::TWI::TWSR::TWS::TWS_BUS_ERROR:
-                expect( false, Generic_Error::BUS_ERROR );
+                ensure( false, Generic_Error::BUS_ERROR );
                 break;
             case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_ARBITRATION_LOST:
                 ensure( false, Generic_Error::ARBITRATION_LOST );
@@ -236,8 +229,6 @@ class Basic_Controller {
 
     /**
      * \brief Read data from a device.
-     *
-     * \pre a bus error is not present
      *
      * \param[in] response The response to transmit once the data has been read.
      *
@@ -258,7 +249,7 @@ class Basic_Controller {
             case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_DATA_RECEIVED_NACK_TRANSMITTED:
                 return read();
             case Peripheral::TWI::TWSR::TWS::TWS_BUS_ERROR:
-                expect( false, Generic_Error::BUS_ERROR );
+                ensure( false, Generic_Error::BUS_ERROR );
                 break;
             default: ensure( false, Generic_Error::LOGIC_ERROR );
         } // switch
@@ -268,8 +259,6 @@ class Basic_Controller {
 
     /**
      * \brief Write data to a device.
-     *
-     * \pre a bus error is not present
      *
      * \param[in] data The data to write to the device.
      *
@@ -290,7 +279,7 @@ class Basic_Controller {
             case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_DATA_TRANSMITTED_NACK_RECEIVED:
                 return ::picolibrary::I2C::Response::NACK;
             case Peripheral::TWI::TWSR::TWS::TWS_BUS_ERROR:
-                expect( false, Generic_Error::BUS_ERROR );
+                ensure( false, Generic_Error::BUS_ERROR );
                 break;
             case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_ARBITRATION_LOST:
                 ensure( false, Generic_Error::ARBITRATION_LOST );
