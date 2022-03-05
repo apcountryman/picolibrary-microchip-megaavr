@@ -245,9 +245,9 @@ class Basic_Controller {
 
         switch ( status() ) {
             case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_DATA_RECEIVED_ACK_TRANSMITTED:
-                return read();
+                return finish_read();
             case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_DATA_RECEIVED_NACK_TRANSMITTED:
-                return read();
+                return finish_read();
             case Peripheral::TWI::TWSR::TWS::TWS_BUS_ERROR:
                 ensure( false, Generic_Error::BUS_ERROR );
                 break;
@@ -408,11 +408,11 @@ class Basic_Controller {
     }
 
     /**
-     * \brief Read received data.
+     * \brief Finish a read by reading the received data.
      *
      * \return The received data.
      */
-    auto read() const noexcept -> std::uint8_t
+    auto finish_read() const noexcept -> std::uint8_t
     {
         return m_twi->twdr;
     }
