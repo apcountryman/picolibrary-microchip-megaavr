@@ -251,6 +251,9 @@ class Basic_Controller {
             case Peripheral::TWI::TWSR::TWS::TWS_BUS_ERROR:
                 ensure( false, Generic_Error::BUS_ERROR );
                 break;
+            case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_ARBITRATION_LOST:
+                ensure( false, Generic_Error::ARBITRATION_LOST );
+                break;
             default: ensure( false, Generic_Error::LOGIC_ERROR );
         } // switch
 
