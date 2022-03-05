@@ -16,3 +16,6 @@
 # File: test/interactive/picolibrary/microchip/megaavr/i2c/controller/CMakeLists.txt
 # Description: picolibrary::Microchip::megaAVR::I2C::Controller interactive tests CMake
 #       rules.
+
+# build the picolibrary::Microchip::megaAVR::I2C::Controller scan interactive test
+add_subdirectory( scan )
