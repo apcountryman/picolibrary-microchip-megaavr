@@ -207,6 +207,8 @@ class Basic_Controller {
     auto address( ::picolibrary::I2C::Address_Transmitted address, ::picolibrary::I2C::Operation operation ) noexcept
         -> ::picolibrary::I2C::Response
     {
+        // #lizard forgives the length
+
         initiate_write( address.as_unsigned_integer() | static_cast<std::uint8_t>( operation ) );
 
         while ( not operation_complete() ) {} // while
