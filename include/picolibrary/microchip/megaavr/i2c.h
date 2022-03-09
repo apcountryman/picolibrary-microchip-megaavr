@@ -182,7 +182,9 @@ class Basic_Controller {
      */
     void stop() noexcept
     {
-        transmit_stop();
+        initiate_stop_transmission();
+
+        while ( not stop_transmission_complete() ) {} // while
     }
 
     /**
@@ -386,12 +388,23 @@ class Basic_Controller {
     }
 
     /**
-     * \brief Transmit a stop condition.
+     * \brief Initiate transmission of a stop condition.
      */
-    void transmit_stop() noexcept
+    void initiate_stop_transmission() noexcept
     {
         m_twi->twcr = Peripheral::TWI::TWCR::Mask::TWINT | Peripheral::TWI::TWCR::Mask::TWSTO
                       | Peripheral::TWI::TWCR::Mask::TWEN;
+    }
+
+    /**
+     * \brief Check if transmission of a stop condition has been completed.
+     *
+     * \return true if transmission of the stop condition has been completed.
+     * \return false if transmission of the stop condition has not been completed.
+     */
+    auto stop_transmission_complete() const noexcept -> bool
+    {
+        return not( m_twi->twcr & Peripheral::TWI::TWCR::Mask::TWSTO );
     }
 
     /**
