@@ -25,6 +25,7 @@
 
 #include "picolibrary/microchip/megaavr/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr/peripheral/port.h"
+#include "picolibrary/microchip/megaavr/peripheral/spi.h"
 #include "picolibrary/microchip/megaavr/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
 
@@ -99,6 +100,15 @@ using PORTF = Instance<PORT, 0x002F>;
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTG.
  */
 using PORTG = Instance<PORT, 0x0032>;
+
+/**
+ * \brief SPI0.
+ *
+ * \attention This type should not be used directly. Instead, set the `-mmcu` compiler
+ *            flag to `atmega2560` and use
+ *            picolibrary::Microchip::megaAVR::Peripheral::SPI0.
+ */
+using SPI0 = Instance<SPI, 0x004C>;
 
 /**
  * \brief TWI0.
