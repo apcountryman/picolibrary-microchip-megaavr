@@ -120,7 +120,7 @@ class SPI {
     };
 
     /**
-     * \brief (SPSR) register.
+     * \brief SPI Status Register (SPSR) register.
      *
      * This register has the following fields:
      * - Double SPI Speed Bit (SPI2X)
