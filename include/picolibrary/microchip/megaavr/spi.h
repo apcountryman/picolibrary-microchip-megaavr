@@ -23,10 +23,40 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_H
 
+#include <cstdint>
+
+#include "picolibrary/microchip/megaavr/peripheral/spi.h"
+
 /**
  * \brief Microchip megaAVR Serial Peripheral Interface (SPI) facilities.
  */
 namespace picolibrary::Microchip::megaAVR::SPI {
+
+/**
+ * \brief SPI clock rate SPCR register SPR field offset.
+ */
+constexpr auto SPI_CLOCK_RATE_SPCR_SPR_OFFSET = std::uint_fast8_t{ 1 };
+
+/**
+ * \brief SPI clock rate.
+ */
+enum class SPI_Clock_Rate : std::uint_fast8_t {
+    FOSC_2 = ( 0b1 << Peripheral::SPI::SPSR::Bit::SPI2X )
+             | ( 0b00 << ( Peripheral::SPI::SPCR::Bit::SPR + SPI_CLOCK_RATE_SPCR_SPR_OFFSET ) ), ///< fosc/2
+    FOSC_4 = ( 0b0 << Peripheral::SPI::SPSR::Bit::SPI2X )
+             | ( 0b00 << ( Peripheral::SPI::SPCR::Bit::SPR + SPI_CLOCK_RATE_SPCR_SPR_OFFSET ) ), ///< fosc/4
+    FOSC_8 = ( 0b1 << Peripheral::SPI::SPSR::Bit::SPI2X )
+             | ( 0b01 << ( Peripheral::SPI::SPCR::Bit::SPR + SPI_CLOCK_RATE_SPCR_SPR_OFFSET ) ), ///< fosc/8
+    FOSC_16 = ( 0b0 << Peripheral::SPI::SPSR::Bit::SPI2X )
+              | ( 0b01 << ( Peripheral::SPI::SPCR::Bit::SPR + SPI_CLOCK_RATE_SPCR_SPR_OFFSET ) ), ///< fosc/16
+    FOSC_32 = ( 0b1 << Peripheral::SPI::SPSR::Bit::SPI2X )
+              | ( 0b10 << ( Peripheral::SPI::SPCR::Bit::SPR + SPI_CLOCK_RATE_SPCR_SPR_OFFSET ) ), ///< fosc/32
+    FOSC_64 = ( 0b0 << Peripheral::SPI::SPSR::Bit::SPI2X )
+              | ( 0b10 << ( Peripheral::SPI::SPCR::Bit::SPR + SPI_CLOCK_RATE_SPCR_SPR_OFFSET ) ), ///< fosc/64
+    FOSC_128 = ( 0b0 << Peripheral::SPI::SPSR::Bit::SPI2X )
+               | ( 0b11 << ( Peripheral::SPI::SPCR::Bit::SPR + SPI_CLOCK_RATE_SPCR_SPR_OFFSET ) ), ///< fosc/128
+};
+
 } // namespace picolibrary::Microchip::megaAVR::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_H
