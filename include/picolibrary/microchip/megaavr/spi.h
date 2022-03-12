@@ -57,6 +57,14 @@ enum class SPI_Clock_Rate : std::uint_fast8_t {
                | ( 0b11 << ( Peripheral::SPI::SPCR::Bit::SPR + SPI_CLOCK_RATE_SPCR_SPR_OFFSET ) ), ///< fosc/128
 };
 
+/**
+ * \brief SPI clock polarity.
+ */
+enum class SPI_Clock_Polarity : std::uint8_t {
+    IDLE_LOW = Peripheral::SPI::SPCR::CPOL_LEADING_EDGE_RISING_TRAILING_EDGE_FALLING, ///< Idle low.
+    IDLE_HIGH = Peripheral::SPI::SPCR::CPOL_LEADING_EDGE_RISING_TRAILING_EDGE_FALLING, ///< Idle high.
+};
+
 } // namespace picolibrary::Microchip::megaAVR::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_H
