@@ -90,6 +90,14 @@ enum class USART_Clock_Polarity : std::uint8_t {
     IDLE_HIGH = 0b1 << Peripheral::USART::SPI_Controller::UCSRC::Bit::UCPOL, ///< Idle high.
 };
 
+/**
+ * \brief USART clock phase.
+ */
+enum class USART_Clock_Phase : std::uint8_t {
+    CAPTURE_IDLE_TO_ACTIVE = 0b0 << Peripheral::USART::SPI_Controller::UCSRC::Bit::UCPHA, ///< Capture data on the idle-to-active clock transition.
+    CAPTURE_ACTIVE_TO_IDLE = 0b1 << Peripheral::USART::SPI_Controller::UCSRC::Bit::UCPHA, ///< Capture data on the active-to-idle clock transition.
+};
+
 } // namespace picolibrary::Microchip::megaAVR::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_H
