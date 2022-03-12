@@ -297,18 +297,6 @@ class TWI {
         using Register<std::uint8_t>::operator=;
     };
 
-    TWI() = delete;
-
-    TWI( TWI && ) = delete;
-
-    TWI( TWI const & ) = delete;
-
-    ~TWI() = delete;
-
-    auto operator=( TWI && ) = delete;
-
-    auto operator=( TWI const & ) = delete;
-
     /**
      * \brief TWI Bit Rate Register (TWBR) register.
      */
@@ -338,6 +326,18 @@ class TWI {
      * \brief TWAMR.
      */
     TWAMR twamr;
+
+    TWI() = delete;
+
+    TWI( TWI && ) = delete;
+
+    TWI( TWI const & ) = delete;
+
+    ~TWI() = delete;
+
+    auto operator=( TWI && ) = delete;
+
+    auto operator=( TWI const & ) = delete;
 };
 
 } // namespace picolibrary::Microchip::megaAVR::Peripheral
