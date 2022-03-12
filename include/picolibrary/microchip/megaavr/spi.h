@@ -65,6 +65,14 @@ enum class SPI_Clock_Polarity : std::uint8_t {
     IDLE_HIGH = Peripheral::SPI::SPCR::CPOL_LEADING_EDGE_FALLING_TRAILING_EDGE_RISING, ///< Idle high.
 };
 
+/**
+ * \brief SPI clock phase.
+ */
+enum class SPI_Clock_Phase : std::uint8_t {
+    CAPTURE_IDLE_TO_ACTIVE = Peripheral::SPI::SPCR::CPHA_LEADING_EDGE_SAMPLE_TRAILING_EDGE_SETUP, ///< Capture data on the idle-to-active clock transition.
+    CAPTURE_ACTIVE_TO_IDLE = Peripheral::SPI::SPCR::CPHA_LEADING_EDGE_SETUP_TRAILING_EDGE_SAMPLE, ///< Capture data on the active-to-idle clock transition.
+};
+
 } // namespace picolibrary::Microchip::megaAVR::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_H
