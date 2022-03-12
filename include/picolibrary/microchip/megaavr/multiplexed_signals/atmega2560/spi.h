@@ -34,7 +34,7 @@
 namespace picolibrary::Microchip::megaAVR::Multiplexed_Signals::ATmega2560 {
 
 /**
- * \brief Lookup a SPI peripheral's pins PORT peripheral address.
+ * \brief Lookup an SPI peripheral's pins PORT peripheral address.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -58,7 +58,7 @@ constexpr auto spi_port_address( std::uintptr_t spi_address ) noexcept -> std::u
 }
 
 /**
- * \brief Lookup a SPI peripheral's pins PORT peripheral.
+ * \brief Lookup an SPI peripheral's pins PORT peripheral.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -75,7 +75,7 @@ inline auto & spi_port( Peripheral::SPI const & spi ) noexcept
 }
 
 /**
- * \brief Lookup a SPI peripheral's SS pin PORT peripheral address.
+ * \brief Lookup an SPI peripheral's SS pin PORT peripheral address.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -92,7 +92,7 @@ constexpr auto ss_port_address( std::uintptr_t spi_address ) noexcept
 }
 
 /**
- * \brief Lookup a SPI peripheral's SS pin PORT peripheral.
+ * \brief Lookup an SPI peripheral's SS pin PORT peripheral.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -108,7 +108,7 @@ inline auto & ss_port( Peripheral::SPI const & spi ) noexcept
 }
 
 /**
- * \brief Lookup a SPI peripheral's SS pin number.
+ * \brief Lookup an SPI peripheral's SS pin number.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -131,7 +131,7 @@ constexpr auto ss_number( std::uintptr_t spi_address ) noexcept -> std::uint_fas
 }
 
 /**
- * \brief Lookup a SPI peripheral's SS pin number.
+ * \brief Lookup an SPI peripheral's SS pin number.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -147,7 +147,7 @@ inline auto ss_number( Peripheral::SPI const & spi ) noexcept
 }
 
 /**
- * \brief Lookup a SPI peripheral's SS pin mask.
+ * \brief Lookup an SPI peripheral's SS pin mask.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -164,7 +164,7 @@ constexpr auto ss_mask( std::uintptr_t spi_address ) noexcept -> std::uint8_t
 }
 
 /**
- * \brief Lookup a SPI peripheral's SS pin mask.
+ * \brief Lookup an SPI peripheral's SS pin mask.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -180,7 +180,7 @@ inline auto ss_mask( Peripheral::SPI const & spi ) noexcept
 }
 
 /**
- * \brief Lookup a SPI peripheral's SCK pin PORT peripheral address.
+ * \brief Lookup an SPI peripheral's SCK pin PORT peripheral address.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -197,7 +197,7 @@ constexpr auto sck_port_address( std::uintptr_t spi_address ) noexcept
 }
 
 /**
- * \brief Lookup a SPI peripheral's SCK pin PORT peripheral.
+ * \brief Lookup an SPI peripheral's SCK pin PORT peripheral.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -213,7 +213,7 @@ inline auto & sck_port( Peripheral::SPI const & spi ) noexcept
 }
 
 /**
- * \brief Lookup a SPI peripheral's SCK pin number.
+ * \brief Lookup an SPI peripheral's SCK pin number.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -236,7 +236,7 @@ constexpr auto sck_number( std::uintptr_t spi_address ) noexcept -> std::uint_fa
 }
 
 /**
- * \brief Lookup a SPI peripheral's SCK pin number.
+ * \brief Lookup an SPI peripheral's SCK pin number.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -252,7 +252,7 @@ inline auto sck_number( Peripheral::SPI const & spi ) noexcept
 }
 
 /**
- * \brief Lookup a SPI peripheral's SCK pin mask.
+ * \brief Lookup an SPI peripheral's SCK pin mask.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -269,7 +269,7 @@ constexpr auto sck_mask( std::uintptr_t spi_address ) noexcept -> std::uint8_t
 }
 
 /**
- * \brief Lookup a SPI peripheral's SCK pin mask.
+ * \brief Lookup an SPI peripheral's SCK pin mask.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -285,7 +285,7 @@ inline auto sck_mask( Peripheral::SPI const & spi ) noexcept
 }
 
 /**
- * \brief Lookup a SPI peripheral's MOSI pin PORT peripheral address.
+ * \brief Lookup an SPI peripheral's MOSI pin PORT peripheral address.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -302,7 +302,7 @@ constexpr auto mosi_port_address( std::uintptr_t spi_address ) noexcept
 }
 
 /**
- * \brief Lookup a SPI peripheral's MOSI pin PORT peripheral.
+ * \brief Lookup an SPI peripheral's MOSI pin PORT peripheral.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -318,7 +318,7 @@ inline auto & mosi_port( Peripheral::SPI const & spi ) noexcept
 }
 
 /**
- * \brief Lookup a SPI peripheral's MOSI pin number.
+ * \brief Lookup an SPI peripheral's MOSI pin number.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -341,7 +341,7 @@ constexpr auto mosi_number( std::uintptr_t spi_address ) noexcept -> std::uint_f
 }
 
 /**
- * \brief Lookup a SPI peripheral's MOSI pin number.
+ * \brief Lookup an SPI peripheral's MOSI pin number.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -357,7 +357,7 @@ inline auto mosi_number( Peripheral::SPI const & spi ) noexcept
 }
 
 /**
- * \brief Lookup a SPI peripheral's MOSI pin mask.
+ * \brief Lookup an SPI peripheral's MOSI pin mask.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -374,7 +374,7 @@ constexpr auto mosi_mask( std::uintptr_t spi_address ) noexcept -> std::uint8_t
 }
 
 /**
- * \brief Lookup a SPI peripheral's MOSI pin mask.
+ * \brief Lookup an SPI peripheral's MOSI pin mask.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -390,7 +390,7 @@ inline auto mosi_mask( Peripheral::SPI const & spi ) noexcept
 }
 
 /**
- * \brief Lookup a SPI peripheral's MISO pin PORT peripheral address.
+ * \brief Lookup an SPI peripheral's MISO pin PORT peripheral address.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -407,7 +407,7 @@ constexpr auto miso_port_address( std::uintptr_t spi_address ) noexcept
 }
 
 /**
- * \brief Lookup a SPI peripheral's MISO pin PORT peripheral.
+ * \brief Lookup an SPI peripheral's MISO pin PORT peripheral.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -423,7 +423,7 @@ inline auto & miso_port( Peripheral::SPI const & spi ) noexcept
 }
 
 /**
- * \brief Lookup a SPI peripheral's MISO pin number.
+ * \brief Lookup an SPI peripheral's MISO pin number.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -446,7 +446,7 @@ constexpr auto miso_number( std::uintptr_t spi_address ) noexcept -> std::uint_f
 }
 
 /**
- * \brief Lookup a SPI peripheral's MISO pin number.
+ * \brief Lookup an SPI peripheral's MISO pin number.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -462,7 +462,7 @@ inline auto miso_number( Peripheral::SPI const & spi ) noexcept
 }
 
 /**
- * \brief Lookup a SPI peripheral's MISO pin mask.
+ * \brief Lookup an SPI peripheral's MISO pin mask.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
@@ -479,7 +479,7 @@ constexpr auto miso_mask( std::uintptr_t spi_address ) noexcept -> std::uint8_t
 }
 
 /**
- * \brief Lookup a SPI peripheral's MISO pin mask.
+ * \brief Lookup an SPI peripheral's MISO pin mask.
  *
  * \attention This function should not be called directly. Instead, set the `-mmcu`
  *            compiler flag to `atmega2560` and call
