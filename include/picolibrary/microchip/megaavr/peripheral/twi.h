@@ -156,32 +156,32 @@ class TWI {
          * \brief TWS.
          */
         enum TWS : std::uint8_t {
-            TWS_CONTROLLER_START_CONDITION_TRANSMITTED = 0x08, ///< Controller mode: start condition transmitted.
-            TWS_CONTROLLER_REPEATED_START_CONDITION_TRANSMITTED    = 0x10, ///< Controller mode: repeated start condition transmitted.
-            TWS_CONTROLLER_ADDRESS_WRITE_TRANSMITTED_ACK_RECEIVED  = 0x18, ///< Controller mode: device address + write transmitted, ACK received.
-            TWS_CONTROLLER_ADDRESS_WRITE_TRANSMITTED_NACK_RECEIVED = 0x20, ///< Controller mode: device address + write transmitted, NACK received.
-            TWS_CONTROLLER_DATA_TRANSMITTED_ACK_RECEIVED           = 0x28, ///< Controller mode: data transmitted, ACK received.
-            TWS_CONTROLLER_DATA_TRANSMITTED_NACK_RECEIVED          = 0x30, ///< Controller mode: data transmitted, NACK received.
-            TWS_CONTROLLER_ARBITRATION_LOST = 0x38, ///< Controller mode: arbitration lost.
-            TWS_CONTROLLER_ADDRESS_READ_TRANSMITTED_ACK_RECEIVED  = 0x40, ///< Controller mode: device address + read transmitted, ACK received.
-            TWS_CONTROLLER_ADDRESS_READ_TRANSMITTED_NACK_RECEIVED = 0x48, ///< Controller mode: device address + read transmitted, NACK received.
-            TWS_CONTROLLER_DATA_RECEIVED_ACK_TRANSMITTED          = 0x50, ///< Controller mode: data received, ACK transmitted.
-            TWS_CONTROLLER_DATA_RECEIVED_NACK_TRANSMITTED         = 0x58, ///< Controller mode: data received, NACK transmitted.
+            TWS_HOST_START_CONDITION_TRANSMITTED = 0x08, ///< Host mode: start condition transmitted.
+            TWS_HOST_REPEATED_START_CONDITION_TRANSMITTED = 0x10, ///< Host mode: repeated start condition transmitted.
+            TWS_HOST_ADDRESS_WRITE_TRANSMITTED_ACK_RECEIVED  = 0x18, ///< Host mode: device address + write transmitted, ACK received.
+            TWS_HOST_ADDRESS_WRITE_TRANSMITTED_NACK_RECEIVED = 0x20, ///< Host mode: device address + write transmitted, NACK received.
+            TWS_HOST_DATA_TRANSMITTED_ACK_RECEIVED = 0x28, ///< Host mode: data transmitted, ACK received.
+            TWS_HOST_DATA_TRANSMITTED_NACK_RECEIVED = 0x30, ///< Host mode: data transmitted, NACK received.
+            TWS_HOST_ARBITRATION_LOST = 0x38, ///< Host mode: arbitration lost.
+            TWS_HOST_ADDRESS_READ_TRANSMITTED_ACK_RECEIVED  = 0x40, ///< Host mode: device address + read transmitted, ACK received.
+            TWS_HOST_ADDRESS_READ_TRANSMITTED_NACK_RECEIVED = 0x48, ///< Host mode: device address + read transmitted, NACK received.
+            TWS_HOST_DATA_RECEIVED_ACK_TRANSMITTED = 0x50, ///< Host mode: data received, ACK transmitted.
+            TWS_HOST_DATA_RECEIVED_NACK_TRANSMITTED = 0x58, ///< Host mode: data received, NACK transmitted.
 
-            TWS_DEVICE_ADDRESS_WRITE_RECEIVED_ACK_TRANSMITTED                         = 0x60, ///< Device mode: device address + write received, ACK transmitted.
-            TWS_DEVICE_ARBITRATION_LOST_ADDRESS_WRITE_RECEIVED_ACK_TRANSMITTED        = 0x68, ///< Device mode: arbitration lost, device address + write received, ACK transmitted.
-            TWS_DEVICE_GENERAL_CALL_ADDRESS_RECEIVED_ACK_TRANSMITTED                  = 0x70, ///< Device mode: general call address received, ACK transmitted.
-            TWS_DEVICE_ARBITRATION_LOST_GENERAL_CALL_ADDRESS_RECEIVED_ACK_TRANSMITTED = 0x78, ///< Device mode: arbitration lost, general call address received, ACK transmitted.
-            TWS_DEVICE_DATA_RECEIVED_ACK_TRANSMITTED = 0x80, ///< Device mode: data received, ACK transmitted.
-            TWS_DEVICE_DATA_RECEIVED_NACK_TRANSMITTED = 0x88, ///< Device mode: data received, NACK transmitted.
-            TWS_DEVICE_GENERAL_CALL_DATA_RECEIVED_ACK_TRANSMITTED             = 0x90, ///< Device mode: general call, data received, ACK transmitted.
-            TWS_DEVICE_GENERAL_CALL_DATA_RECEIVED_NACK_TRANSMITTED            = 0x98, ///< Device mode: general call, data received, NACK transmitted.
-            TWS_DEVICE_STOP_CONDITION_OR_REPEATED_START_CONDITION_RECEIVED    = 0xA0, ///< device mode: stop condition or repeated start condition received.
-            TWS_DEVICE_ADDRESS_READ_RECEIVED_ACK_TRANSMITTED                  = 0xA8, ///< Device mode: device address + read received, ACK transmitted.
-            TWS_DEVICE_ARBITRATION_LOST_ADDRESS_READ_RECEIVED_ACK_TRANSMITTED = 0xB0, ///< Device mode: arbitration lost, device address + read received, ACK transmitted.
-            TWS_DEVICE_DATA_TRANSMITTED_ACK_RECEIVED = 0xB8, ///< Device mode: data transmitted, ACK received.
-            TWS_DEVICE_DATA_TRANSMITTED_NACK_RECEIVED = 0xC0, ///< Device mode: data transmitted, NACK received.
-            TWS_DEVICE_ALL_DATA_TRANSMITTED_ACK_RECEIVED = 0xC8, ///< Device mode: all data transmitted, ACK received.
+            TWS_CLIENT_ADDRESS_WRITE_RECEIVED_ACK_TRANSMITTED                         = 0x60, ///< Client mode: device address + write received, ACK transmitted.
+            TWS_CLIENT_ARBITRATION_LOST_ADDRESS_WRITE_RECEIVED_ACK_TRANSMITTED        = 0x68, ///< Client mode: arbitration lost, device address + write received, ACK transmitted.
+            TWS_CLIENT_GENERAL_CALL_ADDRESS_RECEIVED_ACK_TRANSMITTED                  = 0x70, ///< Client mode: general call address received, ACK transmitted.
+            TWS_CLIENT_ARBITRATION_LOST_GENERAL_CALL_ADDRESS_RECEIVED_ACK_TRANSMITTED = 0x78, ///< Client mode: arbitration lost, general call address received, ACK transmitted.
+            TWS_CLIENT_DATA_RECEIVED_ACK_TRANSMITTED = 0x80, ///< Client mode: data received, ACK transmitted.
+            TWS_CLIENT_DATA_RECEIVED_NACK_TRANSMITTED = 0x88, ///< Client mode: data received, NACK transmitted.
+            TWS_CLIENT_GENERAL_CALL_DATA_RECEIVED_ACK_TRANSMITTED             = 0x90, ///< Client mode: general call, data received, ACK transmitted.
+            TWS_CLIENT_GENERAL_CALL_DATA_RECEIVED_NACK_TRANSMITTED            = 0x98, ///< Client mode: general call, data received, NACK transmitted.
+            TWS_CLIENT_STOP_CONDITION_OR_REPEATED_START_CONDITION_RECEIVED    = 0xA0, ///< Client mode: stop condition or repeated start condition received.
+            TWS_CLIENT_ADDRESS_READ_RECEIVED_ACK_TRANSMITTED                  = 0xA8, ///< Client mode: device address + read received, ACK transmitted.
+            TWS_CLIENT_ARBITRATION_LOST_ADDRESS_READ_RECEIVED_ACK_TRANSMITTED = 0xB0, ///< Client mode: arbitration lost, device address + read received, ACK transmitted.
+            TWS_CLIENT_DATA_TRANSMITTED_ACK_RECEIVED = 0xB8, ///< Client mode: data transmitted, ACK received.
+            TWS_CLIENT_DATA_TRANSMITTED_NACK_RECEIVED = 0xC0, ///< Client mode: data transmitted, NACK received.
+            TWS_CLIENT_ALL_DATA_TRANSMITTED_ACK_RECEIVED = 0xC8, ///< Client mode: all data transmitted, ACK received.
 
             TWS_NO_STATE_INFORMATION_AVAILABLE = 0xF8, ///< No state information available.
             TWS_BUS_ERROR = 0x00, ///< Bus error due to illegal start condition or stop condition.
@@ -203,11 +203,11 @@ class TWI {
     };
 
     /**
-     * \brief TWI (Device) Address Register (TWAR) register.
+     * \brief TWI (Client) Address Register (TWAR) register.
      *
      * This register has the following fields:
      * - TWI General Call Recognition Enable Bit (TWGCE)
-     * - TWI (Device) Address (TWA)
+     * - TWI (Client) Address (TWA)
      */
     class TWAR : public Register<std::uint8_t> {
       public:
@@ -251,10 +251,10 @@ class TWI {
     };
 
     /**
-     * \brief TWI (Device) Address Mask Register (TWAMR) register.
+     * \brief TWI (Client) Address Mask Register (TWAMR) register.
      *
      * This register has the following fields:
-     * - TWI (Device) Address Mask (TWAM)
+     * - TWI (Client) Address Mask (TWAM)
      */
     class TWAMR : public Register<std::uint8_t> {
       public:

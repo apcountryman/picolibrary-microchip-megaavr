@@ -147,8 +147,7 @@ class Basic_Controller {
         while ( not operation_complete() ) {} // while
 
         switch ( status() ) {
-            case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_START_CONDITION_TRANSMITTED:
-                return;
+            case Peripheral::TWI::TWSR::TWS::TWS_HOST_START_CONDITION_TRANSMITTED: return;
             case Peripheral::TWI::TWSR::TWS::TWS_BUS_ERROR:
                 ensure( false, Generic_Error::BUS_ERROR );
                 break;
@@ -168,7 +167,7 @@ class Basic_Controller {
         while ( not operation_complete() ) {} // while
 
         switch ( status() ) {
-            case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_REPEATED_START_CONDITION_TRANSMITTED:
+            case Peripheral::TWI::TWSR::TWS::TWS_HOST_REPEATED_START_CONDITION_TRANSMITTED:
                 return;
             case Peripheral::TWI::TWSR::TWS::TWS_BUS_ERROR:
                 ensure( false, Generic_Error::BUS_ERROR );
@@ -209,18 +208,18 @@ class Basic_Controller {
         while ( not operation_complete() ) {} // while
 
         switch ( status() ) {
-            case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_ADDRESS_WRITE_TRANSMITTED_ACK_RECEIVED:
+            case Peripheral::TWI::TWSR::TWS::TWS_HOST_ADDRESS_WRITE_TRANSMITTED_ACK_RECEIVED:
                 return ::picolibrary::I2C::Response::ACK;
-            case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_ADDRESS_WRITE_TRANSMITTED_NACK_RECEIVED:
+            case Peripheral::TWI::TWSR::TWS::TWS_HOST_ADDRESS_WRITE_TRANSMITTED_NACK_RECEIVED:
                 return ::picolibrary::I2C::Response::NACK;
-            case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_ADDRESS_READ_TRANSMITTED_ACK_RECEIVED:
+            case Peripheral::TWI::TWSR::TWS::TWS_HOST_ADDRESS_READ_TRANSMITTED_ACK_RECEIVED:
                 return ::picolibrary::I2C::Response::ACK;
-            case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_ADDRESS_READ_TRANSMITTED_NACK_RECEIVED:
+            case Peripheral::TWI::TWSR::TWS::TWS_HOST_ADDRESS_READ_TRANSMITTED_NACK_RECEIVED:
                 return ::picolibrary::I2C::Response::NACK;
             case Peripheral::TWI::TWSR::TWS::TWS_BUS_ERROR:
                 ensure( false, Generic_Error::BUS_ERROR );
                 break;
-            case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_ARBITRATION_LOST:
+            case Peripheral::TWI::TWSR::TWS::TWS_HOST_ARBITRATION_LOST:
                 ensure( false, Generic_Error::ARBITRATION_LOST );
                 break;
             default: ensure( false, Generic_Error::LOGIC_ERROR );
@@ -246,14 +245,14 @@ class Basic_Controller {
         while ( not operation_complete() ) {} // while
 
         switch ( status() ) {
-            case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_DATA_RECEIVED_ACK_TRANSMITTED:
+            case Peripheral::TWI::TWSR::TWS::TWS_HOST_DATA_RECEIVED_ACK_TRANSMITTED:
                 return finish_read();
-            case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_DATA_RECEIVED_NACK_TRANSMITTED:
+            case Peripheral::TWI::TWSR::TWS::TWS_HOST_DATA_RECEIVED_NACK_TRANSMITTED:
                 return finish_read();
             case Peripheral::TWI::TWSR::TWS::TWS_BUS_ERROR:
                 ensure( false, Generic_Error::BUS_ERROR );
                 break;
-            case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_ARBITRATION_LOST:
+            case Peripheral::TWI::TWSR::TWS::TWS_HOST_ARBITRATION_LOST:
                 ensure( false, Generic_Error::ARBITRATION_LOST );
                 break;
             default: ensure( false, Generic_Error::LOGIC_ERROR );
@@ -279,14 +278,14 @@ class Basic_Controller {
         while ( not operation_complete() ) {} // while
 
         switch ( status() ) {
-            case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_DATA_TRANSMITTED_ACK_RECEIVED:
+            case Peripheral::TWI::TWSR::TWS::TWS_HOST_DATA_TRANSMITTED_ACK_RECEIVED:
                 return ::picolibrary::I2C::Response::ACK;
-            case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_DATA_TRANSMITTED_NACK_RECEIVED:
+            case Peripheral::TWI::TWSR::TWS::TWS_HOST_DATA_TRANSMITTED_NACK_RECEIVED:
                 return ::picolibrary::I2C::Response::NACK;
             case Peripheral::TWI::TWSR::TWS::TWS_BUS_ERROR:
                 ensure( false, Generic_Error::BUS_ERROR );
                 break;
-            case Peripheral::TWI::TWSR::TWS::TWS_CONTROLLER_ARBITRATION_LOST:
+            case Peripheral::TWI::TWSR::TWS::TWS_HOST_ARBITRATION_LOST:
                 ensure( false, Generic_Error::ARBITRATION_LOST );
                 break;
             default: ensure( false, Generic_Error::LOGIC_ERROR );
