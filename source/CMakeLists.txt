@@ -46,6 +46,7 @@ set(
     "picolibrary/microchip/megaavr/peripheral/twi.cc"
     "picolibrary/microchip/megaavr/peripheral/usart.cc"
     "picolibrary/microchip/megaavr/register.cc"
+    "picolibrary/microchip/megaavr/spi.cc"
 )
 list(
     APPEND PICOLIBRARY_MICROCHIP_MEGAAVR_LINK_LIBRARIES
