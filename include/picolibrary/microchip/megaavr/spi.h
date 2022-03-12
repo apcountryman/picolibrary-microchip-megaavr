@@ -86,24 +86,24 @@ enum class SPI_Bit_Order : std::uint8_t {
  * \brief USART clock polarity.
  */
 enum class USART_Clock_Polarity : std::uint8_t {
-    IDLE_LOW = 0b0 << Peripheral::USART::SPI_Controller::UCSRC::Bit::UCPOL, ///< Idle low.
-    IDLE_HIGH = 0b1 << Peripheral::USART::SPI_Controller::UCSRC::Bit::UCPOL, ///< Idle high.
+    IDLE_LOW  = 0b0 << Peripheral::USART::SPI_Host::UCSRC::Bit::UCPOL, ///< Idle low.
+    IDLE_HIGH = 0b1 << Peripheral::USART::SPI_Host::UCSRC::Bit::UCPOL, ///< Idle high.
 };
 
 /**
  * \brief USART clock phase.
  */
 enum class USART_Clock_Phase : std::uint8_t {
-    CAPTURE_IDLE_TO_ACTIVE = 0b0 << Peripheral::USART::SPI_Controller::UCSRC::Bit::UCPHA, ///< Capture data on the idle-to-active clock transition.
-    CAPTURE_ACTIVE_TO_IDLE = 0b1 << Peripheral::USART::SPI_Controller::UCSRC::Bit::UCPHA, ///< Capture data on the active-to-idle clock transition.
+    CAPTURE_IDLE_TO_ACTIVE = 0b0 << Peripheral::USART::SPI_Host::UCSRC::Bit::UCPHA, ///< Capture data on the idle-to-active clock transition.
+    CAPTURE_ACTIVE_TO_IDLE = 0b1 << Peripheral::USART::SPI_Host::UCSRC::Bit::UCPHA, ///< Capture data on the active-to-idle clock transition.
 };
 
 /**
  * \brief USART bit order.
  */
 enum class USART_Bit_Order : std::uint8_t {
-    MSB_FIRST = 0b0 << Peripheral::USART::SPI_Controller::UCSRC::Bit::UDORD, ///< MSB first.
-    LSB_FIRST = 0b1 << Peripheral::USART::SPI_Controller::UCSRC::Bit::UDORD, ///< LSB first.
+    MSB_FIRST = 0b0 << Peripheral::USART::SPI_Host::UCSRC::Bit::UDORD, ///< MSB first.
+    LSB_FIRST = 0b1 << Peripheral::USART::SPI_Host::UCSRC::Bit::UDORD, ///< LSB first.
 };
 
 } // namespace picolibrary::Microchip::megaAVR::SPI

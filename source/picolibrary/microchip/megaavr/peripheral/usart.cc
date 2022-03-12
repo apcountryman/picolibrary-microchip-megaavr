@@ -28,8 +28,8 @@ static_assert( sizeof( USART ) == 7 );
 static_assert( USART::Normal::UCSRA::Bit::RXC == 7 );
 static_assert( USART::Normal::UCSRB::Bit::RXCIE == 7 );
 static_assert( USART::Normal::UCSRC::Bit::UMSEL == 6 );
-static_assert( USART::SPI_Controller::UCSRA::Bit::RXC == 7 );
-static_assert( USART::SPI_Controller::UCSRB::Bit::RXCIE == 7 );
-static_assert( USART::SPI_Controller::UCSRC::Bit::UMSEL == 6 );
+static_assert( USART::SPI_Host::UCSRA::Bit::RXC == 7 );
+static_assert( USART::SPI_Host::UCSRB::Bit::RXCIE == 7 );
+static_assert( USART::SPI_Host::UCSRC::Bit::UMSEL == 6 );
 
 } // namespace picolibrary::Microchip::megaAVR::Peripheral

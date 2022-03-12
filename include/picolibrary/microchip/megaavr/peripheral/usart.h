@@ -344,9 +344,9 @@ class USART {
     };
 
     /**
-     * \brief Serial Peripheral Interface (SPI) controller mode.
+     * \brief Serial Peripheral Interface (SPI) host mode.
      */
-    class SPI_Controller {
+    class SPI_Host {
       public:
         /**
          * \brief USART Control and Status Register A (UCSRA) register.
@@ -562,17 +562,17 @@ class USART {
          */
         Register<std::uint8_t> udr;
 
-        SPI_Controller() = delete;
+        SPI_Host() = delete;
 
-        SPI_Controller( SPI_Controller && ) = delete;
+        SPI_Host( SPI_Host && ) = delete;
 
-        SPI_Controller( SPI_Controller const & ) = delete;
+        SPI_Host( SPI_Host const & ) = delete;
 
-        ~SPI_Controller() = delete;
+        ~SPI_Host() = delete;
 
-        auto operator=( SPI_Controller && ) = delete;
+        auto operator=( SPI_Host && ) = delete;
 
-        auto operator=( SPI_Controller const & ) = delete;
+        auto operator=( SPI_Host const & ) = delete;
     };
 
     union {
@@ -582,9 +582,9 @@ class USART {
         Normal normal;
 
         /**
-         * \brief SPI controller mode.
+         * \brief SPI host mode.
          */
-        SPI_Controller spi_controller;
+        SPI_Host spi_host;
     };
 
     USART() = delete;
