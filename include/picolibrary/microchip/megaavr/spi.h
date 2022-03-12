@@ -106,6 +106,15 @@ enum class USART_Bit_Order : std::uint8_t {
     LSB_FIRST = 0b1 << Peripheral::USART::SPI_Host::UCSRC::Bit::UDORD, ///< LSB first.
 };
 
+/**
+ * \brief Fixed configuration basic controller.
+ *
+ * \tparam Peripheral The type of peripheral used to implement fixed configuration
+ *         controller functionality.
+ */
+template<typename Peripheral>
+class Fixed_Configuration_Basic_Controller;
+
 } // namespace picolibrary::Microchip::megaAVR::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_H
