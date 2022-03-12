@@ -98,6 +98,14 @@ enum class USART_Clock_Phase : std::uint8_t {
     CAPTURE_ACTIVE_TO_IDLE = 0b1 << Peripheral::USART::SPI_Controller::UCSRC::Bit::UCPHA, ///< Capture data on the active-to-idle clock transition.
 };
 
+/**
+ * \brief USART bit order.
+ */
+enum class USART_Bit_Order : std::uint8_t {
+    MSB_FIRST = 0b0 << Peripheral::USART::SPI_Controller::UCSRC::Bit::UDORD, ///< MSB first.
+    LSB_FIRST = 0b1 << Peripheral::USART::SPI_Controller::UCSRC::Bit::UDORD, ///< LSB first.
+};
+
 } // namespace picolibrary::Microchip::megaAVR::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_H
