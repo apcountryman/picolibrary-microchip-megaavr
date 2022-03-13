@@ -27,6 +27,7 @@
 
 #include "picolibrary/microchip/megaavr/peripheral/spi.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
+#include "picolibrary/spi.h"
 
 /**
  * \brief Microchip megaAVR Serial Peripheral Interface (SPI) facilities.
@@ -114,6 +115,16 @@ enum class USART_Bit_Order : std::uint8_t {
  */
 template<typename Peripheral>
 class Fixed_Configuration_Basic_Controller;
+
+/**
+ * \brief Fixed configuration controller.
+ *
+ * \tparam Peripheral The type of peripheral used to implement fixed configuration
+ *         controller functionality.
+ */
+template<typename Peripheral>
+using Fixed_Configuration_Controller =
+    ::picolibrary::SPI::Controller<Fixed_Configuration_Basic_Controller<Peripheral>>;
 
 } // namespace picolibrary::Microchip::megaAVR::SPI
 
