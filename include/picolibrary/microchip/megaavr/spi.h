@@ -316,7 +316,7 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
     /**
      * \brief Initiate a data exchange.
      *
-     * \param[in] data The data transmit.
+     * \param[in] data The data to transmit.
      */
     void initiate_exchange( std::uint8_t data ) noexcept
     {
