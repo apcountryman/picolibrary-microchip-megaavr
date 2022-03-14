@@ -530,7 +530,7 @@ class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
     /**
      * \brief Clear the USART's clock generator scaling factor (UBRR register value).
      *
-     * \return The previous USART clock generator scaling factor.
+     * \return The previous USART clock generator scaling factor (UBRR register value).
      */
     auto clear_usart_clock_generator_scaling_factor() noexcept -> std::uint16_t
     {
