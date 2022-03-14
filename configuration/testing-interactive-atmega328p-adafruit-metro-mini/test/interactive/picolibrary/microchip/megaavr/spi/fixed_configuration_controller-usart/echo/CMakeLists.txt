@@ -13,11 +13,12 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/microchip/megaavr/spi/fixed_configuration_controller-usart/CMakeLists.txt
-# Description: picolibrary::Microchip::megaAVR::SPI::Fixed_Configuration_Controller<Peripheral::USART>
-#       interactive tests CMake rules.
+# File: configuration/testing-interactive-atmega328p-adafruit-metro-mini/test/interactive/picolibrary/microchip/megaavr/spi/fixed_configuration_controller-usart/echo/CMakeLists.txt
+# Description: picolibrary-microchip-megaavr ATmega328/P Adafruit Metro Mini
+#       picolibrary::Microchip::megaAVR::SPI::Fixed_Configuration_Controller<Peripheral::USART>
+#       echo interactive test configuration.
 
-# build the
-# picolibrary::Microchip::megaAVR::SPI::Fixed_Configuration_Controller<Peripheral::USART>
-# echo interactive test
-add_subdirectory( echo )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_FIXED_CONFIGURATION_CONTROLLER_USART_ENABLE_ECHO_INTERACTIVE_TEST OFF CACHE BOOL "" FORCE )
+mark_as_advanced(
+    PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_FIXED_CONFIGURATION_CONTROLLER_USART_ENABLE_ECHO_INTERACTIVE_TEST
+)
