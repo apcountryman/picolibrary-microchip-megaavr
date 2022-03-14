@@ -345,6 +345,265 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
     }
 };
 
+/**
+ * \brief USART peripheral based fixed configuration basic controller.
+ */
+template<>
+class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
+  public:
+    /**
+     * \brief Clock (frequency, polarity, and phase) and data exchange bit order
+     *        configuration.
+     */
+    struct Configuration {
+    };
+
+    /**
+     * \brief Constructor.
+     */
+    constexpr Fixed_Configuration_Basic_Controller() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] usart The USART to be used by the controller.
+     * \param[in] usart_clock_generator_scaling_factor The desired USART clock generator
+     *            scaling factor (UBRR register value).
+     * \param[in] usart_clock_polarity The desired USART clock polarity.
+     * \param[in] usart_clock_phase The desired USART clock phase.
+     * \param[in] usart_bit_order The desired USART bit order.
+     */
+    Fixed_Configuration_Basic_Controller(
+        Peripheral::USART &  usart,
+        std::uint16_t        usart_clock_generator_scaling_factor,
+        USART_Clock_Polarity usart_clock_polarity,
+        USART_Clock_Phase    usart_clock_phase,
+        USART_Bit_Order      usart_bit_order ) noexcept :
+        m_usart{ &usart },
+        m_usart_xck{ Multiplexed_Signals::xck_port( usart ), Multiplexed_Signals::xck_mask( usart ) }
+    {
+        configure_controller(
+            usart_clock_generator_scaling_factor, usart_clock_polarity, usart_clock_phase, usart_bit_order );
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Fixed_Configuration_Basic_Controller( Fixed_Configuration_Basic_Controller && source ) noexcept :
+        m_usart{ source.m_usart },
+        m_usart_xck{ std::move( source.m_usart_xck ) }
+    {
+        source.m_usart = nullptr;
+    }
+
+    Fixed_Configuration_Basic_Controller( Fixed_Configuration_Basic_Controller const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Fixed_Configuration_Basic_Controller() noexcept
+    {
+        disable();
+    }
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto & operator=( Fixed_Configuration_Basic_Controller && expression ) noexcept
+    {
+        if ( &expression != this ) {
+            disable();
+
+            m_usart     = expression.m_usart;
+            m_usart_xck = std::move( expression.m_usart_xck );
+
+            expression.m_usart = nullptr;
+        } // if
+
+        return *this;
+    }
+
+    auto operator=( Fixed_Configuration_Basic_Controller const & ) = delete;
+
+    /**
+     * \brief Initialize the controller's hardware.
+     */
+    void initialize() noexcept
+    {
+        auto const usart_clock_generator_scaling_factor = clear_usart_clock_generator_scaling_factor();
+
+        m_usart_xck.initialize();
+
+        enable_controller();
+
+        set_usart_clock_generator_scaling_factor( usart_clock_generator_scaling_factor );
+    }
+
+    /**
+     * \brief Configure the controller's clock and data exchange bit order to meet a
+     *        specific device's communication requirements.
+     *
+     * \param[in] configuration The clock and data exchange bit order configuration that
+     *            meets the device's communication requirements.
+     */
+    void configure( Configuration configuration ) noexcept
+    {
+        static_cast<void>( configuration );
+    }
+
+    /**
+     * \brief Exchange data with a device.
+     *
+     * \param[in] data The data to transmit to the device.
+     *
+     * \return The data received from the device.
+     */
+    auto exchange( std::uint8_t data ) noexcept
+    {
+        while ( not transmit_buffer_is_empty() ) {} // while
+
+        load_transmit_buffer( data );
+
+        while ( not received_data_is_available() ) {} // while
+
+        return read_receive_buffer();
+    }
+
+  private:
+    /**
+     * \brief The USART used by the controller.
+     */
+    Peripheral::USART * m_usart{};
+
+    /**
+     * \brief The USART's XCK pin.
+     */
+    GPIO::Push_Pull_IO_Pin m_usart_xck{};
+
+    /**
+     * \brief Disable the controller.
+     */
+    constexpr void disable() noexcept
+    {
+        if ( m_usart ) {
+            disable_controller();
+        } // if
+    }
+
+    /**
+     * \brief Configure the controller.
+     *
+     * \param[in] usart_clock_generator_scaling_factor The desired USART clock generator
+     *            scaling factor (UBRR register value).
+     * \param[in] usart_clock_polarity The desired USART clock polarity.
+     * \param[in] usart_clock_phase The desired USART clock phase.
+     * \param[in] usart_bit_order The desired USART bit order.
+     */
+    void configure_controller(
+        std::uint16_t        usart_clock_generator_scaling_factor,
+        USART_Clock_Polarity usart_clock_polarity,
+        USART_Clock_Phase    usart_clock_phase,
+        USART_Bit_Order      usart_bit_order ) noexcept
+    {
+        m_usart->spi_host.ucsrb = 0;
+        m_usart->spi_host.ucsrc = Peripheral::USART::SPI_Host::UCSRC::UMSEL_HOST_SPI
+                                  | static_cast<std::uint8_t>( usart_clock_polarity )
+                                  | static_cast<std::uint8_t>( usart_clock_phase )
+                                  | static_cast<std::uint8_t>( usart_bit_order );
+        m_usart->spi_host.ubrr = usart_clock_generator_scaling_factor;
+    }
+
+    /**
+     * \brief Disable the controller.
+     */
+    void disable_controller() noexcept
+    {
+        m_usart->spi_host.ucsrb = 0;
+    }
+
+    /**
+     * \brief Clear the USART's clock generator scaling factor (UBRR register value).
+     *
+     * \return The previous USART clock generator scaling factor (UBRR register value).
+     */
+    auto clear_usart_clock_generator_scaling_factor() noexcept -> std::uint16_t
+    {
+        auto const usart_clock_generator_scaling_factor = std::uint16_t{ m_usart->spi_host.ubrr };
+
+        m_usart->spi_host.ubrr = 0;
+
+        return usart_clock_generator_scaling_factor;
+    }
+
+    /**
+     * \brief Enable the controller.
+     */
+    void enable_controller() noexcept
+    {
+        m_usart->spi_host.ucsrb = Peripheral::USART::SPI_Host::UCSRB::Mask::TXEN
+                                  | Peripheral::USART::SPI_Host::UCSRB::Mask::RXEN;
+    }
+
+    /**
+     * \brief Set the USART's clock generator scaling factor (UBRR register value).
+     *
+     * \param[in] usart_clock_generator_scaling_factor The desired USART clock generator
+     *            scaling factor (UBRR register value).
+     */
+    void set_usart_clock_generator_scaling_factor( std::uint16_t usart_clock_generator_scaling_factor ) noexcept
+    {
+        m_usart->spi_host.ubrr = usart_clock_generator_scaling_factor;
+    }
+
+    /**
+     * \brief Check if the transmit buffer is empty.
+     *
+     * \return true if the transmit buffer is empty.
+     * \return false if the transmit buffer is not empty.
+     */
+    auto transmit_buffer_is_empty() const noexcept -> bool
+    {
+        return m_usart->spi_host.ucsra & Peripheral::USART::SPI_Host::UCSRA::Mask::UDRE;
+    }
+
+    /**
+     * \brief Load data into the transmit buffer.
+     *
+     * \param[in] data The data to load into the transmit buffer.
+     */
+    void load_transmit_buffer( std::uint8_t data ) noexcept
+    {
+        m_usart->spi_host.udr = data;
+    }
+
+    /**
+     * \brief Check if received data is available.
+     *
+     * \return true if received data is available.
+     * \return false if received data is not available.
+     */
+    auto received_data_is_available() const noexcept -> bool
+    {
+        return m_usart->spi_host.ucsra & Peripheral::USART::SPI_Host::UCSRA::Mask::RXC;
+    }
+
+    /**
+     * \brief Read data from the receive buffer.
+     *
+     * \return The data read from the receive buffer.
+     */
+    auto read_receive_buffer() noexcept -> std::uint8_t
+    {
+        return m_usart->spi_host.udr;
+    }
+};
+
 } // namespace picolibrary::Microchip::megaAVR::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_H
