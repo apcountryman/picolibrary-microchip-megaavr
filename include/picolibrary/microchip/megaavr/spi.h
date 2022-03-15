@@ -949,7 +949,8 @@ class Variable_Configuration_Basic_Controller<Peripheral::USART> {
             USART_Clock_Phase    usart_clock_phase,
             USART_Bit_Order      usart_bit_order ) noexcept :
             m_ucsrc{ static_cast<std::uint8_t>(
-                static_cast<std::uint8_t>( usart_clock_polarity ) | static_cast<std::uint8_t>( usart_clock_phase )
+                Peripheral::USART::SPI_Host::UCSRC::UMSEL_HOST_SPI
+                | static_cast<std::uint8_t>( usart_clock_polarity ) | static_cast<std::uint8_t>( usart_clock_phase )
                 | static_cast<std::uint8_t>( usart_bit_order ) ) },
             m_ubrr{ usart_clock_generator_scaling_factor }
         {
