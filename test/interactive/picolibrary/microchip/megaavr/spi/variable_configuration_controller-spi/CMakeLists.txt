@@ -16,3 +16,8 @@
 # File: test/interactive/picolibrary/microchip/megaavr/spi/variable_configuration_controller-spi/CMakeLists.txt
 # Description: picolibrary::Microchip::megaAVR::SPI::Variable_Configuration_Controller<Peripheral::SPI>
 #       interactive tests CMake rules.
+
+# build the
+# picolibrary::Microchip::megaAVR::SPI::Variable_Configuration_Controller<Peripheral::SPI>
+# echo interactive test
+add_subdirectory( echo )
