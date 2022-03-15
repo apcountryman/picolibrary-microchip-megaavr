@@ -1,0 +1,34 @@
+# picolibrary-microchip-megaavr
+#
+# Copyright 2020-2022, Andrew Countryman <apcountryman@gmail.com> and the
+# picolibrary-microchip-megaavr contributors
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+# file except in compliance with the License. You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software distributed under
+# the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied. See the License for the specific language governing
+# permissions and limitations under the License.
+
+# File: configuration/testing-interactive-atmega328p-adafruit-metro-mini/test/interactive/picolibrary/microchip/megaavr/spi/variable_configuration_controller-spi/echo/CMakeLists.txt
+# Description: picolibrary-microchip-megaavr ATmega328/P Adafruit Metro Mini
+#       picolibrary::Microchip::megaAVR::SPI::Variable_Configuration_Controller<Peripheral::SPI>
+#       echo interactive test configuration.
+
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_VARIABLE_CONFIGURATION_CONTROLLER_SPI_ENABLE_ECHO_INTERACTIVE_TEST                        ON                       CACHE BOOL   "" FORCE )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_VARIABLE_CONFIGURATION_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_CONTROLLER_SPI                "SPI0"                   CACHE STRING "" FORCE )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_VARIABLE_CONFIGURATION_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_CONTROLLER_SPI_CLOCK_RATE     "FOSC_2"                 CACHE STRING "" FORCE )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_VARIABLE_CONFIGURATION_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_CONTROLLER_SPI_CLOCK_POLARITY "IDLE_LOW"               CACHE STRING "" FORCE )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_VARIABLE_CONFIGURATION_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_CONTROLLER_SPI_CLOCK_PHASE    "CAPTURE_IDLE_TO_ACTIVE" CACHE STRING "" FORCE )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_VARIABLE_CONFIGURATION_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_CONTROLLER_SPI_BIT_ORDER      "MSB_FIRST"              CACHE STRING "" FORCE )
+mark_as_advanced(
+    PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_VARIABLE_CONFIGURATION_CONTROLLER_SPI_ENABLE_ECHO_INTERACTIVE_TEST
+    PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_VARIABLE_CONFIGURATION_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_CONTROLLER_SPI
+    PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_VARIABLE_CONFIGURATION_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_CONTROLLER_SPI_CLOCK_RATE
+    PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_VARIABLE_CONFIGURATION_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_CONTROLLER_SPI_CLOCK_POLARITY
+    PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_VARIABLE_CONFIGURATION_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_CONTROLLER_SPI_CLOCK_PHASE
+    PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_VARIABLE_CONFIGURATION_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_CONTROLLER_SPI_BIT_ORDER
+)
