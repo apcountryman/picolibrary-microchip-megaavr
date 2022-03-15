@@ -623,6 +623,300 @@ template<typename Peripheral>
 using Variable_Configuration_Controller =
     ::picolibrary::SPI::Controller<Variable_Configuration_Basic_Controller<Peripheral>>;
 
+/**
+ * \brief SPI peripheral based variable configuration basic controller.
+ */
+template<>
+class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
+  public:
+    /**
+     * \brief Clock (frequency, polarity, and phase) and data exchange bit order
+     *        configuration.
+     */
+    class Configuration {
+      public:
+        /**
+         * \brief Constructor.
+         */
+        constexpr Configuration() noexcept = default;
+
+        /**
+         * \brief Constructor.
+         *
+         * \param[in] spi_clock_rate The desired SPI clock rate.
+         * \param[in] spi_clock_polarity The desired SPI clock polarity.
+         * \param[in] spi_clock_phase The desired SPI clock phase.
+         * \param[in] spi_bit_order The desired SPI bit order.
+         */
+        constexpr Configuration(
+            SPI_Clock_Rate     spi_clock_rate,
+            SPI_Clock_Polarity spi_clock_polarity,
+            SPI_Clock_Phase    spi_clock_phase,
+            SPI_Bit_Order      spi_bit_order ) noexcept :
+            m_spcr{ static_cast<std::uint8_t>(
+                Peripheral::SPI::SPCR::Mask::SPE | Peripheral::SPI::SPCR::Mask::MSTR
+                | ( static_cast<std::uint_fast8_t>( spi_clock_rate ) >> SPI_CLOCK_RATE_SPCR_SPR_OFFSET )
+                | static_cast<std::uint8_t>( spi_clock_polarity ) | static_cast<std::uint8_t>( spi_clock_phase )
+                | static_cast<std::uint8_t>( spi_bit_order ) ) },
+            m_spsr{ static_cast<std::uint8_t>(
+                static_cast<std::uint_fast8_t>( spi_clock_rate ) & Peripheral::SPI::SPSR::Mask::SPI2X ) }
+        {
+        }
+
+        /**
+         * \brief Constructor.
+         *
+         * \param[in] source The source of the move.
+         */
+        constexpr Configuration( Configuration && source ) noexcept = default;
+
+        /**
+         * \brief Constructor.
+         *
+         * \param[in] original The original to copy.
+         */
+        constexpr Configuration( Configuration const & original ) noexcept = default;
+
+        /**
+         * \brief Destructor.
+         */
+        ~Configuration() noexcept = default;
+
+        /**
+         * \brief Assignment operator.
+         *
+         * \param[in] expression The expression to be assigned.
+         *
+         * \return The assigned to object.
+         */
+        constexpr auto operator=( Configuration && expression ) noexcept -> Configuration & = default;
+
+        /**
+         * \brief Assignment operator.
+         *
+         * \param[in] expression The expression to be assigned.
+         *
+         * \return The assigned to object.
+         */
+        constexpr auto operator=( Configuration const & expression ) noexcept
+            -> Configuration & = default;
+
+        /**
+         * \brief Get the configuration's SPCR register value.
+         *
+         * \return The configuration's SPCR register value.
+         */
+        constexpr auto spcr() const noexcept
+        {
+            return m_spcr;
+        }
+
+        /**
+         * \brief Get the configuration's SPSR register value.
+         *
+         * \return The configuration's SPSR register value.
+         */
+        constexpr auto spsr() const noexcept
+        {
+            return m_spsr;
+        }
+
+      private:
+        /**
+         * \brief The configuration's SPCR register value.
+         */
+        std::uint8_t m_spcr{};
+
+        /**
+         * \brief The configuration's SPSR register value.
+         */
+        std::uint8_t m_spsr{};
+    };
+
+    /**
+     * \brief Constructor.
+     */
+    constexpr Variable_Configuration_Basic_Controller() noexcept = default;
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] spi The SPI to be used by the controller.
+     */
+    Variable_Configuration_Basic_Controller( Peripheral::SPI & spi ) noexcept :
+        m_spi{ &spi },
+        m_spi_sck_mosi{ Multiplexed_Signals::spi_port( spi ),
+                        static_cast<std::uint8_t>(
+                            Multiplexed_Signals::sck_mask( spi ) | Multiplexed_Signals::mosi_mask( spi ) ) }
+    {
+    }
+
+    /**
+     * \brief Constructor.
+     *
+     * \param[in] source The source of the move.
+     */
+    constexpr Variable_Configuration_Basic_Controller( Variable_Configuration_Basic_Controller && source ) noexcept
+        :
+        m_spi{ source.m_spi },
+        m_spi_sck_mosi{ std::move( source.m_spi_sck_mosi ) }
+    {
+        source.m_spi = nullptr;
+    }
+
+    Variable_Configuration_Basic_Controller( Variable_Configuration_Basic_Controller const & ) = delete;
+
+    /**
+     * \brief Destructor.
+     */
+    ~Variable_Configuration_Basic_Controller() noexcept
+    {
+        disable();
+    }
+
+    /**
+     * \brief Assignment operator.
+     *
+     * \param[in] expression The expression to be assigned.
+     *
+     * \return The assigned to object.
+     */
+    constexpr auto & operator=( Variable_Configuration_Basic_Controller && expression ) noexcept
+    {
+        if ( &expression != this ) {
+            disable();
+
+            m_spi          = expression.m_spi;
+            m_spi_sck_mosi = std::move( expression.m_spi_sck_mosi );
+
+            expression.m_spi = nullptr;
+        } // if
+
+        return *this;
+    }
+
+    auto operator=( Variable_Configuration_Basic_Controller const & ) = delete;
+
+    /**
+     * \brief Initialize the controller's hardware.
+     */
+    void initialize() noexcept
+    {
+        m_spi_sck_mosi.initialize();
+
+        enable_controller();
+    }
+
+    /**
+     * \brief Configure the controller's clock and data exchange bit order to meet a
+     *        specific device's communication requirements.
+     *
+     * \param[in] configuration The clock and data exchange bit order configuration that
+     *            meets the device's communication requirements.
+     */
+    void configure( Configuration configuration ) noexcept
+    {
+        configure_controller( configuration.spcr(), configuration.spsr() );
+    }
+
+    /**
+     * \brief Exchange data with a device.
+     *
+     * \param[in] data The data to transmit to the device.
+     *
+     * \return The data received from the device.
+     */
+    auto exchange( std::uint8_t data ) noexcept
+    {
+        initiate_exchange( data );
+
+        while ( not exchange_complete() ) {} // while
+
+        return finish_exchange();
+    }
+
+  private:
+    /**
+     * \brief The SPI used by the controller.
+     */
+    Peripheral::SPI * m_spi{};
+
+    /**
+     * \brief The SPI's SCK and MOSI pins.
+     */
+    GPIO::Push_Pull_IO_Pin m_spi_sck_mosi{};
+
+    /**
+     * \brief Disable the controller.
+     */
+    constexpr void disable() noexcept
+    {
+        if ( m_spi ) {
+            disable_controller();
+        } // if
+    }
+
+    /**
+     * \brief Disable the controller.
+     */
+    void disable_controller() noexcept
+    {
+        m_spi->spcr = 0;
+    }
+
+    /**
+     * \brief Enable the controller.
+     */
+    void enable_controller() noexcept
+    {
+        m_spi->spsr = 0;
+        m_spi->spcr = Peripheral::SPI::SPCR::Mask::SPE | Peripheral::SPI::SPCR::Mask::MSTR;
+    }
+
+    /**
+     * \brief Configure the controller.
+     *
+     * \param[in] spcr The desired SPCR register value.
+     * \param[in] spsr The desired SPSR register value.
+     */
+    void configure_controller( std::uint8_t spcr, std::uint8_t spsr ) noexcept
+    {
+        m_spi->spcr = spcr;
+        m_spi->spsr = spsr;
+    }
+
+    /**
+     * \brief Initiate a data exchange.
+     *
+     * \param[in] data The data to transmit.
+     */
+    void initiate_exchange( std::uint8_t data ) noexcept
+    {
+        m_spi->spdr = data;
+    }
+
+    /**
+     * \brief Check if a data exchange is complete.
+     *
+     * \return true if the data exchange is complete.
+     * \return false if the data exchange is not complete.
+     */
+    auto exchange_complete() const noexcept -> bool
+    {
+        return m_spi->spsr & Peripheral::SPI::SPSR::Mask::SPIF;
+    }
+
+    /**
+     * \brief Finish a data exchange.
+     *
+     * \return The received data.
+     */
+    auto finish_exchange() noexcept -> std::uint8_t
+    {
+        return m_spi->spdr;
+    }
+};
+
 } // namespace picolibrary::Microchip::megaAVR::SPI
 
 #endif // PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_H
