@@ -30,3 +30,8 @@ add_subdirectory( fixed_configuration_controller-usart )
 # picolibrary::Microchip::megaAVR::SPI::Variable_Configuration_Controller<Peripheral::SPI>
 # interactive tests
 add_subdirectory( variable_configuration_controller-spi )
+
+# build the
+# picolibrary::Microchip::megaAVR::SPI::Variable_Configuration_Controller<Peripheral::USART>
+# interactive tests
+add_subdirectory( variable_configuration_controller-usart )
