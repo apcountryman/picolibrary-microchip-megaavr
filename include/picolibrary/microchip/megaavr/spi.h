@@ -633,26 +633,104 @@ class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
      * \brief Clock (frequency, polarity, and phase) and data exchange bit order
      *        configuration.
      */
-    struct Configuration {
+    class Configuration {
+      public:
         /**
-         * \brief SPI clock rate.
+         * \brief Constructor.
          */
-        SPI_Clock_Rate spi_clock_rate;
+        constexpr Configuration() noexcept = default;
 
         /**
-         * \brief SPI clock polarity.
+         * \brief Constructor.
+         *
+         * \param[in] spi_clock_rate The desired SPI clock rate.
+         * \param[in] spi_clock_polarity The desired SPI clock polarity.
+         * \param[in] spi_clock_phase The desired SPI clock phase.
+         * \param[in] spi_bit_order The desired SPI bit order.
          */
-        SPI_Clock_Polarity spi_clock_polarity;
+        constexpr Configuration(
+            SPI_Clock_Rate     spi_clock_rate,
+            SPI_Clock_Polarity spi_clock_polarity,
+            SPI_Clock_Phase    spi_clock_phase,
+            SPI_Bit_Order      spi_bit_order ) noexcept :
+            m_spcr{ static_cast<std::uint8_t>(
+                Peripheral::SPI::SPCR::Mask::SPE | Peripheral::SPI::SPCR::Mask::MSTR
+                | ( static_cast<std::uint_fast8_t>( spi_clock_rate ) >> SPI_CLOCK_RATE_SPCR_SPR_OFFSET )
+                | static_cast<std::uint8_t>( spi_clock_polarity ) | static_cast<std::uint8_t>( spi_clock_phase )
+                | static_cast<std::uint8_t>( spi_bit_order ) ) },
+            m_spsr{ static_cast<std::uint8_t>(
+                static_cast<std::uint_fast8_t>( spi_clock_rate ) & Peripheral::SPI::SPSR::Mask::SPI2X ) }
+        {
+        }
 
         /**
-         * \brief SPI clock phase.
+         * \brief Constructor.
+         *
+         * \param[in] source The source of the move.
          */
-        SPI_Clock_Phase spi_clock_phase;
+        constexpr Configuration( Configuration && source ) noexcept = default;
 
         /**
-         * \brief SPI bit order.
+         * \brief Constructor.
+         *
+         * \param[in] original The original to copy.
          */
-        SPI_Bit_Order spi_bit_order;
+        constexpr Configuration( Configuration const & original ) noexcept = default;
+
+        /**
+         * \brief Destructor.
+         */
+        ~Configuration() noexcept = default;
+
+        /**
+         * \brief Assignment operator.
+         *
+         * \param[in] expression The expression to be assigned.
+         *
+         * \return The assigned to object.
+         */
+        constexpr auto operator=( Configuration && expression ) noexcept -> Configuration & = default;
+
+        /**
+         * \brief Assignment operator.
+         *
+         * \param[in] expression The expression to be assigned.
+         *
+         * \return The assigned to object.
+         */
+        constexpr auto operator=( Configuration const & expression ) noexcept
+            -> Configuration & = default;
+
+        /**
+         * \brief Get the configuration's SPCR register value.
+         *
+         * \return The configuration's SPCR register value.
+         */
+        constexpr auto spcr() const noexcept
+        {
+            return m_spcr;
+        }
+
+        /**
+         * \brief Get the configuration's SPSR register value.
+         *
+         * \return The configuration's SPSR register value.
+         */
+        constexpr auto spsr() const noexcept
+        {
+            return m_spsr;
+        }
+
+      private:
+        /**
+         * \brief The configuration's SPCR register value.
+         */
+        std::uint8_t m_spcr{};
+
+        /**
+         * \brief The configuration's SPSR register value.
+         */
+        std::uint8_t m_spsr{};
     };
 
     /**
@@ -736,13 +814,9 @@ class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
      * \param[in] configuration The clock and data exchange bit order configuration that
      *            meets the device's communication requirements.
      */
-    void configure( Configuration const & configuration ) noexcept
+    void configure( Configuration configuration ) noexcept
     {
-        configure_controller(
-            configuration.spi_clock_rate,
-            configuration.spi_clock_polarity,
-            configuration.spi_clock_phase,
-            configuration.spi_bit_order );
+        configure_controller( configuration.spcr(), configuration.spsr() );
     }
 
     /**
@@ -802,24 +876,13 @@ class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
     /**
      * \brief Configure the controller.
      *
-     * \param[in] spi_clock_rate The desired SPI clock rate.
-     * \param[in] spi_clock_polarity The desired SPI clock polarity.
-     * \param[in] spi_clock_phase The desired SPI clock phase.
-     * \param[in] spi_bit_order The desired SPI bit order.
+     * \param[in] spcr The desired SPCR register value.
+     * \param[in] spsr The desired SPSR register value.
      */
-    void configure_controller(
-        SPI_Clock_Rate     spi_clock_rate,
-        SPI_Clock_Polarity spi_clock_polarity,
-        SPI_Clock_Phase    spi_clock_phase,
-        SPI_Bit_Order      spi_bit_order ) noexcept
+    void configure_controller( std::uint8_t spcr, std::uint8_t spsr ) noexcept
     {
-        m_spi->spcr = Peripheral::SPI::SPCR::Mask::SPE | Peripheral::SPI::SPCR::Mask::MSTR
-                      | ( static_cast<std::uint_fast8_t>( spi_clock_rate ) >> SPI_CLOCK_RATE_SPCR_SPR_OFFSET )
-                      | static_cast<std::uint8_t>( spi_clock_polarity )
-                      | static_cast<std::uint8_t>( spi_clock_phase )
-                      | static_cast<std::uint8_t>( spi_bit_order );
-        m_spi->spsr = static_cast<std::uint_fast8_t>( spi_clock_rate )
-                      & Peripheral::SPI::SPSR::Mask::SPI2X;
+        m_spi->spcr = spcr;
+        m_spi->spsr = spsr;
     }
 
     /**
