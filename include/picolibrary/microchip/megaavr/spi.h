@@ -938,7 +938,13 @@ class Variable_Configuration_Basic_Controller<Peripheral::USART> {
         /**
          * \brief Constructor.
          */
-        constexpr Configuration() noexcept = default;
+        constexpr Configuration() noexcept :
+            Configuration{ 0,
+                           USART_Clock_Polarity::IDLE_LOW,
+                           USART_Clock_Phase::CAPTURE_IDLE_TO_ACTIVE,
+                           USART_Bit_Order::MSB_FIRST }
+        {
+        }
 
         /**
          * \brief Constructor.
