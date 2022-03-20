@@ -638,7 +638,13 @@ class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
         /**
          * \brief Constructor.
          */
-        constexpr Configuration() noexcept = default;
+        constexpr Configuration() noexcept :
+            Configuration{ SPI_Clock_Rate::FOSC_2,
+                           SPI_Clock_Polarity::IDLE_LOW,
+                           SPI_Clock_Phase::CAPTURE_IDLE_TO_ACTIVE,
+                           SPI_Bit_Order::MSB_FIRST }
+        {
+        }
 
         /**
          * \brief Constructor.
