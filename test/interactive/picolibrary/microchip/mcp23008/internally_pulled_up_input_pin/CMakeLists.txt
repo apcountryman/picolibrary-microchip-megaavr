@@ -13,9 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/microchip/mcp23008/CMakeLists.txt
-# Description: picolibrary::Microchip::MCP23008 interactive tests CMake rules.
-
-# build the picolibrary::Microchip::MCP23008::Internally_Pulled_Up_Input_Pin interactive
-# tests
-add_subdirectory( internally_pulled_up_input_pin )
+# File: test/interactive/picolibrary/microchip/mcp23008/internally_pulled_up_input_pin/CMakeLists.txt
+# Description: picolibrary::Microchip::MCP23008::Internally_Pulled_Up_Input_Pin
+#       interactive tests CMake rules.
