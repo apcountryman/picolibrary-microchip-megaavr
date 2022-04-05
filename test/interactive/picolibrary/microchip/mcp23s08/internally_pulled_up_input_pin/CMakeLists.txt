@@ -16,3 +16,7 @@
 # File: test/interactive/picolibrary/microchip/mcp23s08/internally_pulled_up_input_pin/CMakeLists.txt
 # Description: picolibrary::Microchip::MCP23S08::Internally_Pulled_Up_Input_Pin
 #       interactive tests CMake rules.
+
+# build the picolibrary::Microchip::MCP23S08::Internally_Pulled_Up_Input_Pin state
+# interactive test
+add_subdirectory( state )
