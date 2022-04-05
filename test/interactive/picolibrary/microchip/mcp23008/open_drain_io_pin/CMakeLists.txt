@@ -16,3 +16,6 @@
 # File: test/interactive/picolibrary/microchip/mcp23008/open_drain_io_pin/CMakeLists.txt
 # Description: picolibrary::Microchip::MCP23008::Open_Drain_IO_Pin interactive tests CMake
 #       rules.
+
+# build the picolibrary::Microchip::MCP23008::Open_Drain_IO_Pin toggle interactive test
+add_subdirectory( toggle )
