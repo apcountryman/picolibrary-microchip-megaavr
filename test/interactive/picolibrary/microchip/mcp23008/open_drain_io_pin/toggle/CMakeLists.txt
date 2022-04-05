@@ -41,6 +41,7 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
             "" CACHE STRING
             "picolibrary-microchip-megaavr: picolibrary::Microchip::MCP23008::Open_Drain_IO_Pin toggle interactive test controller TWI bit rate generator scaling factor"
         )
+
         set(
             PICOLIBRARY_MICROCHIP_MCP23008_OPEN_DRAIN_IO_PIN_TOGGLE_INTERACTIVE_TEST_MCP23008_ADDRESS
             "Address_Numeric{ 0b0100'000 }" CACHE STRING
