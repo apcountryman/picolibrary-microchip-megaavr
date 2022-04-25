@@ -29,6 +29,7 @@
 #include "picolibrary/i2c.h"
 #include "picolibrary/microchip/megaavr/peripheral/twi.h"
 #include "picolibrary/postcondition.h"
+#include "picolibrary/utility.h"
 
 /**
  * \brief Microchip megaAVR Inter-Integrated Circuit (I2C) facilities.
@@ -203,7 +204,7 @@ class Basic_Controller {
     {
         // #lizard forgives the length
 
-        initiate_write( address.as_unsigned_integer() | static_cast<std::uint8_t>( operation ) );
+        initiate_write( address.as_unsigned_integer() | to_underlying( operation ) );
 
         while ( not operation_complete() ) {} // while
 
@@ -322,10 +323,10 @@ class Basic_Controller {
         TWI_Bit_Rate_Generator_Prescaler_Value twi_bit_rate_generator_prescaler_value,
         std::uint8_t twi_bit_rate_generator_scaling_factor ) noexcept
     {
-        m_twi->twcr = 0;
-        m_twi->twsr = static_cast<std::uint8_t>( twi_bit_rate_generator_prescaler_value );
-        m_twi->twbr = twi_bit_rate_generator_scaling_factor;
-        m_twi->twar = 0;
+        m_twi->twcr  = 0;
+        m_twi->twsr  = to_underlying( twi_bit_rate_generator_prescaler_value );
+        m_twi->twbr  = twi_bit_rate_generator_scaling_factor;
+        m_twi->twar  = 0;
         m_twi->twamr = 0;
     }
 

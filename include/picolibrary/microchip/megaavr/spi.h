@@ -289,12 +289,10 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
         SPI_Bit_Order      spi_bit_order ) noexcept
     {
         m_spi->spcr = Peripheral::SPI::SPCR::Mask::MSTR
-                      | ( static_cast<std::uint_fast8_t>( spi_clock_rate ) >> SPI_CLOCK_RATE_SPCR_SPR_OFFSET )
-                      | static_cast<std::uint8_t>( spi_clock_polarity )
-                      | static_cast<std::uint8_t>( spi_clock_phase )
-                      | static_cast<std::uint8_t>( spi_bit_order );
-        m_spi->spsr = static_cast<std::uint_fast8_t>( spi_clock_rate )
-                      & Peripheral::SPI::SPSR::Mask::SPI2X;
+                      | ( to_underlying( spi_clock_rate ) >> SPI_CLOCK_RATE_SPCR_SPR_OFFSET )
+                      | to_underlying( spi_clock_polarity )
+                      | to_underlying( spi_clock_phase ) | to_underlying( spi_bit_order );
+        m_spi->spsr = to_underlying( spi_clock_rate ) & Peripheral::SPI::SPSR::Mask::SPI2X;
     }
 
     /**
@@ -513,9 +511,9 @@ class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
     {
         m_usart->spi_host.ucsrb = 0;
         m_usart->spi_host.ucsrc = Peripheral::USART::SPI_Host::UCSRC::UMSEL_HOST_SPI
-                                  | static_cast<std::uint8_t>( usart_clock_polarity )
-                                  | static_cast<std::uint8_t>( usart_clock_phase )
-                                  | static_cast<std::uint8_t>( usart_bit_order );
+                                  | to_underlying( usart_clock_polarity )
+                                  | to_underlying( usart_clock_phase )
+                                  | to_underlying( usart_bit_order );
         m_usart->spi_host.ubrr = usart_clock_generator_scaling_factor;
     }
 
@@ -661,11 +659,11 @@ class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
             SPI_Bit_Order      spi_bit_order ) noexcept :
             m_spcr{ static_cast<std::uint8_t>(
                 Peripheral::SPI::SPCR::Mask::SPE | Peripheral::SPI::SPCR::Mask::MSTR
-                | ( static_cast<std::uint_fast8_t>( spi_clock_rate ) >> SPI_CLOCK_RATE_SPCR_SPR_OFFSET )
-                | static_cast<std::uint8_t>( spi_clock_polarity ) | static_cast<std::uint8_t>( spi_clock_phase )
-                | static_cast<std::uint8_t>( spi_bit_order ) ) },
+                | ( to_underlying( spi_clock_rate ) >> SPI_CLOCK_RATE_SPCR_SPR_OFFSET )
+                | to_underlying( spi_clock_polarity ) | to_underlying( spi_clock_phase )
+                | to_underlying( spi_bit_order ) ) },
             m_spsr{ static_cast<std::uint8_t>(
-                static_cast<std::uint_fast8_t>( spi_clock_rate ) & Peripheral::SPI::SPSR::Mask::SPI2X ) }
+                to_underlying( spi_clock_rate ) & Peripheral::SPI::SPSR::Mask::SPI2X ) }
         {
         }
 
@@ -961,9 +959,8 @@ class Variable_Configuration_Basic_Controller<Peripheral::USART> {
             USART_Clock_Phase    usart_clock_phase,
             USART_Bit_Order      usart_bit_order ) noexcept :
             m_ucsrc{ static_cast<std::uint8_t>(
-                Peripheral::USART::SPI_Host::UCSRC::UMSEL_HOST_SPI
-                | static_cast<std::uint8_t>( usart_clock_polarity ) | static_cast<std::uint8_t>( usart_clock_phase )
-                | static_cast<std::uint8_t>( usart_bit_order ) ) },
+                Peripheral::USART::SPI_Host::UCSRC::UMSEL_HOST_SPI | to_underlying( usart_clock_polarity )
+                | to_underlying( usart_clock_phase ) | to_underlying( usart_bit_order ) ) },
             m_ubrr{ usart_clock_generator_scaling_factor }
         {
         }

@@ -28,6 +28,7 @@
 
 #include "picolibrary/asynchronous_serial.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
+#include "picolibrary/utility.h"
 
 /**
  * \brief Microchip megaAVR asynchronous serial facilities.
@@ -223,15 +224,14 @@ class Basic_Transmitter {
         USART_Clock_Generator_Operating_Speed usart_clock_generator_operating_speed,
         std::uint16_t usart_clock_generator_scaling_factor ) noexcept
     {
-        m_usart->normal.ucsrb = ( static_cast<std::uint8_t>( usart_data_bits ) >> USART_DATA_BITS_UCSRB_UCSZ_OFFSET )
+        m_usart->normal.ucsrb = ( to_underlying( usart_data_bits ) >> USART_DATA_BITS_UCSRB_UCSZ_OFFSET )
                                 & Peripheral::USART::Normal::UCSRB::Mask::UCSZ;
         m_usart->normal.ucsrc = Peripheral::USART::Normal::UCSRC::UMSEL_ASYNCHRONOUS_USART
-                                | ( static_cast<std::uint8_t>( usart_data_bits )
+                                | ( to_underlying( usart_data_bits )
                                     & Peripheral::USART::Normal::UCSRC::Mask::UCSZ )
-                                | static_cast<std::uint8_t>( usart_parity )
-                                | static_cast<std::uint8_t>( usart_stop_bits );
-        m_usart->normal.ucsra = static_cast<std::uint8_t>( usart_clock_generator_operating_speed );
-        m_usart->normal.ubrr = usart_clock_generator_scaling_factor;
+                                | to_underlying( usart_parity ) | to_underlying( usart_stop_bits );
+        m_usart->normal.ucsra = to_underlying( usart_clock_generator_operating_speed );
+        m_usart->normal.ubrr  = usart_clock_generator_scaling_factor;
     }
 
     /**
