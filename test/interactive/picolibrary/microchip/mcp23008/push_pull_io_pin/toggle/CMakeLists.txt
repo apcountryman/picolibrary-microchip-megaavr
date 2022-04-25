@@ -52,10 +52,6 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
             "1 << 0" CACHE STRING
             "picolibrary-microchip-megaavr: picolibrary::Microchip::MCP23008::Push_Pull_IO_Pin toggle interactive test MCP23008 pin mask"
         )
-        mark_as_advanced(
-            PICOLIBRARY_MICROCHIP_MCP23008_PUSH_PULL_IO_PIN_TOGGLE_INTERACTIVE_TEST_MCP23008_ADDRESS
-            PICOLIBRARY_MICROCHIP_MCP23008_PUSH_PULL_IO_PIN_TOGGLE_INTERACTIVE_TEST_MCP23008_PIN_MASK
-        )
 
         add_executable(
             test-interactive-picolibrary-microchip-mcp23008-push_pull_io_pin-toggle

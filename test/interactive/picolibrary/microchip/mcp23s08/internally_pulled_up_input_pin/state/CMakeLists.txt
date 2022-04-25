@@ -69,10 +69,6 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
             "1 << 0" CACHE STRING
             "picolibrary-microchip-megaavr: picolibrary::Microchip::MCP23S08::Internally_Pulled_Up_Input_Pin state interactive test MCP23S08 pin mask"
         )
-        mark_as_advanced(
-            PICOLIBRARY_MICROCHIP_MCP23S08_INTERNALLY_PULLED_UP_INPUT_PIN_STATE_INTERACTIVE_TEST_MCP23S08_ADDRESS
-            PICOLIBRARY_MICROCHIP_MCP23S08_INTERNALLY_PULLED_UP_INPUT_PIN_STATE_INTERACTIVE_TEST_MCP23S08_PIN_MASK
-        )
 
         add_executable(
             test-interactive-picolibrary-microchip-mcp23s08-internally_pulled_up_input_pin-state
