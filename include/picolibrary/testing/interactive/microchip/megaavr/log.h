@@ -31,6 +31,7 @@
 #include "picolibrary/precondition.h"
 #include "picolibrary/result.h"
 #include "picolibrary/stream.h"
+#include "picolibrary/utility.h"
 #include "picolibrary/void.h"
 
 namespace picolibrary::Testing::Interactive::Microchip::megaAVR {
@@ -83,8 +84,8 @@ class Log : public Output_Stream {
             | ::picolibrary::Microchip::megaAVR::Peripheral::USART::Normal::UCSRC::UPM_DISABLED
             | ::picolibrary::Microchip::megaAVR::Peripheral::USART::Normal::UCSRC::USBS_1_BIT
             | ::picolibrary::Microchip::megaAVR::Peripheral::USART::Normal::UCSRC::UCSZ_8_BIT;
-        usart.normal.ucsra = static_cast<std::uint8_t>( usart_clock_generator_operating_speed );
-        usart.normal.ubrr = usart_clock_generator_scaling_factor;
+        usart.normal.ucsra = to_underlying( usart_clock_generator_operating_speed );
+        usart.normal.ubrr  = usart_clock_generator_scaling_factor;
 
         usart.normal.ucsrb |= ::picolibrary::Microchip::megaAVR::Peripheral::USART::Normal::UCSRB::Mask::TXEN;
 
