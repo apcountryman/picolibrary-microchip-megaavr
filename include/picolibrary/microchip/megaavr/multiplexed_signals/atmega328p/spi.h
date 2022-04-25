@@ -68,7 +68,7 @@ constexpr auto spi_port_address( std::uintptr_t spi_address ) noexcept -> std::u
  *
  * \return The SPI peripheral's pins PORT peripheral.
  */
-inline auto & spi_port( Peripheral::SPI const & spi ) noexcept
+inline auto spi_port( Peripheral::SPI const & spi ) noexcept -> Peripheral::PORT &
 {
     return *reinterpret_cast<Peripheral::PORT *>(
         spi_port_address( reinterpret_cast<std::uintptr_t>( &spi ) ) );
@@ -86,7 +86,7 @@ inline auto & spi_port( Peripheral::SPI const & spi ) noexcept
  *
  * \return The SPI peripheral's SS pin PORT peripheral address.
  */
-constexpr auto ss_port_address( std::uintptr_t spi_address ) noexcept
+constexpr auto ss_port_address( std::uintptr_t spi_address ) noexcept -> std::uintptr_t
 {
     return spi_port_address( spi_address );
 }
@@ -102,7 +102,7 @@ constexpr auto ss_port_address( std::uintptr_t spi_address ) noexcept
  *
  * \return The SPI peripheral's SS pin PORT peripheral.
  */
-inline auto & ss_port( Peripheral::SPI const & spi ) noexcept
+inline auto ss_port( Peripheral::SPI const & spi ) noexcept -> Peripheral::PORT &
 {
     return spi_port( spi );
 }
@@ -141,7 +141,7 @@ constexpr auto ss_number( std::uintptr_t spi_address ) noexcept -> std::uint_fas
  *
  * \return The SPI peripheral's SS pin number.
  */
-inline auto ss_number( Peripheral::SPI const & spi ) noexcept
+inline auto ss_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fast8_t
 {
     return ss_number( reinterpret_cast<std::uintptr_t>( &spi ) );
 }
@@ -174,7 +174,7 @@ constexpr auto ss_mask( std::uintptr_t spi_address ) noexcept -> std::uint8_t
  *
  * \return The SPI peripheral's SS pin mask.
  */
-inline auto ss_mask( Peripheral::SPI const & spi ) noexcept
+inline auto ss_mask( Peripheral::SPI const & spi ) noexcept -> std::uint8_t
 {
     return ss_mask( reinterpret_cast<std::uintptr_t>( &spi ) );
 }
@@ -191,7 +191,7 @@ inline auto ss_mask( Peripheral::SPI const & spi ) noexcept
  *
  * \return The SPI peripheral's SCK pin PORT peripheral address.
  */
-constexpr auto sck_port_address( std::uintptr_t spi_address ) noexcept
+constexpr auto sck_port_address( std::uintptr_t spi_address ) noexcept -> std::uintptr_t
 {
     return spi_port_address( spi_address );
 }
@@ -207,7 +207,7 @@ constexpr auto sck_port_address( std::uintptr_t spi_address ) noexcept
  *
  * \return The SPI peripheral's SCK pin PORT peripheral.
  */
-inline auto & sck_port( Peripheral::SPI const & spi ) noexcept
+inline auto sck_port( Peripheral::SPI const & spi ) noexcept -> Peripheral::PORT &
 {
     return spi_port( spi );
 }
@@ -246,7 +246,7 @@ constexpr auto sck_number( std::uintptr_t spi_address ) noexcept -> std::uint_fa
  *
  * \return The SPI peripheral's SCK pin number.
  */
-inline auto sck_number( Peripheral::SPI const & spi ) noexcept
+inline auto sck_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fast8_t
 {
     return sck_number( reinterpret_cast<std::uintptr_t>( &spi ) );
 }
@@ -279,7 +279,7 @@ constexpr auto sck_mask( std::uintptr_t spi_address ) noexcept -> std::uint8_t
  *
  * \return The SPI peripheral's SCK pin mask.
  */
-inline auto sck_mask( Peripheral::SPI const & spi ) noexcept
+inline auto sck_mask( Peripheral::SPI const & spi ) noexcept -> std::uint8_t
 {
     return sck_mask( reinterpret_cast<std::uintptr_t>( &spi ) );
 }
@@ -296,7 +296,7 @@ inline auto sck_mask( Peripheral::SPI const & spi ) noexcept
  *
  * \return The SPI peripheral's MOSI pin PORT peripheral address.
  */
-constexpr auto mosi_port_address( std::uintptr_t spi_address ) noexcept
+constexpr auto mosi_port_address( std::uintptr_t spi_address ) noexcept -> std::uintptr_t
 {
     return spi_port_address( spi_address );
 }
@@ -312,7 +312,7 @@ constexpr auto mosi_port_address( std::uintptr_t spi_address ) noexcept
  *
  * \return The SPI peripheral's MOSI pin PORT peripheral.
  */
-inline auto & mosi_port( Peripheral::SPI const & spi ) noexcept
+inline auto mosi_port( Peripheral::SPI const & spi ) noexcept -> Peripheral::PORT &
 {
     return spi_port( spi );
 }
@@ -351,7 +351,7 @@ constexpr auto mosi_number( std::uintptr_t spi_address ) noexcept -> std::uint_f
  *
  * \return The SPI peripheral's MOSI pin number.
  */
-inline auto mosi_number( Peripheral::SPI const & spi ) noexcept
+inline auto mosi_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fast8_t
 {
     return mosi_number( reinterpret_cast<std::uintptr_t>( &spi ) );
 }
@@ -384,7 +384,7 @@ constexpr auto mosi_mask( std::uintptr_t spi_address ) noexcept -> std::uint8_t
  *
  * \return The SPI peripheral's MOSI pin mask.
  */
-inline auto mosi_mask( Peripheral::SPI const & spi ) noexcept
+inline auto mosi_mask( Peripheral::SPI const & spi ) noexcept -> std::uint8_t
 {
     return mosi_mask( reinterpret_cast<std::uintptr_t>( &spi ) );
 }
@@ -401,7 +401,7 @@ inline auto mosi_mask( Peripheral::SPI const & spi ) noexcept
  *
  * \return The SPI peripheral's MISO pin PORT peripheral address.
  */
-constexpr auto miso_port_address( std::uintptr_t spi_address ) noexcept
+constexpr auto miso_port_address( std::uintptr_t spi_address ) noexcept -> std::uintptr_t
 {
     return spi_port_address( spi_address );
 }
@@ -417,7 +417,7 @@ constexpr auto miso_port_address( std::uintptr_t spi_address ) noexcept
  *
  * \return The SPI peripheral's MISO pin PORT peripheral.
  */
-inline auto & miso_port( Peripheral::SPI const & spi ) noexcept
+inline auto miso_port( Peripheral::SPI const & spi ) noexcept -> Peripheral::PORT &
 {
     return spi_port( spi );
 }
@@ -456,7 +456,7 @@ constexpr auto miso_number( std::uintptr_t spi_address ) noexcept -> std::uint_f
  *
  * \return The SPI peripheral's MISO pin number.
  */
-inline auto miso_number( Peripheral::SPI const & spi ) noexcept
+inline auto miso_number( Peripheral::SPI const & spi ) noexcept -> std::uint_fast8_t
 {
     return miso_number( reinterpret_cast<std::uintptr_t>( &spi ) );
 }
@@ -489,7 +489,7 @@ constexpr auto miso_mask( std::uintptr_t spi_address ) noexcept -> std::uint8_t
  *
  * \return The SPI peripheral's MISO pin mask.
  */
-inline auto miso_mask( Peripheral::SPI const & spi ) noexcept
+inline auto miso_mask( Peripheral::SPI const & spi ) noexcept -> std::uint8_t
 {
     return miso_mask( reinterpret_cast<std::uintptr_t>( &spi ) );
 }

@@ -155,7 +155,7 @@ class Basic_Transmitter {
      *
      * \return The assigned to object.
      */
-    constexpr auto & operator=( Basic_Transmitter && expression ) noexcept
+    constexpr auto operator=( Basic_Transmitter && expression ) noexcept -> Basic_Transmitter &
     {
         if ( &expression != this ) {
             disable();

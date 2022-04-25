@@ -75,7 +75,7 @@ constexpr auto usart_port_address( std::uintptr_t usart_address ) noexcept -> st
  *
  * \return The USART peripheral's pins PORT peripheral.
  */
-inline auto & usart_port( Peripheral::USART const & usart ) noexcept
+inline auto usart_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
 {
     return *reinterpret_cast<Peripheral::PORT *>(
         usart_port_address( reinterpret_cast<std::uintptr_t>( &usart ) ) );
@@ -93,7 +93,7 @@ inline auto & usart_port( Peripheral::USART const & usart ) noexcept
  *
  * \return The USART peripheral's XCK pin PORT peripheral address.
  */
-constexpr auto xck_port_address( std::uintptr_t usart_address ) noexcept
+constexpr auto xck_port_address( std::uintptr_t usart_address ) noexcept -> std::uintptr_t
 {
     return usart_port_address( usart_address );
 }
@@ -109,7 +109,7 @@ constexpr auto xck_port_address( std::uintptr_t usart_address ) noexcept
  *
  * \return The USART peripheral's XCK pin PORT peripheral.
  */
-inline auto & xck_port( Peripheral::USART const & usart ) noexcept
+inline auto xck_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
 {
     return usart_port( usart );
 }
@@ -151,7 +151,7 @@ constexpr auto xck_number( std::uintptr_t usart_address ) noexcept -> std::uint_
  *
  * \return The USART peripheral's XCK pin number.
  */
-inline auto xck_number( Peripheral::USART const & usart ) noexcept
+inline auto xck_number( Peripheral::USART const & usart ) noexcept -> std::uint_fast8_t
 {
     return xck_number( reinterpret_cast<std::uintptr_t>( &usart ) );
 }
@@ -184,7 +184,7 @@ constexpr auto xck_mask( std::uintptr_t usart_address ) noexcept -> std::uint8_t
  *
  * \return The USART peripheral's XCK pin mask.
  */
-inline auto xck_mask( Peripheral::USART const & usart ) noexcept
+inline auto xck_mask( Peripheral::USART const & usart ) noexcept -> std::uint8_t
 {
     return xck_mask( reinterpret_cast<std::uintptr_t>( &usart ) );
 }
@@ -201,7 +201,7 @@ inline auto xck_mask( Peripheral::USART const & usart ) noexcept
  *
  * \return The USART peripheral's TXD pin PORT peripheral address.
  */
-constexpr auto txd_port_address( std::uintptr_t usart_address ) noexcept
+constexpr auto txd_port_address( std::uintptr_t usart_address ) noexcept -> std::uintptr_t
 {
     return usart_port_address( usart_address );
 }
@@ -217,7 +217,7 @@ constexpr auto txd_port_address( std::uintptr_t usart_address ) noexcept
  *
  * \return The USART peripheral's TXD pin PORT peripheral.
  */
-inline auto & txd_port( Peripheral::USART const & usart ) noexcept
+inline auto txd_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
 {
     return usart_port( usart );
 }
@@ -259,7 +259,7 @@ constexpr auto txd_number( std::uintptr_t usart_address ) noexcept -> std::uint_
  *
  * \return The USART peripheral's TXD pin number.
  */
-inline auto txd_number( Peripheral::USART const & usart ) noexcept
+inline auto txd_number( Peripheral::USART const & usart ) noexcept -> std::uint_fast8_t
 {
     return txd_number( reinterpret_cast<std::uintptr_t>( &usart ) );
 }
@@ -292,7 +292,7 @@ constexpr auto txd_mask( std::uintptr_t usart_address ) noexcept -> std::uint8_t
  *
  * \return The USART peripheral's TXD pin mask.
  */
-inline auto txd_mask( Peripheral::USART const & usart ) noexcept
+inline auto txd_mask( Peripheral::USART const & usart ) noexcept -> std::uint8_t
 {
     return txd_mask( reinterpret_cast<std::uintptr_t>( &usart ) );
 }
@@ -309,7 +309,7 @@ inline auto txd_mask( Peripheral::USART const & usart ) noexcept
  *
  * \return The USART peripheral's RXD pin PORT peripheral address.
  */
-constexpr auto rxd_port_address( std::uintptr_t usart_address ) noexcept
+constexpr auto rxd_port_address( std::uintptr_t usart_address ) noexcept -> std::uintptr_t
 {
     return usart_port_address( usart_address );
 }
@@ -325,7 +325,7 @@ constexpr auto rxd_port_address( std::uintptr_t usart_address ) noexcept
  *
  * \return The USART peripheral's RXD pin PORT peripheral.
  */
-inline auto & rxd_port( Peripheral::USART const & usart ) noexcept
+inline auto rxd_port( Peripheral::USART const & usart ) noexcept -> Peripheral::PORT &
 {
     return usart_port( usart );
 }
@@ -367,7 +367,7 @@ constexpr auto rxd_number( std::uintptr_t usart_address ) noexcept -> std::uint_
  *
  * \return The USART peripheral's RXD pin number.
  */
-inline auto rxd_number( Peripheral::USART const & usart ) noexcept
+inline auto rxd_number( Peripheral::USART const & usart ) noexcept -> std::uint_fast8_t
 {
     return rxd_number( reinterpret_cast<std::uintptr_t>( &usart ) );
 }
@@ -400,7 +400,7 @@ constexpr auto rxd_mask( std::uintptr_t usart_address ) noexcept -> std::uint8_t
  *
  * \return The USART peripheral's RXD pin mask.
  */
-inline auto rxd_mask( Peripheral::USART const & usart ) noexcept
+inline auto rxd_mask( Peripheral::USART const & usart ) noexcept -> std::uint8_t
 {
     return rxd_mask( reinterpret_cast<std::uintptr_t>( &usart ) );
 }

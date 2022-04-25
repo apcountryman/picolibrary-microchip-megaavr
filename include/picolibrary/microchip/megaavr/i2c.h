@@ -102,7 +102,7 @@ class Basic_Controller {
      *
      * \return The assigned to object.
      */
-    constexpr auto & operator=( Basic_Controller && expression ) noexcept
+    constexpr auto operator=( Basic_Controller && expression ) noexcept -> Basic_Controller &
     {
         if ( &expression != this ) {
             disable();
@@ -131,7 +131,7 @@ class Basic_Controller {
      * \return true if a bus error is present.
      * \return false if a bus error is not present.
      */
-    auto bus_error_present() const noexcept
+    auto bus_error_present() const noexcept -> bool
     {
         return controller_bus_error_present();
     }

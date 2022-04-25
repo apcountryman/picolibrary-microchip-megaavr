@@ -134,7 +134,7 @@ class Log : public Output_Stream {
      *
      * \return The log instance.
      */
-    static auto & instance() noexcept
+    static auto instance() noexcept -> Log &
     {
         expect( is_initialized(), Generic_Error::LOGIC_ERROR );
 
