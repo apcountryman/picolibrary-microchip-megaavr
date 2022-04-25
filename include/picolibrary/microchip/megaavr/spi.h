@@ -200,7 +200,8 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
      *
      * \return The assigned to object.
      */
-    constexpr auto & operator=( Fixed_Configuration_Basic_Controller && expression ) noexcept
+    constexpr auto operator=( Fixed_Configuration_Basic_Controller && expression ) noexcept
+        -> Fixed_Configuration_Basic_Controller &
     {
         if ( &expression != this ) {
             disable();
@@ -245,7 +246,7 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
      *
      * \return The data received from the device.
      */
-    auto exchange( std::uint8_t data ) noexcept
+    auto exchange( std::uint8_t data ) noexcept -> std::uint8_t
     {
         initiate_exchange( data );
 
@@ -414,7 +415,8 @@ class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
      *
      * \return The assigned to object.
      */
-    constexpr auto & operator=( Fixed_Configuration_Basic_Controller && expression ) noexcept
+    constexpr auto operator=( Fixed_Configuration_Basic_Controller && expression ) noexcept
+        -> Fixed_Configuration_Basic_Controller &
     {
         if ( &expression != this ) {
             disable();
@@ -463,7 +465,7 @@ class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
      *
      * \return The data received from the device.
      */
-    auto exchange( std::uint8_t data ) noexcept
+    auto exchange( std::uint8_t data ) noexcept -> std::uint8_t
     {
         while ( not transmit_buffer_is_empty() ) {} // while
 
@@ -711,7 +713,7 @@ class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
          *
          * \return The configuration's SPCR register value.
          */
-        constexpr auto spcr() const noexcept
+        constexpr auto spcr() const noexcept -> std::uint8_t
         {
             return m_spcr;
         }
@@ -721,7 +723,7 @@ class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
          *
          * \return The configuration's SPSR register value.
          */
-        constexpr auto spsr() const noexcept
+        constexpr auto spsr() const noexcept -> std::uint8_t
         {
             return m_spsr;
         }
@@ -786,7 +788,8 @@ class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
      *
      * \return The assigned to object.
      */
-    constexpr auto & operator=( Variable_Configuration_Basic_Controller && expression ) noexcept
+    constexpr auto operator=( Variable_Configuration_Basic_Controller && expression ) noexcept
+        -> Variable_Configuration_Basic_Controller &
     {
         if ( &expression != this ) {
             disable();
@@ -831,7 +834,7 @@ class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
      *
      * \return The data received from the device.
      */
-    auto exchange( std::uint8_t data ) noexcept
+    auto exchange( std::uint8_t data ) noexcept -> std::uint8_t
     {
         initiate_exchange( data );
 
@@ -1009,7 +1012,7 @@ class Variable_Configuration_Basic_Controller<Peripheral::USART> {
          *
          * \return The configuration's UCSRC register value.
          */
-        constexpr auto ucsrc() const noexcept
+        constexpr auto ucsrc() const noexcept -> std::uint8_t
         {
             return m_ucsrc;
         }
@@ -1019,7 +1022,7 @@ class Variable_Configuration_Basic_Controller<Peripheral::USART> {
          *
          * \return The configuration's UBRR register value.
          */
-        constexpr auto ubrr() const noexcept
+        constexpr auto ubrr() const noexcept -> std::uint16_t
         {
             return m_ubrr;
         }
@@ -1083,7 +1086,8 @@ class Variable_Configuration_Basic_Controller<Peripheral::USART> {
      *
      * \return The assigned to object.
      */
-    constexpr auto & operator=( Variable_Configuration_Basic_Controller && expression ) noexcept
+    constexpr auto operator=( Variable_Configuration_Basic_Controller && expression ) noexcept
+        -> Variable_Configuration_Basic_Controller &
     {
         if ( &expression != this ) {
             disable();
@@ -1128,7 +1132,7 @@ class Variable_Configuration_Basic_Controller<Peripheral::USART> {
      *
      * \return The data received from the device.
      */
-    auto exchange( std::uint8_t data ) noexcept
+    auto exchange( std::uint8_t data ) noexcept -> std::uint8_t
     {
         while ( not transmit_buffer_is_empty() ) {} // while
 

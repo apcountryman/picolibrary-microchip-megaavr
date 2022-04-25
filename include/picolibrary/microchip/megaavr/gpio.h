@@ -83,7 +83,7 @@ class Pin {
      *
      * \return The assigned to object.
      */
-    constexpr auto & operator=( Pin && expression ) noexcept
+    constexpr auto operator=( Pin && expression ) noexcept -> Pin &
     {
         if ( &expression != this ) {
             m_port = expression.m_port;
@@ -142,7 +142,7 @@ class Pin {
      * \return false if the internally pulled-up input pin's internal pull-up resistor is
      *         not disabled.
      */
-    auto pull_up_is_disabled() const noexcept
+    auto pull_up_is_disabled() const noexcept -> bool
     {
         return not pull_up_is_enabled();
     }
@@ -183,7 +183,7 @@ class Pin {
      * \return true if the pin is in the low state.
      * \return false if the pin is not in the low state.
      */
-    auto is_low() const noexcept
+    auto is_low() const noexcept -> bool
     {
         return not is_high();
     }
@@ -304,7 +304,8 @@ class Internally_Pulled_Up_Input_Pin {
      *
      * \return The assigned to object.
      */
-    constexpr auto & operator=( Internally_Pulled_Up_Input_Pin && expression ) noexcept
+    constexpr auto operator=( Internally_Pulled_Up_Input_Pin && expression ) noexcept
+        -> Internally_Pulled_Up_Input_Pin &
     {
         if ( &expression != this ) {
             disable();
@@ -343,7 +344,7 @@ class Internally_Pulled_Up_Input_Pin {
      * \return true if the pin's internal pull-up resistor is disabled.
      * \return false if the pin's internal pull-up resistor is not disabled.
      */
-    auto pull_up_is_disabled() const noexcept
+    auto pull_up_is_disabled() const noexcept -> bool
     {
         return m_pin.pull_up_is_disabled();
     }
@@ -354,7 +355,7 @@ class Internally_Pulled_Up_Input_Pin {
      * \return true if the pin's internal pull-up resistor is enabled.
      * \return false if the pin's internal pull-up resistor is not enabled.
      */
-    auto pull_up_is_enabled() const noexcept
+    auto pull_up_is_enabled() const noexcept -> bool
     {
         return m_pin.pull_up_is_enabled();
     }
@@ -381,7 +382,7 @@ class Internally_Pulled_Up_Input_Pin {
      * \return true if the pin is in the low state.
      * \return false if the pin is not in the low state.
      */
-    auto is_low() const noexcept
+    auto is_low() const noexcept -> bool
     {
         return m_pin.is_low();
     }
@@ -392,7 +393,7 @@ class Internally_Pulled_Up_Input_Pin {
      * \return true if the pin is in the high state.
      * \return false if the pin is not in the high state.
      */
-    auto is_high() const noexcept
+    auto is_high() const noexcept -> bool
     {
         return m_pin.is_high();
     }
@@ -459,7 +460,7 @@ class Open_Drain_IO_Pin {
      *
      * \return The assigned to object.
      */
-    constexpr auto & operator=( Open_Drain_IO_Pin && expression ) noexcept
+    constexpr auto operator=( Open_Drain_IO_Pin && expression ) noexcept -> Open_Drain_IO_Pin &
     {
         if ( &expression != this ) {
             disable();
@@ -497,7 +498,7 @@ class Open_Drain_IO_Pin {
      * \return true if the pin is in the low state.
      * \return false if the pin is not in the low state.
      */
-    auto is_low() const noexcept
+    auto is_low() const noexcept -> bool
     {
         return m_pin.is_low();
     }
@@ -508,7 +509,7 @@ class Open_Drain_IO_Pin {
      * \return true if the pin is in the high state.
      * \return false if the pin is not in the high state.
      */
-    auto is_high() const noexcept
+    auto is_high() const noexcept -> bool
     {
         return m_pin.is_high();
     }
@@ -599,7 +600,7 @@ class Push_Pull_IO_Pin {
      *
      * \return The assigned to object.
      */
-    constexpr auto & operator=( Push_Pull_IO_Pin && expression ) noexcept
+    constexpr auto operator=( Push_Pull_IO_Pin && expression ) noexcept -> Push_Pull_IO_Pin &
     {
         if ( &expression != this ) {
             disable();
@@ -637,7 +638,7 @@ class Push_Pull_IO_Pin {
      * \return true if the pin is in the low state.
      * \return false if the pin is not in the low state.
      */
-    auto is_low() const noexcept
+    auto is_low() const noexcept -> bool
     {
         return m_pin.is_low();
     }
@@ -648,7 +649,7 @@ class Push_Pull_IO_Pin {
      * \return true if the pin is in the high state.
      * \return false if the pin is not in the high state.
      */
-    auto is_high() const noexcept
+    auto is_high() const noexcept -> bool
     {
         return m_pin.is_high();
     }

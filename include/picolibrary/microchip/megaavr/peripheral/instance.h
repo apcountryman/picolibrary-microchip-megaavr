@@ -51,7 +51,7 @@ class Instance {
      *
      * \return The peripheral instance.
      */
-    static auto & instance() noexcept
+    static auto instance() noexcept -> Type &
     {
         return *reinterpret_cast<Type *>( ADDRESS );
     }
