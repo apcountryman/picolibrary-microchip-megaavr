@@ -1022,7 +1022,7 @@ class Variable_Configuration_Basic_Controller<Peripheral::USART> {
          *
          * \return The configuration's UBRR register value.
          */
-        constexpr auto ubrr() const noexcept -> std::uint8_t
+        constexpr auto ubrr() const noexcept -> std::uint16_t
         {
             return m_ubrr;
         }
