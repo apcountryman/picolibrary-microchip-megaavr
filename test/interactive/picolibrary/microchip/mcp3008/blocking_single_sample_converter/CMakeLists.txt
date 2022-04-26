@@ -16,3 +16,7 @@
 # File: test/interactive/picolibrary/microchip/mcp3008/blocking_single_sample_converter/CMakeLists.txt
 # Description: picolibrary::Microchip::MCP3008::Blocking_Single_Sample_Converter
 #       interactive tests CMake rules.
+
+# build the picolibrary::Microchip::MCP3008::Blocking_Single_Sample_Converter sample
+# interactive test
+add_subdirectory( sample )
