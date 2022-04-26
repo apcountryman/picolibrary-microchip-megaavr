@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/microchip/CMakeLists.txt
 # Description: picolibrary::Microchip interactive tests CMake rules.
 
 # build the picolibrary::Microchip::MCP23008 interactive tests

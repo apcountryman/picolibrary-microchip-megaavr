@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/testing-interactive-atmega328p-adafruit-metro-mini/test/interactive/picolibrary/microchip/mcp23008/internally_pulled_up_input_pin/state/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr ATmega328/P Adafruit Metro Mini
 #       picolibrary::Microchip::MCP23008::Internally_Pulled_Up_Input_Pin state interactive
 #       test configuration.

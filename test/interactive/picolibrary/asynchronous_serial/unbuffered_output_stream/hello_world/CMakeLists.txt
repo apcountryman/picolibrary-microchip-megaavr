@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/asynchronous_serial/unbuffered_output_stream/hello_world/CMakeLists.txt
 # Description: picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream hello world
 #       interactive test CMake rules.
 

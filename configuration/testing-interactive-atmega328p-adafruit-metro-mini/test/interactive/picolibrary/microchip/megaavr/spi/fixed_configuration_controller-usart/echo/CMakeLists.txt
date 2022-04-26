@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/testing-interactive-atmega328p-adafruit-metro-mini/test/interactive/picolibrary/microchip/megaavr/spi/fixed_configuration_controller-usart/echo/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr ATmega328/P Adafruit Metro Mini
 #       picolibrary::Microchip::megaAVR::SPI::Fixed_Configuration_Controller<Peripheral::USART>
 #       echo interactive test configuration.

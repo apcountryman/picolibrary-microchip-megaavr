@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/testing-interactive-atmega2560-arduino-mega-2560/test/interactive/picolibrary/microchip/mcp23008/push_pull_io_pin/toggle/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr ATmega2560 Arduino Mega 2560
 #       picolibrary::Microchip::MCP23008::Push_Pull_IO_Pin toggle interactive test
 #       configuration.

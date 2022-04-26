@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/testing-interactive-atmega328p-arduino-uno/test/interactive/picolibrary/microchip/mcp23008/open_drain_io_pin/toggle/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr ATmega328/P Arduino Uno
 #       picolibrary::Microchip::MCP23008::Open_Drain_IO_Pin toggle interactive test
 #       configuration.

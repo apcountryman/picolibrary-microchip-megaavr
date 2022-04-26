@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/testing-interactive-atmega2560-arduino-mega-2560/test/interactive/picolibrary/microchip/mcp3008/blocking_single_sample_converter/sample/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr ATmega2560 Arduino Mega 2560
 #       picolibrary::Microchip::MCP3008::Blocking_Single_Sample_Converter sample
 #       interactive test configuration.

@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/microchip/megaavr/CMakeLists.txt
 # Description: picolibrary::Microchip::megaAVR interactive tests CMake rules.
 
 # build the picolibrary::Microchip::megaAVR::Asynchronous_Serial interactive tests

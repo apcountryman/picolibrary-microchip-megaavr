@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/microchip/megaavr/i2c/controller/CMakeLists.txt
 # Description: picolibrary::Microchip::megaAVR::I2C::Controller interactive tests CMake
 #       rules.
 

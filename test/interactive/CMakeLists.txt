@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/CMakeLists.txt
 # Description: picolibrary interactive tests CMake rules.
 
 # build the picolibrary interactive tests
