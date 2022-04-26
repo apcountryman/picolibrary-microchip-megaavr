@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/testing-interactive-atmega2560-arduino-mega-2560/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr ATmega2560 Arduino Mega 2560 interactive
 #       testing configuration.
 

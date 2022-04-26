@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/microchip/mcp23008/open_drain_io_pin/CMakeLists.txt
 # Description: picolibrary::Microchip::MCP23008::Open_Drain_IO_Pin interactive tests CMake
 #       rules.
 

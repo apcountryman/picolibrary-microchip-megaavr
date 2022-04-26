@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/testing-interactive-atmega328p-adafruit-metro-mini/test/interactive/picolibrary/asynchronous_serial/unbuffered_output_stream/hello_world/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr ATmega328/P Adafruit Metro Mini
 #       picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream hello world interactive
 #       test configuration.

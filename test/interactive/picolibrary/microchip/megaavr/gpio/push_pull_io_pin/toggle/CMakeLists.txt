@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: test/interactive/picolibrary/microchip/megaavr/gpio/push_pull_io_pin/toggle/CMakeLists.txt
 # Description: picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin toggle interactive
 #       test CMake rules.
 

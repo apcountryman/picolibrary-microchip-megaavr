@@ -13,7 +13,6 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# File: configuration/testing-interactive-atmega328p-arduino-uno/test/interactive/picolibrary/microchip/megaavr/i2c/controller/scan/CMakeLists.txt
 # Description: picolibrary-microchip-megaavr ATmega328/P Arduino Uno
 #       picolibrary::Microchip::megaAVR::I2C::Controller scan interactive test
 #       configuration.
