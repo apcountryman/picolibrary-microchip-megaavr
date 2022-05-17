@@ -182,7 +182,7 @@ class Log : public Output_Stream {
          *
          * \return Nothing.
          */
-        virtual auto put( char character ) noexcept -> Result<Void, Error_Code> override final
+        auto put( char character ) noexcept -> Result<Void, Error_Code> override final
         {
             transmit( character );
 
@@ -196,7 +196,7 @@ class Log : public Output_Stream {
          *
          * \return Nothing.
          */
-        virtual auto put( std::uint8_t value ) noexcept -> Result<Void, Error_Code> override final
+        auto put( std::uint8_t value ) noexcept -> Result<Void, Error_Code> override final
         {
             transmit( value );
 
@@ -210,7 +210,7 @@ class Log : public Output_Stream {
          *
          * \return Nothing.
          */
-        virtual auto put( std::int8_t value ) noexcept -> Result<Void, Error_Code> override final
+        auto put( std::int8_t value ) noexcept -> Result<Void, Error_Code> override final
         {
             transmit( value );
 
@@ -223,7 +223,7 @@ class Log : public Output_Stream {
          *
          * \return Nothing.
          */
-        virtual auto flush() noexcept -> Result<Void, Error_Code> override final
+        auto flush() noexcept -> Result<Void, Error_Code> override final
         {
             return {};
         }
