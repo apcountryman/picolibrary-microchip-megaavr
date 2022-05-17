@@ -47,7 +47,6 @@ function display_help_text()
     echo "    --analyzer <analyzer>"
     echo "        Specify the analyzer to run against picolibrary-microchip-megaavr. The"
     echo "        following analyzers are supported:"
-    echo "            cppcheck"
     echo "            lizard"
     echo "            shellcheck"
     echo "    --help"
@@ -57,7 +56,6 @@ function display_help_text()
     echo "EXAMPLES"
     echo "    $mnemonic --help"
     echo "    $mnemonic --version"
-    echo "    $mnemonic --analyzer cppcheck"
     echo "    $mnemonic --analyzer lizard"
     echo "    $mnemonic --analyzer shellcheck"
 }
@@ -72,20 +70,6 @@ function generate_compilation_database()
     local -r build_configuration="$repository/configuration/analysis/CMakeLists.txt"
 
     if ! cmake -C "$build_configuration" -S "$repository" -B "$build_directory"; then
-        abort
-    fi
-}
-
-function run_cppcheck()
-{
-    generate_compilation_database
-
-    local -r cppcheck_options=(
-        "--template=gcc"
-        "--project=$build_directory/compile_commands.json"
-    )
-
-    if ! cppcheck "${cppcheck_options[@]}"; then
         abort
     fi
 }
@@ -146,7 +130,7 @@ function main()
 
                 local -r analyzer="$1"; shift
 
-                if [[ "$analyzer" != "cppcheck" && "$analyzer" != "lizard" && "$analyzer" != "shellcheck" ]]; then
+                if [[ "$analyzer" != "lizard" && "$analyzer" != "shellcheck" ]]; then
                     abort "'$analyzer' is not a supported analyzer"
                 fi
                 ;;
