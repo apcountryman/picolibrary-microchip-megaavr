@@ -25,9 +25,5 @@
 namespace picolibrary::Microchip::megaAVR::Peripheral {
 
 static_assert( sizeof( TWI ) == 6 );
-static_assert( TWI::TWCR::Bit::TWINT == 7 );
-static_assert( TWI::TWSR::Bit::TWS == 3 );
-static_assert( TWI::TWAR::Bit::TWA == 1 );
-static_assert( TWI::TWAMR::Bit::TWAM == 1 );
 
 } // namespace picolibrary::Microchip::megaAVR::Peripheral
