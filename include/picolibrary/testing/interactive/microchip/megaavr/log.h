@@ -25,21 +25,20 @@
 
 #include <cstdint>
 
+#include "picolibrary/algorithm.h"
 #include "picolibrary/error.h"
 #include "picolibrary/microchip/megaavr/peripheral.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
 #include "picolibrary/precondition.h"
-#include "picolibrary/result.h"
 #include "picolibrary/stream.h"
 #include "picolibrary/utility.h"
-#include "picolibrary/void.h"
 
 namespace picolibrary::Testing::Interactive::Microchip::megaAVR {
 
 /**
  * \brief Log.
  */
-class Log : public Output_Stream {
+class Log : public Reliable_Output_Stream {
   public:
     /**
      * \brief USART peripheral clock generator operating speed.
@@ -155,7 +154,7 @@ class Log : public Output_Stream {
     /**
      * \brief Buffer.
      */
-    class Buffer final : public Stream_Buffer {
+    class Buffer final : public Reliable_Stream_Buffer {
       public:
         /**
          * \brief Constructor.
@@ -176,56 +175,83 @@ class Log : public Output_Stream {
         auto operator=( Buffer const & ) = delete;
 
         /**
-         * \brief Write a character to the put area of the buffer.
+         * \brief Transmit a character.
          *
-         * \param[in] character The character to write to the put area of the buffer.
-         *
-         * \return Nothing.
+         * \param[in] character The character to transmit.
          */
-        auto put( char character ) noexcept -> Result<Void, Error_Code> override final
+        void put( char character ) noexcept override final
         {
             transmit( character );
-
-            return {};
         }
 
         /**
-         * \brief Write an unsigned byte to the put area of the buffer.
+         * \brief Transmit a block of characters.
          *
-         * \param[in] value The unsigned byte to write to the put area of the buffer.
-         *
-         * \return Nothing.
+         * \param[in] begin The beginning of the block of characters to transmit.
+         * \param[in] end The end of the block of characters to transmit.
          */
-        auto put( std::uint8_t value ) noexcept -> Result<Void, Error_Code> override final
+        void put( char const * begin, char const * end ) noexcept override final
+        {
+            for_each( begin, end, []( auto character ) noexcept { transmit( character ); } );
+        }
+
+        /**
+         * \brief Transmit a null-terminated string.
+         *
+         * \param[in] string The null-terminated string to transmit.
+         */
+        void put( char const * string ) noexcept override final
+        {
+            transmit( string );
+        }
+
+        /**
+         * \brief Transmit an unsigned byte.
+         *
+         * \param[in] value The unsigned byte to transmit.
+         */
+        void put( std::uint8_t value ) noexcept override final
         {
             transmit( value );
-
-            return {};
         }
 
         /**
-         * \brief Write a signed byte to the put area of the buffer.
+         * \brief Transmit a block of unsigned bytes.
          *
-         * \param[in] value The signed byte to write to the put area of the buffer.
-         *
-         * \return Nothing.
+         * \param[in] begin The beginning of the block of unsigned bytes to transmit.
+         * \param[in] end The end of the block of unsigned bytes to transmit.
          */
-        auto put( std::int8_t value ) noexcept -> Result<Void, Error_Code> override final
+        void put( std::uint8_t const * begin, std::uint8_t const * end ) noexcept override final
+        {
+            for_each( begin, end, []( auto value ) noexcept { transmit( value ); } );
+        }
+
+        /**
+         * \brief Transmit a signed byte.
+         *
+         * \param[in] value The signed byte to transmit.
+         */
+        void put( std::int8_t value ) noexcept override final
         {
             transmit( value );
-
-            return {};
         }
 
         /**
-         * \brief Write any data that is buffered in the put area of the buffer to the
-         *        device.
+         * \brief Transmit a block of signed bytes.
          *
-         * \return Nothing.
+         * \param[in] begin The beginning of the block of signed bytes to transmit.
+         * \param[in] end The end of the block of signed bytes to transmit.
          */
-        auto flush() noexcept -> Result<Void, Error_Code> override final
+        void put( std::int8_t const * begin, std::int8_t const * end ) noexcept override final
         {
-            return {};
+            for_each( begin, end, []( auto value ) noexcept { transmit( value ); } );
+        }
+
+        /**
+         * \brief Do nothing.
+         */
+        void flush() noexcept override final
+        {
         }
     };
 
