@@ -18,6 +18,3 @@
 # build the picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream
 # interactive tests
 add_subdirectory( reliable_unbuffered_output_stream )
-
-# build the picolibrary::Asynchronous_Serial::Unbuffered_Output_Stream interactive tests
-add_subdirectory( unbuffered_output_stream )
