@@ -15,3 +15,6 @@
 
 # Description: picolibrary::WIZnet::W5500::IP::Network_Stack interactive tests CMake
 #       rules.
+
+# build the picolibrary::WIZnet::W5500::IP::Network_Stack ping interactive test
+add_subdirectory( ping )
