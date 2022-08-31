@@ -31,6 +31,7 @@ option( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY "picolibrar
 list(
     APPEND CMAKE_MODULE_PATH
     "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/apcountryman-cmake-utilities"
+    "${CMAKE_CURRENT_SOURCE_DIR}/toolchain-avr-gcc"
 )
 
 # configure compilation and linking
@@ -105,9 +106,7 @@ execute_git_command(
 
 # configure avrdude
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
-    if( "${CMAKE_AVRDUDE}" STREQUAL "CMAKE_AVRDUDE-NOTFOUND" )
-        message( FATAL_ERROR "avrdude not found" )
-    endif( "${CMAKE_AVRDUDE}" STREQUAL "CMAKE_AVRDUDE-NOTFOUND" )
+    include( avrdude-utilities )
 
     option( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_RESET_ENABLED "picolibrary-microchip-megaavr: reset AVR before executing avrdude" OFF )
 
