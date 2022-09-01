@@ -21,11 +21,12 @@ project(
     LANGUAGES CXX
 )
 
-# project configuration
-option( PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING     "picolibrary-microchip-megaavr: enable interactive testing"       OFF )
-option( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP   "picolibrary-microchip-megaavr: use parent project's avr-libcpp"  ON  )
-option( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS "picolibrary-microchip-megaavr: use parent project's build flags" ON  )
-option( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY "picolibrary-microchip-megaavr: use parent project's picolibrary" ON  )
+# general project configuration
+option(
+    PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING
+    "picolibrary-microchip-megaavr: enable interactive testing"
+    OFF
+)
 
 # load additional CMake modules
 list(
@@ -35,9 +36,23 @@ list(
 )
 
 # configure compilation and linking
+option(
+    PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS
+    "picolibrary-microchip-megaavr: use parent project's build flags"
+    ON
+)
 if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
-    set( PICOLIBRARY_MICROCHIP_MEGAAVR_MCU   "" CACHE STRING "picolibrary-microchip-megaavr: MCU type"             )
-    set( PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU "" CACHE STRING "picolibrary-microchip-megaavr: CPU frequency, in Hz" )
+    set(
+        PICOLIBRARY_MICROCHIP_MEGAAVR_MCU
+        "" CACHE STRING
+        "picolibrary-microchip-megaavr: MCU type"
+    )
+    set(
+        PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU
+        "" CACHE STRING
+        "picolibrary-microchip-megaavr: CPU frequency, in Hz"
+    )
+
     set( CMAKE_CXX_STANDARD 17 )
     set( CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE )
     add_compile_options(
@@ -68,13 +83,15 @@ if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
 endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
 
 # configure avr-libcpp
+option(
+    PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP
+    "picolibrary-microchip-megaavr: use parent project's avr-libcpp"
+    ON
+)
 if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP} )
-    set( AVRLIBCPP_USE_PARENT_PROJECT_BUILD_FLAGS ON CACHE BOOL "" FORCE )
-    set( AVRLIBCPP_SUPPRESS_SFR_MACROS            ON CACHE BOOL "" FORCE )
-    mark_as_advanced(
-        AVRLIBCPP_USE_PARENT_PROJECT_BUILD_FLAGS
-        AVRLIBCPP_SUPPRESS_SFR_MACROS
-    )
+    set( AVRLIBCPP_USE_PARENT_PROJECT_BUILD_FLAGS ON CACHE INTERNAL "" )
+
+    set( AVRLIBCPP_SUPPRESS_SFR_MACROS ON CACHE INTERNAL "" )
 
     add_subdirectory( avr-libcpp )
 
@@ -86,15 +103,17 @@ if( NOT ${AVRLIBCPP_SUPPRESS_SFR_MACROS} )
 endif( NOT ${AVRLIBCPP_SUPPRESS_SFR_MACROS} )
 
 # configure picolibrary
+option(
+    PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY
+    "picolibrary-microchip-megaavr: use parent project's picolibrary"
+    ON
+)
 if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY} )
-    set( PICOLIBRARY_USE_PARENT_PROJECT_BUILD_FLAGS ON CACHE BOOL "" FORCE )
-    mark_as_advanced( PICOLIBRARY_USE_PARENT_PROJECT_BUILD_FLAGS )
+    set( PICOLIBRARY_USE_PARENT_PROJECT_BUILD_FLAGS ON CACHE INTERNAL "" )
 
-    set( PICOLIBRARY_ENABLE_AUTOMATED_TESTING OFF CACHE BOOL "" FORCE )
-    mark_as_advanced( PICOLIBRARY_ENABLE_AUTOMATED_TESTING )
+    set( PICOLIBRARY_ENABLE_AUTOMATED_TESTING OFF CACHE INTERNAL "" )
 
-    set( PICOLIBRARY_ENABLE_INTERACTIVE_TESTING "${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING}" CACHE BOOL "" FORCE )
-    mark_as_advanced( PICOLIBRARY_ENABLE_INTERACTIVE_TESTING )
+    set( PICOLIBRARY_ENABLE_INTERACTIVE_TESTING "${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING}" CACHE INTERNAL "" )
 
     add_subdirectory( picolibrary )
 endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY} )
@@ -110,13 +129,37 @@ execute_git_command(
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
     include( avrdude-utilities )
 
-    option( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_RESET_ENABLED "picolibrary-microchip-megaavr: reset AVR before executing avrdude" OFF )
+    option(
+        PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_RESET_ENABLED
+        "picolibrary-microchip-megaavr: reset AVR before executing avrdude"
+        OFF
+    )
 
-    set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_CONFIGURATION_FILE ""        CACHE STRING "picolibrary-microchip-megaavr: avrdude configuration file"           )
-    set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_PORT               ""        CACHE STRING "picolibrary-microchip-megaavr: avrdude port"                         )
-    set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_PROGRAM_FLASH      ""        CACHE STRING "picolibrary-microchip-megaavr: flash programming avrdude arguments"  )
-    set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_VERBOSITY          "VERBOSE" CACHE STRING "picolibrary-microchip-megaavr: avrdude verbosity"                    )
-    set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_VERIFY_FLASH       ""        CACHE STRING "picolibrary-microchip-megaavr: flash verification avrdude arguments" )
+    set(
+        PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_CONFIGURATION_FILE
+        "" CACHE STRING
+        "picolibrary-microchip-megaavr: avrdude configuration file"
+    )
+    set(
+        PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_PORT
+        "" CACHE STRING
+        "picolibrary-microchip-megaavr: avrdude port"
+    )
+    set(
+        PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_PROGRAM_FLASH
+        "" CACHE STRING
+        "picolibrary-microchip-megaavr: flash programming avrdude arguments"
+    )
+    set(
+        PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_VERBOSITY
+        "VERBOSE" CACHE STRING
+        "picolibrary-microchip-megaavr: avrdude verbosity"
+    )
+    set(
+        PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_VERIFY_FLASH
+        "" CACHE STRING
+        "picolibrary-microchip-megaavr: flash verification avrdude arguments"
+    )
 
     if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_RESET_ENABLED} )
         set( PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_RESET "RESET" )
