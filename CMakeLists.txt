@@ -36,32 +36,34 @@ list(
 
 # configure compilation and linking
 if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
-    set( CMAKE_CXX_STANDARD 17 )
-    set( CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE )
     set( PICOLIBRARY_MICROCHIP_MEGAAVR_MCU   "" CACHE STRING "picolibrary-microchip-megaavr: MCU type"             )
     set( PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU "" CACHE STRING "picolibrary-microchip-megaavr: CPU frequency, in Hz" )
-    set(
-        CMAKE_CXX_FLAGS
-        "${CMAKE_CXX_FLAGS} \
-        -mmcu=${PICOLIBRARY_MICROCHIP_MEGAAVR_MCU} \
-        -DF_CPU=${PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU} \
-        -Werror -Wall -Wextra \
-        -Wcast-align=strict \
-        -Wcast-qual \
-        -Wduplicated-cond \
-        -Wextra-semi \
-        -Wfloat-equal \
-        -Wimplicit-fallthrough=5 \
-        -Wlogical-op \
-        -Wmissing-field-initializers \
-        -Wmissing-include-dirs \
-        -Wold-style-cast \
-        -Wplacement-new=2 \
-        -Wpointer-arith \
-        -Wshadow \
-        -Wunsafe-loop-optimizations \
-        -fno-threadsafe-statics \
-        "
+    set( CMAKE_CXX_STANDARD 17 )
+    set( CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE )
+    add_compile_options(
+        -mmcu=${PICOLIBRARY_MICROCHIP_MEGAAVR_MCU}
+        -Werror -Wall -Wextra
+        -Wcast-align=strict
+        -Wcast-qual
+        -Wduplicated-cond
+        -Wextra-semi
+        -Wfloat-equal
+        -Wimplicit-fallthrough=5
+        -Wlogical-op
+        -Wmissing-field-initializers
+        -Wmissing-include-dirs
+        -Wold-style-cast
+        -Wplacement-new=2
+        -Wpointer-arith
+        -Wshadow
+        -Wunsafe-loop-optimizations
+        -fno-threadsafe-statics
+    )
+    add_compile_definitions(
+        F_CPU=${PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU}
+    )
+    add_link_options(
+        -mmcu=${PICOLIBRARY_MICROCHIP_MEGAAVR_MCU}
     )
 endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
 
