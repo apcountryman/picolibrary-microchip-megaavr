@@ -65,15 +65,6 @@ function display_version()
     echo "$mnemonic, version $version"
 }
 
-function generate_compilation_database()
-{
-    local -r build_configuration="$repository/configuration/analysis/CMakeLists.txt"
-
-    if ! cmake -C "$build_configuration" -S "$repository" -B "$build_directory"; then
-        abort
-    fi
-}
-
 function run_lizard()
 {
     local source_files; mapfile -t source_files < <( git -C "$repository" ls-files '*.h' '*.cc' '*.cc.in' | xargs -r -d '\n' -I '{}' echo "$repository/{}" ); readonly source_files
@@ -113,7 +104,6 @@ function main()
     local -r mnemonic=$( basename "$script" )
     local -r repository=$( readlink -f "$( dirname "$script" )/.." )
     local -r version=$( git -C "$repository" describe --match=none --always --dirty --broken )
-    local -r build_directory="$repository/build/analysis"
 
     while [[ "$#" -gt 0 ]]; do
         local argument="$1"; shift
