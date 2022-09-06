@@ -30,6 +30,14 @@ target_link_libraries(
 picolibrary-microchip-megaavr supports the following project configuration options:
 - `PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING` (defaults to `OFF`): enable
   interactive testing
+    - `PICOLIBRARY_MICROCHIP_MEGAAVR_TESTING_INTERACTIVE_LOG_USART` (optional):
+      `picolibrary::Testing::Interactive::Microchip::megaAVR::Log` USART
+    - `PICOLIBRARY_MICROCHIP_MEGAAVR_TESTING_INTERACTIVE_LOG_USART_CLOCK_GENERATOR_OPERATING_SPEED`
+      (optional): `picolibrary::Testing::Interactive::Microchip::megaAVR::Log` USART clock
+      generator operating speed
+    - `PICOLIBRARY_MICROCHIP_MEGAAVR_TESTING_INTERACTIVE_LOG_USART_CLOCK_GENERATOR_SCALING_FACTOR`
+      (optional): `picolibrary::Testing::Interactive::Microchip::megaAVR::Log` USART clock
+      generator scaling factor"
 - `PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS` (defaults to `ON`) use
   parent project's build flags
     - The following project configuration options are available if
