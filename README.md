@@ -15,6 +15,11 @@ SSH:
 git clone --recurse-submodules git@github.com:apcountryman/picolibrary-microchip-megaavr.git
 ```
 
+## Documentation
+Library usage documentation, and documentation for major library features can be found at
+https://apcountryman.github.io/picolibrary-microchip-megaavr/.
+All other documentation is embedded in the library source code.
+
 ## Usage (Dependency)
 To use this library as a dependency, simply add the subdirectory containing this
 repository to a CMake build, and link with the `picolibrary-microchip-megaavr` static
