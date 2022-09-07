@@ -33,4 +33,4 @@ interactive test supports the following configuration options:
           interactive test transmitter USART clock generator scaling factor
 
 ## Test Executable Name
-`test-interactive-picolibrary-asynchronous_serial-reliable_unbuffered_output_stream-hello_world`
+`test-interactive-picolibrary-microchip-megaavr-asynchronous_serial-transmitter-hello_world`

@@ -16,16 +16,16 @@ echo interactive test supports the following configuration options:
           echo interactive test controller SPI
         - `PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_FIXED_CONFIGURATION_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_CONTROLLER_SPI_CLOCK_RATE`:
           `picolibrary::Microchip::megaAVR::SPI::Fixed_Configuration_Controller<Peripheral::SPI>`
-          echo interactive test controller SPI clock rate"
+          echo interactive test controller SPI clock rate
         - `PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_FIXED_CONFIGURATION_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_CONTROLLER_SPI_CLOCK_POLARITY`:
           `picolibrary::Microchip::megaAVR::SPI::Fixed_Configuration_Controller<Peripheral::SPI>`
-          echo interactive test controller SPI clock polarity"
+          echo interactive test controller SPI clock polarity
         - `PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_FIXED_CONFIGURATION_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_CONTROLLER_SPI_CLOCK_PHASE`:
           `picolibrary::Microchip::megaAVR::SPI::Fixed_Configuration_Controller<Peripheral::SPI>`
-          echo interactive test controller SPI clock phase"
+          echo interactive test controller SPI clock phase
         - `PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_FIXED_CONFIGURATION_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_CONTROLLER_SPI_BIT_ORDER`:
           `picolibrary::Microchip::megaAVR::SPI::Fixed_Configuration_Controller<Peripheral::SPI>`
-          echo interactive test controller SPI bit order"
+          echo interactive test controller SPI bit order
 
 ## Test Executable Name
 `test-interactive-picolibrary-microchip-megaavr-spi-fixed_configuration_controller-spi-echo`
