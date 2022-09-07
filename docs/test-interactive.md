@@ -47,3 +47,4 @@ Each picolibrary-microchip-megaavr interactive test has the following targets:
 - [`::picolibrary::Microchip::megaAVR::GPIO::Open_Drain_IO_Pin` toggle interactive test](test-interactive/picolibrary/microchip/megaavr/gpio/open_drain_io_pin/toggle.md)
 - [`::picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin` toggle interactive test](test-interactive/picolibrary/microchip/megaavr/gpio/push_pull_io_pin/toggle.md)
 - [`::picolibrary::Microchip::megaAVR::I2C::Controller` scan interactive test](test-interactive/picolibrary/microchip/megaavr/i2c/controller/scan.md)
+- [`::picolibrary::Microchip::megaAVR::SPI::Fixed_Configuration_Controller<Peripheral::SPI>` echo interactive test](test-interactive/picolibrary/microchip/megaavr/spi/fixed_configuration_controller-spi/echo.md)
