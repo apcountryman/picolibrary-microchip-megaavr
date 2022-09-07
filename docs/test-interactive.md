@@ -27,11 +27,11 @@ configuration options:
 
 ## Test Targets
 Each picolibrary-microchip-megaavr interactive test has the following targets:
-- `<test executable name>`: test executable creation target
-- `<test executable name>-hex-flash`: test Flash programming/verification hex file
-  creation target
-- `<test executable name>-program-flash`: test Flash programming target
-- `<test executable name>-verify-flash`: test Flash verification target
+- `<test executable name>`: executable creation target
+- `<test executable name>-hex-flash`: Flash programming/verification hex file creation
+  target
+- `<test executable name>-program-flash`: Flash programming target
+- `<test executable name>-verify-flash`: Flash verification target
 
 ## Tests
 - [`::picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream` hello world interactive test](test-interactive/picolibrary/asynchronous_serial/reliable_unbuffered_output_stream/hello_world.md)
