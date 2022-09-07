@@ -1,7 +1,7 @@
-# `picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream` hello world
+# `picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream` hello world interactive test
 
 ## Test Configuration Options
-The `picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream` hello world
+The `::picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream` hello world
 interactive test supports the following configuration options:
 - `PICOLIBRARY_ASYNCHRONOUS_SERIAL_RELIABLE_UNBUFFERED_OUTPUT_STREAM_ENABLE_HELLO_WORLD_INTERACTIVE_TEST`
   (defaults to `OFF`): enable the

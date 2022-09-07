@@ -34,4 +34,5 @@ Each picolibrary-microchip-megaavr interactive test has the following targets:
 - `<test executable name>-verify-flash`: test Flash verification target
 
 ## Tests
-- [`picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream` hello world](test-interactive/picolibrary/asynchronous_serial/reliable_unbuffered_output_stream/hello_world.md)
+- [`::picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream` hello world interactive test](test-interactive/picolibrary/asynchronous_serial/reliable_unbuffered_output_stream/hello_world.md)
+- [`::picolibrary::Microchip::MCP23008::Internally_Pulled_Up_Input_Pin` state interactive test](test-interactive/picolibrary/microchip/mcp23008/internally_pulled_up_input_pin/state.md)
