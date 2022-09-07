@@ -4,3 +4,4 @@
 
 ## Table of Contents
 1. [Usage](usage.md)
+2. [Interactive Tests](test-interactive.md)
