@@ -21,7 +21,7 @@ interactive test supports the following configuration options:
           world interactive test transmitter USART data bits
         - `PICOLIBRARY_ASYNCHRONOUS_SERIAL_RELIABLE_UNBUFFERED_OUTPUT_STREAM_HELLO_WORLD_INTERACTIVE_TEST_TRANSMITTER_USART_PARITY`:
           `picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream` hello
-          world interactive test transmitter USART parity"
+          world interactive test transmitter USART parity
         - `PICOLIBRARY_ASYNCHRONOUS_SERIAL_RELIABLE_UNBUFFERED_OUTPUT_STREAM_HELLO_WORLD_INTERACTIVE_TEST_TRANSMITTER_USART_STOP_BITS`:
           `picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream` hello
           world interactive test transmitter USART stop bits
