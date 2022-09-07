@@ -41,3 +41,4 @@ Each picolibrary-microchip-megaavr interactive test has the following targets:
 - [`::picolibrary::Microchip::MCP23S08::Internally_Pulled_Up_Input_Pin` state interactive test](test-interactive/picolibrary/microchip/mcp23s08/internally_pulled_up_input_pin/state.md)
 - [`::picolibrary::Microchip::MCP23S08::Open_Drain_IO_Pin` toggle interactive test](test-interactive/picolibrary/microchip/mcp23s08/open_drain_io_pin/toggle.md)
 - [`::picolibrary::Microchip::MCP23S08::Push_Pull_IO_Pin` toggle interactive test](test-interactive/picolibrary/microchip/mcp23s08/push_pull_io_pin/toggle.md)
+- [`::picolibrary::Microchip::MCP3008::Blocking_Single_Sample_Converter` sample interactive test](test-interactive/picolibrary/microchip/mcp3008/blocking_single_sample_converter/sample.md)
