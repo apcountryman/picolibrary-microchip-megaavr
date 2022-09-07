@@ -43,7 +43,7 @@ picolibrary-microchip-megaavr supports the following project configuration optio
           for more information)
         - `PICOLIBRARY_MICROCHIP_MEGAAVR_TESTING_INTERACTIVE_LOG_USART_CLOCK_GENERATOR_SCALING_FACTOR`
           (optional): `picolibrary::Testing::Interactive::Microchip::megaAVR::Log` USART
-          clock generator scaling factor" (see
+          clock generator scaling factor (see
           [`include/picolibrary/testing/interactive/microchip/megaavr/log.h`](../include/picolibrary/testing/interactive/microchip/megaavr/log.h)
           for more information)
 - `PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS` (defaults to `ON`) use
