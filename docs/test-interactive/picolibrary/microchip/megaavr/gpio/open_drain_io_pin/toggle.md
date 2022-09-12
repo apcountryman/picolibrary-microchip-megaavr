@@ -10,10 +10,10 @@ supports the following configuration options:
       `PICOLIBRARY_MICROCHIP_MEGAAVR_GPIO_OPEN_DRAIN_IO_PIN_ENABLE_TOGGLE_INTERACTIVE_TEST`
       is `ON`
         - `PICOLIBRARY_MICROCHIP_MEGAAVR_GPIO_OPEN_DRAIN_IO_PIN_TOGGLE_INTERACTIVE_TEST_PIN_PORT`:
-          `picolibrary::Microchip::megaAVR::GPIO::Open_Drain_IO_Pin` toggle interactive
+          `::picolibrary::Microchip::megaAVR::GPIO::Open_Drain_IO_Pin` toggle interactive
           test pin PORT
         - `PICOLIBRARY_MICROCHIP_MEGAAVR_GPIO_OPEN_DRAIN_IO_PIN_TOGGLE_INTERACTIVE_TEST_PIN_MASK`:
-          `picolibrary::Microchip::megaAVR::GPIO::Open_Drain_IO_Pin` toggle interactive
+          `::picolibrary::Microchip::megaAVR::GPIO::Open_Drain_IO_Pin` toggle interactive
           test pin mask
 
 ## Test Executable Name
