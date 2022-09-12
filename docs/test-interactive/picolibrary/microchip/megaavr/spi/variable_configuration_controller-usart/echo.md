@@ -10,7 +10,7 @@ echo interactive test supports the following configuration options:
   echo interactive test
     - The following configuration options are available if
       `PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_VARIABLE_CONFIGURATION_CONTROLLER_USART_ENABLE_ECHO_INTERACTIVE_TEST`
-      is `ON`
+      is `ON`:
         - `PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_VARIABLE_CONFIGURATION_CONTROLLER_USART_ECHO_INTERACTIVE_TEST_CONTROLLER_USART`:
           `::picolibrary::Microchip::megaAVR::SPI::Variable_Configuration_Controller<Peripheral::USART>`
           echo interactive test controller USART

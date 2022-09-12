@@ -9,7 +9,7 @@ interactive test supports the following configuration options:
   interactive test
     - The following configuration options are available if
       `PICOLIBRARY_ASYNCHRONOUS_SERIAL_RELIABLE_UNBUFFERED_OUTPUT_STREAM_ENABLE_HELLO_WORLD_INTERACTIVE_TEST`
-      is `ON`
+      is `ON`:
         - `PICOLIBRARY_ASYNCHRONOUS_SERIAL_RELIABLE_UNBUFFERED_OUTPUT_STREAM_HELLO_WORLD_INTERACTIVE_TEST_TRANSMITTER_DATA_TYPE`:
           `::picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream` hello
           world interactive test transmitter data type

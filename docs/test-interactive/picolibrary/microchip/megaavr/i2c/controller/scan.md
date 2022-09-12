@@ -7,7 +7,7 @@ the following configuration options:
   `OFF`): enable the `::picolibrary::Microchip::megaAVR::I2C::Controller` scan interactive
   test
     - The following configuration options are available if
-      `PICOLIBRARY_MICROCHIP_MEGAAVR_I2C_CONTROLLER_ENABLE_SCAN_INTERACTIVE_TEST` is `ON`
+      `PICOLIBRARY_MICROCHIP_MEGAAVR_I2C_CONTROLLER_ENABLE_SCAN_INTERACTIVE_TEST` is `ON`:
         - `PICOLIBRARY_MICROCHIP_MEGAAVR_I2C_CONTROLLER_SCAN_INTERACTIVE_TEST_CONTROLLER_TWI`:
           `::picolibrary::Microchip::megaAVR::I2C::Controller` scan interactive test
           controller TWI

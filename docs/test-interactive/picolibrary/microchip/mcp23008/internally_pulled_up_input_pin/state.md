@@ -9,7 +9,7 @@ test supports the following configuration options:
   test
     - The following configuration options are available if
       `PICOLIBRARY_MICROCHIP_MCP23008_INTERNALLY_PULLED_UP_INPUT_PIN_ENABLE_STATE_INTERACTIVE_TEST`
-      is `ON`
+      is `ON`:
         - `PICOLIBRARY_MICROCHIP_MCP23008_INTERNALLY_PULLED_UP_INPUT_PIN_STATE_INTERACTIVE_TEST_CONTROLLER_TWI`:
           `::picolibrary::Microchip::MCP23008::Internally_Pulled_Up_Input_Pin` state
           interactive test controller TWI

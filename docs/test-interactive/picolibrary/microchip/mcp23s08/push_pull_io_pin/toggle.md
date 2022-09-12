@@ -8,7 +8,7 @@ supports the following configuration options:
   toggle interactive test
     - The following configuration options are available if
       `PICOLIBRARY_MICROCHIP_MCP23S08_PUSH_PULL_IO_PIN_ENABLE_TOGGLE_INTERACTIVE_TEST` is
-      `ON`
+      `ON`:
         - `PICOLIBRARY_MICROCHIP_MCP23S08_PUSH_PULL_IO_PIN_TOGGLE_INTERACTIVE_TEST_CONTROLLER_SPI`:
           `::picolibrary::Microchip::MCP23S08::Push_Pull_IO_Pin` toggle interactive test
           controller SPI

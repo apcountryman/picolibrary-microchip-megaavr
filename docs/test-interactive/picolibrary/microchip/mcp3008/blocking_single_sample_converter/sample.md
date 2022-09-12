@@ -9,7 +9,7 @@ interactive test supports the following configuration options:
   test
     - The following configuration options are available if
       `PICOLIBRARY_MICROCHIP_MCP3008_BLOCKING_SINGLE_SAMPLE_CONVERTER_ENABLE_SAMPLE_INTERACTIVE_TEST`
-      is `ON`
+      is `ON`:
         - `PICOLIBRARY_MICROCHIP_MCP3008_BLOCKING_SINGLE_SAMPLE_CONVERTER_SAMPLE_INTERACTIVE_TEST_CONTROLLER_SPI`:
           `::picolibrary::Microchip::MCP3008::Blocking_Single_Sample_Converter` sample
           interactive test controller SPI

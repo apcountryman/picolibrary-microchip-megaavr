@@ -9,7 +9,7 @@ interactive test supports the following configuration options:
   interactive test
     - The following configuration options are available if
       `PICOLIBRARY_MICROCHIP_MEGAAVR_ASYNCHRONOUS_SERIAL_TRANSMITTER_ENABLE_HELLO_WORLD_INTERACTIVE_TEST`
-      is `ON`
+      is `ON`:
         - `PICOLIBRARY_MICROCHIP_MEGAAVR_ASYNCHRONOUS_SERIAL_TRANSMITTER_HELLO_WORLD_INTERACTIVE_TEST_TRANSMITTER_DATA_TYPE`:
           `::picolibrary::Microchip::megaAVR::Asynchronous_Serial::Transmitter` hello
           world interactive test transmitter data type
