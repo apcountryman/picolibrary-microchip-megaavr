@@ -10,7 +10,7 @@ echo interactive test supports the following configuration options:
   echo interactive test
     - The following configuration options are available if
       `PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_FIXED_CONFIGURATION_CONTROLLER_SPI_ENABLE_ECHO_INTERACTIVE_TEST`
-      is `ON`
+      is `ON`:
         - `PICOLIBRARY_MICROCHIP_MEGAAVR_SPI_FIXED_CONFIGURATION_CONTROLLER_SPI_ECHO_INTERACTIVE_TEST_CONTROLLER_SPI`:
           `::picolibrary::Microchip::megaAVR::SPI::Fixed_Configuration_Controller<Peripheral::SPI>`
           echo interactive test controller SPI

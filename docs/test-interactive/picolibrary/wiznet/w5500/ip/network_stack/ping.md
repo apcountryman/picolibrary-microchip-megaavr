@@ -7,7 +7,7 @@ following configuration options:
   `OFF`): enable the `::picolibrary::WIZnet::W5500::IP::Network_Stack` ping interactive
   test
     - The following configuration options are available if
-      `PICOLIBRARY_WIZNET_W5500_IP_NETWORK_STACK_ENABLE_PING_INTERACTIVE_TEST` is `ON`
+      `PICOLIBRARY_WIZNET_W5500_IP_NETWORK_STACK_ENABLE_PING_INTERACTIVE_TEST` is `ON`:
        - `PICOLIBRARY_WIZNET_W5500_IP_NETWORK_STACK_PING_INTERACTIVE_TEST_CONTROLLER_SPI`:
          `::picolibrary::WIZnet::W5500::IP::Network_Stack` ping interactive test
          controller SPI
