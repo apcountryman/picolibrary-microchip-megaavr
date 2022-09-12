@@ -33,16 +33,16 @@ picolibrary-microchip-megaavr supports the following project configuration optio
     - The following project configuration options are available if
       `PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING` is `ON`
         - `PICOLIBRARY_MICROCHIP_MEGAAVR_TESTING_INTERACTIVE_LOG_USART` (optional):
-          `picolibrary::Testing::Interactive::Microchip::megaAVR::Log` USART (see
+          `::picolibrary::Testing::Interactive::Microchip::megaAVR::Log` USART (see
           [`include/picolibrary/testing/interactive/microchip/megaavr/log.h`](../include/picolibrary/testing/interactive/microchip/megaavr/log.h)
           for more information)
         - `PICOLIBRARY_MICROCHIP_MEGAAVR_TESTING_INTERACTIVE_LOG_USART_CLOCK_GENERATOR_OPERATING_SPEED`
-          (optional): `picolibrary::Testing::Interactive::Microchip::megaAVR::Log` USART
+          (optional): `::picolibrary::Testing::Interactive::Microchip::megaAVR::Log` USART
           clock generator operating speed (see
           [`include/picolibrary/testing/interactive/microchip/megaavr/log.h`](../include/picolibrary/testing/interactive/microchip/megaavr/log.h)
           for more information)
         - `PICOLIBRARY_MICROCHIP_MEGAAVR_TESTING_INTERACTIVE_LOG_USART_CLOCK_GENERATOR_SCALING_FACTOR`
-          (optional): `picolibrary::Testing::Interactive::Microchip::megaAVR::Log` USART
+          (optional): `::picolibrary::Testing::Interactive::Microchip::megaAVR::Log` USART
           clock generator scaling factor (see
           [`include/picolibrary/testing/interactive/microchip/megaavr/log.h`](../include/picolibrary/testing/interactive/microchip/megaavr/log.h)
           for more information)
