@@ -52,9 +52,7 @@ constexpr auto spi_port_address( std::uintptr_t spi_address ) noexcept -> std::u
             return Peripheral::ATmega328P::PORTB::ADDRESS;
     } // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -125,9 +123,7 @@ constexpr auto ss_number( std::uintptr_t spi_address ) noexcept -> std::uint_fas
         case Peripheral::ATmega328P::SPI0::ADDRESS: return 2;
     } // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -230,9 +226,7 @@ constexpr auto sck_number( std::uintptr_t spi_address ) noexcept -> std::uint_fa
         case Peripheral::ATmega328P::SPI0::ADDRESS: return 5;
     } // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -335,9 +329,7 @@ constexpr auto mosi_number( std::uintptr_t spi_address ) noexcept -> std::uint_f
         case Peripheral::ATmega328P::SPI0::ADDRESS: return 3;
     } // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -440,9 +432,7 @@ constexpr auto miso_number( std::uintptr_t spi_address ) noexcept -> std::uint_f
         case Peripheral::ATmega328P::SPI0::ADDRESS: return 4;
     } // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
