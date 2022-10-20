@@ -53,9 +53,7 @@ constexpr auto usart_port_address( std::uintptr_t usart_address ) noexcept -> st
             return Peripheral::ATmega328P::PORTD::ADDRESS;
     } // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -126,9 +124,7 @@ constexpr auto xck_number( std::uintptr_t usart_address ) noexcept -> std::uint_
         case Peripheral::ATmega328P::USART0::ADDRESS: return 4;
     } // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -231,9 +227,7 @@ constexpr auto txd_number( std::uintptr_t usart_address ) noexcept -> std::uint_
         case Peripheral::ATmega328P::USART0::ADDRESS: return 1;
     } // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -336,9 +330,7 @@ constexpr auto rxd_number( std::uintptr_t usart_address ) noexcept -> std::uint_
         case Peripheral::ATmega328P::USART0::ADDRESS: return 0;
     } // switch
 
-    expect( false, Generic_Error::INVALID_ARGUMENT );
-
-    return 0; // unreachable
+    expect( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
