@@ -70,3 +70,4 @@ include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaa
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/spi/variable_configuration_controller-spi/echo/CMakeLists.txt" )
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/microchip/megaavr/spi/variable_configuration_controller-usart/echo/CMakeLists.txt" )
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/wiznet/w5500/ip/network_stack/ping/CMakeLists.txt" )
+include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/wiznet/w5500/ip/tcp/client/echo/CMakeLists.txt" )
