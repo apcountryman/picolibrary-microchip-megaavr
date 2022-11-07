@@ -82,14 +82,14 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
             picolibrary-microchip-megaavr
             picolibrary-microchip-megaavr-testing-interactive-fatal_error
         )
-        add_avrdude_programming_targets(
+        add_avrdude_flash_programming_targets(
             test-interactive-picolibrary-asynchronous_serial-reliable_unbuffered_output_stream-hello_world
             "${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_RESET}"
             CONFIGURATION_FILE "${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_CONFIGURATION_FILE}"
             PORT               "${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_PORT}"
-            PROGRAM_FLASH      "${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_PROGRAM_FLASH}"
             VERBOSITY          "${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_VERBOSITY}"
-            VERIFY_FLASH       "${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_VERIFY_FLASH}"
+            PROGRAM            "${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_PROGRAM_FLASH}"
+            VERIFY             "${PICOLIBRARY_MICROCHIP_MEGAAVR_AVRDUDE_VERIFY_FLASH}"
         )
     endif( ${PICOLIBRARY_ASYNCHRONOUS_SERIAL_RELIABLE_UNBUFFERED_OUTPUT_STREAM_ENABLE_HELLO_WORLD_INTERACTIVE_TEST} )
 endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
