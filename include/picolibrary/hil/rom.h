@@ -46,8 +46,7 @@ class String {
     /**
      * \brief Constructor.
      *
-     * To create a string literal stored in ROM and get the underlying ROM character
-     * pointer, use PICOLIBRARY_ROM_STRING().
+     * To create a string literal stored in ROM, use PICOLIBRARY_ROM_STRING().
      *
      * \param[in] string The underlying ROM character pointer.
      */
@@ -356,7 +355,7 @@ constexpr auto operator-( std::ptrdiff_t n, String string ) noexcept -> String
 }
 
 /**
- * \brief Create a string literal stored in ROM and get a pointer to it.
+ * \brief Create a string literal stored in ROM.
  *
  * \param[in] string The string literal to store in ROM.
  *
