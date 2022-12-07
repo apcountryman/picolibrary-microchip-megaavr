@@ -24,6 +24,9 @@
 
 namespace picolibrary::Microchip::megaAVR {
 
-char const * const VERSION{ "@PICOLIBRARY_MICROCHIP_MEGAAVR_VERSION@" };
+auto version() noexcept -> char const *
+{
+    return "@PICOLIBRARY_MICROCHIP_MEGAAVR_VERSION@";
+}
 
 } // namespace picolibrary::Microchip::megaAVR

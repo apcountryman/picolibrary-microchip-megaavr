@@ -26,9 +26,11 @@
 namespace picolibrary::Microchip::megaAVR {
 
 /**
- * \brief Library version.
+ * \brief Get the library version.
+ *
+ * \return The library version.
  */
-extern char const * const VERSION;
+auto version() noexcept -> char const *;
 
 } // namespace picolibrary::Microchip::megaAVR
 
