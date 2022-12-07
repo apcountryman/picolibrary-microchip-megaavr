@@ -30,6 +30,7 @@
 #include "picolibrary/microchip/megaavr/peripheral.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
 #include "picolibrary/precondition.h"
+#include "picolibrary/rom.h"
 #include "picolibrary/stream.h"
 #include "picolibrary/utility.h"
 
@@ -286,6 +287,16 @@ class Log : public Reliable_Output_Stream {
      * \param[in] string The null-terminated string to transmit.
      */
     static void transmit( char const * string ) noexcept
+    {
+        while ( auto const character = *string++ ) { transmit( character ); } // while
+    }
+
+    /**
+     * \brief Transmit a null-terminated ROM string.
+     *
+     * \param[in] string The null-terminated ROM string to transmit.
+     */
+    static void transmit( ROM::String string ) noexcept
     {
         while ( auto const character = *string++ ) { transmit( character ); } // while
     }
