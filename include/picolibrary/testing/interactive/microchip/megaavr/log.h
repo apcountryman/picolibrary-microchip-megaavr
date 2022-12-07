@@ -119,9 +119,9 @@ class Log : public Reliable_Output_Stream {
     static void report_fatal_error( Error_Code const & error ) noexcept
     {
         if ( is_initialized() ) {
-            transmit( "fatal error: " );
+            transmit( PICOLIBRARY_ROM_STRING( "fatal error: " ) );
             transmit( error.category().name() );
-            transmit( "::" );
+            transmit( PICOLIBRARY_ROM_STRING( "::" ) );
             transmit( error.description() );
             transmit( '\n' );
         } // if
