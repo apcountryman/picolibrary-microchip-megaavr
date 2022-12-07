@@ -207,6 +207,16 @@ class Log : public Reliable_Output_Stream {
         }
 
         /**
+         * \brief Transmit a null-terminated ROM string.
+         *
+         * \param[in] string The null-terminated ROM string to transmit.
+         */
+        void put( ROM::String string ) noexcept override final
+        {
+            transmit( string );
+        }
+
+        /**
          * \brief Transmit an unsigned byte.
          *
          * \param[in] value The unsigned byte to transmit.
