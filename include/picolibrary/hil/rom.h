@@ -333,6 +333,8 @@ constexpr auto operator>=( String lhs, String rhs ) noexcept -> bool
 /**
  * \brief Advance a copy of the pointer n characters.
  *
+ * \relatedalso picolibrary::ROM::String
+ *
  * \param[in] n The number of characters to advance the copy of the pointer.
  *
  * \return A copy of the pointer that has been advanced n characters.
@@ -345,6 +347,8 @@ constexpr auto operator+( std::ptrdiff_t n, String string ) noexcept -> String
 /**
  * \brief Retreat a copy of the pointer n characters.
  *
+ * \relatedalso picolibrary::ROM::String
+ *
  * \param[in] n The number of characters to retreat the copy of the pointer.
  *
  * \return A copy of the pointer that has been retreated n characters.
@@ -356,6 +360,8 @@ constexpr auto operator-( std::ptrdiff_t n, String string ) noexcept -> String
 
 /**
  * \brief Create a string literal stored in ROM.
+ *
+ * \relatedalso picolibrary::ROM::String
  *
  * \param[in] string The string literal to store in ROM.
  *
