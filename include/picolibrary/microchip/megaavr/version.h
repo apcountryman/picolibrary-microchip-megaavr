@@ -23,6 +23,8 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_VERSION_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_VERSION_H
 
+#include "picolibrary/rom.h"
+
 namespace picolibrary::Microchip::megaAVR {
 
 /**
@@ -30,7 +32,7 @@ namespace picolibrary::Microchip::megaAVR {
  *
  * \return The library version.
  */
-auto version() noexcept -> char const *;
+auto version() noexcept -> ROM::String;
 
 } // namespace picolibrary::Microchip::megaAVR
 

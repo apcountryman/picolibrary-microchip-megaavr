@@ -107,6 +107,10 @@ target_include_directories(
     picolibrary-microchip-megaavr-version
     PUBLIC "${PROJECT_SOURCE_DIR}/include"
 )
+target_link_libraries(
+    picolibrary-microchip-megaavr-version
+    picolibrary
+)
 
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
     add_library(
