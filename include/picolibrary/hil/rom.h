@@ -359,6 +359,21 @@ constexpr auto operator-( std::ptrdiff_t n, String string ) noexcept -> String
 }
 
 /**
+ * \brief Get the distance between two pointers.
+ *
+ * \relatedalso picolibrary::ROM::String
+ *
+ * \param[in] lhs The left hand side of the operation.
+ * \param[in] rhs The right hand side of the operation.
+ *
+ * \return The distance between the two pointers.
+ */
+constexpr auto operator-( String lhs, String rhs ) noexcept -> std::ptrdiff_t
+{
+    return lhs.string() - rhs.string();
+}
+
+/**
  * \brief Create a string literal stored in ROM.
  *
  * \relatedalso picolibrary::ROM::String
