@@ -17,7 +17,7 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR::VERSION implementation.
+ * \brief picolibrary::Microchip::megaAVR::version() implementation.
  */
 
 #include "picolibrary/microchip/megaavr/version.h"
