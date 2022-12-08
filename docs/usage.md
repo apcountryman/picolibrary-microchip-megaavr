@@ -15,8 +15,8 @@ target_link_libraries(
 ```
 
 The `picolibrary-microchip-megaavr` static library does not include
-`::picolibrary::Microchip::megaAVR::VERSION`.
-To use `::picolibrary::Microchip::megaAVR::VERSION`, link with the
+`::picolibrary::Microchip::megaAVR::version()`.
+To use `::picolibrary::Microchip::megaAVR::version()`, link with the
 `picolibrary-microchip-megaavr-version` static library.
 ```cmake
 target_link_libraries(

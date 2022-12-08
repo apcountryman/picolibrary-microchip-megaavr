@@ -17,7 +17,7 @@
 
 /**
  * \file
- * \brief picolibrary::Microchip::megaAVR::VERSION interface.
+ * \brief picolibrary::Microchip::megaAVR::version() interface.
  */
 
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_VERSION_H
