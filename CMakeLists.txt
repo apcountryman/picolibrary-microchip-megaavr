@@ -120,6 +120,10 @@ if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY} )
     add_subdirectory( picolibrary )
 endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY} )
 
+if( NOT ${PICOLIBRARY_SUPPRESS_ASSERTION_FAILURE_LOCATION_INFORMATION} )
+    message( FATAL_ERROR "picolibrary-microchip-megaavr does not support assertion failure location reporting" )
+endif( NOT ${PICOLIBRARY_SUPPRESS_ASSERTION_FAILURE_LOCATION_INFORMATION} )
+
 # capture project version information
 include( git-utilities )
 execute_git_command(

@@ -59,7 +59,7 @@ constexpr auto usart_port_address( std::uintptr_t usart_address ) noexcept -> st
             return Peripheral::ATmega2560::PORTJ::ADDRESS;
     } // switch
 
-    expect( Generic_Error::INVALID_ARGUMENT );
+    PICOLIBRARY_EXPECTATION_NOT_MET( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -133,7 +133,7 @@ constexpr auto xck_number( std::uintptr_t usart_address ) noexcept -> std::uint_
         case Peripheral::ATmega2560::USART3::ADDRESS: return 2;
     } // switch
 
-    expect( Generic_Error::INVALID_ARGUMENT );
+    PICOLIBRARY_EXPECTATION_NOT_MET( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -239,7 +239,7 @@ constexpr auto txd_number( std::uintptr_t usart_address ) noexcept -> std::uint_
         case Peripheral::ATmega2560::USART3::ADDRESS: return 1;
     } // switch
 
-    expect( Generic_Error::INVALID_ARGUMENT );
+    PICOLIBRARY_EXPECTATION_NOT_MET( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -345,7 +345,7 @@ constexpr auto rxd_number( std::uintptr_t usart_address ) noexcept -> std::uint_
         case Peripheral::ATmega2560::USART3::ADDRESS: return 0;
     } // switch
 
-    expect( Generic_Error::INVALID_ARGUMENT );
+    PICOLIBRARY_EXPECTATION_NOT_MET( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
