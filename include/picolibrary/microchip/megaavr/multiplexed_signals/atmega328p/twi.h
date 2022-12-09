@@ -52,7 +52,7 @@ constexpr auto twi_port_address( std::uintptr_t twi_address ) noexcept -> std::u
             return Peripheral::ATmega328P::PORTC::ADDRESS;
     } // switch
 
-    expect( Generic_Error::INVALID_ARGUMENT );
+    PICOLIBRARY_EXPECTATION_NOT_MET( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -123,7 +123,7 @@ constexpr auto scl_number( std::uintptr_t twi_address ) noexcept -> std::uint_fa
         case Peripheral::ATmega328P::TWI0::ADDRESS: return 5;
     } // switch
 
-    expect( Generic_Error::INVALID_ARGUMENT );
+    PICOLIBRARY_EXPECTATION_NOT_MET( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
@@ -226,7 +226,7 @@ constexpr auto sda_number( std::uintptr_t twi_address ) noexcept -> std::uint_fa
         case Peripheral::ATmega328P::TWI0::ADDRESS: return 4;
     } // switch
 
-    expect( Generic_Error::INVALID_ARGUMENT );
+    PICOLIBRARY_EXPECTATION_NOT_MET( Generic_Error::INVALID_ARGUMENT );
 }
 
 /**
