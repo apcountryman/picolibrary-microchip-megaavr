@@ -1,5 +1,11 @@
 # Interactive Tests
 
+## Table of Contents
+1. [Configuration Requirements](#configuration-requirements)
+1. [avrdude Configuration Options](#avrdude-configuration-options)
+1. [Test Targets](#test-targets)
+1. [Tests](#tests)
+
 ## Configuration Requirements
 picolibrary-microchip-megaavr interactive tests have the following project configuration
 requirements:

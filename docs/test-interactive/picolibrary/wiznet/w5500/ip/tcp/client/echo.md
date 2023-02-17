@@ -1,5 +1,9 @@
 # `::picolibrary::WIZnet::W5500::IP::TCP::Client` echo interactive test
 
+## Table of Contents
+1. [Test Configuration Options](#test-configuration-options)
+1. [Test Executable Name](#test-executable-name)
+
 ## Test Configuration Options
 The `::picolibrary::WIZnet::W5500::IP::TCP::Client` echo interactive test supports the
 following configuration options:
