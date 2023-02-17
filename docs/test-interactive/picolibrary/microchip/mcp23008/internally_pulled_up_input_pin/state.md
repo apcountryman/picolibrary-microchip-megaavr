@@ -1,5 +1,9 @@
 # `::picolibrary::Microchip::MCP23008::Internally_Pulled_Up_Input_Pin` state interactive test
 
+## Table of Contents
+1. [Test Configuration Options](#test-configuration-options)
+1. [Test Executable Name](#test-executable-name)
+
 ## Test Configuration Options
 The `::picolibrary::Microchip::MCP23008::Internally_Pulled_Up_Input_Pin` state interactive
 test supports the following configuration options:

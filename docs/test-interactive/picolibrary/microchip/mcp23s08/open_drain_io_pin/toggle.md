@@ -1,5 +1,9 @@
 # `::picolibrary::Microchip::MCP23S08::Open_Drain_IO_Pin` toggle interactive test
 
+## Table of Contents
+1. [Test Configuration Options](#test-configuration-options)
+1. [Test Executable Name](#test-executable-name)
+
 ## Test Configuration Options
 The `::picolibrary::Microchip::MCP23S08::Open_Drain_IO_Pin` toggle interactive test
 supports the following configuration options:

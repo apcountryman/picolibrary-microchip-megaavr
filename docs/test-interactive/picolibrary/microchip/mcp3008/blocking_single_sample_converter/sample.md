@@ -1,5 +1,9 @@
 # `::picolibrary::Microchip::MCP3008::Blocking_Single_Sample_Converter` sample interactive test
 
+## Table of Contents
+1. [Test Configuration Options](#test-configuration-options)
+1. [Test Executable Name](#test-executable-name)
+
 ## Test Configuration Options
 The `::picolibrary::Microchip::MCP3008::Blocking_Single_Sample_Converter` sample
 interactive test supports the following configuration options:

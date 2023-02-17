@@ -1,5 +1,9 @@
 # `::picolibrary::Microchip::megaAVR::SPI::Fixed_Configuration_Controller<Peripheral::USART>` echo interactive test
 
+## Table of Contents
+1. [Test Configuration Options](#test-configuration-options)
+1. [Test Executable Name](#test-executable-name)
+
 ## Test Configuration Options
 The
 `::picolibrary::Microchip::megaAVR::SPI::Fixed_Configuration_Controller<Peripheral::USART>`

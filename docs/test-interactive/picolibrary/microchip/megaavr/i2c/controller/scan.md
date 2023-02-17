@@ -1,5 +1,9 @@
 # `::picolibrary::Microchip::megaAVR::I2C::Controller` scan interactive test
 
+## Table of Contents
+1. [Test Configuration Options](#test-configuration-options)
+1. [Test Executable Name](#test-executable-name)
+
 ## Test Configuration Options
 The `::picolibrary::Microchip::megaAVR::I2C::Controller` scan interactive test supports
 the following configuration options:
