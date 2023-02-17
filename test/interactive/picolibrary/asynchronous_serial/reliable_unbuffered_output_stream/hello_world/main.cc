@@ -23,10 +23,10 @@
 
 #include <cstdint>
 
-#include "picolibrary/asynchronous_serial/stream.h"
+#include "picolibrary/asynchronous_serial.h"
 #include "picolibrary/microchip/megaavr/asynchronous_serial.h"
 #include "picolibrary/microchip/megaavr/peripheral.h"
-#include "picolibrary/testing/interactive/asynchronous_serial/stream.h"
+#include "picolibrary/testing/interactive/asynchronous_serial.h"
 #include "picolibrary/testing/interactive/microchip/megaavr/log.h"
 
 namespace {
