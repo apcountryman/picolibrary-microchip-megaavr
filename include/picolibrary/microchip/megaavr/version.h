@@ -30,6 +30,10 @@ namespace picolibrary::Microchip::megaAVR {
 /**
  * \brief Get the library version.
  *
+ * \attention The picolibrary-microchip-megaavr static library does not include the
+ *            implementation for this function. To use this function, link with the
+ *            picolibrary-microchip-megaavr-version static library.
+ *
  * \return The library version.
  */
 auto version() noexcept -> ROM::String;
