@@ -9,3 +9,4 @@
 1. [General Purpose Input/Output (GPIO) Facilities](gpio.md)
 1. [Asynchronous Serial Facilities](asynchronous_serial.md)
 1. [Inter-Integrated Circuit (I<sup>2</sup>C) Facilities](i2c.md)
+1. [Serial Peripheral Interface (SPI) Facilities](spi.md)
