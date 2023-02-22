@@ -69,7 +69,7 @@ source file.
 The `::picolibrary::Microchip::megaAVR::GPIO::Open_Drain_IO_Pin` class implements a GPIO
 open-drain I/O pin interface for interacting with a Microchip megaAVR microcontroller pin.
 See the [`::picolibrary::GPIO::IO_Pin_Concept`
-documentation](https://apcountryman.github.io/picolibrary/gpio.html#inputoutput-io-pin)
+documentation](https://apcountryman.github.io/picolibrary/gpio.html#io-pin)
 for more information.
 The `::picolibrary::Microchip::megaAVR::GPIO::Open_Drain_IO_Pin` toggle interactive test
 is defined in the
@@ -80,7 +80,7 @@ source file.
 The `::picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin` class implements a GPIO
 push-pull I/O pin interface for interacting with a Microchip megaAVR microcontroller pin.
 See the [`::picolibrary::GPIO::IO_Pin_Concept`
-documentation](https://apcountryman.github.io/picolibrary/gpio.html#inputoutput-io-pin)
+documentation](https://apcountryman.github.io/picolibrary/gpio.html#io-pin)
 for more information.
 The `::picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin` toggle interactive test is
 defined in the
