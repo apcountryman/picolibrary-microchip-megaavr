@@ -30,7 +30,7 @@
 #include "picolibrary/microchip/megaavr/peripheral/port.h"
 
 /**
- * \brief Microchip megaAVR General Purpose Input/Output (GPIO) facilities.
+ * \brief Microchip megaAVR GPIO facilities.
  */
 namespace picolibrary::Microchip::megaAVR::GPIO {
 
@@ -416,7 +416,7 @@ class Internally_Pulled_Up_Input_Pin {
 };
 
 /**
- * \brief Open-drain Input/Output (I/O) pin.
+ * \brief Open-drain I/O pin.
  */
 class Open_Drain_IO_Pin {
   public:
@@ -556,7 +556,7 @@ class Open_Drain_IO_Pin {
 };
 
 /**
- * \brief Push-pull Input/Output (I/O) pin.
+ * \brief Push-pull I/O pin.
  */
 class Push_Pull_IO_Pin {
   public:

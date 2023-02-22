@@ -34,7 +34,7 @@
 #include "picolibrary/utility.h"
 
 /**
- * \brief Microchip megaAVR Serial Peripheral Interface (SPI) facilities.
+ * \brief Microchip megaAVR SPI facilities.
  */
 namespace picolibrary::Microchip::megaAVR::SPI {
 

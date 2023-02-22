@@ -3,10 +3,11 @@
 (HIL) for Microchip megaAVR microcontrollers.
 
 ## Table of Contents
+1. [Definitions](definitions.md)
 1. [Usage](usage.md)
 1. [Interactive Tests](test-interactive.md)
 1. [Library Version](library_version.md)
-1. [General Purpose Input/Output (GPIO) Facilities](gpio.md)
+1. [GPIO Facilities](gpio.md)
 1. [Asynchronous Serial Facilities](asynchronous_serial.md)
-1. [Inter-Integrated Circuit (I<sup>2</sup>C) Facilities](i2c.md)
-1. [Serial Peripheral Interface (SPI) Facilities](spi.md)
+1. [I<sup>2</sup>C Facilities](i2c.md)
+1. [SPI Facilities](spi.md)
