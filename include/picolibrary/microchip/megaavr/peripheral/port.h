@@ -30,7 +30,7 @@
 namespace picolibrary::Microchip::megaAVR::Peripheral {
 
 /**
- * \brief Microchip megaAVR General Purpose Input/Output (GPIO) Port (PORT) peripheral.
+ * \brief Microchip megaAVR GPIO Port (PORT) peripheral.
  */
 class PORT {
   public:

@@ -344,7 +344,7 @@ class USART {
     };
 
     /**
-     * \brief Serial Peripheral Interface (SPI) host mode.
+     * \brief SPI host mode.
      */
     class SPI_Host {
       public:
