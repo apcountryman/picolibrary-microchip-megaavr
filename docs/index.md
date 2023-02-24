@@ -7,6 +7,7 @@
 1. [Usage](usage.md)
 1. [Interactive Tests](test-interactive.md)
 1. [Library Version](library_version.md)
+1. [Interrupt Facilities](interrupt.md)
 1. [GPIO Facilities](gpio.md)
 1. [Asynchronous Serial Facilities](asynchronous_serial.md)
 1. [I<sup>2</sup>C Facilities](i2c.md)
