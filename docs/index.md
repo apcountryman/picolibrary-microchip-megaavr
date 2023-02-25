@@ -12,3 +12,4 @@
 1. [Asynchronous Serial Facilities](asynchronous_serial.md)
 1. [I<sup>2</sup>C Facilities](i2c.md)
 1. [SPI Facilities](spi.md)
+1. [Interactive Testing Utilities](interactive_testing_utilities.md)
