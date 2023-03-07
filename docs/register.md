@@ -9,7 +9,7 @@ header/source file pair.
 
 ## Register
 The `::picolibrary::Microchip::megaAVR::Register` class is used to declare a Microchip
-megaAVR register that is neither reserved nor protected.
+megaAVR register that is not reserved.
 Register access is restricted to the following operations:
 - Conversion to the underlying register type (reading the register)
 - Assignment
