@@ -7,7 +7,7 @@
     1. [TWI](#twi)
     1. [USART](#usart)
 1. [Peripheral Instances](#peripheral-instances)
-    1. [ATmega328](#atmega328p)
+    1. [ATmega328/P](#atmega328p)
     1. [ATmega2560](#atmega2560)
 
 ## Peripherals
