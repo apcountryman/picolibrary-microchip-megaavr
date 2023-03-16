@@ -9,6 +9,7 @@
 1. [Library Version](library_version.md)
 1. [Register Facilities](register.md)
 1. [Peripheral Facilities](peripheral.md)
+1. [Multiplexed Signals Facilities](multiplexed_signals.md)
 1. [Interrupt Facilities](interrupt.md)
 1. [GPIO Facilities](gpio.md)
 1. [Asynchronous Serial Facilities](asynchronous_serial.md)
