@@ -320,10 +320,24 @@ class USART {
          */
         Reserved_Register<std::uint8_t> const reserved[ 1 ];
 
-        /**
-         * \brief USART Baud Rate Register (UBRR).
-         */
-        Register<std::uint16_t> ubrr;
+        union {
+            /**
+             * \brief USART Baud Rate Register (UBRR).
+             */
+            Register<std::uint16_t> ubrr;
+
+            struct {
+                /**
+                 * \brief USART Baud Rate Register Low Byte (UBRRL).
+                 */
+                Register<std::uint8_t> ubrrl;
+
+                /**
+                 * \brief USART Baud Rate Register High Byte (UBRRH).
+                 */
+                Register<std::uint8_t> ubrrh;
+            };
+        };
 
         /**
          * \brief USART I/O Data Register (UDR).
@@ -552,10 +566,24 @@ class USART {
          */
         Reserved_Register<std::uint8_t> const reserved[ 1 ];
 
-        /**
-         * \brief USART Baud Rate Register (UBRR).
-         */
-        Register<std::uint16_t> ubrr;
+        union {
+            /**
+             * \brief USART Baud Rate Register (UBRR).
+             */
+            Register<std::uint16_t> ubrr;
+
+            struct {
+                /**
+                 * \brief USART Baud Rate Register Low Byte (UBRRL).
+                 */
+                Register<std::uint8_t> ubrrl;
+
+                /**
+                 * \brief USART Baud Rate Register High Byte (UBRRH).
+                 */
+                Register<std::uint8_t> ubrrh;
+            };
+        };
 
         /**
          * \brief USART I/O Data Register (UDR).
