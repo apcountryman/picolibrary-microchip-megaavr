@@ -151,7 +151,7 @@ class Fixed_Configuration_Basic_Controller<Peripheral::SPI> {
     /**
      * \brief Constructor.
      *
-     * \param[in] spi The SPI to be used by the controller.
+     * \param[in] spi The SPI peripheral to be used by the controller.
      * \param[in] spi_clock_rate The desired SPI clock rate.
      * \param[in] spi_clock_polarity The desired SPI clock polarity.
      * \param[in] spi_clock_phase The desired SPI clock phase.
@@ -366,7 +366,7 @@ class Fixed_Configuration_Basic_Controller<Peripheral::USART> {
     /**
      * \brief Constructor.
      *
-     * \param[in] usart The USART to be used by the controller.
+     * \param[in] usart The USART peripheral to be used by the controller.
      * \param[in] usart_clock_generator_scaling_factor The desired USART clock generator
      *            scaling factor (UBRR register value).
      * \param[in] usart_clock_polarity The desired USART clock polarity.
@@ -748,7 +748,7 @@ class Variable_Configuration_Basic_Controller<Peripheral::SPI> {
     /**
      * \brief Constructor.
      *
-     * \param[in] spi The SPI to be used by the controller.
+     * \param[in] spi The SPI peripheral to be used by the controller.
      */
     Variable_Configuration_Basic_Controller( Peripheral::SPI & spi ) noexcept :
         m_spi{ &spi },
@@ -1047,7 +1047,7 @@ class Variable_Configuration_Basic_Controller<Peripheral::USART> {
     /**
      * \brief Constructor.
      *
-     * \param[in] usart The USART to be used by the controller.
+     * \param[in] usart The USART peripheral to be used by the controller.
      */
     Variable_Configuration_Basic_Controller( Peripheral::USART & usart ) noexcept :
         m_usart{ &usart },
