@@ -59,7 +59,7 @@ class Basic_Controller {
     /**
      * \brief Constructor.
      *
-     * \param[in] twi The TWI to be used by the controller.
+     * \param[in] twi The TWI peripheral to be used by the controller.
      * \param[in] twi_bit_rate_generator_prescaler_value The desired TWI bit rate
      *            generator prescaler value.
      * \param[in] twi_bit_rate_generator_scaling_factor The desired TWI bit rate generator
