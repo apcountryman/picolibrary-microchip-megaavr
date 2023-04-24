@@ -105,7 +105,7 @@ class Basic_Transmitter {
     /**
      * \brief Constructor.
      *
-     * \param[in] usart The USART to be used by the transmitter.
+     * \param[in] usart The USART peripheral to be used by the transmitter.
      * \param[in] usart_data_bits The desired USART data bits configuration.
      * \param[in] usart_parity The desired USART parity configuration.
      * \param[in] usart_stop_bits The desired USART stop bits configuration.
