@@ -13,7 +13,4 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# Description: picolibrary::Adafruit::PID781 interactive tests CMake rules.
-
-# build the picolibrary::Adafruit::PID781::Driver interactive tests
-add_subdirectory( driver )
+# Description: picolibrary::Adafruit::PID781::Driver interactive tests CMake rules.
