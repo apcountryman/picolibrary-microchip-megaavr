@@ -13,16 +13,4 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# Description: picolibrary interactive tests CMake rules.
-
-# build the picolibrary::Adafruit interactive tests
-add_subdirectory( adafruit )
-
-# build the picolibrary::Asynchronous_Serial interactive tests
-add_subdirectory( asynchronous_serial )
-
-# build the picolibrary::Microchip interactive tests
-add_subdirectory( microchip )
-
-# build the picolibrary::WIZnet interactive tests
-add_subdirectory( wiznet )
+# Description: picolibrary::Adafruit interactive tests CMake rules.
