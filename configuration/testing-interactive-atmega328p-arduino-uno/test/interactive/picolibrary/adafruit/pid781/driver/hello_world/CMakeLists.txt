@@ -13,7 +13,7 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# Description: picolibrary::Adafruit::PID781::Driver interactive tests CMake rules.
+# Description: picolibrary-microchip-megaavr ATmega328/P Arduino Uno
+#       picolibrary::Adafruit::PID781::Driver hello world interactive test configuration.
 
-# build the picolibrary::Adafruit::PID781::Driver hello world interactive test
-add_subdirectory( hello_world )
+set( PICOLIBRARY_ADAFRUIT_PID781_DRIVER_ENABLE_HELLO_WORLD_INTERACTIVE_TEST OFF CACHE INTERNAL "" )
