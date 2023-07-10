@@ -58,5 +58,3 @@ Each picolibrary-microchip-megaavr interactive test has the following targets:
 - [`::picolibrary::Microchip::megaAVR::SPI::Fixed_Configuration_Controller<Peripheral::USART>` echo interactive test](test-interactive/picolibrary/microchip/megaavr/spi/fixed_configuration_controller-usart/echo.md)
 - [`::picolibrary::Microchip::megaAVR::SPI::Variable_Configuration_Controller<Peripheral::SPI>` echo interactive test](test-interactive/picolibrary/microchip/megaavr/spi/variable_configuration_controller-spi/echo.md)
 - [`::picolibrary::Microchip::megaAVR::SPI::Variable_Configuration_Controller<Peripheral::USART>` echo interactive test](test-interactive/picolibrary/microchip/megaavr/spi/variable_configuration_controller-usart/echo.md)
-- [`::picolibrary::WIZnet::W5500::IP::Network_Stack` ping interactive test](test-interactive/picolibrary/wiznet/w5500/ip/network_stack/ping.md)
-- [`::picolibrary::WIZnet::W5500::IP::TCP::Client` echo interactive test](test-interactive/picolibrary/wiznet/w5500/ip/tcp/client/echo.md)
