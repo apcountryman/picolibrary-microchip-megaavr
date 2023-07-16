@@ -15,3 +15,6 @@
 
 # Description: picolibrary::Texas_Instruments::TCA9548A::Driver interactive tests CMake
 #       rules.
+
+# build the picolibrary::Texas_Instruments::TCA9548A::Driver scan interactive test
+add_subdirectory( scan )
