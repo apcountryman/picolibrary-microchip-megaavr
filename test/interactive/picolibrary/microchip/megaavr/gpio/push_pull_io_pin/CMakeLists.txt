@@ -16,6 +16,5 @@
 # Description: picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin interactive tests
 #       CMake rules.
 
-# build the picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin toggle interactive
-# test
+# picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin toggle interactive test
 add_subdirectory( toggle )

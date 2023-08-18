@@ -15,6 +15,5 @@
 
 # Description: picolibrary::Asynchronous_Serial interactive tests CMake rules.
 
-# build the picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream
-# interactive tests
+# picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream interactive tests
 add_subdirectory( reliable_unbuffered_output_stream )

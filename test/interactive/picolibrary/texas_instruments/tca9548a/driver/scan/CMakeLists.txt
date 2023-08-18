@@ -16,7 +16,7 @@
 # Description: picolibrary::Texas_Instruments::TCA9548A::Driver scan interactive test
 #       CMake rules.
 
-# build the picolibrary::Texas_Instruments::TCA9548A::Driver scan interactive test
+# picolibrary::Texas_Instruments::TCA9548A::Driver scan interactive test
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
     option(
         PICOLIBRARY_TEXAS_INSTRUMENTS_TCA9548A_DRIVER_ENABLE_SCAN_INTERACTIVE_TEST

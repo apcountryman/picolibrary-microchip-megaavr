@@ -16,7 +16,7 @@
 # Description: picolibrary::WIZnet::W5500::IP::Network_Stack ping interactive test CMake
 #       rules.
 
-# build the picolibrary::WIZnet::W5500::IP::Network_Stack ping interactive test
+# picolibrary::WIZnet::W5500::IP::Network_Stack ping interactive test
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
     option(
         PICOLIBRARY_WIZNET_W5500_IP_NETWORK_STACK_ENABLE_PING_INTERACTIVE_TEST

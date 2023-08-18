@@ -16,8 +16,7 @@
 # Description: picolibrary::Microchip::MCP23S08::Internally_Pulled_Up_Input_Pin state
 #       interactive test CMake rules.
 
-# build the picolibrary::Microchip::MCP23S08::Internally_Pulled_Up_Input_Pin state
-# interactive test
+# picolibrary::Microchip::MCP23S08::Internally_Pulled_Up_Input_Pin state interactive test
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
     option(
         PICOLIBRARY_MICROCHIP_MCP23S08_INTERNALLY_PULLED_UP_INPUT_PIN_ENABLE_STATE_INTERACTIVE_TEST

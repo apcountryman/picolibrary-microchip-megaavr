@@ -16,7 +16,7 @@
 # Description: picolibrary::Microchip::megaAVR::I2C::Controller scan interactive test
 #       CMake rules.
 
-# build the picolibrary::Microchip::megaAVR::I2C::Controller scan interactive test
+# picolibrary::Microchip::megaAVR::I2C::Controller scan interactive test
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
     option(
         PICOLIBRARY_MICROCHIP_MEGAAVR_I2C_CONTROLLER_ENABLE_SCAN_INTERACTIVE_TEST

@@ -15,5 +15,5 @@
 
 # Description: picolibrary::WIZnet::W5500::IP::TCP::Client interactive tests CMake rules.
 
-# build the picolibrary::WIZnet::W5500::IP::TCP::Client echo interactive test
+# picolibrary::WIZnet::W5500::IP::TCP::Client echo interactive test
 add_subdirectory( echo )

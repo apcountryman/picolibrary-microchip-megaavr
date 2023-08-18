@@ -15,12 +15,11 @@
 
 # Description: picolibrary::Microchip::MCP23S08 interactive tests CMake rules.
 
-# build the picolibrary::Microchip::MCP23S08::Internally_Pulled_Up_Input_Pin interactive
-# tests
+# picolibrary::Microchip::MCP23S08::Internally_Pulled_Up_Input_Pin interactive tests
 add_subdirectory( internally_pulled_up_input_pin )
 
-# build the picolibrary::Microchip::MCP23S08::Open_Drain_IO_Pin interactive tests
+# picolibrary::Microchip::MCP23S08::Open_Drain_IO_Pin interactive tests
 add_subdirectory( open_drain_io_pin )
 
-# build the picolibrary::Microchip::MCP23S08::Push_Pull_IO_Pin interactive tests
+# picolibrary::Microchip::MCP23S08::Push_Pull_IO_Pin interactive tests
 add_subdirectory( push_pull_io_pin )

@@ -16,7 +16,7 @@
 # Description: picolibrary::WIZnet::W5500::IP::TCP::Client echo interactive test CMake
 #       rules.
 
-# build the picolibrary::WIZnet::W5500::IP::TCP::Client echo interactive test
+# picolibrary::WIZnet::W5500::IP::TCP::Client echo interactive test
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
     option(
         PICOLIBRARY_WIZNET_W5500_IP_TCP_CLIENT_ENABLE_ECHO_INTERACTIVE_TEST

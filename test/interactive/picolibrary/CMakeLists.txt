@@ -15,17 +15,17 @@
 
 # Description: picolibrary interactive tests CMake rules.
 
-# build the picolibrary::Adafruit interactive tests
+# picolibrary::Adafruit interactive tests
 add_subdirectory( adafruit )
 
-# build the picolibrary::Asynchronous_Serial interactive tests
+# picolibrary::Asynchronous_Serial interactive tests
 add_subdirectory( asynchronous_serial )
 
-# build the picolibrary::Microchip interactive tests
+# picolibrary::Microchip interactive tests
 add_subdirectory( microchip )
 
-# build the picolibrary::Texas_Instruments interactive tests
+# picolibrary::Texas_Instruments interactive tests
 add_subdirectory( texas_instruments )
 
-# build the picolibrary::WIZnet interactive tests
+# picolibrary::WIZnet interactive tests
 add_subdirectory( wiznet )

@@ -16,8 +16,8 @@
 # Description: picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream hello
 #       world interactive test CMake rules.
 
-# build the picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream hello
-# world interactive test
+# picolibrary::Asynchronous_Serial::Reliable_Unbuffered_Output_Stream hello world
+# interactive test
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
     option(
         PICOLIBRARY_ASYNCHRONOUS_SERIAL_RELIABLE_UNBUFFERED_OUTPUT_STREAM_ENABLE_HELLO_WORLD_INTERACTIVE_TEST
