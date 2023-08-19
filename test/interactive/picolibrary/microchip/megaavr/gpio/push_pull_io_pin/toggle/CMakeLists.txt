@@ -16,8 +16,7 @@
 # Description: picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin toggle interactive
 #       test CMake rules.
 
-# build the picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin toggle interactive
-# test
+# picolibrary::Microchip::megaAVR::GPIO::Push_Pull_IO_Pin toggle interactive test
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
     option(
         PICOLIBRARY_MICROCHIP_MEGAAVR_GPIO_PUSH_PULL_IO_PIN_ENABLE_TOGGLE_INTERACTIVE_TEST

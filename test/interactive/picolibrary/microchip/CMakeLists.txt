@@ -15,14 +15,14 @@
 
 # Description: picolibrary::Microchip interactive tests CMake rules.
 
-# build the picolibrary::Microchip::MCP23008 interactive tests
+# picolibrary::Microchip::MCP23008 interactive tests
 add_subdirectory( mcp23008 )
 
-# build the picolibrary::Microchip::MCP23S08 interactive tests
+# picolibrary::Microchip::MCP23S08 interactive tests
 add_subdirectory( mcp23s08 )
 
-# build the picolibrary::Microchip::MCP3008 interactive tests
+# picolibrary::Microchip::MCP3008 interactive tests
 add_subdirectory( mcp3008 )
 
-# build the picolibrary::Microchip::megaAVR interactive tests
+# picolibrary::Microchip::megaAVR interactive tests
 add_subdirectory( megaavr )

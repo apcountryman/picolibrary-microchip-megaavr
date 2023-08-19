@@ -16,7 +16,7 @@
 # Description: picolibrary::Microchip::megaAVR::Asynchronous_Serial::Transmitter hello
 #       world interactive test CMake rules.
 
-# build the picolibrary::Microchip::megaAVR::Asynchronous_Serial::Transmitter hello world
+# picolibrary::Microchip::megaAVR::Asynchronous_Serial::Transmitter hello world
 # interactive test
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
     option(

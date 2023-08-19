@@ -16,7 +16,7 @@
 # Description: picolibrary::Adafruit::PID781::Driver hello world interactive test CMake
 #       rules.
 
-# build the picolibrary::Adafruit::PID781::Driver hello world interactive test
+# picolibrary::Adafruit::PID781::Driver hello world interactive test
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
     option(
         PICOLIBRARY_ADAFRUIT_PID781_DRIVER_ENABLE_HELLO_WORLD_INTERACTIVE_TEST

@@ -15,5 +15,5 @@
 
 # Description: picolibrary tests CMake rules.
 
-# build the picolibrary interactive tests
+# picolibrary interactive tests
 add_subdirectory( interactive )

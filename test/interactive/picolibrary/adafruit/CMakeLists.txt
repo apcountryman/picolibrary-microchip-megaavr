@@ -15,5 +15,5 @@
 
 # Description: picolibrary::Adafruit interactive tests CMake rules.
 
-# build the picolibrary::Adafruit::PID781 interactive tests
+# picolibrary::Adafruit::PID781 interactive tests
 add_subdirectory( pid781 )

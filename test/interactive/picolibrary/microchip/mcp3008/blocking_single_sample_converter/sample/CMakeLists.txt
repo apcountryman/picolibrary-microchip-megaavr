@@ -16,8 +16,8 @@
 # Description: picolibrary::Microchip::MCP3008::Blocking_Single_Sample_Converter sample
 #       interactive test CMake rules.
 
-# build the picolibrary::Microchip::MCP3008::Blocking_Single_Sample_Converter sample
-# interactive test
+# picolibrary::Microchip::MCP3008::Blocking_Single_Sample_Converter sample interactive
+# test
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
     option(
         PICOLIBRARY_MICROCHIP_MCP3008_BLOCKING_SINGLE_SAMPLE_CONVERTER_ENABLE_SAMPLE_INTERACTIVE_TEST

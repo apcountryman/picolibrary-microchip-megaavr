@@ -16,8 +16,8 @@
 # Description: picolibrary::Microchip::megaAVR::GPIO::Internally_Pulled_Up_Input_Pin state
 #       interactive test CMake rules.
 
-# build the picolibrary::Microchip::megaAVR::GPIO::Internally_Pulled_Up_Input_Pin state
-# interactive test
+# picolibrary::Microchip::megaAVR::GPIO::Internally_Pulled_Up_Input_Pin state interactive
+# test
 if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
     option(
         PICOLIBRARY_MICROCHIP_MEGAAVR_GPIO_INTERNALLY_PULLED_UP_INPUT_PIN_ENABLE_STATE_INTERACTIVE_TEST

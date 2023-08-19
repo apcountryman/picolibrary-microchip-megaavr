@@ -15,5 +15,5 @@
 
 # Description: picolibrary::Microchip::megaAVR::I2C interactive tests CMake rules.
 
-# build the picolibrary::Microchip::megaAVR::I2C::Controller interactive tests
+# picolibrary::Microchip::megaAVR::I2C::Controller interactive tests
 add_subdirectory( controller )

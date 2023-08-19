@@ -15,5 +15,5 @@
 
 # Description: picolibrary::Texas_Instruments interactive tests CMake rules.
 
-# build the picolibrary::Texas_Instruments::TCA9548A interactive tests
+# picolibrary::Texas_Instruments::TCA9548A interactive tests
 add_subdirectory( tca9548a )

@@ -15,5 +15,5 @@
 
 # Description: picolibrary::WIZnet interactive tests CMake rules.
 
-# build the picolibrary::WIZnet::W5500 interactive tests
+# picolibrary::WIZnet::W5500 interactive tests
 add_subdirectory( w5500 )

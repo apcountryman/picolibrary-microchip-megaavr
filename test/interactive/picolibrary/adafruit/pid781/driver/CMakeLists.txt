@@ -15,5 +15,5 @@
 
 # Description: picolibrary::Adafruit::PID781::Driver interactive tests CMake rules.
 
-# build the picolibrary::Adafruit::PID781::Driver hello world interactive test
+# picolibrary::Adafruit::PID781::Driver hello world interactive test
 add_subdirectory( hello_world )

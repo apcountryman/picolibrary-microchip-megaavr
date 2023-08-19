@@ -15,5 +15,5 @@
 
 # Description: picolibrary::Adafruit::PID781 interactive tests CMake rules.
 
-# build the picolibrary::Adafruit::PID781::Driver interactive tests
+# picolibrary::Adafruit::PID781::Driver interactive tests
 add_subdirectory( driver )
