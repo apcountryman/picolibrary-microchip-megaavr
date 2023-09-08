@@ -61,3 +61,4 @@ Each picolibrary-microchip-megaavr interactive test has the following targets:
 - [`::picolibrary::Texas_Instruments::TCA9548A::Driver` scan interactive test](test-interactive/picolibrary/texas_instruments/tca9548a/driver/scan.md)
 - [`::picolibrary::WIZnet::W5500::IP::Network_Stack` ping interactive test](test-interactive/picolibrary/wiznet/w5500/ip/network_stack/ping.md)
 - [`::picolibrary::WIZnet::W5500::IP::TCP::Client` echo interactive test](test-interactive/picolibrary/wiznet/w5500/ip/tcp/client/echo.md)
+- [`::picolibrary::WIZnet::W5500::IP::TCP::Server` echo interactive test](test-interactive/picolibrary/wiznet/w5500/ip/tcp/server/echo.md)

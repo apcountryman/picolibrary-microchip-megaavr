@@ -14,3 +14,6 @@
 # permissions and limitations under the License.
 
 # Description: picolibrary::WIZnet::W5500::IP::TCP::Server interactive tests CMake rules.
+
+# picolibrary::WIZnet::W5500::IP::TCP::Server echo interactive test
+add_subdirectory( echo )
