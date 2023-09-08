@@ -90,7 +90,7 @@ int main() noexcept
         SERVER_TIME_TO_LIVE,
         SERVER_KEEPALIVE_PERIOD,
         { SERVER_LOCAL_ENDPOINT },
-        { SERVER_BACKLOG } );
+        SERVER_BACKLOG );
 
     for ( ;; ) {} // for
 }
