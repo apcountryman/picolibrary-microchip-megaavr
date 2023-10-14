@@ -13,13 +13,4 @@
 # KIND, either express or implied. See the License for the specific language governing
 # permissions and limitations under the License.
 
-# Description: picolibrary::WIZnet::W5500::IP interactive tests CMake rules.
-
-# picolibrary::WIZnet::W5500::IP::Network_Stack interactive tests
-add_subdirectory( network_stack )
-
-# picolibrary::WIZnet::W5500::IP::TCP interactive tests
-add_subdirectory( tcp )
-
-# picolibrary::WIZnet::W5500::IP::UDP interactive tests
-add_subdirectory( udp )
+# Description: picolibrary::WIZnet::W5500::IP::UDP interactive tests CMake rules.
