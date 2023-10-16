@@ -14,3 +14,6 @@
 # permissions and limitations under the License.
 
 # Description: picolibrary::WIZnet::W5500::IP::UDP::Socket interactive tests CMake rules.
+
+# picolibrary::WIZnet::W5500::IP::UDP::Socket echo interactive test
+add_subdirectory( echo )

@@ -62,3 +62,4 @@ Each picolibrary-microchip-megaavr interactive test has the following targets:
 - [`::picolibrary::WIZnet::W5500::IP::Network_Stack` ping interactive test](test-interactive/picolibrary/wiznet/w5500/ip/network_stack/ping.md)
 - [`::picolibrary::WIZnet::W5500::IP::TCP::Client` echo interactive test](test-interactive/picolibrary/wiznet/w5500/ip/tcp/client/echo.md)
 - [`::picolibrary::WIZnet::W5500::IP::TCP::Server` echo interactive test](test-interactive/picolibrary/wiznet/w5500/ip/tcp/server/echo.md)
+- [`::picolibrary::WIZnet::W5500::IP::UDP::Socket` echo interactive test](test-interactive/picolibrary/wiznet/w5500/ip/udp/socket/echo.md)
