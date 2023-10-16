@@ -62,6 +62,8 @@ using namespace ::picolibrary::Microchip::megaAVR::Peripheral;
  */
 int main() noexcept
 {
+    // #lizard forgives the length
+
     Log::initialize();
 
     echo(
