@@ -75,3 +75,4 @@ include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/texas_instrumen
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/wiznet/w5500/ip/network_stack/ping/CMakeLists.txt" )
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/wiznet/w5500/ip/tcp/client/echo/CMakeLists.txt" )
 include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/wiznet/w5500/ip/tcp/server/echo/CMakeLists.txt" )
+include( "${CMAKE_CURRENT_LIST_DIR}/test/interactive/picolibrary/wiznet/w5500/ip/udp/socket/echo/CMakeLists.txt" )
