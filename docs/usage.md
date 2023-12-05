@@ -51,12 +51,6 @@ picolibrary-microchip-megaavr supports the following project configuration optio
           clock generator scaling factor (see
           [`include/picolibrary/testing/interactive/microchip/megaavr/log.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr/blob/main/include/picolibrary/testing/interactive/microchip/megaavr/log.h)
           for more information)
-- `PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS` (defaults to `ON`) use
-  parent project's build flags
-    - The following project configuration options are available if
-      `PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS` is `OFF`:
-        - `PICOLIBRARY_MICROCHIP_MEGAAVR_MCU`: MCU type
-        - `PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU`: CPU frequency, in Hz
 - `PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP` (defaults to `ON`): use
   parent project's avr-libcpp
 - `PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY` (defaults to `ON`): use

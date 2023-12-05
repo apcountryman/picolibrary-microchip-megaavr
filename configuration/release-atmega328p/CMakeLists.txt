@@ -16,11 +16,10 @@
 # Description: picolibrary-microchip-megaavr ATmega328/P release configuration.
 
 # build configuration
-set( CMAKE_BUILD_TYPE                                             "MinSizeRel" CACHE INTERNAL "" )
-set( CMAKE_EXPORT_COMPILE_COMMANDS                                ON           CACHE INTERNAL "" )
-set( PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU                          "16000000UL" CACHE INTERNAL "" )
-set( PICOLIBRARY_MICROCHIP_MEGAAVR_MCU                            "atmega328p" CACHE INTERNAL "" )
-set( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS OFF          CACHE INTERNAL "" )
+set( CMAKE_BUILD_TYPE                    "MinSizeRel" CACHE INTERNAL "" )
+set( CMAKE_EXPORT_COMPILE_COMMANDS       ON           CACHE INTERNAL "" )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_F_CPU "16000000UL" CACHE INTERNAL "" )
+set( PICOLIBRARY_MICROCHIP_MEGAAVR_MCU   "atmega328p" CACHE INTERNAL "" )
 
 # avr-libcpp configuration
 set( PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_AVRLIBCPP OFF CACHE INTERNAL "" )
