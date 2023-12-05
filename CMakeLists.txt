@@ -36,12 +36,7 @@ list(
 )
 
 # configure compilation and linking
-option(
-    PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS
-    "picolibrary-microchip-megaavr: use parent project's build flags"
-    ON
-)
-if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
+if( "${PROJECT_SOURCE_DIR}" STREQUAL "${CMAKE_SOURCE_DIR}" )
     set(
         PICOLIBRARY_MICROCHIP_MEGAAVR_MCU
         "" CACHE STRING
@@ -80,7 +75,7 @@ if( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
     add_link_options(
         -mmcu=${PICOLIBRARY_MICROCHIP_MEGAAVR_MCU}
     )
-endif( NOT ${PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_BUILD_FLAGS} )
+endif( "${PROJECT_SOURCE_DIR}" STREQUAL "${CMAKE_SOURCE_DIR}" )
 
 # configure avr-libcpp
 option(
