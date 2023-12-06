@@ -66,8 +66,8 @@ be configured as follows:
 ### picolibrary Configuration Requirements
 If `PICOLIBRARY_MICROCHIP_MEGAAVR_USE_PARENT_PROJECT_PICOLIBRARY` is `ON`, picolibrary
 must be configured as follows:
-- `PICOLIBRARY_HIL_INCLUDE_DIR` must be set to the path to picolibrary's `include/`
-  directory
+- `PICOLIBRARY_HIL_INCLUDE_DIR` must be set to the path to picolibrary-microchip-megaavr's
+  `include/` directory
 - `PICOLIBRARY_ENABLE_AUTOMATED_TESTING` must be `OFF`
 - `PICOLIBRARY_ENABLE_INTERACTIVE_TESTING` must be `ON` if
   `PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING` is `ON`
