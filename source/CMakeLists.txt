@@ -45,7 +45,6 @@ set(
     "picolibrary/microchip/megaavr/peripheral/spi.cc"
     "picolibrary/microchip/megaavr/peripheral/twi.cc"
     "picolibrary/microchip/megaavr/peripheral/usart.cc"
-    "picolibrary/microchip/megaavr/register.cc"
     "picolibrary/microchip/megaavr/spi.cc"
 )
 list(
