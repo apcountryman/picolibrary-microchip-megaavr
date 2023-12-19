@@ -23,11 +23,11 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA328P_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA328P_H
 
-#include "picolibrary/microchip/megaavr/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr/peripheral/port.h"
 #include "picolibrary/microchip/megaavr/peripheral/spi.h"
 #include "picolibrary/microchip/megaavr/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
+#include "picolibrary/peripheral.h"
 
 /**
  * \brief Microchip megaAVR ATmega328/P peripherals.
@@ -45,7 +45,7 @@ namespace picolibrary::Microchip::megaAVR::Peripheral::ATmega328P {
  *            flag to `atmega328p` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTB.
  */
-using PORTB = Instance<PORT, 0x0023>;
+using PORTB = ::picolibrary::Peripheral::Instance<PORT, 0x0023>;
 
 /**
  * \brief PORTC.
@@ -54,7 +54,7 @@ using PORTB = Instance<PORT, 0x0023>;
  *            flag to `atmega328p` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTC.
  */
-using PORTC = Instance<PORT, 0x0026>;
+using PORTC = ::picolibrary::Peripheral::Instance<PORT, 0x0026>;
 
 /**
  * \brief PORTD.
@@ -63,7 +63,7 @@ using PORTC = Instance<PORT, 0x0026>;
  *            flag to `atmega328p` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTD.
  */
-using PORTD = Instance<PORT, 0x0029>;
+using PORTD = ::picolibrary::Peripheral::Instance<PORT, 0x0029>;
 
 /**
  * \brief SPI0.
@@ -72,7 +72,7 @@ using PORTD = Instance<PORT, 0x0029>;
  *            flag to `atmega328p` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::SPI0.
  */
-using SPI0 = Instance<SPI, 0x004C>;
+using SPI0 = ::picolibrary::Peripheral::Instance<SPI, 0x004C>;
 
 /**
  * \brief TWI0.
@@ -81,7 +81,7 @@ using SPI0 = Instance<SPI, 0x004C>;
  *            flag to `atmega328p` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::TWI0.
  */
-using TWI0 = Instance<TWI, 0x00B8>;
+using TWI0 = ::picolibrary::Peripheral::Instance<TWI, 0x00B8>;
 
 /**
  * \brief USART0.
@@ -90,7 +90,7 @@ using TWI0 = Instance<TWI, 0x00B8>;
  *            flag to `atmega328p` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::USART0.
  */
-using USART0 = Instance<USART, 0x00C0>;
+using USART0 = ::picolibrary::Peripheral::Instance<USART, 0x00C0>;
 
 } // namespace picolibrary::Microchip::megaAVR::Peripheral::ATmega328P
 

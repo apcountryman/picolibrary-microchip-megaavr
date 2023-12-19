@@ -74,16 +74,6 @@ instance is accessed via the
 `::picolibrary::Microchip::megaAVR::Peripheral::USART::spi_host` member variable.
 
 ## Peripheral Instances
-The `::picolibrary::Microchip::megaAVR::Peripheral::Instance` template class is used to
-define Microchip megaAVR peripheral instances.
-The `::picolibrary::Microchip::megaAVR::Peripheral::Instance` template class is defined in
-the
-[`include/picolibrary/microchip/megaavr/peripheral/instance.h`](https://github.com/apcountryman/picolibrary-microchip-megaavr/blob/main/include/picolibrary/microchip/megaavr/peripheral/instance.h)/[`source/picolibrary/microchip/megaavr/peripheral/instance.cc`](https://github.com/apcountryman/picolibrary-microchip-megaavr/blob/main/source/picolibrary/microchip/megaavr/peripheral/instance.cc)
-header/source file pair.
-- To access a peripheral instance, use the
-  `::picolibrary::Microchip::megaAVR::Peripheral::Instance::instance()` static member
-  function.
-
 Microchip megaAVR MCU specific peripheral instances are defined in MCU specific namespaces
 and header/source file pairs (e.g. ATmega2560 peripheral instances are defined in the
 `::picolibrary::Microchip::megaAVR::Peripheral::ATmega2560` namespace which is defined in

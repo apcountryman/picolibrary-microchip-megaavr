@@ -23,11 +23,11 @@
 #ifndef PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA2560_H
 #define PICOLIBRARY_MICROCHIP_MEGAAVR_PERIPHERAL_ATMEGA2560_H
 
-#include "picolibrary/microchip/megaavr/peripheral/instance.h"
 #include "picolibrary/microchip/megaavr/peripheral/port.h"
 #include "picolibrary/microchip/megaavr/peripheral/spi.h"
 #include "picolibrary/microchip/megaavr/peripheral/twi.h"
 #include "picolibrary/microchip/megaavr/peripheral/usart.h"
+#include "picolibrary/peripheral.h"
 
 /**
  * \brief Microchip megaAVR ATmega2560 peripherals.
@@ -45,7 +45,7 @@ namespace picolibrary::Microchip::megaAVR::Peripheral::ATmega2560 {
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTA.
  */
-using PORTA = Instance<PORT, 0x0020>;
+using PORTA = ::picolibrary::Peripheral::Instance<PORT, 0x0020>;
 
 /**
  * \brief PORTB.
@@ -54,7 +54,7 @@ using PORTA = Instance<PORT, 0x0020>;
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTB.
  */
-using PORTB = Instance<PORT, 0x0023>;
+using PORTB = ::picolibrary::Peripheral::Instance<PORT, 0x0023>;
 
 /**
  * \brief PORTC.
@@ -63,7 +63,7 @@ using PORTB = Instance<PORT, 0x0023>;
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTC.
  */
-using PORTC = Instance<PORT, 0x0026>;
+using PORTC = ::picolibrary::Peripheral::Instance<PORT, 0x0026>;
 
 /**
  * \brief PORTD.
@@ -72,7 +72,7 @@ using PORTC = Instance<PORT, 0x0026>;
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTD.
  */
-using PORTD = Instance<PORT, 0x0029>;
+using PORTD = ::picolibrary::Peripheral::Instance<PORT, 0x0029>;
 
 /**
  * \brief PORTE.
@@ -81,7 +81,7 @@ using PORTD = Instance<PORT, 0x0029>;
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTE.
  */
-using PORTE = Instance<PORT, 0x002C>;
+using PORTE = ::picolibrary::Peripheral::Instance<PORT, 0x002C>;
 
 /**
  * \brief PORTF.
@@ -90,7 +90,7 @@ using PORTE = Instance<PORT, 0x002C>;
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTF.
  */
-using PORTF = Instance<PORT, 0x002F>;
+using PORTF = ::picolibrary::Peripheral::Instance<PORT, 0x002F>;
 
 /**
  * \brief PORTG.
@@ -99,7 +99,7 @@ using PORTF = Instance<PORT, 0x002F>;
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTG.
  */
-using PORTG = Instance<PORT, 0x0032>;
+using PORTG = ::picolibrary::Peripheral::Instance<PORT, 0x0032>;
 
 /**
  * \brief SPI0.
@@ -108,7 +108,7 @@ using PORTG = Instance<PORT, 0x0032>;
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::SPI0.
  */
-using SPI0 = Instance<SPI, 0x004C>;
+using SPI0 = ::picolibrary::Peripheral::Instance<SPI, 0x004C>;
 
 /**
  * \brief TWI0.
@@ -117,7 +117,7 @@ using SPI0 = Instance<SPI, 0x004C>;
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::TWI0.
  */
-using TWI0 = Instance<TWI, 0x00B8>;
+using TWI0 = ::picolibrary::Peripheral::Instance<TWI, 0x00B8>;
 
 /**
  * \brief USART0.
@@ -126,7 +126,7 @@ using TWI0 = Instance<TWI, 0x00B8>;
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::USART0.
  */
-using USART0 = Instance<USART, 0x00C0>;
+using USART0 = ::picolibrary::Peripheral::Instance<USART, 0x00C0>;
 
 /**
  * \brief USART1.
@@ -135,7 +135,7 @@ using USART0 = Instance<USART, 0x00C0>;
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::USART1.
  */
-using USART1 = Instance<USART, 0x00C8>;
+using USART1 = ::picolibrary::Peripheral::Instance<USART, 0x00C8>;
 
 /**
  * \brief USART2.
@@ -144,7 +144,7 @@ using USART1 = Instance<USART, 0x00C8>;
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::USART2.
  */
-using USART2 = Instance<USART, 0x00D0>;
+using USART2 = ::picolibrary::Peripheral::Instance<USART, 0x00D0>;
 
 /**
  * \brief PORTH.
@@ -153,7 +153,7 @@ using USART2 = Instance<USART, 0x00D0>;
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTH.
  */
-using PORTH = Instance<PORT, 0x0100>;
+using PORTH = ::picolibrary::Peripheral::Instance<PORT, 0x0100>;
 
 /**
  * \brief PORTJ.
@@ -162,7 +162,7 @@ using PORTH = Instance<PORT, 0x0100>;
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTJ.
  */
-using PORTJ = Instance<PORT, 0x0103>;
+using PORTJ = ::picolibrary::Peripheral::Instance<PORT, 0x0103>;
 
 /**
  * \brief PORTK.
@@ -171,7 +171,7 @@ using PORTJ = Instance<PORT, 0x0103>;
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTK.
  */
-using PORTK = Instance<PORT, 0x0106>;
+using PORTK = ::picolibrary::Peripheral::Instance<PORT, 0x0106>;
 
 /**
  * \brief PORTL.
@@ -180,7 +180,7 @@ using PORTK = Instance<PORT, 0x0106>;
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::PORTL.
  */
-using PORTL = Instance<PORT, 0x0109>;
+using PORTL = ::picolibrary::Peripheral::Instance<PORT, 0x0109>;
 
 /**
  * \brief USART3.
@@ -189,7 +189,7 @@ using PORTL = Instance<PORT, 0x0109>;
  *            flag to `atmega2560` and use
  *            picolibrary::Microchip::megaAVR::Peripheral::USART3.
  */
-using USART3 = Instance<USART, 0x0130>;
+using USART3 = ::picolibrary::Peripheral::Instance<USART, 0x0130>;
 
 } // namespace picolibrary::Microchip::megaAVR::Peripheral::ATmega2560
 
