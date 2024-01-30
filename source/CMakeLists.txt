@@ -60,7 +60,7 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
 endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
 
 add_library(
-    picolibrary-microchip-megaavr
+    picolibrary-microchip-megaavr STATIC
     ${PICOLIBRARY_MICROCHIP_MEGAAVR_SOURCE_FILES}
 )
 target_include_directories(
@@ -98,7 +98,7 @@ if( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
 endif( ${PICOLIBRARY_MICROCHIP_MEGAAVR_ENABLE_INTERACTIVE_TESTING} )
 
 add_library(
-    picolibrary-microchip-megaavr-version
+    picolibrary-microchip-megaavr-version STATIC
     "${CMAKE_CURRENT_BINARY_DIR}/picolibrary/microchip/megaavr/version.cc"
 )
 target_include_directories(
